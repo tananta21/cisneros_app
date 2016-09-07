@@ -14,11 +14,16 @@ class CreateUsersTable extends Migration
     {
         Schema::create('empleados', function (Blueprint $table) {
             $table->increments('id');
+            $table->integer('tipo_empleado_id')->unsigned();
+            $table->integer('estado_civil_id')->unsigned();
+            $table->integer('grado_instruccion_id')->unsigned();
+            $table->integer('ocupacion_id')->unsigned();
             $table->string('name');
             $table->string('email')->unique();
             $table->string('password', 60);
             $table->rememberToken();
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 
@@ -29,6 +34,6 @@ class CreateUsersTable extends Migration
      */
     public function down()
     {
-        Schema::drop('users');
+        Schema::drop('empleados');
     }
 }

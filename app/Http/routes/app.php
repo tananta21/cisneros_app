@@ -12,7 +12,7 @@ Route::group(['prefix'=>'/', 'middleware' => 'auth' ], function() {
     Route::get('/inventario/productos', function(){
         return view('inventario.productos');
     });
-    Route::get('/compra/nuevacompra', function(){
+    Route::get('/compra/compranueva', function(){
         return view('compra.compranueva');
     });
 

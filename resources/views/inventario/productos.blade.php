@@ -1,15 +1,31 @@
 @extends('index')
+@section('vistainicial')
+@stop
+
 @section('menu_modulos')
+        <div>
+            <header style="background: skyblue">
+                <ul style="display: flex; list-style: none">
+                    <li>
+                        <div style="padding:2rem;background: orange; margin: 1rem">
+                            <a href="#" style="padding:2rem; color: white; font-weight: bold" >Productos</a>
+                        </div>
+                    </li>
+                    <li>
+                        <div style="padding:2rem;background: orange; margin: 1rem">
+                            <a href="#" style="padding:2rem; color: white; font-weight: bold" >Almacen Tienda</a>
+                        </div>
+                    </li>
+                    <li>
+                        <div style="padding:2rem;background: orange; margin: 1rem">
+                            <a href="#" style="padding:2rem; color: white; font-weight: bold" >Almacen Principal</a>
+                        </div>
+                    </li>
 
-    <div class="row wrapper border-bottom white-bg page-heading">
-        <div class="col-lg-10">
-            <button type="button" class="btn btn-w-m btn-primary">Primary</button>
-            <button type="button" class="btn btn-w-m btn-primary">Primary</button>
+                </ul>
+            </header>
         </div>
-        <div class="col-lg-2">
 
-        </div>
-        </div>
 
     @section('contenido_modulos')
         <h2>tananta</h2>

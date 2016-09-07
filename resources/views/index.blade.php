@@ -1,128 +1,4 @@
 
-{{--<!DOCTYPE html>--}}
-{{--<html>--}}
-
-{{--<head>--}}
-
-    {{--<meta charset="utf-8">--}}
-    {{--<meta name="viewport" content="width=device-width, initial-scale=1.0">--}}
-
-    {{--<title>CISNEROS SAC</title>--}}
-
-    {{--<link href="{{url('/')}}/css/bootstrap.min.css" rel="stylesheet">--}}
-    {{--<link href="{{url('/')}}/font-awesome/css/font-awesome.css" rel="stylesheet">--}}
-
-    {{--<link href="{{url('/')}}/css/animate.css" rel="stylesheet">--}}
-    {{--<link href="{{url('/')}}/css/style.css" rel="stylesheet">--}}
-
-{{--</head>--}}
-
-{{--<body>--}}
-
-{{--<div id="wrapper">--}}
-
-    {{--<nav class="navbar-default navbar-static-side" role="navigation">--}}
-        {{--<div class="sidebar-collapse">--}}
-            {{--<ul class="nav metismenu" id="side-menu">--}}
-                {{--<li class="nav-header">--}}
-                    {{--<div class="dropdown profile-element">--}}
-                        {{--<a data-toggle="dropdown" class="dropdown-toggle" href="#">--}}
-                            {{--<span class="clear"> <span class="block m-t-xs"> <strong class="font-bold">{{Auth::user()->name}}</strong>--}}
-                             {{--</span> <span class="text-muted text-xs block">Art Director <b class="caret"></b></span> </span> </a>--}}
-                        {{--<ul class="dropdown-menu animated fadeInRight m-t-xs">--}}
-                            {{--<li><a href="">Logout</a></li>--}}
-                        {{--</ul>--}}
-                    {{--</div>--}}
-                    {{--<div class="logo-element">--}}
-                        {{--IN+--}}
-                    {{--</div>--}}
-                {{--</li>--}}
-
-                {{--<li>--}}
-                    {{--<a href="/inventario/productos"><i class="fa fa-th-large"></i> <span class="nav-label">Inventario</span></a>--}}
-                {{--</li>--}}
-                {{--<li>--}}
-                    {{--<a href="/compra/nuevacompra"><i class="fa fa-th-large"></i> <span class="nav-label">Compras</span> </a>--}}
-                {{--</li>--}}
-                {{--<li>--}}
-                    {{--<a href="#"><i class="fa fa-th-large"></i> <span class="nav-label">Ventas</span> </a>--}}
-                {{--</li>--}}
-                {{--<li>--}}
-                    {{--<a href="#"><i class="fa fa-th-large"></i> <span class="nav-label">Caja</span> </a>--}}
-                {{--</li>--}}
-                {{--<li>--}}
-                    {{--<a href="#"><i class="fa fa-th-large"></i> <span class="nav-label">Reportes</span> </a>--}}
-                {{--</li>--}}
-                {{--<li>--}}
-                    {{--<a href="#"><i class="fa fa-th-large"></i> <span class="nav-label">Seguridad</span> </a>--}}
-                {{--</li>--}}
-                {{--<li>--}}
-                    {{--<a href="#"><i class="fa fa-th-large"></i> <span class="nav-label">Mantenimientos</span> </a>--}}
-                {{--</li>--}}
-
-
-            {{--</ul>--}}
-
-        {{--</div>--}}
-    {{--</nav>--}}
-
-        {{--<div id="page-wrapper" class="gray-bg">--}}
-            {{--<div class="row border-bottom">--}}
-                {{--<nav class="navbar navbar-static-top white-bg" role="navigation" style="margin-bottom: 0">--}}
-                    {{--<div class="navbar-header">--}}
-                        {{--<a class="navbar-minimalize minimalize-styl-2 btn btn-primary " href="#"><i class="fa fa-bars"></i> </a>--}}
-                        {{--<form role="search" class="navbar-form-custom" method="post" action="#">--}}
-                            {{--<div class="form-group">--}}
-                                {{--<input type="text" placeholder="Search for something..." class="form-control" name="top-search" id="top-search">--}}
-                            {{--</div>--}}
-                        {{--</form>--}}
-                    {{--</div>--}}
-                    {{--<ul class="nav navbar-top-links navbar-right">--}}
-                        {{--<li>--}}
-                            {{--<a href="/auth/logout">--}}
-                                {{--<i class="fa fa-sign-out"></i> Log out--}}
-                            {{--</a>--}}
-                        {{--</li>--}}
-                    {{--</ul>--}}
-    {{----}}
-                {{--</nav>--}}
-            {{--</div>--}}
-            {{--@yield('menu_modulos')--}}
-            {{--<div class="wrapper wrapper-content animated fadeInRight">--}}
-    {{----}}
-    {{----}}
-            {{--@yield('contenido_modulos')--}}
-    {{----}}
-    {{----}}
-            {{--</div>--}}
-            {{--<div class="footer">--}}
-                {{--<div class="pull-right">--}}
-                    {{--10GB of <strong>250GB</strong> Free.--}}
-                {{--</div>--}}
-                {{--<div>--}}
-                    {{--<strong>Copyright</strong> Example Company &copy; 2014-2015--}}
-                {{--</div>--}}
-            {{--</div>--}}
-    {{----}}
-        {{--</div>--}}
-    {{--</div>--}}
-
-{{--<!-- Mainly scripts -->--}}
-{{--<script src="{{url('/')}}/js/jquery-2.1.1.js"></script>--}}
-{{--<script src="{{url('/')}}/js/bootstrap.min.js"></script>--}}
-{{--<script src="{{url('/')}}/js/plugins/metisMenu/jquery.metisMenu.js"></script>--}}
-{{--<script src="{{url('/')}}/js/plugins/slimscroll/jquery.slimscroll.min.js"></script>--}}
-
-{{--<!-- Custom and plugin javascript -->--}}
-{{--<script src="{{url('/')}}/js/inspinia.js"></script>--}}
-{{--<script src="{{url('/')}}/js/plugins/pace/pace.min.js"></script>--}}
-
-
-{{--</body>--}}
-
-{{--</html>--}}
-
-
 <!DOCTYPE html>
 <!--
 This is a starter template page. Use this page to start your new project from
@@ -137,12 +13,11 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
     <!-- Bootstrap 3.3.6 -->
     <link rel="stylesheet" href="{{url('/')}}/bootstrap/css/bootstrap.min.css">
-    <!-- Font Awesome -->
-    {{--<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css">--}}
-    <link rel="stylesheet" href="{{url('/')}}/font-awesome/css/font-awesome.min.css"/>
+    <link rel="stylesheet" href="{{url('/')}}/dist/css/skins/_all-skins.css">
     <!-- Ionicons -->
-    {{--<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">--}}
-    <link rel="stylesheet" href="{{url('/')}}/plugins/ionicons.min.css"/>
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="{{url('/')}}/ionicons/css/ionicons.css"/>
+    <link rel="stylesheet" href="{{url('/')}}/font-awesome/css/font-awesome.min.css"/>
     <!-- Theme style -->
     <link rel="stylesheet" href="{{url('/')}}/dist/css/AdminLTE.css">
     <!-- jQuery 2.2.0 -->
@@ -197,7 +72,7 @@ desired effect
     <header class="main-header">
 
         <!-- Logo -->
-        <a href="" class="logo">
+        <a href="/" class="logo">
             <!-- mini logo for sidebar mini 50x50 pixels -->
             <span class="logo-mini"><b>M</b>C</span>
             <!-- logo for regular state and mobile devices -->
@@ -377,7 +252,7 @@ desired effect
                     <a href="/inventario/productos"><i class="fa fa-link"></i> <span>Inventario</span></a>
                 </li>
                 <li class="treeview">
-                    <a href="#"><i class="fa fa-link"></i> <span>Compras</span> </a>
+                    <a href="/compra/compranueva"><i class="fa fa-link"></i> <span>Compras</span> </a>
                 </li>
                 <li class="treeview">
                     <a href="#"><i class="fa fa-link"></i> <span>Ventas</span> </a>
@@ -404,11 +279,76 @@ desired effect
         <!-- Main content -->
         <section class="content animated fadeInRight" style="background:#f3f3f4 ">
 
-                <div class="wrapper wrapper-content animated fadeInRight">
+                <div class="wrapper wrapper-content animated fadeInRight" id="caja-principal">
+
+                    @section('vistainicial')
+                        <div style="padding-top: 2rem">
+                            <div class="col-lg-6 col-sm-6 col-xs-12">
+                                <!-- small box -->
+                                <div class="small-box bg-red">
+                                    <div class="inner">
+                                        <h3>S/.350.00</h3>
+
+                                        <p>Egresos Compras</p>
+                                    </div>
+                                    <div class="icon">
+                                        <i class="ion ion-pie-graph"></i>
+                                    </div>
+                                    <a href="#" class="small-box-footer">Ir a Compras <i class="fa fa-arrow-circle-right"></i></a>
+                                </div>
+                            </div>
+                            <div class="col-lg-6 col-sm-6 col-xs-12">
+                            <!-- small box -->
+                            <div class="small-box bg-green">
+                                <div class="inner">
+                                    <h3>S/.557.00</h3>
+
+                                    <p>Ingresos Ventas</p>
+                                </div>
+                                <div class="icon">
+                                    <i class="ion ion-stats-bars"></i>
+                                </div>
+                                <a href="#" class="small-box-footer">Ir a Ventas <i class="fa fa-arrow-circle-right"></i></a>
+                            </div>
+                        </div>
+
+                        </div>
+
+                        <div class="col-lg-12">
+                            <div class="ibox float-e-margins">
+                                <div class="ibox-title">
+                                    <h5>Simple one line Example </h5>
+                                    <div class="ibox-tools">
+                                        <a class="collapse-link">
+                                            <i class="fa fa-chevron-up"></i>
+                                        </a>
+                                        <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                                            <i class="fa fa-wrench"></i>
+                                        </a>
+                                        <ul class="dropdown-menu dropdown-user">
+                                            <li><a href="#">Config option 1</a>
+                                            </li>
+                                            <li><a href="#">Config option 2</a>
+                                            </li>
+                                        </ul>
+                                        <a class="close-link">
+                                            <i class="fa fa-times"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="ibox-content">
+                                    <div id="morris-one-line-chart" style="position: relative; -webkit-tap-highlight-color: rgba(0, 0, 0, 0);"><svg height="342" version="1.1" width="949" xmlns="http://www.w3.org/2000/svg" style="overflow: hidden; position: relative;"><desc style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);">Created with Raphaël 2.1.0</desc><defs style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);"></defs><text x="35.84375" y="307.5" text-anchor="end" font="10px &quot;Arial&quot;" stroke="none" fill="#888888" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); text-anchor: end; font-style: normal; font-variant: normal; font-weight: normal; font-stretch: normal; font-size: 12px; line-height: normal; font-family: sans-serif;" font-size="12px" font-family="sans-serif" font-weight="normal"><tspan dy="4.25" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);">0</tspan></text><path fill="none" stroke="#aaaaaa" d="M48.34375,307.5H924" stroke-width="0.5" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);"></path><text x="35.84375" y="236.875" text-anchor="end" font="10px &quot;Arial&quot;" stroke="none" fill="#888888" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); text-anchor: end; font-style: normal; font-variant: normal; font-weight: normal; font-stretch: normal; font-size: 12px; line-height: normal; font-family: sans-serif;" font-size="12px" font-family="sans-serif" font-weight="normal"><tspan dy="4.25" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);">7.5</tspan></text><path fill="none" stroke="#aaaaaa" d="M48.34375,236.875H924" stroke-width="0.5" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);"></path><text x="35.84375" y="166.25" text-anchor="end" font="10px &quot;Arial&quot;" stroke="none" fill="#888888" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); text-anchor: end; font-style: normal; font-variant: normal; font-weight: normal; font-stretch: normal; font-size: 12px; line-height: normal; font-family: sans-serif;" font-size="12px" font-family="sans-serif" font-weight="normal"><tspan dy="4.25" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);">15</tspan></text><path fill="none" stroke="#aaaaaa" d="M48.34375,166.25H924" stroke-width="0.5" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);"></path><text x="35.84375" y="95.625" text-anchor="end" font="10px &quot;Arial&quot;" stroke="none" fill="#888888" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); text-anchor: end; font-style: normal; font-variant: normal; font-weight: normal; font-stretch: normal; font-size: 12px; line-height: normal; font-family: sans-serif;" font-size="12px" font-family="sans-serif" font-weight="normal"><tspan dy="4.25" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);">22.5</tspan></text><path fill="none" stroke="#aaaaaa" d="M48.34375,95.625H924" stroke-width="0.5" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);"></path><text x="35.84375" y="25" text-anchor="end" font="10px &quot;Arial&quot;" stroke="none" fill="#888888" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); text-anchor: end; font-style: normal; font-variant: normal; font-weight: normal; font-stretch: normal; font-size: 12px; line-height: normal; font-family: sans-serif;" font-size="12px" font-family="sans-serif" font-weight="normal"><tspan dy="4.25" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);">30</tspan></text><path fill="none" stroke="#aaaaaa" d="M48.34375,25H924" stroke-width="0.5" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);"></path><text x="924" y="320" text-anchor="middle" font="10px &quot;Arial&quot;" stroke="none" fill="#888888" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); text-anchor: middle; font-style: normal; font-variant: normal; font-weight: normal; font-stretch: normal; font-size: 12px; line-height: normal; font-family: sans-serif;" font-size="12px" font-family="sans-serif" font-weight="normal" transform="matrix(1,0,0,1,0,6.75)"><tspan dy="4.25" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);">2015</tspan></text><text x="799.0040941533047" y="320" text-anchor="middle" font="10px &quot;Arial&quot;" stroke="none" fill="#888888" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); text-anchor: middle; font-style: normal; font-variant: normal; font-weight: normal; font-stretch: normal; font-size: 12px; line-height: normal; font-family: sans-serif;" font-size="12px" font-family="sans-serif" font-weight="normal" transform="matrix(1,0,0,1,0,6.75)"><tspan dy="4.25" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);">2014</tspan></text><text x="674.0081883066093" y="320" text-anchor="middle" font="10px &quot;Arial&quot;" stroke="none" fill="#888888" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); text-anchor: middle; font-style: normal; font-variant: normal; font-weight: normal; font-stretch: normal; font-size: 12px; line-height: normal; font-family: sans-serif;" font-size="12px" font-family="sans-serif" font-weight="normal" transform="matrix(1,0,0,1,0,6.75)"><tspan dy="4.25" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);">2013</tspan></text><text x="548.6698279233476" y="320" text-anchor="middle" font="10px &quot;Arial&quot;" stroke="none" fill="#888888" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); text-anchor: middle; font-style: normal; font-variant: normal; font-weight: normal; font-stretch: normal; font-size: 12px; line-height: normal; font-family: sans-serif;" font-size="12px" font-family="sans-serif" font-weight="normal" transform="matrix(1,0,0,1,0,6.75)"><tspan dy="4.25" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);">2012</tspan></text><text x="423.67392207665233" y="320" text-anchor="middle" font="10px &quot;Arial&quot;" stroke="none" fill="#888888" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); text-anchor: middle; font-style: normal; font-variant: normal; font-weight: normal; font-stretch: normal; font-size: 12px; line-height: normal; font-family: sans-serif;" font-size="12px" font-family="sans-serif" font-weight="normal" transform="matrix(1,0,0,1,0,6.75)"><tspan dy="4.25" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);">2011</tspan></text><text x="298.67801622995694" y="320" text-anchor="middle" font="10px &quot;Arial&quot;" stroke="none" fill="#888888" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); text-anchor: middle; font-style: normal; font-variant: normal; font-weight: normal; font-stretch: normal; font-size: 12px; line-height: normal; font-family: sans-serif;" font-size="12px" font-family="sans-serif" font-weight="normal" transform="matrix(1,0,0,1,0,6.75)"><tspan dy="4.25" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);">2010</tspan></text><text x="173.68211038326163" y="320" text-anchor="middle" font="10px &quot;Arial&quot;" stroke="none" fill="#888888" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); text-anchor: middle; font-style: normal; font-variant: normal; font-weight: normal; font-stretch: normal; font-size: 12px; line-height: normal; font-family: sans-serif;" font-size="12px" font-family="sans-serif" font-weight="normal" transform="matrix(1,0,0,1,0,6.75)"><tspan dy="4.25" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);">2009</tspan></text><text x="48.34375" y="320" text-anchor="middle" font="10px &quot;Arial&quot;" stroke="none" fill="#888888" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); text-anchor: middle; font-style: normal; font-variant: normal; font-weight: normal; font-stretch: normal; font-size: 12px; line-height: normal; font-family: sans-serif;" font-size="12px" font-family="sans-serif" font-weight="normal" transform="matrix(1,0,0,1,0,6.75)"><tspan dy="4.25" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);">2008</tspan></text><path fill="none" stroke="#1ab394" d="M48.34375,260.4166666666667C79.6783400958154,248.64583333333334,142.34752028744623,216.86941404468766,173.68211038326163,213.33333333333334C204.93108684493546,209.80691404468766,267.42903976828313,246.29166666666669,298.67801622995694,232.16666666666669C329.9269926916308,218.04166666666669,392.42494561497847,100.33333333333334,423.67392207665233,100.33333333333334C454.92289853832614,100.33333333333334,517.4208514616738,222.75859184914844,548.6698279233476,232.16666666666669C611.2533944808368,251.00859184914844,736.4205275958154,208.6228520377129,799.0040941533047,213.33333333333334C830.2530706149785,215.6853520377129,892.7510235383262,248.64583333333334,924,260.4166666666667" stroke-width="4" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);"></path><circle cx="48.34375" cy="260.4166666666667" r="5" fill="#1ab394" stroke="#ffffff" stroke-width="1" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);"></circle><circle cx="173.68211038326163" cy="213.33333333333334" r="5" fill="#1ab394" stroke="#ffffff" stroke-width="1" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);"></circle><circle cx="298.67801622995694" cy="232.16666666666669" r="5" fill="#1ab394" stroke="#ffffff" stroke-width="1" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);"></circle><circle cx="423.67392207665233" cy="100.33333333333334" r="5" fill="#1ab394" stroke="#ffffff" stroke-width="1" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);"></circle><circle cx="548.6698279233476" cy="232.16666666666669" r="5" fill="#1ab394" stroke="#ffffff" stroke-width="1" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);"></circle><circle cx="799.0040941533047" cy="213.33333333333334" r="5" fill="#1ab394" stroke="#ffffff" stroke-width="1" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);"></circle><circle cx="924" cy="260.4166666666667" r="8" fill="#1ab394" stroke="#ffffff" stroke-width="1" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);"></circle></svg><div class="morris-hover morris-default-style" style="left: 889px; top: 193px;"><div class="morris-hover-row-label">2015</div><div class="morris-hover-point" style="color: #1ab394">
+                                                Value:
+                                                5
+                                            </div></div></div>
+                                </div>
+                            </div>
+                        </div>
+                    @show
+
                     @yield('menu_modulos')
 
                     @yield('contenido_modulos')
-
 
             </div>
 
