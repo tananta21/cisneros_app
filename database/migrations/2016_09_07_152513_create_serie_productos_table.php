@@ -14,6 +14,9 @@ class CreateSerieProductosTable extends Migration
     {
         Schema::create('serie_productos', function (Blueprint $table) {
             $table->increments('id');
+            $table->integer('categoria_id')->unsigned();
+            $table->integer('producto_id')->unsigned();
+            $table->string('serie');
             $table->timestamps();
             $table->softDeletes();
         });

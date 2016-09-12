@@ -14,6 +14,7 @@ class CreateGradoInstruccionesTable extends Migration
     {
         Schema::create('grado_instrucciones', function (Blueprint $table) {
             $table->increments('id');
+            $table->string('descripcion',50);
             $table->timestamps();
             $table->softDeletes();
         });
