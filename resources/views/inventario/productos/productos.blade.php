@@ -40,7 +40,7 @@
             </h3>
             <form method="GET" action="#" accept-charset="UTF-8" class="form-horizontal" role="form">
                 <div class="col-lg-12" style="display: flex; flex-direction: row; justify-content: center; padding-bottom: 3rem">
-                    <h5 class="col-lg-2">Filtros de busqueda</h5>
+                    <h5 class="col-lg-2">FILTROS DE BUSQUEDA</h5>
                     <div class="col-lg-2" style="padding-left: 0rem">
                         <select class="form-control" name="marca">
                             <option value="1">Productos</option>
