@@ -17,24 +17,24 @@
             </div>
         </div>
         <div class="col-lg-12 caja_formulario">
-            <div class="col-lg-2 col-sm-12 col-xs-12">
+            <div class="col-lg-4 col-sm-12 col-xs-12">
                 <h5 class="col-lg-12 titulos">Serie o Codigo Producto</h5>
-                <div class="col-lg-12 col-sm-12 col-xs-12" style="padding-left: 0rem">
+                <div class="col-lg-12 col-sm-12 col-xs-12">
                     <input type="text" class="form-control" placeholder="Serie o Codigo Producto" name="nombre" value="">
                 </div>
             </div>
-            <div class="col-lg-5 col-sm-12 col-xs-12">
+            <div class="col-lg-8 col-sm-12 col-xs-12">
                 <h5 class="col-lg-12 titulos">Nombre Producto</h5>
-                <div class="col-lg-12 col-sm-12 col-xs-12" style="padding-left: 0rem">
+                <div class="col-lg-12 col-sm-12 col-xs-12">
                     <input type="text" class="form-control" placeholder="Nombre Producto" name="nombre" value="">
                 </div>
             </div>
 
         </div>
         <div class="col-lg-12 caja_formulario">
-            <div class="col-lg-2 col-sm-12 col-xs-12">
+            <div class="col-lg-4 col-sm-12 col-xs-12">
                 <h5 class="col-lg-12 titulos">Marca</h5>
-                <div class="col-lg-12 col-sm-12 col-xs-12" style="padding-left: 0rem">
+                <div class="col-lg-12 col-sm-12 col-xs-12">
                     <select class="form-control" name="categoria">
                         <option value="">Marca #1</option>
                         <option value="1">Marca #2</option>
@@ -42,9 +42,9 @@
                     </select>
                 </div>
             </div>
-            <div class="col-lg-2 col-sm-12 col-xs-12">
+            <div class="col-lg-4 col-sm-12 col-xs-12">
                 <h5 class="col-lg-12 titulos">Modelo</h5>
-                <div class="col-lg-12 col-sm-12 col-xs-12" style="padding-left: 0rem">
+                <div class="col-lg-12 col-sm-12 col-xs-12">
                     <select class="form-control" name="categoria">
                         <option value="">Modelo #1</option>
                         <option value="1">Modelo #2</option>
@@ -52,9 +52,9 @@
                     </select>
                 </div>
             </div>
-            <div class="col-lg-2 col-sm-12 col-xs-12">
+            <div class="col-lg-4 col-sm-12 col-xs-12">
                 <h5 class="col-lg-12 titulos">Categoria</h5>
-                <div class="col-lg-12 col-sm-12 col-xs-12" style="padding-left: 0rem">
+                <div class="col-lg-12 col-sm-12 col-xs-12">
                     <select class="form-control" name="categoria">
                         <option value="">Categoria #1</option>
                         <option value="1">Categoria #2</option>
@@ -69,53 +69,57 @@
         </div>
 
         <div class="col-lg-12 caja_formulario">
-            <div class="col-lg-2 col-sm-12 col-xs-12">
+            <div class="col-lg-4 col-sm-12 col-xs-12">
                 <h5 class="col-lg-12 titulos">Stock Actual</h5>
-                <div class="col-lg-12 col-sm-12 col-xs-12" style="padding-left: 0rem">
+                <div class="col-lg-12 col-sm-12 col-xs-12">
                    <input type="text" class="form-control" placeholder="Stock Actual" name="nombre" value="">
                 </div>
             </div>
-            <div class="col-lg-2 col-sm-12 col-xs-12">
+            <div class="col-lg-4 col-sm-12 col-xs-12">
                 <h5 class="col-lg-12 titulos">Stock Minimo</h5>
-                <div class="col-lg-12 col-sm-12 col-xs-12" style="padding-left: 0rem">
+                <div class="col-lg-12 col-sm-12 col-xs-12" >
                     <input type="text" class="form-control" placeholder="Stock Minimo" name="nombre" value="">
                 </div>
             </div>
-            <div class="col-lg-2 col-sm-12 col-xs-12">
+            <div class="col-lg-4 col-sm-12 col-xs-12">
                 <h5 class="col-lg-12 titulos">Stock Maximo</h5>
-                <div class="col-lg-12 col-sm-12 col-xs-12" style="padding-left: 0rem">
+                <div class="col-lg-12 col-sm-12 col-xs-12" >
                     <input type="text" class="form-control" placeholder="Stock Maximo" name="nombre" value="">
                 </div>
             </div>
 </div>
         <div class="col-lg-12 caja_formulario">
-            <div class="col-lg-2 col-sm-12 col-xs-12">
+            <div class="col-lg-4 col-sm-12 col-xs-12">
                 <h5 class="col-lg-12 titulos">Precio</h5>
-                <div class="col-lg-12 col-sm-12 col-xs-12" style="padding-left: 0rem">
+                <div class="col-lg-12 col-sm-12 col-xs-12">
                     <input type="text" class="form-control" placeholder="Stock Actual" name="nombre" value="">
                 </div>
             </div>
-            <div class="col-lg-5 col-sm-12 col-xs-12">
+            <div class="col-lg-8 col-sm-12 col-xs-12">
                 <h5 class="col-lg-12 titulos">Descripcion</h5>
-                <div class="col-lg-12 col-sm-12 col-xs-12" style="padding-left: 0rem">
+                <div class="col-lg-12 col-sm-12 col-xs-12" >
                     <input type="text" class="form-control" placeholder="Stock Minimo" name="nombre" value="">
                 </div>
             </div>
 
         </div>
 
-        <div class="col-lg-5 col-sm-12 col-xs-12"style="padding-left: 0rem">
+        <div class="col-lg-5 col-sm-12 col-xs-12" >
+            <div class="col-lg-3 col-sm-12 col-xs-12">
             <h5 class="col-lg-12 titulos">Estado</h5>
-                <input type="checkbox"> Activo </input>
-            <input type="checkbox"> Inactivo </input>
+                <divgi>
+                <input type="radio">Activo</input>
+                <input type="checkbox">Inactivo</input>
 
-        </div>
+                    </divgi>
+    </div></div>
 
 
-    </form>
 
-@endsection
-{{--<input name="_token" type="hidden" value="">--}}
+                </form>
+
+            @endsection
+            {{--<input name="_token" type="hidden" value="">--}}
 
 {{--<div class="box-body">--}}
 {{--<div class="form-group">--}}
