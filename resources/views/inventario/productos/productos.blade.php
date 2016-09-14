@@ -25,7 +25,6 @@
             </header>
         </div>
 
-
     @section('contenido_modulos')
         <h2 class="col-lg-12" style="margin-bottom: 0.5rem">Productos / Servicios</h2>
         <hr class="col-lg-12" size="5px" color="green"/>
@@ -142,8 +141,6 @@
                 </tbody>
             </table>
         </div>
-
-
     @endsection
 @endsection
 
