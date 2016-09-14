@@ -19,6 +19,12 @@ class DatabaseSeeder extends Seeder
          $this->call('EstadoCivilesTableSeeder');
          $this->call('OcupacionesTableSeeder');
          $this->call('UserTableSeeder');
+         $this->call('CategoriaTableSeeder');
+         $this->call('MarcaTableSeeder');
+         $this->call('ModeloTableSeeder');
+         $this->call('TipoProductoTableSeeder');
+         $this->call('ProductoTableSeeder');
+
 
         Model::reguard();
     }
