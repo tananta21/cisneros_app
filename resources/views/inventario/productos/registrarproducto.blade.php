@@ -103,15 +103,18 @@
             </div>
 
         </div>
+                        <div class="col-xs-6 col-md-3">
+                    <div class="form-group">
+                        <h5 class="col-lg-12 titulos">Estado</h5>
+                        <div class="input-group">
+                            <input id="opcionactivo" type="checkbox" >Activo
+                            <input id="opcioninactivo" type="checkbox" >Inactivo
+                        </div>
+                    </div>
+                </div>
 
-        <div class="col-lg-5 col-sm-12 col-xs-12" >
-            <div class="col-lg-3 col-sm-12 col-xs-12">
-            <h5 class="col-lg-12 titulos">Estado</h5>
-                <divgi>
-                <input type="radio">Activo</input>
-                <input type="checkbox">Inactivo</input>
 
-                    </divgi>
+
     </div></div>
 
 
