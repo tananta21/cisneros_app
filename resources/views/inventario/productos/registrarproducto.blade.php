@@ -103,15 +103,14 @@
             </div>
 
 
-        <div class="col-lg-6 col-sm-12 col-xs-12">
-                    <div class="col-lg-6 col-sm-12 col-xs-12">
-                        <h5 class="col-lg-12 titulos">Estado</h5>
+            <div class="col-lg-6 col-sm-12 col-xs-12">
+                <h5 class="col-lg-12 titulos">Estado</h5>
                         <div class="col-lg-12 col-sm-12 col-xs-12" >
                             <input  id="opcionactivo" type="checkbox" > Activo
                             <input  id="opcioninactivo" type="checkbox" > Inactivo
                         </div>
                     </div>
-                </div>
+
         </div>
 
 
@@ -122,10 +121,10 @@
 
         <button type="button" class="btn btn-primary">CANCELAR</button>
     </div>
-    </div>
+
 
 
 
                 </form>
-
+    </div>
             @endsection
