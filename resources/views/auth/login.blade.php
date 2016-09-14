@@ -30,15 +30,21 @@
         <p>Para poder ingresar al sistema usted debera autenticarse con sus datos registrados previamente por el administrador
             <!--Continually expanded and constantly improved Inspinia Admin Them (IN+)-->
         </p>
-        <p>Iniciar sesion</p>
-        <form class="m-t" role="form" action="/auth/login" method="post" >
+        <form class="m-t" role="form" action="/login" method="post" >
             {!! csrf_field() !!}
             <div class="form-group">
-                <input type="email" class="form-control"  name="email" placeholder="Correo electronico" required="">
+                <input type="email" class="form-control"  name="email" placeholder="Correo electronico" value="{{ old('email') }}" required="">
             </div>
             <div class="form-group">
                 <input type="password" name="password"  class="form-control" placeholder="Contraseña" required="">
             </div>
+            @if (count($errors))
+                <ul>
+                    @foreach($errors->all() as $error)
+                        <li>{{$error}}</li>
+                    @endforeach
+                </ul>
+            @endif
             <button type="submit" class="btn btn-primary block full-width m-b">Ingresar</button>
 
             {{--<a href="#"><small>Forgot password?</small></a>--}}

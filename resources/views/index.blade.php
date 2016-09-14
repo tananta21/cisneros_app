@@ -13,6 +13,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
     <!-- Bootstrap 3.3.6 -->
     <link rel="stylesheet" href="{{url('/')}}/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{{url('/')}}/css/nuestro.css">
     <link rel="stylesheet" href="{{url('/')}}/dist/css/skins/_all-skins.css">
     <!-- Ionicons -->
     <!-- Font Awesome -->
@@ -210,7 +211,7 @@ desired effect
                                 {{--<a href="#" class="btn btn-default btn-flat">Profile</a>--}}
                                 {{--</div>--}}
                                 <div class="pull-right">
-                                    <a href="/auth/logout" class="btn btn-default btn-flat">Sign out</a>
+                                    <a href="/logout" class="btn btn-default btn-flat">Sign out</a>
                                 </div>
                             </li>
                         </ul>
@@ -249,22 +250,22 @@ desired effect
                 {{--<li class="active"><a href="#"><i class="fa fa-link"></i> <span>Link</span></a></li>--}}
                 {{--<li><a href="#"><i class="fa fa-link"></i> <span>Another Link</span></a></li>--}}
                 <li class="treeview">
-                    <a href="/inventario/productos"><i class="fa fa-link"></i> <span>Inventario</span></a>
+                    <a href="/inventario/productos"><i class="fa fa-pencil-square-o"></i> <span>Inventario</span></a>
                 </li>
                 <li class="treeview">
-                    <a href="/compra/compranueva"><i class="fa fa-link"></i> <span>Compras</span> </a>
+                    <a href="/compra/compranueva"><i class="fa fa-shopping-cart"></i> <span>Compras</span> </a>
                 </li>
                 <li class="treeview">
-                    <a href="#"><i class="fa fa-link"></i> <span>Ventas</span> </a>
+                    <a href="#"><i class="fa fa-money"></i> <span>Ventas</span> </a>
                 </li>
                 <li class="treeview">
-                    <a href="#"><i class="fa fa-link"></i> <span>Reportes</span> </a>
+                    <a href="#"><i class="fa fa-bar-chart"></i> <span>Reportes</span> </a>
                 </li>
                 <li class="treeview">
-                    <a href="#"><i class="fa fa-link"></i> <span>Seguridad</span> </a>
+                    <a href="#"><i class="fa fa-lock"></i> <span>Seguridad</span> </a>
                 </li>
                 <li class="treeview">
-                    <a href="#"><i class="fa fa-link"></i> <span>Mantenimientos</span> </a>
+                    <a href="#"><i class="fa fa-cogs"></i> <span>Mantenimientos</span> </a>
                 </li>
 
             </ul>
