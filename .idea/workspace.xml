@@ -25,11 +25,21 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
+      <file leaf-file-name="productos.blade.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/resources/views/inventario/productos/productos.blade.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-4.714286" vertical-offset="1958" max-vertical-offset="3410">
+              <caret line="95" column="22" selection-start-line="95" selection-start-column="22" selection-end-line="95" selection-end-column="22" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file leaf-file-name=".gitignore" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/.gitignore">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.15529412" vertical-offset="0" max-vertical-offset="425">
-              <caret line="3" column="1" selection-start-line="3" selection-start-column="1" selection-end-line="3" selection-end-column="1" />
+            <state vertical-scroll-proportion="0.10352941" vertical-offset="0" max-vertical-offset="425">
+              <caret line="2" column="4" selection-start-line="2" selection-start-column="4" selection-end-line="2" selection-end-column="4" />
               <folding />
             </state>
           </provider>
@@ -182,32 +192,6 @@
               <option name="myItemId" value="resources" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="views" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="inventario" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="productos" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="multiservicios_cisneros" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="multiservicios_cisneros" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="resources" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
           </PATH>
           <PATH>
             <PATH_ELEMENT>
@@ -230,7 +214,7 @@
   <component name="PropertiesComponent">
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="SearchEverywhereHistoryKey" value="works&#9;FILE&#9;file://C:/xampp/htdocs/multiservicios_cisneros/.idea/workspace.xml&#10;idea/workspace.xml&#9;FILE&#9;file://C:/xampp/htdocs/multiservicios_cisneros/.idea/workspace.xml&#10;\vendor\laravel\framework\src\Illuminate\Routing\RouteCollection.php&#9;FILE&#9;file://C:/xampp/htdocs/multiservicios_cisneros/vendor/laravel/framework/src/Illuminate/Routing/RouteCollection.php&#10;postLogin&#9;null&#9;null&#10;vendor\laravel\framework\src\Illuminate\Routing\RouteCollection.php&#9;FILE&#9;file://C:/xampp/htdocs/multiservicios_cisneros/vendor/laravel/framework/src/Illuminate/Routing/RouteCollection.php&#10;auth/login&#9;FILE&#9;file://C:/xampp/htdocs/multiservicios_cisneros/vendor/swiftmailer/swiftmailer/tests/unit/Swift/Transport/Esmtp/Auth/LoginAuthenticatorTest.php&#10;logout&#9;null&#9;null&#10;git&#9;null&#9;null&#10;treeview&#9;null&#9;null&#10;all-skin&#9;FILE&#9;file://C:/xampp/htdocs/multiservicios_cisneros/public/dist/css/skins/_all-skins.css&#10;caja_principal&#9;null&#9;null&#10;skin&#9;FILE&#9;file://C:/xampp/htdocs/multiservicios_cisneros/public/dist/css/skins/skin-blue.css&#10;admi&#9;FILE&#9;file://C:/xampp/htdocs/multiservicios_cisneros/public/dist/css/AdminLTE.css&#10;skin-blue&#9;FILE&#9;file://C:/xampp/htdocs/multiservicios_cisneros/public/dist/css/skins/skin-blue.css&#10;navbar &#9;null&#9;null&#10;active&#9;null&#9;null&#10;getLogo&#9;null&#9;null&#10;postLo&#9;null&#9;null&#10;home&#9;null&#9;null" />
+    <property name="SearchEverywhereHistoryKey" value="&#9;FILE&#9;file://C:/xampp/htdocs/multiservicios_cisneros/.idea/workspace.xml&#10;works&#9;FILE&#9;file://C:/xampp/htdocs/multiservicios_cisneros/.idea/workspace.xml&#10;idea/workspace.xml&#9;FILE&#9;file://C:/xampp/htdocs/multiservicios_cisneros/.idea/workspace.xml&#10;\vendor\laravel\framework\src\Illuminate\Routing\RouteCollection.php&#9;FILE&#9;file://C:/xampp/htdocs/multiservicios_cisneros/vendor/laravel/framework/src/Illuminate/Routing/RouteCollection.php&#10;postLogin&#9;null&#9;null&#10;vendor\laravel\framework\src\Illuminate\Routing\RouteCollection.php&#9;FILE&#9;file://C:/xampp/htdocs/multiservicios_cisneros/vendor/laravel/framework/src/Illuminate/Routing/RouteCollection.php&#10;auth/login&#9;FILE&#9;file://C:/xampp/htdocs/multiservicios_cisneros/vendor/swiftmailer/swiftmailer/tests/unit/Swift/Transport/Esmtp/Auth/LoginAuthenticatorTest.php&#10;logout&#9;null&#9;null&#10;git&#9;null&#9;null&#10;treeview&#9;null&#9;null&#10;all-skin&#9;FILE&#9;file://C:/xampp/htdocs/multiservicios_cisneros/public/dist/css/skins/_all-skins.css&#10;caja_principal&#9;null&#9;null&#10;skin&#9;FILE&#9;file://C:/xampp/htdocs/multiservicios_cisneros/public/dist/css/skins/skin-blue.css&#10;admi&#9;FILE&#9;file://C:/xampp/htdocs/multiservicios_cisneros/public/dist/css/AdminLTE.css&#10;skin-blue&#9;FILE&#9;file://C:/xampp/htdocs/multiservicios_cisneros/public/dist/css/skins/skin-blue.css&#10;navbar &#9;null&#9;null&#10;active&#9;null&#9;null&#10;getLogo&#9;null&#9;null&#10;postLo&#9;null&#9;null&#10;home&#9;null&#9;null" />
     <property name="FullScreen" value="false" />
     <property name="options.lastSelected" value="vcs.Git" />
     <property name="options.splitter.main.proportions" value="0.3" />
@@ -699,7 +683,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/.idea/workspace.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-10.823798" vertical-offset="4950" max-vertical-offset="16280">
+        <state vertical-scroll-proportion="0.5034325" vertical-offset="0" max-vertical-offset="16060">
           <caret line="10" column="54" selection-start-line="10" selection-start-column="54" selection-end-line="10" selection-end-column="54" />
           <folding />
         </state>
@@ -707,16 +691,16 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/resources/views/inventario/productos/productos.blade.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-7.1173596" vertical-offset="2977" max-vertical-offset="3520">
-          <caret line="3" column="21" selection-start-line="3" selection-start-column="21" selection-end-line="3" selection-end-column="21" />
+        <state vertical-scroll-proportion="-4.714286" vertical-offset="1958" max-vertical-offset="3410">
+          <caret line="95" column="22" selection-start-line="95" selection-start-column="22" selection-end-line="95" selection-end-column="22" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/.gitignore">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.15529412" vertical-offset="0" max-vertical-offset="425">
-          <caret line="3" column="1" selection-start-line="3" selection-start-column="1" selection-end-line="3" selection-end-column="1" />
+        <state vertical-scroll-proportion="0.10352941" vertical-offset="0" max-vertical-offset="425">
+          <caret line="2" column="4" selection-start-line="2" selection-start-column="4" selection-end-line="2" selection-end-column="4" />
           <folding />
         </state>
       </provider>

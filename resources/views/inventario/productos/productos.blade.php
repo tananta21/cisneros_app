@@ -94,10 +94,6 @@
                         </div>
                     </div>
                 </div>
-                {{--<div class="box-footer" style="text-align: center">--}}
-                    {{--<a href="/sales/productos" class="btn btn-default">Recargar</a>--}}
-                    {{--<button type="submit" class="btn btn-info">Buscar Producto  <i class="fa fa-search"></i></button>--}}
-                {{--</div>--}}
             </form>
         </div>
 
