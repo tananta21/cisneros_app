@@ -1,6 +1,7 @@
 @extends('index')
 @section('vistainicial')
 @stop
+{{--pruebas--}}
 @section('menu_modulos')
         <div>
             <header style="background: #b7c7d5">
