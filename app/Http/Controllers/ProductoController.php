@@ -64,11 +64,10 @@ class ProductoController extends Controller
 
     public function edit($id)
     {
-        $id_modelo = 3;
+
         $modelos = $this->repoModelo->all();
-//        dd($modelo->toArray());
         $editarProducto = $this->repoProducto->find($id);
-//        dd($editarProducto->toArray());
+        $id_modelo = $editarProducto["modelo_id"];
         return View('inventario.productos.editarproducto',compact('id_modelo','editarProducto','modelos'));
     }
 
