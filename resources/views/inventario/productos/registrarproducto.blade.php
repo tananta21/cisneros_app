@@ -174,7 +174,7 @@
 {{--<div class="col-sm-3">--}}
 {{--<select class="form-control" name="modelo">--}}
 {{--<option value="1">Seleccione Modelo</option>--}}
-{{--<option value="2">pequeño</option>--}}
+{{--<option value="2">pequeï¿½o</option>--}}
 {{--<option value="3">mediano</option>--}}
 {{--<option value="4">grande</option>--}}
 {{--</select>--}}
@@ -230,4 +230,6 @@
 {{--<div class="box-footer" style="text-align: center">--}}
 {{--<a href="/sales/productos" class="btn btn-default">Cancelar</a>--}}
 {{--<button type="submit" class="btn btn-info">Guardar</button>--}}
+{{--</div>--}}
+{{--</div>--}}
 {{--</div>--}}
