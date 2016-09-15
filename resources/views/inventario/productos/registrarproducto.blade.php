@@ -56,7 +56,6 @@
                     <select class="form-control" name="categoria">
                         <option value="">Modelo #1</option>
                         <option value="1">Modelo #2</option>
-                        {{--HACER LA CONSULTA PARA JALAR MODELO--}}
                     </select>
                 </div>
             </div>
@@ -65,6 +64,7 @@
                     <h5 onclick="" class="col-lg-4 titulos">Modelos</h5>
                     <a href=""><i class="fa fa-plus-square fa-1px"></i> Add</a>
                 </div>
+
                 <div class="col-lg-12 col-sm-12 col-xs-12">
                     <select class="form-control" name="categoria">
                         <option value="">Categoria #1</option>
