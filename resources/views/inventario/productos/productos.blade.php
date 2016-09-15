@@ -2,7 +2,6 @@
 @section('vistainicial')
 @stop
 @section('menu_modulos')
-    <link rel="stylesheet" href="{{url('/')}}/nuestro.css">
     <div>
             <header class="header-submenu">
                 <ul class="ul-submenu">
@@ -30,72 +29,56 @@
         <h3 class="col-lg-12" style="margin-bottom: 0.5rem">Productos / Servicios</h3>
         <hr class="col-lg-12 linea-titulo" size="5px" color="green"/>
         <div class="col-lg-12">
-            <a href="/inventario/productos/nuevoproducto" type="button" class="btn btn-w-m btn-primary"> AGREGAR NUEVO PRODUCTO
+            <a href="/inventario/producto/nuevoproducto" type="button" class="btn btn-w-m btn-primary"> AGREGAR NUEVO PRODUCTO
                 <i class="fa fa-plus-square fa-1px" style="margin-left: 1rem"></i>
             </a>
         </div>
 
         <div class="col-lg-12" style="margin-top: 0.5rem">
-            <h3 class="col-lg-12">
-                Lista de Productos
-            </h3>
-            <form method="GET" action="#" accept-charset="UTF-8" class="form-horizontal" role="form">
+
+            {!! Form::model(Request::all(),['route'=>'buscar.producto','method' => 'get', 'class' => 'form-horizontal', 'role'=>'form']) !!}
                 <div class="col-lg-12" style="display: flex; flex-direction: row; justify-content: center; padding-bottom: 3rem">
                     <h5 class="col-lg-2">Filtros de Busqueda</h5>
                     <div class="col-lg-2" style="padding-left: 0rem">
-                        <select class="form-control" name="marca">
-                            <option value="1">Productos</option>
-                            <option value="2">Servicios</option>
-                        </select>
+                        {{--<select class="form-control" name="tipo_producto">--}}
+                            {{--<option value="">Productos</option>--}}
+                            {{--<option value="2">Servicios</option>--}}
+                        {{--</select>--}}
                     </div>
                 </div>
                 <div class="box-body">
                     <div class="form-group">
-                        <button type="button" class="btn btn-w-m btn-primary col-lg-2"> Buscar
+                        <button type="submit" class="btn btn-w-m btn-primary col-lg-2"> Buscar
                             <i class="fa fa-search fa-1px" style="margin-left: 1rem"></i>
                         </button>
                         <div class="col-lg-2 col-sm-2">
-                            <input type="text" class="form-control" placeholder="Serie Producto" name="codigo" value="">
+                            {{--<input type="text" class="form-control" placeholder="Serie Producto" name="serie" value>--}}
+                            {!!form::text('serie',null,['class'=>'form-control', 'placeholder'=>'Serie Producto'])!!}
                         </div>
                         <div class="col-lg-2 col-sm-2">
-                            <input type="text" class="form-control" placeholder="Nombre Producto" name="nombre" value="">
+                            {{--<input type="text" class="form-control" placeholder="Nombre Producto" name="nombre" value="">--}}
+                            {!!form::text('nombre',null,['class'=>'form-control', 'placeholder'=>'Nombre Producto'])!!}
                         </div>
 
                         <div class="col-lg-2 col-sm-2">
-                            <select class="form-control" name="categoria">
-                                <option value="">Categoria</option>
-                                <option value="1">--------</option>
-                                <option value="2">llantas</option>
-                                <option value="3">sistema electrico</option>
-                                <option value="4">motores</option>
-                            </select>
+                            {!!form::select('modelo',['' => 'Select modelo','1' => '--------','2' => 'pistera','3' => 'cgl 110'],null,['class'=>'form-control'])!!}
                         </div>
 
-                        <div class="col-lg-2 col-sm-2">
-                            <select class="form-control" name="modelo">
-                                <option value="">Modelo</option>
-                                <option value="1">--------</option>
-                                <option value="2">pequeño</option>
-                                <option value="3">mediano</option>
-                                <option value="4">grande</option>
-                            </select>
-                        </div>
+                        {{--<div class="col-lg-2 col-sm-2">--}}
 
-                        <div class="col-lg-2 col-sm-2">
-                            <select class="form-control" name="marca">
-                                <option value="" selected="">Marca</option>
-                                <option value="1">--------</option>
-                                <option value="2">Yamaha</option>
-                                <option value="3">zuzuki</option>
-                                <option value="4">taiwan</option>
-                                <option value="5">sfx</option>
-                                <option value="6">honda</option>
-                            </select>
-                        </div>
+                           {{--{!!form::select('categoria',['' => 'Select categoria','1' => '--------','2' => 'motores','3' => 'sistema electrico'],null,['class'=>'form-control'])!!}--}}
+
+                        {{--</div>--}}
+
+
+                        {{--<div class="col-lg-2 col-sm-2">--}}
+                            {{--{!!form::select('marca',['' => 'Select marca','1' => '--------','2' => 'Yamaha','3' => 'zuzuki','4'=>'taiwan'],null,['class'=>'form-control'])!!}--}}
+                        {{--</div>--}}
                     </div>
                 </div>
-            </form>
+            {!! Form::close() !!}
         </div>
+
 
         <div class="box-body table-responsive no-padding col-lg-12">
             <table class="table table-hover">
@@ -126,23 +109,27 @@
                             <td>Inactivo</td>
                         @endif
                         <td>
-                            <a onclick=" return confirm('¿Estas seguro que desea eliminar el Producto {{$producto->nombre}}'),eliminarPro('{{$producto->id}}');"  style="color: red; font-size: 2.5rem; padding: 0.5rem">
+                            <a onclick="eliminarPro('{{$producto->id}}')"  style="color: red; font-size: 2.5rem; padding: 0.5rem">
                                 <input type="hidden" name="eliminarproducto{{$producto->id}}" value="{{$producto->id}}"/>
                                 <i class="fa fa-remove"></i>
                             </a>
-                            <a href="" style="color: green;  font-size: 2.5rem; padding: 0.5rem">
+                            <a href="/inventario/producto/editar" style="color: green;  font-size: 2.5rem; padding: 0.5rem">
                                 <i class="fa fa-pencil"></i>
                             </a>
                         </td>
                     </tr>
                 @endforeach
-
                 </tbody>
             </table>
+        </div>
+        <div class="col-lg-12" style="display: flex; flex-direction: row; justify-content: center;">
+        {!! $productos->appends(Request::all())->render() !!}
+        </div>
 
-            <script type="text/javascript">
-                function eliminarPro(id){
-                $(document).ready(function(){
+        <script type="text/javascript">
+            function eliminarPro(id){
+                if (confirm('¿Estas seguro que desea eliminar el Producto ?')) {
+                    $(document).ready(function(){
                         var id_producto = $(this).find( 'input[name="eliminarproducto'+id+'"]' ).val();
                         var url = '{{route("eliminar.producto")}}';
                         $.ajax({
@@ -161,15 +148,12 @@
                                 $("#filaproducto"+id).remove();;
                             }
                         });
-                });
-
-                };
-
-            </script>
-        </div>
-        <div class="col-lg-12" style="display: flex; flex-direction: row; justify-content: center;">
-        {!! $productos->appends(Request::all())->render() !!}
-        </div>
+                    });
+                }
+                else{
+                }
+            };
+        </script>
     @endsection
 @endsection
 

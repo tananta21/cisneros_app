@@ -16,7 +16,7 @@ class CreateProductosTable extends Migration
             $table->increments('id');
             $table->integer('tipo_producto_id')->unsigned();
             $table->integer('modelo_id')->unsigned();
-            $table->string('serie');
+            $table->string('serie',50);
             $table->string('nombre');
             $table->string('descripcion');
             $table->boolean('estado');

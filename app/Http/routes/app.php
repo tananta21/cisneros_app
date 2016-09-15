@@ -14,18 +14,26 @@ Route::group(['prefix'=>'/', 'middleware' => 'auth' ], function() {
 //    listar productos
     Route::get('/inventario/productos', 'ProductoController@index' );
 
-//    eliminar producto
-//    Route::get('/producto/eliminar/{id}', 'ProductoController@destroy' );
+//    registrar producto
+    Route::get('/inventario/producto/nuevoproducto', function(){
+        return view('inventario.productos.registrarproducto');
+    });
+//    editar producto
+    Route::get('/inventario/producto/editar','ProductoController@edit');
 
+//    eliminar producto
     Route::get('/producto/eliminar',[
         'as'=> 'eliminar.producto',
         'uses'=>'ProductoController@eliminarProducto'
     ]);
 
+    Route::get('/buscar/producto',[
+        'as'=> 'buscar.producto',
+        'uses'=>'ProductoController@buscarProducto'
+    ]);
 
-    Route::get('/inventario/productos/nuevoproducto', function(){
-        return view('inventario.productos.registrarproducto');
-    });
+
+
 
 
     Route::get('/compra/compranueva', function(){

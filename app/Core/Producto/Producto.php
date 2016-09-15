@@ -18,4 +18,29 @@ class Producto extends Model
         return $this->belongsTo('App\Core\Modelo\Modelo');
     }
 
+
+    public function scopeSerie($query, $serie)
+    {
+
+        if (trim($serie) != "") {
+            $query->where('serie', 'LIKE', "%$serie%");
+        }
+    }
+
+    public function scopeNombre($query, $nombre)
+    {
+        if (trim($nombre) != "") {
+            $query->where('nombre', 'LIKE', "%$nombre%");
+        }
+    }
+
+
+    public function scopeModelo($query, $modelo){
+
+        if (trim($modelo) != "") {
+            $query->where('modelo_id', $modelo);
+        }
+    }
+
+
 }

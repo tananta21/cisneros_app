@@ -58,5 +58,16 @@ class ProductoRepository implements BaseRepositoryInterface {
         $this->producto->destroy($id);
     }
 
+    public function buscarProducto($data)
+    {
+       return  $this->producto
+            ->serie($data['serie'])
+            ->nombre($data['nombre'])
+//            ->marca($data['marca'])
+//            ->categoria($data['categoria'])
+            ->modelo($data['modelo'])
+            ->paginate(5);
+    }
+
 
 }

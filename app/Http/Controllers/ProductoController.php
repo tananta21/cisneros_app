@@ -49,15 +49,18 @@ class ProductoController extends Controller
         //
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
+    public function buscarProducto(Request $request){
+
+        $variables = $request->all();
+
+        $productos = $this->repoProducto->buscarProducto($variables);
+        return View('inventario.productos.productos',compact('productos'));
+
+    }
+
+    public function edit()
     {
-        //
+        return View('inventario.productos.editarproducto');
     }
 
     /**
