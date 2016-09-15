@@ -118,13 +118,9 @@
     <div  style="Position:Absolute; left:40%; top:95%">
 
         <button  type="button" class="btn btn-primary">ACEPTAR</button>
-
         <button type="button" class="btn btn-primary">CANCELAR</button>
     </div>
 
-
-
-
-                </form>
+    </form>
     </div>
 @endsection
