@@ -125,10 +125,6 @@
                         @else
                             <td>Inactivo</td>
                         @endif
-                        {{--<td><a href="/sales/productos/editar/{{$producto->id}}" id="boton"><span class="label label-success">Editar</span> </a>--}}
-                            {{--<a href="/producto/eliminar/{{$producto->id}}"><span class="label label-danger"--}}
-                             {{--onclick="return confirm('¿Estas seguro que desea eliminar el Producto {{$producto->nombre}} ?');">Eliminar</span></a>--}}
-                        {{--</td>--}}
                         <td>
                             <a onclick=" return confirm('¿Estas seguro que desea eliminar el Producto {{$producto->nombre}}'),eliminarPro('{{$producto->id}}');"  style="color: red; font-size: 2.5rem; padding: 0.5rem">
                                 <input type="hidden" name="eliminarproducto{{$producto->id}}" value="{{$producto->id}}"/>
