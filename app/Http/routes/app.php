@@ -19,7 +19,7 @@ Route::group(['prefix'=>'/', 'middleware' => 'auth' ], function() {
         return view('inventario.productos.registrarproducto');
     });
 //    editar producto
-    Route::get('/inventario/producto/editar','ProductoController@edit');
+    Route::get('/inventario/producto/editar/{id}','ProductoController@edit');
 
 //    eliminar producto
     Route::get('/producto/eliminar',[

@@ -22,48 +22,65 @@
                 <div class="col-lg-4 col-sm-12 col-xs-12">
                     <h5 class="col-lg-12 titulos">Serie o Codigo Producto</h5>
                     <div class="col-lg-12 col-sm-12 col-xs-12">
-                        <input type="text" class="form-control" placeholder="Serie o Codigo Producto" name="nombre" value="">
+                        <input type="text" class="form-control" placeholder="Serie o Codigo Producto" name="nombre" value="{{$editarProducto->serie}}">
                     </div>
                 </div>
                 <div class="col-lg-8 col-sm-12 col-xs-12">
                     <h5 class="col-lg-12 titulos">Nombre Producto</h5>
                     <div class="col-lg-12 col-sm-12 col-xs-12">
-                        <input type="text" class="form-control" placeholder="Nombre Producto" name="nombre" value="">
+                        <input type="text" class="form-control" placeholder="Nombre Producto" name="nombre" value="{{$editarProducto->nombre}}">
                     </div>
                 </div>
 
             </div>
             <div class="col-lg-12 caja_formulario">
+
                 <div class="col-lg-4 col-sm-12 col-xs-12">
-                    <h5 class="col-lg-12 titulos">Marca</h5>
+                    <div  class="col-lg-12" style="display: flex;  align-items: center;padding: 0rem ">
+                        <h5 onclick="" class="col-lg-4 titulos">Modelos</h5>
+                        <a href=""><i class="fa fa-plus-square fa-1px"></i> Add</a>
+                    </div>
                     <div class="col-lg-12 col-sm-12 col-xs-12">
                         <select class="form-control" name="categoria">
-                            <option value="">Marca #1</option>
-                            <option value="1">Marca #2</option>
+                            @foreach($modelos as $modelo)
+                                @if($modelo->id == $id_modelo)
+                                    <option selected value="{{$modelo->id}}">{{$modelo->descripcion}}</option>
+                                @else
+                                    <option value="{{$modelo->id}}">{{$modelo->descripcion}}</option>
+                                @endif
+                            @endforeach
+                        </select>
+                    </div>
+                </div>
+
+                {{--<div class="col-lg-4 col-sm-12 col-xs-12">--}}
+                    {{--<div  class="col-lg-12" style="display: flex;  align-items: center;padding: 0rem ">--}}
+                        {{--<h5 onclick="" class="col-lg-4 titulos">Marca</h5>--}}
+                        {{--<a href="" data-toggle="control-sidebar"><i class="fa fa-plus-square fa-1px"></i> Add</a>--}}
+                    {{--</div>--}}
+                    {{--<div class="col-lg-12 col-sm-12 col-xs-12">--}}
+                        {{--<select class="form-control" name="categoria">--}}
+                            {{--<option value="">Marca #1</option>--}}
+                            {{--<option value="1">Marca #2</option>--}}
                             {{--HACER LA CONSULTA PARA JALAR MARCA--}}
-                        </select>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-sm-12 col-xs-12">
-                    <h5 class="col-lg-12 titulos">Modelo</h5>
-                    <div class="col-lg-12 col-sm-12 col-xs-12">
-                        <select class="form-control" name="categoria">
-                            <option value="">Modelo #1</option>
-                            <option value="1">Modelo #2</option>
-                            {{--HACER LA CONSULTA PARA JALAR MODELO--}}
-                        </select>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-sm-12 col-xs-12">
-                    <h5 class="col-lg-12 titulos">Categoria</h5>
-                    <div class="col-lg-12 col-sm-12 col-xs-12">
-                        <select class="form-control" name="categoria">
-                            <option value="">Categoria #1</option>
-                            <option value="1">Categoria #2</option>
+                        {{--</select>--}}
+                    {{--</div>--}}
+                {{--</div>--}}
+
+                {{--<div class="col-lg-4 col-sm-12 col-xs-12">--}}
+                    {{--<div  class="col-lg-12" style="display: flex;  align-items: center;padding: 0rem ">--}}
+                        {{--<h5 onclick="" class="col-lg-4 titulos">Categorias</h5>--}}
+                        {{--<a href=""><i class="fa fa-plus-square fa-1px"></i> Add</a>--}}
+                    {{--</div>--}}
+
+                    {{--<div class="col-lg-12 col-sm-12 col-xs-12">--}}
+                        {{--<select class="form-control" name="categoria">--}}
+                            {{--<option value="">Categoria #1</option>--}}
+                            {{--<option value="1">Categoria #2</option>--}}
                             {{--HACER LA CONSULTA PARA JALAR CATEGORIA--}}
-                        </select>
-                    </div>
-                </div>
+                        {{--</select>--}}
+                    {{--</div>--}}
+                {{--</div>--}}
             </div>
 
             <div class="col-lg-12 caja_formulario">
@@ -91,7 +108,7 @@
                 <div class="col-lg-4 col-sm-12 col-xs-12">
                     <h5 class="col-lg-12 titulos">Precio</h5>
                     <div class="col-lg-12 col-sm-12 col-xs-12">
-                        <input type="text" class="form-control" placeholder="Stock Actual" name="nombre" value="">
+                        <input type="text" class="form-control" placeholder="S/. " name="nombre" value="">
                     </div>
                 </div>
                 <div class="col-lg-8 col-sm-12 col-xs-12">
@@ -121,5 +138,3 @@
         </form>
     </div>
 @endsection
-
-

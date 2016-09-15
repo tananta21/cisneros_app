@@ -113,7 +113,7 @@
                                 <input type="hidden" name="eliminarproducto{{$producto->id}}" value="{{$producto->id}}"/>
                                 <i class="fa fa-remove"></i>
                             </a>
-                            <a href="/inventario/producto/editar" style="color: green;  font-size: 2.5rem; padding: 0.5rem">
+                            <a href="/inventario/producto/editar/{{$producto->id}}" style="color: green;  font-size: 2.5rem; padding: 0.5rem">
                                 <i class="fa fa-pencil"></i>
                             </a>
                         </td>

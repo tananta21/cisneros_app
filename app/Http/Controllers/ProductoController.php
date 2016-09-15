@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Core\Modelo\ModeloRepository;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
@@ -13,9 +14,12 @@ use Illuminate\Support\Facades\Input;
 class ProductoController extends Controller
 {
     protected $repoProducto;
+    protected $repoModelo;
 
     public function __construct(){
         $this->repoProducto = new ProductoRepository();
+        $this->repoModelo = new ModeloRepository();
+
     }
 
     public function index()
@@ -58,9 +62,14 @@ class ProductoController extends Controller
 
     }
 
-    public function edit()
+    public function edit($id)
     {
-        return View('inventario.productos.editarproducto');
+        $id_modelo = 3;
+        $modelos = $this->repoModelo->all();
+//        dd($modelo->toArray());
+        $editarProducto = $this->repoProducto->find($id);
+//        dd($editarProducto->toArray());
+        return View('inventario.productos.editarproducto',compact('id_modelo','editarProducto','modelos'));
     }
 
     /**

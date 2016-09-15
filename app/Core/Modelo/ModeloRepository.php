@@ -13,9 +13,10 @@ use App\Core\Contracts\BaseRepositoryInterface;
 
 class ModeloRepository implements BaseRepositoryInterface {
 
+
     public function all()
     {
-        // TODO: Implement all() method.
+        return Modelo::all();
     }
 
     /**

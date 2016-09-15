@@ -46,7 +46,8 @@ class ProductoRepository implements BaseRepositoryInterface {
      */
     public function find($id)
     {
-
+        $producto = Producto::findOrFail($id);
+        return $producto;
     }
 
     /**

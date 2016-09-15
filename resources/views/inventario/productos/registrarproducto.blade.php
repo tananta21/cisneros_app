@@ -37,7 +37,7 @@
             <div class="col-lg-4 col-sm-12 col-xs-12">
                 <div  class="col-lg-12" style="display: flex;  align-items: center;padding: 0rem ">
                     <h5 onclick="" class="col-lg-4 titulos">Marca</h5>
-                    <a href=""><i class="fa fa-plus-square fa-1px"></i> Add</a>
+                    <a href="" data-toggle="control-sidebar"><i class="fa fa-plus-square fa-1px"></i> Add</a>
                 </div>
                 <div class="col-lg-12 col-sm-12 col-xs-12">
                     <select class="form-control" name="categoria">
@@ -61,7 +61,7 @@
             </div>
             <div class="col-lg-4 col-sm-12 col-xs-12">
                 <div  class="col-lg-12" style="display: flex;  align-items: center;padding: 0rem ">
-                    <h5 onclick="" class="col-lg-4 titulos">Modelos</h5>
+                    <h5 onclick="" class="col-lg-4 titulos">Categorias</h5>
                     <a href=""><i class="fa fa-plus-square fa-1px"></i> Add</a>
                 </div>
 
@@ -100,7 +100,7 @@
             <div class="col-lg-4 col-sm-12 col-xs-12">
                 <h5 class="col-lg-12 titulos">Precio</h5>
                 <div class="col-lg-12 col-sm-12 col-xs-12">
-                    <input type="text" class="form-control" placeholder="Stock Actual" name="nombre" value="">
+                    <input type="text" class="form-control" placeholder="S/." name="nombre" value="">
                 </div>
             </div>
             <div class="col-lg-8 col-sm-12 col-xs-12">
