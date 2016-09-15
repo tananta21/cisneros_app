@@ -2,22 +2,23 @@
 @section('vistainicial')
 @stop
 @section('menu_modulos')
-        <div>
-            <header style="background: #b7c7d5">
-                <ul style="display: flex; list-style: none; padding: 0rem">
+    <link rel="stylesheet" href="{{url('/')}}/nuestro.css">
+    <div>
+            <header class="header-submenu">
+                <ul class="ul-submenu">
                     <li>
-                        <div style="padding-top:1rem; padding-bottom: 1rem; background: #1FD3AF; border: dashed 0.5px #000000">
-                            <a href="#" style="padding:2rem; color: white; font-weight: bold" >Productos</a>
+                        <div class="caja-ancla-submenu">
+                            <a class="ancla-submenu" href="#" style="padding:2rem; color: white; font-weight: bold" >Productos</a>
                         </div>
                     </li>
                     <li>
-                        <div style="padding-top:1rem; padding-bottom: 1rem;background: #ecf0f5; border: dashed 0.5px #808080">
-                            <a href="#" style="padding:2rem; color: #000000; font-weight: bold" >Almacen Tienda</a>
+                        <div class="caja-ancla-submenu">
+                            <a class="ancla-submenu" href="#">Almacen Tienda</a>
                         </div>
                     </li>
                     <li>
-                        <div style="padding-top:1rem; padding-bottom: 1rem;background: #ecf0f5; border: dashed 0.5px #808080">
-                            <a href="#" style="padding:2rem; color: #000000; font-weight: bold" >Almacen Principal</a>
+                        <div class="caja-ancla-submenu">
+                            <a class="ancla-submenu" href="#"  >Almacen Principal</a>
                         </div>
                     </li>
 
@@ -26,15 +27,15 @@
         </div>
 
     @section('contenido_modulos')
-        <h2 class="col-lg-12" style="margin-bottom: 0.5rem">Productos / Servicios</h2>
-        <hr class="col-lg-12" size="5px" color="green"/>
+        <h3 class="col-lg-12" style="margin-bottom: 0.5rem">Productos / Servicios</h3>
+        <hr class="col-lg-12 linea-titulo" size="5px" color="green"/>
         <div class="col-lg-12">
             <a href="/inventario/productos/nuevoproducto" type="button" class="btn btn-w-m btn-primary"> AGREGAR NUEVO PRODUCTO
                 <i class="fa fa-plus-square fa-1px" style="margin-left: 1rem"></i>
             </a>
         </div>
 
-        <div class="col-lg-12" style="padding-top: 2rem">
+        <div class="col-lg-12" style="margin-top: 0.5rem">
             <h3 class="col-lg-12">
                 Lista de Productos
             </h3>
@@ -104,42 +105,74 @@
                     <th>CODIGO</th>
                     <th>NOMBRE</th>
                     <th>STOCK ACTUAL</th>
+                    <th>MODELO</th>
                     <th>MARCA</th>
                     <th>CATEGORIA</th>
-                    <th>MODELO</th>
                     <th>ESTADO</th>
                     <th>ACCIONES</th>
                 </tr>
-                <tr data-id="1">
-                    <td>1</td>
-                    <td>91960454</td>
-                    <td>Prof. Ewald Stamm</td>
-                    <td>83.00</td>
-                    <td>Yamaha</td>
-                    <td>motores</td>
-                    <td>mediano</td>
-                    <td>Inactivo</td>
-                    <td><a href="" id="boton"><span class="label label-success">Editar</span> </a>
-                        <a href=""><span class="label label-danger" onclick="return confirm('¿Estas seguro que desea eliminar el Producto Prof. Ewald Stamm ?');">Eliminar</span></a>
-                    </td>
-                </tr>
-
-                <tr data-id="2">
-                    <td>2</td>
-                    <td>66507314</td>
-                    <td>Mrs. Jena Turcotte</td>
-                    <td>92.00</td>
-                    <td>zuzuki</td>
-                    <td>motores</td>
-                    <td>grande</td>
-                    <td>Activo</td>
-                    <td><a href="" id="boton"><span class="label label-success">Editar</span> </a>
-                        <a href=""><span class="label label-danger" onclick="return confirm('¿Estas seguro que desea eliminar el Producto Mrs. Jena Turcotte ?');">Eliminar</span></a>
-                    </td>
-                </tr>
+                @foreach($productos as $producto)
+                    <tr data-id="{{$producto->id}}" id="filaproducto{{$producto->id}}">
+                        <td>{{$producto->id}}</td>
+                        <td>{{$producto->serie}}</td>
+                        <td>{{$producto->nombre}}</td>
+                        <td>{{$producto->nombre}}</td>
+                        <td>{{$producto->modelo->descripcion}}</td>
+                        <td>{{$producto->modelo->marca->descripcion}}</td>
+                        <td>{{$producto->modelo->categoria->descripcion}}</td>
+                        @if($producto->estado == 1)
+                            <td>Activo</td>
+                        @else
+                            <td>Inactivo</td>
+                        @endif
+                        {{--<td><a href="/sales/productos/editar/{{$producto->id}}" id="boton"><span class="label label-success">Editar</span> </a>--}}
+                            {{--<a href="/producto/eliminar/{{$producto->id}}"><span class="label label-danger"--}}
+                             {{--onclick="return confirm('¿Estas seguro que desea eliminar el Producto {{$producto->nombre}} ?');">Eliminar</span></a>--}}
+                        {{--</td>--}}
+                        <td>
+                            <a onclick=" return confirm('¿Estas seguro que desea eliminar el Producto {{$producto->nombre}}'),eliminarPro('{{$producto->id}}');"  style="color: red; font-size: 2.5rem; padding: 0.5rem">
+                                <input type="hidden" name="eliminarproducto{{$producto->id}}" value="{{$producto->id}}"/>
+                                <i class="fa fa-remove"></i>
+                            </a>
+                            <a href="" style="color: green;  font-size: 2.5rem; padding: 0.5rem">
+                                <i class="fa fa-pencil"></i>
+                            </a>
+                        </td>
+                    </tr>
+                @endforeach
 
                 </tbody>
             </table>
+
+            <script type="text/javascript">
+                function eliminarPro(id){
+                $(document).ready(function(){
+                        var id_producto = $(this).find( 'input[name="eliminarproducto'+id+'"]' ).val();
+                        var url = '{{route("eliminar.producto")}}';
+                        $.ajax({
+                            type: 'GET',
+                            url: url,
+                            data: {
+                                idproducto: id_producto
+                            },
+                            dataType: 'JSON',
+
+                            error: function() {
+                                $("#respuesta").html('<div> Ha surgido un error. </div>');
+                            },
+
+                            success: function(){
+                                $("#filaproducto"+id).remove();;
+                            }
+                        });
+                });
+
+                };
+
+            </script>
+        </div>
+        <div class="col-lg-12" style="display: flex; flex-direction: row; justify-content: center;">
+        {!! $productos->appends(Request::all())->render() !!}
         </div>
     @endsection
 @endsection

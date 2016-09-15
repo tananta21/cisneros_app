@@ -7,14 +7,18 @@
  */
 
 namespace App\Core\Producto;
-
-
 use App\Core\Contracts\BaseRepositoryInterface;
 
 class ProductoRepository implements BaseRepositoryInterface {
+
+    protected $producto;
+    public function __construct(){
+        $this->producto = new Producto();
+    }
+
     public function all()
     {
-        // TODO: Implement all() method.
+       return  $this->producto->paginate(5);
     }
 
     /**
@@ -42,7 +46,7 @@ class ProductoRepository implements BaseRepositoryInterface {
      */
     public function find($id)
     {
-        // TODO: Implement find() method.
+
     }
 
     /**
@@ -51,7 +55,7 @@ class ProductoRepository implements BaseRepositoryInterface {
      */
     public function deleted($id)
     {
-        // TODO: Implement deleted() method.
+        $this->producto->destroy($id);
     }
 
 

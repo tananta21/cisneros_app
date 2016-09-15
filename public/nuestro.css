@@ -1,0 +1,31 @@
+.header-submenu {
+    background: #b7c7d5
+}
+.ul-submenu{
+    display: flex;
+    list-style: none;
+    padding: 0rem;
+}
+.caja-ancla-submenu{
+    padding-top:1rem;
+    padding-bottom: 1rem;
+    background: #1FD3AF;
+    border: solid 0.1px #000000;
+    margin: 0.5rem;
+    border-radius: 5%;
+}
+.ancla-submenu{
+    padding:2rem;
+    color: #000000;
+    font-weight: bold
+}
+
+.caja_formulario{
+    padding-bottom: 3rem;
+}
+.titulos{
+    padding: 0rem;
+}
+.linea-titulo{
+    margin-top: 0rem;
+}

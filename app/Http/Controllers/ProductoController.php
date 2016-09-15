@@ -6,24 +6,27 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\View;
+use App\Core\Producto\ProductoRepository;
+use Illuminate\Support\Facades\Input;
 
 class ProductoController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
-        //
+    protected $repoProducto;
+
+    public function __construct(){
+        $this->repoProducto = new ProductoRepository();
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+    public function index()
+    {
+
+        $productos = $this->repoProducto->all();
+//        dd($productos->toArray());
+        return View('inventario.productos.productos',compact('productos'));
+    }
+
+
     public function create()
     {
         //
@@ -40,12 +43,7 @@ class ProductoController extends Controller
         //
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+
     public function show($id)
     {
         //
@@ -74,14 +72,17 @@ class ProductoController extends Controller
         //
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+
     public function destroy($id)
     {
-        //
+        $eliminarProducto = $this->repoProducto->deleted($id);
+        return redirect()->action('ProductoController@index');
+    }
+
+    public function eliminarProducto(){
+        $id_producto = Input::get('idproducto');
+        $id= json_decode(json_encode($id_producto));
+        $eliminarProducto = $this->repoProducto->deleted($id);
+        return response()->json();
     }
 }

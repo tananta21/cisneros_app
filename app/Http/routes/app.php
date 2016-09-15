@@ -9,9 +9,19 @@ Route::group(['prefix'=>'/', 'middleware' => 'auth' ], function() {
         return view('index');
     });
 
-    Route::get('/inventario/productos', function(){
-        return view('inventario.productos.productos');
-    });
+
+    //PRODUCTOS
+//    listar productos
+    Route::get('/inventario/productos', 'ProductoController@index' );
+
+//    eliminar producto
+//    Route::get('/producto/eliminar/{id}', 'ProductoController@destroy' );
+
+    Route::get('/producto/eliminar',[
+        'as'=> 'eliminar.producto',
+        'uses'=>'ProductoController@eliminarProducto'
+    ]);
+
 
     Route::get('/inventario/productos/nuevoproducto', function(){
         return view('inventario.productos.registrarproducto');
@@ -21,6 +31,10 @@ Route::group(['prefix'=>'/', 'middleware' => 'auth' ], function() {
     Route::get('/compra/compranueva', function(){
         return view('compra.compranueva');
     });
+
+    Route::get('/ventas/registrar',[
+        'as'=> 'registrar.venta',
+        'uses'=>'VentaController@create']);
 
 
 
