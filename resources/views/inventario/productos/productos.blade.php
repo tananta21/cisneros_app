@@ -72,12 +72,14 @@
                         </div>
 
                         <div class="col-lg-2 col-sm-2">
+                            {!!form::select('marca',['' => 'Select marca','1' => '--------','2' => 'Yamaha','3' => 'zuzuki','4'=>'taiwan'],null,['class'=>'form-control'])!!}
+                        </div>
+
+                        <div class="col-lg-2 col-sm-2">
                             {!!form::select('modelo',['' => 'Select modelo','1' => '--------','2' => 'pistera','3' => 'cgl 110','4'=>'chacarera'],null,['class'=>'form-control'])!!}
                         </div>
 
-                        {{--<div class="col-lg-2 col-sm-2">--}}
-                            {{--{!!form::select('marca',['' => 'Select marca','1' => '--------','2' => 'Yamaha','3' => 'zuzuki','4'=>'taiwan'],null,['class'=>'form-control'])!!}--}}
-                        {{--</div>--}}
+
                     </div>
                 </div>
             {!! Form::close() !!}
@@ -92,9 +94,9 @@
                     <th>N° ID</th>
                     <th>SERIE</th>
                     <th>NOMBRE</th>
-                    <th>NOMBRE</th>
+                    <th>TIPO</th>
                     <th>CATEGORIA</th>
-                    {{--<th>MARCA</th>--}}
+                    <th>MARCA</th>
                     <th>MODELO</th>
                     <th>ESTADO</th>
                     <th>ACCIONES</th>
@@ -104,9 +106,9 @@
                         <td>{{$producto->id}}</td>
                         <td>{{$producto->serie}}</td>
                         <td>{{$producto->nombre}}</td>
-                        <td>{{$producto->nombre}}</td>
+                        <td>{{$producto->tipoProducto->descripcion}}</td>
                         <td>{{$producto->categoria->descripcion}}</td>
-                        {{--<td>{{$producto->marca->descripcion}}</td>--}}
+                        <td>{{$producto->marca->descripcion}}</td>
                         <td>{{$producto->modelo->descripcion}}</td>
                         @if($producto->estado == 1)
                             <td>Activo</td>

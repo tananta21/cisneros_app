@@ -58,7 +58,7 @@ class ModeloRepository implements BaseRepositoryInterface {
 
     public function addModelo($inputs){
         $modelo = new Modelo();
-        $modelo->descripcion = $inputs['descripcion'];
+        $modelo->descripcion = $inputs['descripcion_modelo'];
         $modelo->save();
     }
 }

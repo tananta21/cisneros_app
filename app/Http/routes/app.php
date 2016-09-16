@@ -15,9 +15,8 @@ Route::group(['prefix'=>'/', 'middleware' => 'auth' ], function() {
             Route::get('/inventario/productos', 'ProductoController@index' );
 
         //    registrar producto
-            Route::get('/inventario/producto/nuevoproducto', function(){
-                return view('inventario.productos.registrarproducto');
-            });
+            Route::get('/inventario/producto/nuevoproducto','ProductoController@nuevoProducto' );
+
 
             Route::post('/inventario/producto/registro','ProductoController@create' );
 
@@ -38,8 +37,13 @@ Route::group(['prefix'=>'/', 'middleware' => 'auth' ], function() {
                 'uses'=>'ProductoController@busquedaProducto'
             ]);
 
+        //registrar categoria
+               Route::post('/inventario/categoria/registro','ProductoController@createCategoria' );
+        //registrar marca
+               Route::post('/inventario/marca/registro','ProductoController@createMarca' );
         //registrar modelo
-               Route::post('/inventario/producto/registro','ProductoController@createModelo' );
+               Route::post('/inventario/modelo/registro','ProductoController@createModelo' );
+
 
 
 //Route::get('/buscar/producto',[

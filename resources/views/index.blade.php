@@ -385,18 +385,18 @@ desired effect
                         {{--formulario crear--}}
                         <div class="box box-primary">
 
-                            {!! Form::open(['action' => 'ProductoController@create','method' => 'post', 'class' => 'form-horizontal', 'role'=>'form']) !!}
+                            {!! Form::open(['action' => 'ProductoController@createCategoria','method' => 'post', 'class' => 'form-horizontal', 'role'=>'form']) !!}
                             <div class="box-body">
                                 <div class="form-group">
                                     <label for="inputName" class="col-md-2 control-label">Nombre</label>
                                     <div class="col-md-10">
-                                        <input type="text" class="form-control"  placeholder="Nombre Categoria" name="descripcion_categoria" >
+                                        <input required="true" type="text" class="form-control"  placeholder="Nombre Categoria" name="descripcion_categoria" >
                                     </div>
                                 </div>
                             </div>
                             <div class="box-footer" style="text-align: center">
                                 {{--<input type="reset" class="btn btn-default" id="cancel" value="Cancelar">--}}
-                                <a href="#" class="btn btn-default"  >Cancelar</a>
+                                <button href="" class="btn btn-default" data-dismiss="modal"  >Cancelar</button>
                                 <button type="submit" class="btn btn-info">Guardar</button>
                             </div>
 
@@ -423,18 +423,18 @@ desired effect
                         {{--formulario crear--}}
                         <div class="box box-primary">
 
-                            {!! Form::open(['action' => 'ProductoController@create','method' => 'post', 'class' => 'form-horizontal', 'role'=>'form']) !!}
+                            {!! Form::open(['action' => 'ProductoController@createMarca','method' => 'post', 'class' => 'form-horizontal', 'role'=>'form']) !!}
                             <div class="box-body">
                                 <div class="form-group">
                                     <label for="inputName" class="col-md-2 control-label">Nombre</label>
                                     <div class="col-md-10">
-                                        <input type="text" class="form-control"  placeholder="Nombre Marca" name="descripcion_marca" >
+                                        <input required="true" type="text" class="form-control"  placeholder="Nombre Marca" name="descripcion_marca" >
                                     </div>
                                 </div>
                             </div>
                             <div class="box-footer" style="text-align: center">
                                 {{--<input type="reset" class="btn btn-default" id="cancel" value="Cancelar">--}}
-                                <a href="#" class="btn btn-default"  >Cancelar</a>
+                                <button href="" class="btn btn-default" data-dismiss="modal"  >Cancelar</button>
                                 <button type="submit" class="btn btn-info">Guardar</button>
                             </div>
 
@@ -466,13 +466,13 @@ desired effect
                                 <div class="form-group">
                                     <label for="inputName" class="col-md-2 control-label">Nombre</label>
                                     <div class="col-md-10">
-                                        <input required="true" type="text" class="form-control"  placeholder="Nombre Modelo" name="descripcion" >
+                                        <input required="true" type="text" class="form-control"  placeholder="Nombre Modelo" name="descripcion_modelo" >
                                     </div>
                                 </div>
                             </div>
                             <div class="box-footer" style="text-align: center">
                                 {{--<input type="reset" class="btn btn-default" id="cancel" value="Cancelar">--}}
-                                <a href="" class="btn btn-default"  >Cancelar</a>
+                                <button href="" class="btn btn-default" data-dismiss="modal"  >Cancelar</button>
                                 <button type="submit" class="btn btn-info">Guardar</button>
                             </div>
 

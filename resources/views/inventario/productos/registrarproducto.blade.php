@@ -9,12 +9,14 @@
             {!! csrf_field() !!}
 
             <div class="col-lg-6 caja_formulario">
-            <h5 class="col-lg-12">Tipo Producto</h5>
-            <div class="col-lg-6 col-sm-12  col-xs-12">
-                <select class="form-control" name="tipo_producto">
-                    <option value="1">Producto</option>
-                    <option value="2">Servicio</option>
-                </select>
+                <div class="col-lg-4 col-sm-12 col-xs-12">
+                <h5 class="col-lg-12">Tipo Producto</h5>
+                <div class="col-lg-12 col-sm-12  col-xs-12">
+                    <select class="form-control" name="tipo_producto">
+                        <option value="1">Producto</option>
+                        <option value="2">Servicio</option>
+                    </select>
+                </div>
             </div>
         </div>
 
@@ -41,10 +43,14 @@
                 </div>
 
                 <div class="col-lg-12 col-sm-12 col-xs-12">
-                    <select class="form-control" name="categoria">
-                        <option value="1">Categoria #1</option>
-                        <option value="2">Categoria #2</option>
-                        {{--HACER LA CONSULTA PARA JALAR CATEGORIA--}}
+                    <select class="form-control" name="categoria" >
+                        @foreach($categorias as $categoria)
+                            @if($categoria->id == 1)
+                                <option value="{{$categoria->id}}" selected>Seleccione Categoria</option>
+                            @else
+                                <option value="{{$categoria->id}}">{{$categoria->descripcion}}</option>
+                            @endif
+                        @endforeach
                     </select>
                 </div>
             </div>
@@ -54,10 +60,14 @@
                     <a href="" data-toggle="modal" data-target="#marca_modal"><i class="fa fa-plus-square fa-1px"></i> Add</a>
                 </div>
                 <div class="col-lg-12 col-sm-12 col-xs-12">
-                    <select class="form-control" name="marca">
-                        <option value="">Marca #1</option>
-                        <option value="1">Marca #2</option>
-                        {{--HACER LA CONSULTA PARA JALAR MARCA--}}
+                    <select class="form-control" name="marca" >
+                        @foreach($marcas as $marca)
+                            @if($marca->id == 1)
+                                <option value="{{$marca->id}}" selected >Seleccione Marca</option>
+                            @else
+                                <option value="{{$marca->id}}">{{$marca->descripcion}}</option>
+                            @endif
+                        @endforeach
                     </select>
                 </div>
             </div>
@@ -67,9 +77,14 @@
                     <a href="" data-toggle="modal" data-target="#modelo_modal" ><i class="fa fa-plus-square fa-1px"></i> Add</a>
                 </div>
                 <div class="col-lg-12 col-sm-12 col-xs-12">
-                    <select class="form-control" name="modelo">
-                        <option value="">Modelo #1</option>
-                        <option value="1">Modelo #2</option>
+                    <select class="form-control" name="modelo" >
+                        @foreach($modelos as $modelo)
+                            @if($modelo->id == 1)
+                                <option value="{{$modelo->id}}" selected>Seleccione Modelo</option>
+                            @else
+                                <option value="{{$modelo->id}}">{{$modelo->descripcion}}</option>
+                            @endif
+                        @endforeach
                     </select>
                 </div>
             </div>
@@ -107,7 +122,7 @@
             <div class="col-lg-8 col-sm-12 col-xs-12">
                 <h5 class="col-lg-12 titulos">Descripcion</h5>
                 <div class="col-lg-12 col-sm-12 col-xs-12" >
-                    <input type="text" class="form-control" placeholder="Stock Minimo" name="descripcion" value="">
+                    <input type="text" class="form-control" placeholder="Descripcion Producto" name="descripcion" value="">
                 </div>
             </div>
         </div>

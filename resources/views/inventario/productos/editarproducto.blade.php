@@ -10,12 +10,19 @@
             {!! csrf_field() !!}
 
             <div class="col-lg-6 caja_formulario">
+                <div class="col-lg-4 col-sm-12 col-xs-12">
                 <h5 class="col-lg-12">Tipo Producto</h5>
-                <div class="col-lg-6 col-sm-12  col-xs-12">
-                    <select class="form-control" name="categoria">
-                        <option value="1">Producto</option>
-                        <option value="2">Servicio</option>
+                <div class="col-lg-12 col-sm-12  col-xs-12">
+                    <select class="form-control" name="tipo_producto">
+                        @if($editarProducto->tipo_producto_id == 1)
+                        <option value="1" selected>Productos</option>
+                        <option value="2" >Servicios</option>
+                        @else
+                        <option value="2" selected>Servicio</option>
+                        <option value="1" >Producto</option>
+                        @endif
                     </select>
+                </div>
                 </div>
             </div>
 
@@ -38,6 +45,43 @@
 
                 <div class="col-lg-4 col-sm-12 col-xs-12">
                     <div  class="col-lg-12" style="display: flex;  align-items: center;padding: 0rem ">
+                        <h5 onclick="" class="col-lg-4 titulos">Categorias</h5>
+                        <a href="" data-toggle="modal" data-target="#categoria_modal"><i class="fa fa-plus-square fa-1px"></i> Add</a>
+                    </div>
+
+                    <div class="col-lg-12 col-sm-12 col-xs-12">
+                        <select class="form-control" name="categoria">
+                            @foreach($categorias as $categoria)
+                                @if($categoria->id == $id_categoria)
+                                    <option selected value="{{$categoria->id}}">{{$categoria->descripcion}}</option>
+                                @else
+                                    <option value="{{$categoria->id}}">{{$categoria->descripcion}}</option>
+                                @endif
+                            @endforeach
+                        </select>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-sm-12 col-xs-12">
+                    <div  class="col-lg-12" style="display: flex;  align-items: center;padding: 0rem ">
+                        <h5 onclick="" class="col-lg-4 titulos">Marca</h5>
+                        <a href="" data-toggle="modal" data-target="#marca_modal"><i class="fa fa-plus-square fa-1px"></i> Add</a>
+                    </div>
+                    <div class="col-lg-12 col-sm-12 col-xs-12">
+                        <select class="form-control" name="marca">
+                            @foreach($marcas as $marca)
+                                @if($marca->id == $id_marca)
+                                    <option selected value="{{$marca->id}}">{{$marca->descripcion}}</option>
+                                @else
+                                    <option value="{{$marca->id}}">{{$marca->descripcion}}</option>
+                                @endif
+                            @endforeach
+                        </select>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-sm-12 col-xs-12">
+                    <div  class="col-lg-12" style="display: flex;  align-items: center;padding: 0rem ">
                         <h5 onclick="" class="col-lg-4 titulos">Modelos</h5>
                         <a  data-toggle="modal" data-target="#modelo_modal" href="#"><i class="fa fa-plus-square fa-1px"></i> Add</a>
                     </div>
@@ -54,34 +98,7 @@
                     </div>
                 </div>
 
-                {{--<div class="col-lg-4 col-sm-12 col-xs-12">--}}
-                    {{--<div  class="col-lg-12" style="display: flex;  align-items: center;padding: 0rem ">--}}
-                        {{--<h5 onclick="" class="col-lg-4 titulos">Marca</h5>--}}
-                        {{--<a href="" data-toggle="modal" data-target="#marca_modal"><i class="fa fa-plus-square fa-1px"></i> Add</a>--}}
-                    {{--</div>--}}
-                    {{--<div class="col-lg-12 col-sm-12 col-xs-12">--}}
-                        {{--<select class="form-control" name="categoria">--}}
-                            {{--<option value="">Marca #1</option>--}}
-                            {{--<option value="1">Marca #2</option>--}}
-                            {{--HACER LA CONSULTA PARA JALAR MARCA--}}
-                        {{--</select>--}}
-                    {{--</div>--}}
-                {{--</div>--}}
 
-                {{--<div class="col-lg-4 col-sm-12 col-xs-12">--}}
-                    {{--<div  class="col-lg-12" style="display: flex;  align-items: center;padding: 0rem ">--}}
-                        {{--<h5 onclick="" class="col-lg-4 titulos">Categorias</h5>--}}
-                        {{--<a href="" data-toggle="modal" data-target="#categoria_modal"><i class="fa fa-plus-square fa-1px"></i> Add</a>--}}
-                    {{--</div>--}}
-
-                    {{--<div class="col-lg-12 col-sm-12 col-xs-12">--}}
-                        {{--<select class="form-control" name="categoria">--}}
-                            {{--<option value="">Categoria #1</option>--}}
-                            {{--<option value="1">Categoria #2</option>--}}
-                            {{--HACER LA CONSULTA PARA JALAR CATEGORIA--}}
-                        {{--</select>--}}
-                    {{--</div>--}}
-                {{--</div>--}}
             </div>
 
             <div class="col-lg-12 caja_formulario">
@@ -115,7 +132,7 @@
                 <div class="col-lg-8 col-sm-12 col-xs-12">
                     <h5 class="col-lg-12 titulos">Descripcion</h5>
                     <div class="col-lg-12 col-sm-12 col-xs-12" >
-                        <input type="text" class="form-control" placeholder="Stock Minimo" name="descripcion" value="{{$editarProducto->descripcion}}">
+                        <input type="text" class="form-control" placeholder="Descripcion Producto" name="descripcion" value="{{$editarProducto->descripcion}}">
                     </div>
                 </div>
             </div>

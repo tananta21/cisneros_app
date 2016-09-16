@@ -13,7 +13,7 @@ class CategoriaRepository implements BaseRepositoryInterface {
 
     public function all()
     {
-        // TODO: Implement all() method.
+        return Categoria::all();
     }
 
     /**
@@ -51,5 +51,11 @@ class CategoriaRepository implements BaseRepositoryInterface {
     public function deleted($id)
     {
         // TODO: Implement deleted() method.
+    }
+
+    public function addCategoria($inputs){
+        $modelo = new Categoria();
+        $modelo->descripcion = $inputs['descripcion_categoria'];
+        $modelo->save();
     }
 }

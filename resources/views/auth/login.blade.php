@@ -40,11 +40,10 @@
                 <input type="password" name="password"  class="form-control" placeholder="Contraseña" required="">
             </div>
             @if (count($errors))
-                <ul>
                     @foreach($errors->all() as $error)
-                        <li>{{$error}}</li>
+                        <p class="alert alert-danger"><strong>{{$error}}</strong></p>
                     @endforeach
-                </ul>
+
             @endif
             <button type="submit" class="btn btn-primary block full-width m-b">Ingresar</button>
 

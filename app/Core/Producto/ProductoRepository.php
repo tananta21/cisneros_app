@@ -37,9 +37,9 @@ class ProductoRepository implements BaseRepositoryInterface {
     {
         $producto = new Producto();
         $producto->tipo_producto_id = $inputs['tipo_producto'];
-        $producto->categoria_id = 2;
-        $producto->marca_id = 2;
-        $producto->modelo_id = 2;
+        $producto->categoria_id = $inputs['categoria'];
+        $producto->marca_id = $inputs['marca'];
+        $producto->modelo_id = $inputs['modelo'];
         $producto->serie = $inputs['serie'];
         $producto->nombre = $inputs['nombre'];
         $producto->descripcion = $inputs['descripcion'];
@@ -50,6 +50,9 @@ class ProductoRepository implements BaseRepositoryInterface {
     public function updated($id, array $attributes)
     {
         $producto = Producto::find($id);
+        $producto->tipo_producto_id = $attributes['tipo_producto'];
+        $producto->categoria_id = $attributes['categoria'];
+        $producto->marca_id = $attributes['marca'];
         $producto->modelo_id = $attributes['modelo'];
         $producto->serie = $attributes['serie'];
         $producto->nombre = $attributes['nombre'];
@@ -89,9 +92,9 @@ class ProductoRepository implements BaseRepositoryInterface {
             ->paginate(5);
     }
 
-    public function busquedaProducto($nombre,$serie,$categoria,$modelo){
+    public function busquedaProducto($nombre,$serie,$categoria,$marca,$modelo){
 
-            return $this->producto->select('id','categoria_id','modelo_id','serie', 'nombre','estado')
+            return $this->producto->select('id','tipo_producto_id','marca_id','categoria_id','modelo_id','serie', 'nombre','estado')
 //                ->where('serie',$serie)
 //                ->orwhere('nombre', 'like', "%$nombre%")
 //                ->orWhere('categoria_id','like',"$categoria")
@@ -99,6 +102,7 @@ class ProductoRepository implements BaseRepositoryInterface {
                 ->whereRaw(" nombre = '".$nombre."'
                                 OR serie = '".$serie."'
                                 OR categoria_id ='".$categoria."'
+                                OR marca_id ='".$marca."'
                                 OR modelo_id = '".$modelo."'")
                 ->orderBy('id', 'desc')
                 ->paginate(5);

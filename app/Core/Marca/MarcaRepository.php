@@ -15,7 +15,7 @@ class MarcaRepository implements BaseRepositoryInterface {
 
     public function all()
     {
-        // TODO: Implement all() method.
+        return Marca::all();
     }
 
     /**
@@ -53,5 +53,11 @@ class MarcaRepository implements BaseRepositoryInterface {
     public function deleted($id)
     {
         // TODO: Implement deleted() method.
+    }
+
+    public function addMarca($inputs){
+        $modelo = new Marca();
+        $modelo->descripcion = $inputs['descripcion_marca'];
+        $modelo->save();
     }
 }
