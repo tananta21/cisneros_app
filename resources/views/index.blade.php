@@ -428,7 +428,7 @@ desired effect
                                 <div class="form-group">
                                     <label for="inputName" class="col-md-2 control-label">Nombre</label>
                                     <div class="col-md-10">
-                                        <input type="text" class="form-control"  placeholder="Nombre Marca" name="nombre" >
+                                        <input type="text" class="form-control"  placeholder="Nombre Marca" name="descripcion_marca" >
                                     </div>
                                 </div>
                             </div>
