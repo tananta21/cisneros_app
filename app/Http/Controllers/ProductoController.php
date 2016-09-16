@@ -31,7 +31,9 @@ class ProductoController extends Controller
 
     public function create()
     {
-        //
+        $inputs = Input::all();
+        $productoNuevo = $this->repoProducto->addProducto($inputs);
+        return redirect()->action('ProductoController@index');
     }
 
     /**

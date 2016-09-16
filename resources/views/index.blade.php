@@ -364,17 +364,128 @@ desired effect
 
                     @yield('contenido_modulos')
 
+
             </div>
+
 
         </section>
         <!-- /.content -->
     </div>
-    <!-- /.content-wrapper -->
 
-    <!-- Main Footer -->
-    {{--<footer class="main-footer">--}}
+    {{--modal crear categoria--}}
+    <div class="container">        <!-- Modal crear -->
+        <div class="modal fade " id="categoria_modal" tabindex="-1" role="dialog" aria-labelledby="gridModalLabel" aria-hidden="true">>
+            <div class="modal-dialog modal-md">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <h4 class="modal-title">Registrar Nueva Categoria</h4>
+                    </div>
+                    <div class="modal-body">
+                        {{--formulario crear--}}
+                        <div class="box box-primary">
 
-    {{--</footer>--}}
+                            {!! Form::open(['action' => 'ProductoController@create','method' => 'post', 'class' => 'form-horizontal', 'role'=>'form']) !!}
+                            <div class="box-body">
+                                <div class="form-group">
+                                    <label for="inputName" class="col-md-2 control-label">Nombre</label>
+                                    <div class="col-md-10">
+                                        <input type="text" class="form-control"  placeholder="Nombre Categoria" name="nombre" >
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="box-footer" style="text-align: center">
+                                {{--<input type="reset" class="btn btn-default" id="cancel" value="Cancelar">--}}
+                                <a href="#" class="btn btn-default"  >Cancelar</a>
+                                <button type="submit" class="btn btn-info">Guardar</button>
+                            </div>
+
+                            <!-- /.box-body -->
+
+                            {!! Form::close() !!}
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    {{--modal crear marca--}}
+    <div class="container">        <!-- Modal crear -->
+        <div class="modal fade " id="marca_modal" tabindex="-1" role="dialog" aria-labelledby="gridModalLabel" aria-hidden="true">>
+            <div class="modal-dialog modal-md">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <h4 class="modal-title">Registrar Nueva Marca</h4>
+                    </div>
+                    <div class="modal-body">
+                        {{--formulario crear--}}
+                        <div class="box box-primary">
+
+                            {!! Form::open(['action' => 'ProductoController@create','method' => 'post', 'class' => 'form-horizontal', 'role'=>'form']) !!}
+                            <div class="box-body">
+                                <div class="form-group">
+                                    <label for="inputName" class="col-md-2 control-label">Nombre</label>
+                                    <div class="col-md-10">
+                                        <input type="text" class="form-control"  placeholder="Nombre Marca" name="nombre" >
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="box-footer" style="text-align: center">
+                                {{--<input type="reset" class="btn btn-default" id="cancel" value="Cancelar">--}}
+                                <a href="#" class="btn btn-default"  >Cancelar</a>
+                                <button type="submit" class="btn btn-info">Guardar</button>
+                            </div>
+
+                            <!-- /.box-body -->
+
+                            {!! Form::close() !!}
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    {{--modal crear modelo--}}
+    <div class="container">        <!-- Modal crear -->
+        <div class="modal fade " id="modelo_modal" tabindex="-1" role="dialog" aria-labelledby="gridModalLabel" aria-hidden="true">>
+            <div class="modal-dialog modal-md">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <h4 class="modal-title">Registrar Nuevo Modelo</h4>
+                    </div>
+                    <div class="modal-body">
+                        {{--formulario crear--}}
+                        <div class="box box-primary">
+
+                            {!! Form::open(['action' => 'ProductoController@createModelo','method' => 'post', 'class' => 'form-horizontal', 'role'=>'form']) !!}
+                            <div class="box-body">
+                                <div class="form-group">
+                                    <label for="inputName" class="col-md-2 control-label">Nombre</label>
+                                    <div class="col-md-10">
+                                        <input type="text" class="form-control"  placeholder="Nombre Modelo" name="nombre" >
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="box-footer" style="text-align: center">
+                                {{--<input type="reset" class="btn btn-default" id="cancel" value="Cancelar">--}}
+                                <a href="#" class="btn btn-default"  >Cancelar</a>
+                                <button type="submit" class="btn btn-info">Guardar</button>
+                            </div>
+
+                            <!-- /.box-body -->
+
+                            {!! Form::close() !!}
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <!-- Control Sidebar -->
     <aside class="control-sidebar control-sidebar-dark" >

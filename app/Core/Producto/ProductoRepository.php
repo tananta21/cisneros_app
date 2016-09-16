@@ -19,7 +19,9 @@ class ProductoRepository implements BaseRepositoryInterface {
 
     public function all()
     {
-       return  $this->producto->paginate(5);
+       return  $this->producto
+           ->orderBy('id', 'desc')
+           ->paginate(5);
     }
 
     /**
@@ -31,11 +33,20 @@ class ProductoRepository implements BaseRepositoryInterface {
         // TODO: Implement create() method.
     }
 
-    /**
-     * @param $id
-     * @param array $attributes
-     * @return mixed
-     */
+    public function addProducto($inputs)
+    {
+        $producto = new Producto();
+        $producto->tipo_producto_id = $inputs['tipo_producto'];
+        $producto->categoria_id = 2;
+        $producto->marca_id = 2;
+        $producto->modelo_id = 2;
+        $producto->serie = $inputs['serie'];
+        $producto->nombre = $inputs['nombre'];
+        $producto->descripcion = $inputs['descripcion'];
+        $producto->estado = $inputs['estado'];
+        $producto->save();
+    }
+
     public function updated($id, array $attributes)
     {
         $producto = Producto::find($id);
@@ -85,10 +96,11 @@ class ProductoRepository implements BaseRepositoryInterface {
 //                ->orwhere('nombre', 'like', "%$nombre%")
 //                ->orWhere('categoria_id','like',"$categoria")
 //                ->orWhere('modelo_id','like',"$modelo")
-                ->whereRaw("nombre LIKE '%".$nombre."%'
+                ->whereRaw(" nombre = '".$nombre."'
                                 OR serie = '".$serie."'
                                 OR categoria_id ='".$categoria."'
                                 OR modelo_id = '".$modelo."'")
+                ->orderBy('id', 'desc')
                 ->paginate(5);
 
 //        $result =DB::table('productos')

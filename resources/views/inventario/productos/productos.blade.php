@@ -44,7 +44,7 @@
 
 
 
-            {!! Form::model(Request::all(),['route'=>'buscar.producto','method' => 'get', 'class' => 'form-horizontal', 'role'=>'form','id'=>'formBuscarProducto']) !!}
+            {!! Form::model(Request::all(),['route'=>'buscar.producto','method' => 'get', 'class' => 'form-horizontal', 'role'=>'form']) !!}
                 <div class="col-lg-12" style="display: flex; flex-direction: row; justify-content: center; padding-bottom: 3rem">
                     <h5 class="col-lg-2">Filtros de Busqueda</h5>
                     <div class="col-lg-2" style="padding-left: 0rem">
@@ -61,11 +61,11 @@
                         </button>
                         <div class="col-lg-2 col-sm-2">
                             {{--<input type="text" class="form-control" placeholder="Serie Producto" name="serie" value>--}}
-                            {!!form::text('serie',null,['class'=>'form-control', 'placeholder'=>'Serie Producto','id'=>'numeroSerie'])!!}
+                            {!!form::text('serie',null,['class'=>'form-control', 'placeholder'=>'Serie Producto'])!!}
                         </div>
                         <div class="col-lg-2 col-sm-2">
                             {{--<input type="text" class="form-control" placeholder="Nombre Producto" name="nombre" value="">--}}
-                            {!!form::text('nombre',null,['class'=>'form-control', 'placeholder'=>'Nombre Producto',])!!}
+                            {!!form::text('nombre',null,['class'=>'form-control', 'placeholder'=>'Nombre Producto'])!!}
                         </div>
                         <div class="col-lg-2 col-sm-2">
                             {!!form::select('categoria',['' => 'Select categoria','1' => '--------','2' => 'llantas','3' => 'sistema electrico','4' => 'motores'],null,['class'=>'form-control'])!!}

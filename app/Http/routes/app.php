@@ -10,30 +10,35 @@ Route::group(['prefix'=>'/', 'middleware' => 'auth' ], function() {
     });
 
 
-    //PRODUCTOS
-//    listar productos
-    Route::get('/inventario/productos', 'ProductoController@index' );
+//PRODUCTOS
+        //    listar productos
+            Route::get('/inventario/productos', 'ProductoController@index' );
 
-//    registrar producto
-    Route::get('/inventario/producto/nuevoproducto', function(){
-        return view('inventario.productos.registrarproducto');
-    });
-//    editar producto
-    Route::get('/inventario/producto/editar/{id}','ProductoController@edit');
+        //    registrar producto
+            Route::get('/inventario/producto/nuevoproducto', function(){
+                return view('inventario.productos.registrarproducto');
+            });
 
-//    actualizar producto
-    Route::post('/inventario/producto/actualizar/{id}', 'ProductoController@update' );
+            Route::post('/inventario/producto/registro','ProductoController@create' );
 
-//    eliminar producto
-    Route::get('/producto/eliminar',[
-        'as'=> 'eliminar.producto',
-        'uses'=>'ProductoController@eliminarProducto'
-    ]);
+        //    editar producto
+            Route::get('/inventario/producto/editar/{id}','ProductoController@edit');
 
-    Route::get('/buscar/producto',[
-        'as'=> 'buscar.producto',
-        'uses'=>'ProductoController@busquedaProducto'
-    ]);
+        //    actualizar producto
+            Route::post('/inventario/producto/actualizar/{id}', 'ProductoController@update' );
+
+        //    eliminar producto
+            Route::get('/producto/eliminar',[
+                'as'=> 'eliminar.producto',
+                'uses'=>'ProductoController@eliminarProducto'
+            ]);
+        //    buscarProducto
+            Route::get('/buscar/producto',[
+                'as'=> 'buscar.producto',
+                'uses'=>'ProductoController@busquedaProducto'
+            ]);
+
+
 
 //Route::get('/buscar/producto',[
 //        'as'=> 'buscar.producto',
