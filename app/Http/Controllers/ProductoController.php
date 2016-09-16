@@ -7,6 +7,7 @@ use App\Core\Producto\ProductoRepository;
 use App\Http\Requests;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Input;
+use Illuminate\Support\Facades\Redirect;
 
 class ProductoController extends Controller
 {
@@ -111,6 +112,12 @@ class ProductoController extends Controller
 //        dd($productos);
         return View('inventario.productos.productos', compact('productos'));
 
+    }
 
+    public function createModelo(){
+        $inputs = Input::all();
+
+        $modeloNuevo = $this->repoModelo->addModelo($inputs);
+        return Redirect::back();
     }
 }

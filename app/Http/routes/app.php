@@ -38,6 +38,8 @@ Route::group(['prefix'=>'/', 'middleware' => 'auth' ], function() {
                 'uses'=>'ProductoController@busquedaProducto'
             ]);
 
+        //registrar modelo
+               Route::post('/inventario/producto/registro','ProductoController@createModelo' );
 
 
 //Route::get('/buscar/producto',[

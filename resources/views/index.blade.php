@@ -466,13 +466,13 @@ desired effect
                                 <div class="form-group">
                                     <label for="inputName" class="col-md-2 control-label">Nombre</label>
                                     <div class="col-md-10">
-                                        <input type="text" class="form-control"  placeholder="Nombre Modelo" name="nombre" >
+                                        <input required="true" type="text" class="form-control"  placeholder="Nombre Modelo" name="descripcion" >
                                     </div>
                                 </div>
                             </div>
                             <div class="box-footer" style="text-align: center">
                                 {{--<input type="reset" class="btn btn-default" id="cancel" value="Cancelar">--}}
-                                <a href="#" class="btn btn-default"  >Cancelar</a>
+                                <a href="" class="btn btn-default"  >Cancelar</a>
                                 <button type="submit" class="btn btn-info">Guardar</button>
                             </div>
 
