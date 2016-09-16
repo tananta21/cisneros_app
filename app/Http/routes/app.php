@@ -21,6 +21,9 @@ Route::group(['prefix'=>'/', 'middleware' => 'auth' ], function() {
 //    editar producto
     Route::get('/inventario/producto/editar/{id}','ProductoController@edit');
 
+//    actualizar producto
+    Route::post('/inventario/producto/actualizar/{id}', 'ProductoController@update' );
+
 //    eliminar producto
     Route::get('/producto/eliminar',[
         'as'=> 'eliminar.producto',
@@ -29,8 +32,13 @@ Route::group(['prefix'=>'/', 'middleware' => 'auth' ], function() {
 
     Route::get('/buscar/producto',[
         'as'=> 'buscar.producto',
-        'uses'=>'ProductoController@buscarProducto'
+        'uses'=>'ProductoController@busquedaProducto'
     ]);
+
+//Route::get('/buscar/producto',[
+//        'as'=> 'buscar.producto',
+//        'uses'=>'ProductoController@buscarProducto'
+//    ]);
 
 
 

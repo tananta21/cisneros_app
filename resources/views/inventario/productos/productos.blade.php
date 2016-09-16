@@ -3,27 +3,33 @@
 @stop
 @section('menu_modulos')
     <div>
-            <header class="header-submenu">
-                <ul class="ul-submenu">
-                    <li>
-                        <div class="caja-ancla-submenu">
-                            <a class="ancla-submenu" href="#" style="padding:2rem; color: white; font-weight: bold" >Productos</a>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="caja-ancla-submenu">
-                            <a class="ancla-submenu" href="#">Almacen Tienda</a>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="caja-ancla-submenu">
-                            <a class="ancla-submenu" href="#"  >Almacen Principal</a>
-                        </div>
-                    </li>
-
-                </ul>
-            </header>
+        <ul class="nav nav-tabs">
+            <li class="nav-item">
+                <a class="nav-link" href="/inventario/productos">Productos</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">Almacen Principal</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">Almacen Tienda</a>
+            </li>
+        </ul>
         </div>
+
+    <script>
+        $(document).ready(function () {
+            var url = window.location;
+            // Will only work if string in href matches with location
+            $('ul.nav a[href="' + url + '"]').parent().addClass('active');
+
+            // Will also work for relative and absolute hrefs
+            $('ul.nav a').filter(function () {
+                return this.href == url;
+            }).parent().addClass('active').parent().parent().addClass('active');
+        });
+    </script>
+
+
 
     @section('contenido_modulos')
         <h3 class="col-lg-12" style="margin-bottom: 0.5rem">Productos / Servicios</h3>
@@ -36,7 +42,9 @@
 
         <div class="col-lg-12" style="margin-top: 0.5rem">
 
-            {!! Form::model(Request::all(),['route'=>'buscar.producto','method' => 'get', 'class' => 'form-horizontal', 'role'=>'form']) !!}
+
+
+            {!! Form::model(Request::all(),['route'=>'buscar.producto','method' => 'get', 'class' => 'form-horizontal', 'role'=>'form','id'=>'formBuscarProducto']) !!}
                 <div class="col-lg-12" style="display: flex; flex-direction: row; justify-content: center; padding-bottom: 3rem">
                     <h5 class="col-lg-2">Filtros de Busqueda</h5>
                     <div class="col-lg-2" style="padding-left: 0rem">
@@ -53,23 +61,19 @@
                         </button>
                         <div class="col-lg-2 col-sm-2">
                             {{--<input type="text" class="form-control" placeholder="Serie Producto" name="serie" value>--}}
-                            {!!form::text('serie',null,['class'=>'form-control', 'placeholder'=>'Serie Producto'])!!}
+                            {!!form::text('serie',null,['class'=>'form-control', 'placeholder'=>'Serie Producto','id'=>'numeroSerie'])!!}
                         </div>
                         <div class="col-lg-2 col-sm-2">
                             {{--<input type="text" class="form-control" placeholder="Nombre Producto" name="nombre" value="">--}}
-                            {!!form::text('nombre',null,['class'=>'form-control', 'placeholder'=>'Nombre Producto'])!!}
+                            {!!form::text('nombre',null,['class'=>'form-control', 'placeholder'=>'Nombre Producto',])!!}
+                        </div>
+                        <div class="col-lg-2 col-sm-2">
+                            {!!form::select('categoria',['' => 'Select categoria','1' => '--------','2' => 'llantas','3' => 'sistema electrico','4' => 'motores'],null,['class'=>'form-control'])!!}
                         </div>
 
                         <div class="col-lg-2 col-sm-2">
-                            {!!form::select('modelo',['' => 'Select modelo','1' => '--------','2' => 'pistera','3' => 'cgl 110'],null,['class'=>'form-control'])!!}
+                            {!!form::select('modelo',['' => 'Select modelo','1' => '--------','2' => 'pistera','3' => 'cgl 110','4'=>'chacarera'],null,['class'=>'form-control'])!!}
                         </div>
-
-                        {{--<div class="col-lg-2 col-sm-2">--}}
-
-                           {{--{!!form::select('categoria',['' => 'Select categoria','1' => '--------','2' => 'motores','3' => 'sistema electrico'],null,['class'=>'form-control'])!!}--}}
-
-                        {{--</div>--}}
-
 
                         {{--<div class="col-lg-2 col-sm-2">--}}
                             {{--{!!form::select('marca',['' => 'Select marca','1' => '--------','2' => 'Yamaha','3' => 'zuzuki','4'=>'taiwan'],null,['class'=>'form-control'])!!}--}}
@@ -77,6 +81,7 @@
                     </div>
                 </div>
             {!! Form::close() !!}
+
         </div>
 
 
@@ -84,13 +89,13 @@
             <table class="table table-hover">
                 <tbody>
                 <tr>
-                    <th>N°</th>
-                    <th>CODIGO</th>
+                    <th>N° ID</th>
+                    <th>SERIE</th>
                     <th>NOMBRE</th>
-                    <th>STOCK ACTUAL</th>
-                    <th>MODELO</th>
-                    <th>MARCA</th>
+                    <th>NOMBRE</th>
                     <th>CATEGORIA</th>
+                    {{--<th>MARCA</th>--}}
+                    <th>MODELO</th>
                     <th>ESTADO</th>
                     <th>ACCIONES</th>
                 </tr>
@@ -100,9 +105,9 @@
                         <td>{{$producto->serie}}</td>
                         <td>{{$producto->nombre}}</td>
                         <td>{{$producto->nombre}}</td>
+                        <td>{{$producto->categoria->descripcion}}</td>
+                        {{--<td>{{$producto->marca->descripcion}}</td>--}}
                         <td>{{$producto->modelo->descripcion}}</td>
-                        <td>{{$producto->modelo->marca->descripcion}}</td>
-                        <td>{{$producto->modelo->categoria->descripcion}}</td>
                         @if($producto->estado == 1)
                             <td>Activo</td>
                         @else

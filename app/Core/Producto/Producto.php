@@ -13,10 +13,20 @@ class Producto extends Model
     {
         return $this->belongsTo('App\Core\TipoProducto\TipoProducto');
     }
+    public function categoria()
+    {
+        return $this->belongsTo('App\Core\Categoria\Categoria');
+    }
+
+    public function marca()
+    {
+        return $this->belongsTo('App\Core\Marca\Marca');
+    }
     public function modelo()
     {
         return $this->belongsTo('App\Core\Modelo\Modelo');
     }
+
 
 
     public function scopeSerie($query, $serie)

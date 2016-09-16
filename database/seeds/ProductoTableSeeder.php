@@ -15,6 +15,9 @@ class ProductoTableSeeder extends Seeder
 
             $name = $faker->name;
             Producto::create(array(
+                'marca_id' => $faker->numberBetween(1, 6),
+                'categoria_id' => $faker->numberBetween(1, 4),
+                'modelo_id' => $faker->numberBetween(1, 4),
                 'tipo_producto_id' => $faker->numberBetween(1, 2),
                 'modelo_id' => $faker->numberBetween(1, 4),
                 'serie' => $faker->ean8,

@@ -2,7 +2,6 @@
 @section('vistainicial')
 @stop
 @section('contenido_modulos')
-
     <h3 class="col-lg-12" style="margin-bottom: 0.5rem">Registrar Producto / Servicio</h3>
     <hr class="col-lg-12 linea-titulo" size="5px" color="green"/>
     <div>
@@ -22,7 +21,7 @@
             <div class="col-lg-4 col-sm-12 col-xs-12">
                 <h5 class="col-lg-12 titulos">Serie o Codigo Producto</h5>
                 <div class="col-lg-12 col-sm-12 col-xs-12">
-                    <input type="text" class="form-control" placeholder="Serie o Codigo Producto" name="nombre" value="">
+                    <input type="text" class="form-control" placeholder="Serie o Codigo Producto" name="serie" value="">
                 </div>
             </div>
             <div class="col-lg-8 col-sm-12 col-xs-12">
@@ -37,7 +36,7 @@
             <div class="col-lg-4 col-sm-12 col-xs-12">
                 <div  class="col-lg-12" style="display: flex;  align-items: center;padding: 0rem ">
                     <h5 onclick="" class="col-lg-4 titulos">Marca</h5>
-                    <a href="" data-toggle="control-sidebar"><i class="fa fa-plus-square fa-1px"></i> Add</a>
+                    <a href=""><i class="fa fa-plus-square fa-1px"></i> Add</a>
                 </div>
                 <div class="col-lg-12 col-sm-12 col-xs-12">
                     <select class="form-control" name="categoria">

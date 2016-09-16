@@ -8,6 +8,7 @@
 
 namespace App\Core\Producto;
 use App\Core\Contracts\BaseRepositoryInterface;
+use  DB;
 
 class ProductoRepository implements BaseRepositoryInterface {
 
@@ -37,7 +38,14 @@ class ProductoRepository implements BaseRepositoryInterface {
      */
     public function updated($id, array $attributes)
     {
-        // TODO: Implement updated() method.
+        $producto = Producto::find($id);
+        $producto->modelo_id = $attributes['modelo'];
+        $producto->serie = $attributes['serie'];
+        $producto->nombre = $attributes['nombre'];
+        $producto->descripcion = $attributes['descripcion'];
+        $producto->estado = $attributes['estado'];
+        $producto->save();
+
     }
 
     /**
@@ -68,6 +76,33 @@ class ProductoRepository implements BaseRepositoryInterface {
 //            ->categoria($data['categoria'])
             ->modelo($data['modelo'])
             ->paginate(5);
+    }
+
+    public function busquedaProducto($nombre,$serie,$categoria,$modelo){
+
+            return $this->producto->select('id','categoria_id','modelo_id','serie', 'nombre','estado')
+//                ->where('serie',$serie)
+//                ->orwhere('nombre', 'like', "%$nombre%")
+//                ->orWhere('categoria_id','like',"$categoria")
+//                ->orWhere('modelo_id','like',"$modelo")
+                ->whereRaw("nombre LIKE '%".$nombre."%'
+                                OR serie = '".$serie."'
+                                OR categoria_id ='".$categoria."'
+                                OR modelo_id = '".$modelo."'")
+                ->paginate(5);
+
+//        $result =DB::table('productos')
+//                    ->selectRaw("productos.id,serie,nombre ,categorias.descripcion, marca_id, modelo_id, estado")
+//                    ->join('categorias', 'productos.categoria_id', '=', 'categorias.id')
+//                     ->whereRaw("nombre = '".$nombre."'
+//                                OR serie = '".$serie."'
+//                                OR categoria_id ='".$categoria."'
+//                                OR modelo_id = '".$modelo."'")
+//                    ->paginate(5);
+
+
+//        return $result;
+
     }
 
 
