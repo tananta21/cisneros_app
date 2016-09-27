@@ -7,21 +7,25 @@
  */
 
 namespace App\Core\Producto;
-use App\Core\Contracts\BaseRepositoryInterface;
-use  DB;
 
-class ProductoRepository implements BaseRepositoryInterface {
+use App\Core\Contracts\BaseRepositoryInterface;
+use DB;
+
+class ProductoRepository implements BaseRepositoryInterface
+{
 
     protected $producto;
-    public function __construct(){
+
+    public function __construct()
+    {
         $this->producto = new Producto();
     }
 
     public function all()
     {
-       return  $this->producto
-           ->orderBy('id', 'desc')
-           ->paginate(5);
+        return $this->producto
+            ->orderBy('id', 'desc')
+            ->paginate(4);
     }
 
     /**
@@ -42,6 +46,10 @@ class ProductoRepository implements BaseRepositoryInterface {
         $producto->modelo_id = $inputs['modelo'];
         $producto->serie = $inputs['serie'];
         $producto->nombre = $inputs['nombre'];
+        $producto->precio = $inputs['precio'];
+        $producto->stock_actual = $inputs['stock_actual'];
+        $producto->stock_minimo = $inputs['stock_minimo'];
+        $producto->stock_maximo = $inputs['stock_maximo'];
         $producto->descripcion = $inputs['descripcion'];
         $producto->estado = $inputs['estado'];
         $producto->save();
@@ -56,6 +64,10 @@ class ProductoRepository implements BaseRepositoryInterface {
         $producto->modelo_id = $attributes['modelo'];
         $producto->serie = $attributes['serie'];
         $producto->nombre = $attributes['nombre'];
+        $producto->precio = $attributes['precio'];
+        $producto->stock_actual = $attributes['stock_actual'];
+        $producto->stock_minimo = $attributes['stock_minimo'];
+        $producto->stock_maximo = $attributes['stock_maximo'];
         $producto->descripcion = $attributes['descripcion'];
         $producto->estado = $attributes['estado'];
         $producto->save();
@@ -83,7 +95,7 @@ class ProductoRepository implements BaseRepositoryInterface {
 
     public function buscarProducto($data)
     {
-       return  $this->producto
+        return $this->producto
             ->serie($data['serie'])
             ->nombre($data['nombre'])
 //            ->marca($data['marca'])
@@ -92,20 +104,21 @@ class ProductoRepository implements BaseRepositoryInterface {
             ->paginate(5);
     }
 
-    public function busquedaProducto($nombre,$serie,$categoria,$marca,$modelo){
+    public function busquedaProducto($nombre, $serie, $categoria, $marca, $modelo)
+    {
 
-            return $this->producto->select('id','tipo_producto_id','marca_id','categoria_id','modelo_id','serie', 'nombre','estado')
+        return $this->producto->select('id', 'tipo_producto_id', 'marca_id', 'categoria_id', 'modelo_id', 'serie', 'nombre', 'estado')
 //                ->where('serie',$serie)
 //                ->orwhere('nombre', 'like', "%$nombre%")
 //                ->orWhere('categoria_id','like',"$categoria")
 //                ->orWhere('modelo_id','like',"$modelo")
-                ->whereRaw(" nombre = '".$nombre."'
-                                OR serie = '".$serie."'
-                                OR categoria_id ='".$categoria."'
-                                OR marca_id ='".$marca."'
-                                OR modelo_id = '".$modelo."'")
-                ->orderBy('id', 'desc')
-                ->paginate(5);
+            ->whereRaw(" nombre = '" . $nombre . "'
+                                OR serie = '" . $serie . "'
+                                OR categoria_id ='" . $categoria . "'
+                                OR marca_id ='" . $marca . "'
+                                OR modelo_id = '" . $modelo . "'")
+            ->orderBy('id', 'desc')
+            ->paginate(4);
 
 //        $result =DB::table('productos')
 //                    ->selectRaw("productos.id,serie,nombre ,categorias.descripcion, marca_id, modelo_id, estado")
@@ -119,6 +132,18 @@ class ProductoRepository implements BaseRepositoryInterface {
 
 //        return $result;
 
+    }
+
+    public function productoEnVentas($codigo, $tipo)
+    {
+        if (trim($codigo) != "") {
+            return $this->producto->select('serie', 'nombre','precio','stock_actual','id')
+                ->where('serie', $codigo)
+                ->orWhere('nombre', 'like', "%$codigo%")
+//                ->orWhere('tipo_producto_id', 'like', "%$tipo%")
+                ->get();
+        }
+        return array();
     }
 
 

@@ -30,7 +30,7 @@
         <p>Para poder ingresar al sistema usted debera autenticarse con sus datos registrados previamente por el administrador
             <!--Continually expanded and constantly improved Inspinia Admin Them (IN+)-->
         </p>
-        <a class=" " href="http://multiservicioscisneros.local/">Ir a Pagina Principal</a>
+        {{--<a class=" " href="http://multiservicioscisneros.local/">Ir a Pagina Principal</a>--}}
         <form class="m-t" role="form" action="/login" method="post" >
             {!! csrf_field() !!}
             <div class="form-group">

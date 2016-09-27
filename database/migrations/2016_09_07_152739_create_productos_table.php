@@ -20,6 +20,10 @@ class CreateProductosTable extends Migration
             $table->integer('modelo_id')->unsigned();
             $table->string('serie',50);
             $table->string('nombre');
+            $table->decimal('precio');
+            $table->decimal('stock_actual');
+            $table->decimal('stock_minimo');
+            $table->decimal('stock_maximo');
             $table->string('descripcion');
             $table->boolean('estado');
             $table->timestamps();

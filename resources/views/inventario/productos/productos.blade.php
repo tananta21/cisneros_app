@@ -32,31 +32,24 @@
 
 
     @section('contenido_modulos')
-        <h3 class="col-lg-12" style="margin-bottom: 0.5rem">Productos / Servicios</h3>
-        <hr class="col-lg-12 linea-titulo" size="5px" color="green"/>
-        <div class="col-lg-12">
-            <a href="/inventario/producto/nuevoproducto" type="button" class="btn btn-w-m btn-primary"> AGREGAR NUEVO PRODUCTO
+        <h3 class="col-lg-3" style="margin-bottom: 0.5rem">Productos y Servicios</h3>
+        <div class="col-lg-3" style="margin-top: 20px">
+            <a href="/inventario/producto/nuevoproducto" type="button" class="btn btn-primary btn-sm"> NUEVO PRODUCTO
                 <i class="fa fa-plus-square fa-1px" style="margin-left: 1rem"></i>
             </a>
         </div>
+        <hr class="col-lg-12 linea-titulo" size="5px" color="green"/>
+
 
         <div class="col-lg-12" style="margin-top: 0.5rem">
 
 
 
             {!! Form::model(Request::all(),['route'=>'buscar.producto','method' => 'get', 'class' => 'form-horizontal', 'role'=>'form']) !!}
-                <div class="col-lg-12" style="display: flex; flex-direction: row; justify-content: center; padding-bottom: 3rem">
-                    <h5 class="col-lg-2">Filtros de Busqueda</h5>
-                    <div class="col-lg-2" style="padding-left: 0rem">
-                        {{--<select class="form-control" name="tipo_producto">--}}
-                            {{--<option value="">Productos</option>--}}
-                            {{--<option value="2">Servicios</option>--}}
-                        {{--</select>--}}
-                    </div>
-                </div>
+
                 <div class="box-body">
                     <div class="form-group">
-                        <button type="submit" class="btn btn-w-m btn-primary col-lg-2"> Buscar
+                        <button type="submit" class="btn btn-primary btn-sm col-lg-1"> Buscar
                             <i class="fa fa-search fa-1px" style="margin-left: 1rem"></i>
                         </button>
                         <div class="col-lg-2 col-sm-2">

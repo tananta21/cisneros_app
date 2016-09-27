@@ -95,19 +95,19 @@
             <div class="col-lg-4 col-sm-12 col-xs-12">
                 <h5 class="col-lg-12 titulos">Stock Actual</h5>
                 <div class="col-lg-12 col-sm-12 col-xs-12">
-                   <input readonly="true" type="text" class="form-control" placeholder="Stock Actual" name="stock_actual" value="">
+                   <input type="number" class="form-control" placeholder="Stock Actual" name="stock_actual" value="">
                 </div>
             </div>
             <div class="col-lg-4 col-sm-12 col-xs-12">
                 <h5 class="col-lg-12 titulos">Stock Minimo</h5>
                 <div class="col-lg-12 col-sm-12 col-xs-12" >
-                    <input readonly="true" type="text" class="form-control" placeholder="Stock Minimo" name="stock_minimo" value="">
+                    <input  type="number" class="form-control" placeholder="Stock Minimo" name="stock_minimo" value="">
                 </div>
             </div>
             <div class="col-lg-4 col-sm-12 col-xs-12">
                 <h5 class="col-lg-12 titulos">Stock Maximo</h5>
                 <div class="col-lg-12 col-sm-12 col-xs-12" >
-                    <input readonly="true" type="text" class="form-control" placeholder="Stock Maximo" name="stock_maximo" value="">
+                    <input  type="number" class="form-control" placeholder="Stock Maximo" name="stock_maximo" value="">
                 </div>
             </div>
         </div>
@@ -116,7 +116,7 @@
             <div class="col-lg-4 col-sm-12 col-xs-12">
                 <h5 class="col-lg-12 titulos">Precio</h5>
                 <div class="col-lg-12 col-sm-12 col-xs-12">
-                    <input readonly="true" type="text" class="form-control" placeholder="S/." name="precio" value="">
+                    <input step="any" required type="number" class="form-control" placeholder="S/." name="precio" value="">
                 </div>
             </div>
             <div class="col-lg-8 col-sm-12 col-xs-12">

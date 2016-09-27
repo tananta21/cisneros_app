@@ -3,7 +3,7 @@
 @stop
 @section('contenido_modulos')
 
-    <h3 class="col-lg-12" style="margin-bottom: 0.5rem">Editar Producto / Servicio</h3>
+    <h4 class="col-lg-12" style="margin-bottom: 0.5rem">Editar Producto / Servicio</h4>
     <hr class="col-lg-12 linea-titulo" size="5px" color="green"/>
     <div>
         <form method="POST" action="/inventario/producto/actualizar/{{$editarProducto->id}}" accept-charset="UTF-8" class="form-horizontal" role="form">
@@ -15,8 +15,8 @@
                 <div class="col-lg-12 col-sm-12  col-xs-12">
                     <select class="form-control" name="tipo_producto">
                         @if($editarProducto->tipo_producto_id == 1)
-                        <option value="1" selected>Productos</option>
-                        <option value="2" >Servicios</option>
+                        <option value="1" selected>Producto</option>
+                        <option value="2" >Servicio</option>
                         @else
                         <option value="2" selected>Servicio</option>
                         <option value="1" >Producto</option>
@@ -105,19 +105,19 @@
                 <div class="col-lg-4 col-sm-12 col-xs-12">
                     <h5 class="col-lg-12 titulos">Stock Actual</h5>
                     <div class="col-lg-12 col-sm-12 col-xs-12">
-                        <input readonly="true" type="text" class="form-control" placeholder="Stock Actual" name="stock_actual" value="">
+                        <input  type="number" class="form-control" placeholder="Stock Actual" name="stock_actual" value="{{$editarProducto->stock_actual}}">
                     </div>
                 </div>
                 <div class="col-lg-4 col-sm-12 col-xs-12">
                     <h5 class="col-lg-12 titulos">Stock Minimo</h5>
                     <div class="col-lg-12 col-sm-12 col-xs-12" >
-                        <input readonly="true" type="text" class="form-control" placeholder="Stock Minimo" name="stock_minimo" value="">
+                        <input  type="number" class="form-control" placeholder="Stock Minimo" name="stock_minimo" value="{{$editarProducto->stock_minimo}}">
                     </div>
                 </div>
                 <div class="col-lg-4 col-sm-12 col-xs-12">
                     <h5 class="col-lg-12 titulos">Stock Maximo</h5>
                     <div class="col-lg-12 col-sm-12 col-xs-12" >
-                        <input readonly="true" type="text" class="form-control" placeholder="Stock Maximo" name="stock_maximo" value="">
+                        <input  type="number" class="form-control" placeholder="Stock Maximo" name="stock_maximo" value="{{$editarProducto->stock_maximo}}">
                     </div>
                 </div>
             </div>
@@ -126,7 +126,7 @@
                 <div class="col-lg-4 col-sm-12 col-xs-12">
                     <h5 class="col-lg-12 titulos">Precio</h5>
                     <div class="col-lg-12 col-sm-12 col-xs-12">
-                        <input readonly="true" type="text" class="form-control" placeholder="S/. " name="precio" value="">
+                        <input required  type="number" class="form-control" placeholder="S/. " name="precio" value="{{$editarProducto->precio}}">
                     </div>
                 </div>
                 <div class="col-lg-8 col-sm-12 col-xs-12">

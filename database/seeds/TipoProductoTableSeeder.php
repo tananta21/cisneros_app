@@ -13,10 +13,10 @@ class TipoProductoTableSeeder extends Seeder
     public function run()
     {
         TipoProducto::create(array(
-            'descripcion'=>'Productos'
+            'descripcion'=>'Producto'
         ));
         TipoProducto::create(array(
-            'descripcion'=>'Servicios'
+            'descripcion'=>'Servicio'
         ));
     }
 }

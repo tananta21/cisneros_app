@@ -12,18 +12,18 @@ class CreateDetalleStockProductosTable extends Migration
      */
     public function up()
     {
-        Schema::create('detalle_stock_productos', function (Blueprint $table) {
-            $table->increments('id');
-            $table->integer('producto_id')->unsigned();
-            $table->integer('almacen_id')->unsigned();
-            $table->integer('unidad_medida_id')->unsigned();
-            $table->decimal('precio');
-            $table->decimal('stock_actual');
-            $table->decimal('stock_minimo');
-            $table->decimal('stock_maximo');
-            $table->timestamps();
-            $table->softDeletes();
-        });
+//        Schema::create('detalle_stock_productos', function (Blueprint $table) {
+//            $table->increments('id');
+//            $table->integer('producto_id')->unsigned();
+//            $table->integer('almacen_id')->unsigned();
+//            $table->integer('unidad_medida_id')->unsigned();
+//            $table->decimal('precio');
+//            $table->decimal('stock_actual');
+//            $table->decimal('stock_minimo');
+//            $table->decimal('stock_maximo');
+//            $table->timestamps();
+//            $table->softDeletes();
+//        });
     }
 
     /**
@@ -33,6 +33,6 @@ class CreateDetalleStockProductosTable extends Migration
      */
     public function down()
     {
-        Schema::drop('detalle_stock_productos');
+//        Schema::drop('detalle_stock_productos');
     }
 }

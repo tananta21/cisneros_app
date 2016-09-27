@@ -29,10 +29,6 @@ class CreateRelationshipProductosTable extends Migration
             $table->foreign('modelo_id')
                 ->references('id')->on('modelos')
                 ->onDelete('cascade');
-
-
-
-
         });
     }
 

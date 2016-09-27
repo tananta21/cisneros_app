@@ -12,11 +12,11 @@ class CreateUnidadMedidasTable extends Migration
      */
     public function up()
     {
-        Schema::create('unidad_medidas', function (Blueprint $table) {
-            $table->increments('id');
-            $table->timestamps();
-            $table->softDeletes();
-        });
+//        Schema::create('unidad_medidas', function (Blueprint $table) {
+//            $table->increments('id');
+//            $table->timestamps();
+//            $table->softDeletes();
+//        });
     }
 
     /**
@@ -26,6 +26,6 @@ class CreateUnidadMedidasTable extends Migration
      */
     public function down()
     {
-        Schema::drop('unidad_medidas');
+//        Schema::drop('unidad_medidas');
     }
 }

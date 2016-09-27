@@ -44,12 +44,36 @@ Route::group(['prefix'=>'/', 'middleware' => 'auth' ], function() {
         //registrar modelo
                Route::post('/inventario/modelo/registro','ProductoController@createModelo' );
 
-
-
 //Route::get('/buscar/producto',[
 //        'as'=> 'buscar.producto',
 //        'uses'=>'ProductoController@buscarProducto'
 //    ]);
+
+//VENTAS
+
+    Route::get('/venta/nuevaventa', function(){
+        return view('venta.nuevaventa');
+    });
+
+    Route::get('/venta/buscarproducto','VentaController@buscarProducto');
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
