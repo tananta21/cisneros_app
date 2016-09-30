@@ -65,6 +65,11 @@ Route::group(['prefix'=>'/', 'middleware' => 'auth' ], function() {
         return view('venta.registroventa');
     });
 
+//  MODULO MANTENIMIENTO
+    Route::get('/mantenimiento/principal', function(){
+        return view('mantenimiento.principal');
+    });
+
 
 
 
