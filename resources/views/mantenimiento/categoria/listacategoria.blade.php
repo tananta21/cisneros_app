@@ -1,3 +1,3 @@
 <div>
-    lista
+    lista categorias
 </div>
