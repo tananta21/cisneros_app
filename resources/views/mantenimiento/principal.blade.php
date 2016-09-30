@@ -2,7 +2,6 @@
 @section('vistainicial')
 @stop
 @section('menu_modulos')
-    {{--continuar--}}
 
         <div>
             <ul class="nav nav-tabs">
