@@ -191,7 +191,7 @@ desired effect
                     <a href="#"><i class="fa fa-lock"></i> <span>Seguridad</span> </a>
                 </li>
                 <li class="treeview">
-                    <a href="#"><i class="fa fa-cogs"></i> <span>Mantenimientos</span> </a>
+                    <a href="/mantenimiento/principal"><i class="fa fa-cogs"></i> <span>Mantenimientos</span> </a>
                 </li>
 
             </ul>
