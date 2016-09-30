@@ -54,9 +54,16 @@ Route::group(['prefix'=>'/', 'middleware' => 'auth' ], function() {
     Route::get('/venta/nuevaventa', function(){
         return view('venta.nuevaventa');
     });
-
+//    buscar producto en la vista de venta
     Route::get('/venta/buscarproducto','VentaController@buscarProducto');
-
+//    listar las ventas realizadas
+    Route::get('/venta/lista', function(){
+        return view('venta.listaventa');
+    });
+//    registro de una nueva venta
+    Route::get('/venta/registro', function(){
+        return view('venta.registroventa');
+    });
 
 
 
