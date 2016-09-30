@@ -8,7 +8,7 @@
                 <a class="nav-link" href="/venta/nuevaventa">Nueva Venta</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">Lista Ventas</a>
+                <a class="nav-link" href="/venta/lista">Lista Ventas</a>
             </li>
         </ul>
     </div>
@@ -238,12 +238,13 @@
         {{--agregar fila tabla detalle venta--}}
         <script type="text/javascript">
             function agregar(id) {
+
                 $('#total_productos').css('display','none');
                 var tbody = $('#myTable').children('tbody');
                 var table = tbody.length ? tbody : $('#myTable');
                 table.append(
                         '<tr id="filaPedido'+id+'">' +
-                        '</td><input type="hidden" name="idproducto[]" value="'+id+'"/></td>' +
+                        '</td><input class="productosid" type="hidden" name="idproducto[]" value="'+id+'"/></td>' +
                         '<td><input step="any" type="number" class="cantidades" min="0" value="0"  style="width: 5rem"   onchange="fncSumar('+id+')"  name="cantidad[]" id="cantidad'+id+'"/>'+
                         '<td>'+$("#nombreProducto"+id).val()+'</td>' +
                         '<td><input step="any" type="number" min="0" style="width: 6rem" onchange="fncSumar('+id+')"  id="precios'+id+'"  name="precio[]" value="'+$("#precio"+id).val()+'"/></td>' +
@@ -293,7 +294,7 @@
             function vender(){
                 var num_filas = ($('#cuerpo tr:last').index() + 1);
                 if(num_filas==0){
-                    alert('Registre al menos un producto')
+                    alert('Registre al menos un producto');
                 }
                 else{
                     $("#venta").attr('data-toggle','modal');
@@ -391,7 +392,7 @@
                             <span>S/. </span><input style="width: 25rem" type="number" step="any" name="monto_recibido" min="0"/>
                         </div>
                         <div style="text-align: center; margin-top: 2rem">
-                            <button style="text-align: center" class="btn btn-primary btn-md">Registrar Venta</button>
+                            <a href="/venta/registro" style="text-align: center" class="btn btn-primary btn-md">Registrar Venta</a>
                         </div>
                     </div>
                 </div>
