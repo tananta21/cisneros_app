@@ -37,8 +37,7 @@ Route::group(['prefix'=>'/', 'middleware' => 'auth' ], function() {
                 'uses'=>'ProductoController@busquedaProducto'
             ]);
 
-        //registrar categoria
-               Route::post('/inventario/categoria/registro','ProductoController@createCategoria' );
+
         //registrar marca
                Route::post('/inventario/marca/registro','ProductoController@createMarca' );
         //registrar modelo
@@ -69,6 +68,20 @@ Route::group(['prefix'=>'/', 'middleware' => 'auth' ], function() {
     Route::get('/mantenimiento/principal', function(){
         return view('mantenimiento.principal');
     });
+//    mantenimiento categoria:listar categorias
+    Route::get('/mantenimiento/categoria','MantenimientoController@listarCategoria');
+    //registrar categoria
+    Route::post('/inventario/categoria/registro','MantenimientoController@crearCategoria' );
+    //    editar categoria
+    Route::get('/mantenimiento/categoria/editar',['as'=> 'editar.categoria','uses'=>'MantenimientoController@editarCategoria']);
+    //  actualizar categoria
+    Route::post('/mantenimiento/categoria/actualizar',['as'=> 'editar.actualizar','uses'=>'MantenimientoController@actualizarCategoria']);
+    //    eliminar categoria: cambiar de estado
+    Route::get('/mantenimiento/categoria/eliminar',['as'=> 'eliminar.categoria','uses'=>'MantenimientoController@eliminarCategoria']);
+    //      buscar categoria
+    Route::get('/mantenimiento/categoria/buscar',['as'=> 'buscar.categoria','uses'=>'MantenimientoController@buscarCategoria']);
+
+
 
 
 

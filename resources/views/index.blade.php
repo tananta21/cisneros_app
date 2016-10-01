@@ -297,10 +297,18 @@ desired effect
         </section>
         <!-- /.content -->
     </div>
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $('#categoria_modal').on('shown.bs.modal',
+                    function () {
+                        $('#idcat').focus();
+                    });
+        });
+    </script>
 
     {{--modal crear categoria--}}
     <div class="container">        <!-- Modal crear -->
-        <div class="modal fade " id="categoria_modal" tabindex="-1" role="dialog" aria-labelledby="gridModalLabel" aria-hidden="true">>
+        <div class="modal fade " id="categoria_modal" tabindex="-1" role="dialog" data-backdrop="static" aria-labelledby="gridModalLabel" aria-hidden="true">>
             <div class="modal-dialog modal-md">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -310,14 +318,19 @@ desired effect
                     <div class="modal-body">
                         {{--formulario crear--}}
                         <div class="box box-primary">
-
-                            {!! Form::open(['action' => 'ProductoController@createCategoria','method' => 'post', 'class' => 'form-horizontal', 'role'=>'form']) !!}
+                            {!! Form::open(['action' => 'MantenimientoController@crearCategoria','method' => 'post', 'class' => 'form-horizontal', 'role'=>'form']) !!}
                             <div class="box-body">
                                 <div class="form-group">
-                                    <label for="inputName" class="col-md-2 control-label">Nombre</label>
-                                    <div class="col-md-10">
-                                        <input required="true" type="text" class="form-control"  placeholder="Nombre Categoria" name="descripcion_categoria" >
+                                    <label for="inputName" class="col-md-2 control-label">Categoria</label>
+                                    <div class="col-md-6">
+                                        <input id="idcat" required="true" maxlength="30" type="text" class="form-control"  placeholder="Nombre Categoria" name="descripcion_categoria">
+                                        <span style="font-size: 1.2rem; color: #0000ff; padding-left: 0.3rem">Maximo 30 caracteres</span>
                                     </div>
+                                    <div class="col-md-4">
+                                        <input id="activo"  type="radio"  name="estado" value="1" checked> <label style="cursor: pointer" for="activo"> Activo</label>
+                                        <input id="inactivo" type="radio" name="estado" value="0" style="margin-left: 2rem"> <label style="cursor: pointer" for="inactivo"> Inactivo </label>
+                                    </div>
+
                                 </div>
                             </div>
                             <div class="box-footer" style="text-align: center">
@@ -354,7 +367,7 @@ desired effect
                                 <div class="form-group">
                                     <label for="inputName" class="col-md-2 control-label">Nombre</label>
                                     <div class="col-md-10">
-                                        <input required="true" type="text" class="form-control"  placeholder="Nombre Marca" name="descripcion_marca" >
+                                        <input  required="true" type="text" class="form-control"  placeholder="Nombre Marca" name="descripcion_marca" >
                                     </div>
                                 </div>
                             </div>
