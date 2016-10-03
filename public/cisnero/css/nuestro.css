@@ -46,3 +46,8 @@
     transition: .8s;;
 }
 
+.gestor:hover{
+    font-size: 1.5rem;
+    transition: .8s;
+}
+
