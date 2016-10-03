@@ -11,7 +11,7 @@
             </ul>
         </div>
         <div class="text-center" style="padding-top:.1rem; margin-top: 0">
-            <h3 style="font-weight: bold">BIENVENIDOS A MANTENIMEINTO</h3>
+            <h3 style="font-weight: bold">BIENVENIDOS A MANTENIMIENTO</h3>
         </div>
         <br>
         <div style="text-align:center" class=" col-md-12">
@@ -28,7 +28,7 @@
                     <span class="caret"></span>
                 </button>
                 <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-                    <li><a href="#">tipo producto</a></li>
+                    <li><a href="/mantenimiento/tipoproducto">tipo producto</a></li>
                     <li role="separator" class="divider"></li>
                     <li><a href="/mantenimiento/categoria">Categorias</a></li>
                     <li role="separator" class="divider"></li>
@@ -36,20 +36,23 @@
                     <li role="separator" class="divider"></li>
                     <li><a href="/mantenimiento/modelo">Modelos</a></li>
                     <li role="separator" class="divider"></li>
-                    <li><a href="#">unidad de medida</a></li>
+                    {{--<li><a href="#">unidad de medida</a></li>--}}
                 </ul>
             </div>
             <div class="dropdown col-lg-3" >
                 <button style="color:white;background-color:#1ab394;border: none" class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-                    <span style="font-weight: bold">Mant. Clientes</span>
+                    <span style="font-weight: bold">Mant. Empleados y Clientes</span>
                     <span class="caret"></span>
                 </button>
                 <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-                    <li><a href="#">tipo cliente</a></li>
+                    <li><a href="/mantenimiento/tipoempleado">Tipo Empleados</a></li>
                     <li role="separator" class="divider"></li>
-                    <li><a href="#">estado civil</a></li>
+                    <li><a href="/mantenimiento/estadocivil">Estado Civil</a></li>
                     <li role="separator" class="divider"></li>
-                    <li><a href="#">grado de instruccion</a></li>
+                    <li><a href="/mantenimiento/gradoinstruccion">Grado Instruccion</a></li>
+                    <li role="separator" class="divider"></li>
+                    <li><a href="/mantenimiento/ocupacion">Ocupacion</a></li>
+
 
                 </ul>
             </div>

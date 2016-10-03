@@ -164,6 +164,51 @@ class MantenimientoController extends Controller
         return view('mantenimiento.producto.modelo.listamodelo', compact('marcas'));
     }
 
+//    ==========================================================================================================================
+//      TIPO PRODUCTO
+//    mantenimiento tipo_producto: listar producto
+
+    public function listarTipoProducto(){
+        $marcas = $this->repoTipoProducto->all();
+        return view('mantenimiento.producto.tipoproducto.listatipoproducto', compact('marcas'));
+    }
+
+//  crear modelo
+    public function crearTipoProducto(){
+        $inputs = Input::all();
+        $registronuevo = $this->repoTipoProducto->nuevoTipoProducto($inputs);
+        return Redirect::back();
+    }
+
+    //editar registro
+    public function editarTipoProducto(){
+        $id_recuperado = Input::get('id');
+        $registro = $this->repoTipoProducto->editarTipoProducto($id_recuperado);
+        return response()->json($registro);
+    }
+    //    actualizar registro
+    public function actualizarTipoProducto(){
+        $inputs = Input::all();
+        $registro = $this->repoTipoProducto->actualizarTipoProducto($inputs);
+        return Redirect::back();
+    }
+
+    //    eliminar :cambiar de estado
+    public function eliminarTipoProducto()
+    {
+        $id_recuperado = Input::get('id');
+        $id = json_decode(json_encode($id_recuperado));
+        $eliminardato = $this->repoTipoProducto->eliminarTipoProducto($id);
+        return response()->json();
+    }
+
+    //    buscar modelo
+    public function buscarTipoProducto(){
+        $estado = Input::get('estado');
+        $marcas = $this->repoTipoProducto->buscarTipoProducto($estado);
+        return view('mantenimiento.producto.tipoproducto.listatipoproducto', compact('marcas'));
+    }
+
 
 
     public function create()

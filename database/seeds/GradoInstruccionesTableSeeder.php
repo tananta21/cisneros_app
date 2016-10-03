@@ -13,6 +13,7 @@ class GradoInstruccionesTableSeeder extends Seeder
     {
         \DB::table('grado_instrucciones')->insert([
             'descripcion' => 'mecanico',
+            'estado' => 1,
         ]);
     }
 }

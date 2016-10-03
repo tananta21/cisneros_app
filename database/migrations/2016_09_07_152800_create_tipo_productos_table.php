@@ -15,6 +15,7 @@ class CreateTipoProductosTable extends Migration
         Schema::create('tipo_productos', function (Blueprint $table) {
             $table->increments('id');
             $table->string('descripcion');
+            $table->boolean('estado');
             $table->timestamps();
             $table->softDeletes();
         });

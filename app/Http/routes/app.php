@@ -1,6 +1,8 @@
 <?php
 
-
+Route::get('/login', 'Auth\AuthController@getLogin');
+Route::post('/login', 'Auth\AuthController@postLogin');
+Route::get('/logout', 'Auth\AuthController@getLogout');
 
 
 Route::group(['prefix'=>'/', 'middleware' => 'auth' ], function() {
@@ -112,6 +114,82 @@ Route::group(['prefix'=>'/', 'middleware' => 'auth' ], function() {
     //      buscar modelo
     Route::get('/mantenimiento/modelo/buscar',['as'=> 'buscar.modelo','uses'=>'MantenimientoController@buscarModelo']);
 
+//   TIPO PRODUCTO---------------------------------------------------
+    Route::get('/mantenimiento/tipoproducto','MantenimientoController@listarTipoProducto');
+    //registrar tipoproducto
+    Route::post('/inventario/tipoproducto/registro','MantenimientoController@crearTipoProducto' );
+    //    editar tipoproducto
+    Route::get('/mantenimiento/tipoproducto/editar',['as'=> 'editar.tipoproducto','uses'=>'MantenimientoController@editarTipoProducto']);
+    //  actualizar tipoproducto
+    Route::post('/mantenimiento/tipoproducto/actualizar',['as'=> 'actualizar.tipoproducto','uses'=>'MantenimientoController@actualizarTipoProducto']);
+    //    eliminar tipoproducto: cambiar de estado
+    Route::get('/mantenimiento/tipoproducto/eliminar',['as'=> 'eliminar.tipoproducto','uses'=>'MantenimientoController@eliminarTipoProducto']);
+    //      buscar tipoproducto
+    Route::get('/mantenimiento/tipoproducto/buscar',['as'=> 'buscar.tipoproducto','uses'=>'MantenimientoController@buscarTipoProducto']);
+
+//    ========================================================================================
+//                           MANTENIMIENTO DE USUARIOS
+//    ===================================================================================
+
+    //   TIPO EMPLEADO---------------------------------------------------
+    Route::get('/mantenimiento/tipoempleado','MantenimientoEmpleadoController@listarTipoEmpleado');
+    //registrar tipoproducto
+    Route::post('/inventario/tipoempleado/registro','MantenimientoEmpleadoController@crearTipoEmpleado' );
+    //    editar tipoproducto
+    Route::get('/mantenimiento/tipoempleado/editar',['as'=> 'editar.tipoempleado','uses'=>'MantenimientoEmpleadoController@editarTipoEmpleado']);
+    //  actualizar tipoproducto
+    Route::post('/mantenimiento/tipoempleado/actualizar',['as'=> 'actualizar.tipoempleado','uses'=>'MantenimientoEmpleadoController@actualizarTipoEmpleado']);
+    //    eliminar tipoproducto: cambiar de estado
+    Route::get('/mantenimiento/tipoempleado/eliminar',['as'=> 'eliminar.tipoempleado','uses'=>'MantenimientoEmpleadoController@eliminarTipoEmpleado']);
+    //      buscar tipoproducto
+    Route::get('/mantenimiento/tipoempleado/buscar',['as'=> 'buscar.tipoempleado','uses'=>'MantenimientoEmpleadoController@buscarTipoEmpleado']);
+
+
+    //  ESTADO CIVIL---------------------------------------------------
+    Route::get('/mantenimiento/estadocivil','MantenimientoEmpleadoController@listarEstadoCivil');
+    //registrar tipoproducto
+    Route::post('/inventario/estadocivil/registro','MantenimientoEmpleadoController@crearEstadoCivil' );
+    //    editar tipoproducto
+    Route::get('/mantenimiento/estadocivil/editar',['as'=> 'editar.estadocivil','uses'=>'MantenimientoEmpleadoController@editarEstadoCivil']);
+    //  actualizar tipoproducto
+    Route::post('/mantenimiento/estadocivil/actualizar',['as'=> 'actualizar.estadocivil','uses'=>'MantenimientoEmpleadoController@actualizarEstadoCivil']);
+    //    eliminar tipoproducto: cambiar de estado
+    Route::get('/mantenimiento/estadocivil/eliminar',['as'=> 'eliminar.estadocivil','uses'=>'MantenimientoEmpleadoController@eliminarEstadoCivil']);
+    //      buscar tipoproducto
+    Route::get('/mantenimiento/estadocivil/buscar',['as'=> 'buscar.estadocivil','uses'=>'MantenimientoEmpleadoController@buscarEstadoCivil']);
+
+
+    //  GRADO INSTRUCCION---------------------------------------------------
+    Route::get('/mantenimiento/gradoinstruccion','MantenimientoEmpleadoController@listaGradoInstruccion');
+    //registrar tipoproducto
+    Route::post('/inventario/gradoinstruccion/registro','MantenimientoEmpleadoController@crearGradoInstruccion' );
+    //    editar tipoproducto
+    Route::get('/mantenimiento/gradoinstruccion/editar',['as'=> 'editar.gradoinstruccion','uses'=>'MantenimientoEmpleadoController@editarGradoInstruccion']);
+    //  actualizar tipoproducto
+    Route::post('/mantenimiento/gradoinstruccion/actualizar',['as'=> 'actualizar.gradoinstruccion','uses'=>'MantenimientoEmpleadoController@actualizarGradoInstruccion']);
+    //    eliminar tipoproducto: cambiar de estado
+    Route::get('/mantenimiento/gradoinstruccion/eliminar',['as'=> 'eliminar.gradoinstruccion','uses'=>'MantenimientoEmpleadoController@eliminarGradoInstruccion']);
+    //      buscar tipoproducto
+    Route::get('/mantenimiento/gradoinstruccion/buscar',['as'=> 'buscar.gradoinstruccion','uses'=>'MantenimientoEmpleadoController@buscarGradoInstruccion']);
+
+
+    //  OCUPACIONES---------------------------------------------------
+    Route::get('/mantenimiento/ocupacion','MantenimientoEmpleadoController@listaOcupacion');
+    //registrar tipoproducto
+    Route::post('/inventario/ocupacion/registro','MantenimientoEmpleadoController@crearOcupacion' );
+    //    editar tipoproducto
+    Route::get('/mantenimiento/ocupacion/editar',['as'=> 'editar.ocupacion','uses'=>'MantenimientoEmpleadoController@editarOcupacion']);
+    //  actualizar tipoproducto
+    Route::post('/mantenimiento/ocupacion/actualizar',['as'=> 'actualizar.ocupacion','uses'=>'MantenimientoEmpleadoController@actualizarOcupacion']);
+    //    eliminar tipoproducto: cambiar de estado
+    Route::get('/mantenimiento/ocupacion/eliminar',['as'=> 'eliminar.ocupacion','uses'=>'MantenimientoEmpleadoController@eliminarOcupacion']);
+    //      buscar tipoproducto
+    Route::get('/mantenimiento/ocupacion/buscar',['as'=> 'buscar.ocupacion','uses'=>'MantenimientoEmpleadoController@buscarOcupacion']);
+
+
+
+
+
 
 
 
@@ -147,9 +225,6 @@ Route::group(['prefix'=>'/', 'middleware' => 'auth' ], function() {
 
 });
 
-Route::get('/login', 'Auth\AuthController@getLogin');
-Route::post('/login', 'Auth\AuthController@postLogin');
-Route::get('/logout', 'Auth\AuthController@getLogout');
 
 
 
@@ -161,6 +236,24 @@ Route::get('/logout', 'Auth\AuthController@getLogout');
 
 
 
-Route::get('/welcome', function () {
-    return view('welcome');
-});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

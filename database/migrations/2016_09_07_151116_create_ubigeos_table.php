@@ -14,6 +14,7 @@ class CreateUbigeosTable extends Migration
     {
         Schema::create('ubigeos', function (Blueprint $table) {
             $table->increments('id');
+            $table->boolean('estado');
             $table->timestamps();
             $table->softDeletes();
         });

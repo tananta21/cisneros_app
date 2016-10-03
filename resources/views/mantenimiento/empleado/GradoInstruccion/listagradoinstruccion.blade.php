@@ -10,15 +10,15 @@
         </ul>
     </div>
 
-    <h3 class="col-lg-12" style="margin-bottom: 0.5rem">Lista de Marcas</h3>
+    <h3 class="col-lg-12" style="margin-bottom: 0.5rem">Lista Estado Civil</h3>
     <hr class="col-lg-12 linea-titulo" size="5px" color="green"/>
     <div class="col-lg-12">
-        <a href="/mantenimiento/marca" class="btn btn-primary btn-md col-lg-1" >Recargar <i class="fa fa-refresh fa-1x"></i></a>
+        <a href="/mantenimiento/gradoinstruccion" class="btn btn-primary btn-md col-lg-1" >Recargar <i class="fa fa-refresh fa-1x"></i></a>
 
-        {!! Form::model(Request::all(),['route'=>'buscar.modelo','method' => 'get', 'class' => 'form-horizontal', 'role'=>'form']) !!}
-        <div class="col-lg-3">
-            {!!form::text('descripcionmarca',null,['class'=>'form-control', 'placeholder'=>'Introdusca nombre marca','maxlength'=>30])!!}
-        </div>
+        {!! Form::model(Request::all(),['route'=>'buscar.gradoinstruccion','method' => 'get', 'class' => 'form-horizontal', 'role'=>'form']) !!}
+        {{--<div class="col-lg-3">--}}
+        {{--{!!form::text('descripcionmarca',null,['class'=>'form-control', 'placeholder'=>'Introdusca nombre marca','maxlength'=>30])!!}--}}
+        {{--</div>--}}
 
         <div class="col-lg-2">
             {!!form::select('estado',[
@@ -77,7 +77,7 @@
         </div>
     </div>
     <div class="col-lg-4" style="text-align: center; margin-top: 10rem">
-        <button data-toggle="modal" data-target="#marca_modal" class="btn btn-primary">Agregar Nueva Marca</button>
+        <button data-toggle="modal" data-target="#crear_tipoproducto_modal" class="btn btn-primary">Agregar Nuevo Tipo</button>
     </div>
     <div class="col-lg-7" style="display: flex; flex-direction: row; justify-content: center;">
         {!! $marcas->appends(Request::all())->render() !!}
@@ -89,12 +89,12 @@
             if (confirm('¿Estas seguro que desea desactivar Marca ?')) {
                 $(document).ready(function(){
                     var id_marca = $(this).find( 'input[name="eliminarmarca'+id+'"]' ).val();
-                    var url = '{{route("eliminar.marca")}}';
+                    var url = '{{route("eliminar.gradoinstruccion")}}';
                     $.ajax({
                         type: 'GET',
                         url: url,
                         data: {
-                            idmarca: id_marca
+                            id: id_marca
                         },
                         dataType: 'JSON',
 
@@ -118,14 +118,14 @@
         function editarCategoria(id){
             $(document).ready(function(){
                 var id_marca = $(this).find( 'input[name="editarmarca'+id+'"]' ).val();
-                var url = '{{route("editar.marca")}}';
+                var url = '{{route("editar.gradoinstruccion")}}';
                 $("#editar_marca"+id).attr('data-toggle','modal');
 
                 $.ajax({
                     type: 'GET',
                     url: url,
                     data: {
-                        idmarca: id_marca
+                        id: id_marca
                     },
                     dataType: 'JSON',
 
@@ -143,7 +143,7 @@
                         }
                     }
                 });
-                $("#editar_marca"+id).attr('data-target','#editar_marca_modal');
+                $("#editar_marca"+id).attr('data-target','#editar_estadocivil_modal');
 
             });
         };
@@ -153,19 +153,64 @@
 
 
 @endsection
-{{--modal editar --}}
+
+{{--modal crear --}}
 <div class="container">        <!-- Modal crear -->
-    <div class="modal fade " id="editar_marca_modal" tabindex="-1" data-backdrop="static" role="dialog" aria-labelledby="gridModalLabel" aria-hidden="true">>
+    <div class="modal fade " id="crear_tipoproducto_modal" tabindex="-1" data-backdrop="static" role="dialog" aria-labelledby="gridModalLabel" aria-hidden="true">>
         <div class="modal-dialog modal-md">
             <div class="modal-content">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal">&times;</button>
-                    <h4 class="modal-title">Editar Marca</h4>
+                    <h4 class="modal-title">Registrar Estado Civil</h4>
+                </div>
+                <div class="modal-body">
+                    {{--formulario crear --}}
+                    <div class="box box-primary">
+                        {!! Form::open(['action' => 'MantenimientoEmpleadoController@crearGradoInstruccion','method' => 'post', 'class' => 'form-horizontal', 'role'=>'form']) !!}
+                        <div class="box-body">
+                            <div class="form-group">
+                                <label for="inputName" class="col-md-2 control-label">Tipo</label>
+                                <div class="col-md-6">
+                                    <input  required="true" maxlength="30" type="text" class="form-control"  placeholder="Nombre Tipo Producto" name="descripcion_tipo" >
+                                    <span style="font-size: 1rem; color: #0000ff">Maximo 30 caracteres</span>
+                                </div>
+                                <div class="col-md-4">
+                                    <input  type="radio"  name="estado" value="1" checked> <label style="cursor: pointer" for="activo"> Activo</label>
+                                    <input  type="radio" name="estado" value="0" style="margin-left: 2rem"> <label style="cursor: pointer" for="inactivo"> Inactivo </label>
+                                </div>
+
+                            </div>
+                        </div>
+                        <div class="box-footer" style="text-align: center">
+                            {{--<input type="reset" class="btn btn-default" id="cancel" value="Cancelar">--}}
+                            <button href="" class="btn btn-default" data-dismiss="modal" >Cancelar</button>
+                            <button type="submit" class="btn btn-info">Guardar</button>
+                        </div>
+
+                        <!-- /.box-body -->
+
+                        {!! Form::close() !!}
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{{--modal editar --}}
+<div class="container">        <!-- Modal crear -->
+    <div class="modal fade " id="editar_estadocivil_modal" tabindex="-1" data-backdrop="static" role="dialog" aria-labelledby="gridModalLabel" aria-hidden="true">>
+        <div class="modal-dialog modal-md">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Editar Estado Civil</h4>
                 </div>
                 <div class="modal-body">
                     {{--formulario editar --}}
                     <div class="box box-primary">
-                        {!! Form::open(['action' => 'MantenimientoController@actualizarMarca','method' => 'post', 'class' => 'form-horizontal', 'role'=>'form']) !!}
+                        {!! Form::open(['action' => 'MantenimientoEmpleadoController@actualizarGradoInstruccion','method' => 'post', 'class' => 'form-horizontal', 'role'=>'form']) !!}
                         <div class="box-body">
                             <div class="form-group">
                                 <label for="inputName" class="col-md-2 control-label">Marca</label>
@@ -197,4 +242,9 @@
         </div>
     </div>
 </div>
+
+
+
+
+
 

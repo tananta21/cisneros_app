@@ -15,6 +15,7 @@ class CreateTipoEmpleadosTable extends Migration
         Schema::create('tipo_empleados', function (Blueprint $table) {
             $table->increments('id');
             $table->string('descripcion',50);
+            $table->boolean('estado');
             $table->timestamps();
             $table->softDeletes();
         });

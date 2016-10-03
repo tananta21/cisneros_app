@@ -13,11 +13,11 @@
     <h3 class="col-lg-12" style="margin-bottom: 0.5rem">Lista de Modelos</h3>
     <hr class="col-lg-12 linea-titulo" size="5px" color="green"/>
     <div class="col-lg-12">
-        <a href="/mantenimiento/modelo" class="btn btn-primary btn-md col-lg-1" >Cargar <i class="fa fa-refresh fa-1x"></i></a>
+        <a href="/mantenimiento/modelo" class="btn btn-primary btn-md col-lg-1" >Recargar <i class="fa fa-refresh fa-1x"></i></a>
 
         {!! Form::model(Request::all(),['route'=>'buscar.modelo','method' => 'get', 'class' => 'form-horizontal', 'role'=>'form']) !!}
         <div class="col-lg-3">
-            {!!form::text('descripcionmarca',null,['class'=>'form-control', 'placeholder'=>'Introdusca nombre marca','maxlength'=>30])!!}
+            {!!form::text('descripcionmarca',null,['class'=>'form-control', 'placeholder'=>'Introdusca nombre modelo','maxlength'=>30])!!}
         </div>
 
         <div class="col-lg-2">
