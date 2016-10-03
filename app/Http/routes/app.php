@@ -68,6 +68,9 @@ Route::group(['prefix'=>'/', 'middleware' => 'auth' ], function() {
     Route::get('/mantenimiento/principal', function(){
         return view('mantenimiento.principal');
     });
+
+
+//    CATEGORIAS------------------------------------------------------
 //    mantenimiento categoria:listar categorias
     Route::get('/mantenimiento/categoria','MantenimientoController@listarCategoria');
     //registrar categoria
@@ -75,11 +78,39 @@ Route::group(['prefix'=>'/', 'middleware' => 'auth' ], function() {
     //    editar categoria
     Route::get('/mantenimiento/categoria/editar',['as'=> 'editar.categoria','uses'=>'MantenimientoController@editarCategoria']);
     //  actualizar categoria
-    Route::post('/mantenimiento/categoria/actualizar',['as'=> 'editar.actualizar','uses'=>'MantenimientoController@actualizarCategoria']);
+    Route::post('/mantenimiento/categoria/actualizar',['as'=> 'actualizar.categoria','uses'=>'MantenimientoController@actualizarCategoria']);
     //    eliminar categoria: cambiar de estado
     Route::get('/mantenimiento/categoria/eliminar',['as'=> 'eliminar.categoria','uses'=>'MantenimientoController@eliminarCategoria']);
     //      buscar categoria
     Route::get('/mantenimiento/categoria/buscar',['as'=> 'buscar.categoria','uses'=>'MantenimientoController@buscarCategoria']);
+
+//    MARCAS-------------------------------------------------------
+//    mantenimiento marcas: listar marcas
+    Route::get('/mantenimiento/marca','MantenimientoController@listarMarca');
+    //registrar marca
+    Route::post('/inventario/marca/registro','MantenimientoController@crearMarca' );
+    //    editar marca
+    Route::get('/mantenimiento/marca/editar',['as'=> 'editar.marca','uses'=>'MantenimientoController@editarMarca']);
+    //  actualizar marca
+    Route::post('/mantenimiento/marca/actualizar',['as'=> 'actualizar.marca','uses'=>'MantenimientoController@actualizarMarca']);
+    //    eliminar marca: cambiar de estado
+    Route::get('/mantenimiento/marca/eliminar',['as'=> 'eliminar.marca','uses'=>'MantenimientoController@eliminarMarca']);
+    //      buscar marca
+    Route::get('/mantenimiento/marca/buscar',['as'=> 'buscar.marca','uses'=>'MantenimientoController@buscarMarca']);
+
+//    MODELOS-------------------------------------------------------
+//    mantenimiento modelos: listar modelos
+    Route::get('/mantenimiento/modelo','MantenimientoController@listarModelo');
+    //registrar modelo
+    Route::post('/inventario/modelo/registro','MantenimientoController@crearModelo' );
+    //    editar modelo
+    Route::get('/mantenimiento/modelo/editar',['as'=> 'editar.modelo','uses'=>'MantenimientoController@editarModelo']);
+    //  actualizar marca
+    Route::post('/mantenimiento/modelo/actualizar',['as'=> 'actualizar.modelo','uses'=>'MantenimientoController@actualizarModelo']);
+    //    eliminar modelo: cambiar de estado
+    Route::get('/mantenimiento/modelo/eliminar',['as'=> 'eliminar.modelo','uses'=>'MantenimientoController@eliminarModelo']);
+    //      buscar modelo
+    Route::get('/mantenimiento/modelo/buscar',['as'=> 'buscar.modelo','uses'=>'MantenimientoController@buscarModelo']);
 
 
 

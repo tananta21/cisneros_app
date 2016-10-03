@@ -14,15 +14,74 @@ use App\Core\Contracts\BaseRepositoryInterface;
 class ModeloRepository implements BaseRepositoryInterface {
 
 
-    public function all()
-    {
-        return Modelo::all();
+    protected $marca;
+
+    public function __construct(){
+        $this->marca = new Modelo();
     }
 
-    /**
-     * @param array $attributes
-     * @return mixed
-     */
+    public function all()
+    {
+        return $this->marca
+            ->where('estado','1')
+            ->orderBy('id', 'desc')
+            ->paginate(5);
+    }
+    public function allEnProducto(){
+        return $this->marca
+            ->where('estado','1')
+            ->orderBy('id', 'desc')
+            ->get();
+    }
+
+    // añadir nueva marca
+    public function nuevoModelo($inputs){
+        $registro = new Modelo();
+        $registro->descripcion = $inputs['descripcion_modelo'];
+        $registro->estado = $inputs['estado'];
+        $registro->save();
+    }
+
+//    busqueda para editar marca
+    public function editarModelo($id){
+        $registro = Modelo::findOrFail($id);
+        return $registro;
+    }
+
+//    actualizar categoria
+    public function actualizarModelo($datos){
+        $registro = Modelo::find($datos['marca_id']);
+        $registro->descripcion = $datos['descripcion_marca'];
+        $registro->estado = $datos['estado'];
+        $registro->save();
+
+    }
+
+    //    eliminar cambiar de estado
+    public function eliminarModelo($id){
+        $registro = Modelo::find($id);
+        $registro->estado = 0;
+        $registro->save();
+    }
+
+    //    busqueda marca
+    public function busquedaModelo($descripcion,$estado){
+        return $this->marca->select()
+//            ->whereRaw("estado = '" .$estado. "'OR descripcion = '" .$descripcion . "'")
+//            ->orderBy('id', 'desc')
+            ->where('estado',$estado )
+            ->orwhere('descripcion',$descripcion )
+            ->paginate(4);
+    }
+
+
+
+
+
+
+
+
+
     public function create(array $attributes)
     {
         // TODO: Implement create() method.

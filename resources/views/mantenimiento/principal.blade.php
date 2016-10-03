@@ -6,7 +6,7 @@
         <div>
             <ul class="nav nav-tabs">
                 <li class="nav-item">
-                    <a class="nav-link" href="/mantenimiento/principal">Principal</a>
+                    <a class="nav-link" href="/mantenimiento/principal">Menu Mantenimiento</a>
                 </li>
             </ul>
         </div>
@@ -16,30 +16,32 @@
         <br>
         <div style="text-align:center" class=" col-md-12">
                 <figure>
-                    <img style=";width: 180px;height: 180px" src="{{url('/')}}/dist/img/mantenimiento.jpg">
+                    <img style=";width: 135px;height: 130px" src="{{url('/')}}/dist/img/mantenimiento.jpg">
                 </figure>
             <hr style="height: .5px ; background-color: green; width: 50%"/>
         </div>
 
-        <section class="col-lg-12" style=" padding-top:.8rem;padding-bottom: 20rem; text-align: center">
+        <section class="col-lg-12" style=" padding-top:1rem;padding-bottom: 25rem; text-align: center">
             <div class="dropdown col-lg-3" >
                 <button style="color:white;background-color:#1ab394;border: none" class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-                    <span style="font-weight: bold">Productos</span>
+                    <span style="font-weight: bold">Mant. Productos</span>
                     <span class="caret"></span>
                 </button>
                 <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
                     <li><a href="#">tipo producto</a></li>
                     <li role="separator" class="divider"></li>
-                    <li><a href="#">categoria</a></li>
+                    <li><a href="/mantenimiento/categoria">Categorias</a></li>
                     <li role="separator" class="divider"></li>
-                    <li><a href="#">marca</a></li>
+                    <li><a href="/mantenimiento/marca">Marcas</a></li>
+                    <li role="separator" class="divider"></li>
+                    <li><a href="/mantenimiento/modelo">Modelos</a></li>
                     <li role="separator" class="divider"></li>
                     <li><a href="#">unidad de medida</a></li>
                 </ul>
             </div>
             <div class="dropdown col-lg-3" >
                 <button style="color:white;background-color:#1ab394;border: none" class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-                    <span style="font-weight: bold">Clientes</span>
+                    <span style="font-weight: bold">Mant. Clientes</span>
                     <span class="caret"></span>
                 </button>
                 <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
@@ -53,7 +55,7 @@
             </div>
             <div class="dropdown col-lg-3" >
                 <button style="color:white;background-color:#1ab394;border: none" class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-                    <span style="font-weight: bold">Productos</span>
+                    <span style="font-weight: bold">Mant. Productos</span>
                     <span class="caret"></span>
                 </button>
                 <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
@@ -68,7 +70,7 @@
             </div>
             <div class="dropdown col-lg-3" >
                 <button style="color:white;background-color:#1ab394;border: none" class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-                    <span style="font-weight: bold">Productos</span>
+                    <span style="font-weight: bold">Mant. Productos</span>
                     <span class="caret"></span>
                 </button>
                 <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">

@@ -2,6 +2,15 @@
 @section('vistainicial')
 @stop
 @section('menu_modulos')
+
+    <div>
+        <ul class="nav nav-tabs">
+            <li class="nav-item">
+                <a class="nav-link" href="/mantenimiento/principal">Menu Mantenimiento</a>
+            </li>
+        </ul>
+    </div>
+
     <h3 class="col-lg-12" style="margin-bottom: 0.5rem">Lista de Categoria</h3>
     <hr class="col-lg-12 linea-titulo" size="5px" color="green"/>
     <div class="col-lg-12">
@@ -13,7 +22,6 @@
 
             <div class="col-lg-2">
                 {!!form::select('estado',[
-                ''=>'Selec. Estado',
                 '1'=>'Activo',
                 '0'=>'Inactivo'],null,['class'=>'form-control'])!!}
             </div>
@@ -149,7 +157,7 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal">&times;</button>
-                    <h4 class="modal-title">Registrar Nueva Categoria</h4>
+                    <h4 class="modal-title">Editar Categoria</h4>
                 </div>
                 <div class="modal-body">
                     {{--formulario editar categoria--}}
