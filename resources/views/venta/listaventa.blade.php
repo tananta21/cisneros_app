@@ -14,25 +14,25 @@
     </div>
 @section('contenido_modulos')
 
-    <div class="col-lg-12" style="padding-top:2rem">
-        <div class="col-lg-6" style="  background-color:#1ab394;padding-top: 3.4rem;padding-bottom: 4.5rem">
-            <span style="color:white;font-weight: bold;font-size: 2rem"><i class="fa fa-calendar" style="font-size:2.5rem;padding-right: .5rem"></i>Informe de Ventas</span>
-        </div>
-        <div class="col-lg-6" style=" text-align:center; background-color:#1ab394;padding-top: 2.3rem;padding-bottom: 2.3rem">
-            <div class="col-lg-2">
-                <span style="color:white;font-weight: bold;font-size: 1.3rem"><i class="fa fa-print" style="font-size:2.5rem;padding-right: .5rem"></i></span>
-                <h5>imprimir</h5>
-            </div>
-            <div class="col-lg-2">
-                <span style="color:white;font-weight: bold;font-size: 1.3rem"><i class="fa fa-file-pdf-o" style="font-size:2.5rem;padding-right: .5rem"></i></span>
-                <h5>Pdf</h5>
-            </div>
-            <div class="col-lg-2">
-                <span style="color:white;font-weight: bold;font-size: 1.3rem"><i class="fa fa-question-circle" style="font-size:2.5rem;padding-right: .5rem"></i></span>
-                <h5>Ayuda</h5>
-            </div>
-        </div>
-    </div>
+    {{--<div class="col-lg-12" style="padding-top:2rem">--}}
+        {{--<div class="col-lg-6" style=" text-align: start; background-color:#1ab394;padding-top: 3.4rem;padding-bottom: 4.5rem">--}}
+            {{--<span style="color:white;font-weight: bold;font-size: 2rem"><i class="fa fa-calendar" style="font-size:2.5rem;padding-right: .5rem"></i>Informe de Ventas</span>--}}
+        {{--</div>--}}
+        {{--<div class="col-lg-6" style=" text-align:end;background-color:#1ab394;padding-top: 2.3rem;padding-bottom: 2.3rem">--}}
+            {{--<div class="col-lg-2">--}}
+                {{--<span style="color:white;font-weight: bold;font-size: 1.3rem"><i class="fa fa-print" style="font-size:2.5rem;padding-right: .5rem"></i></span>--}}
+                {{--<h5>imprimir</h5>--}}
+            {{--</div>--}}
+            {{--<div class="col-lg-2">--}}
+                {{--<span style="color:white;font-weight: bold;font-size: 1.3rem"><i class="fa fa-file-pdf-o" style="font-size:2.5rem;padding-right: .5rem"></i></span>--}}
+                {{--<h5>Pdf</h5>--}}
+            {{--</div>--}}
+            {{--<div class="col-lg-2">--}}
+                {{--<span style="color:white;font-weight: bold;font-size: 1.3rem"><i class="fa fa-question-circle" style="font-size:2.5rem;padding-right: .5rem"></i></span>--}}
+                {{--<h5>Ayuda</h5>--}}
+            {{--</div>--}}
+        {{--</div>--}}
+    {{--</div>--}}
 
     <div class="col-lg-12" style="padding-top:1.3rem">
         <form class="form-inline">
