@@ -10,7 +10,7 @@
         </ul>
     </div>
 
-    <h3 class="col-lg-12" style="margin-bottom: 0.5rem">Lista Concepto Movimiento</h3>
+    <h3 class="col-lg-12" style="margin-bottom: 0.5rem">Lista Concepto </h3>
     <hr class="col-lg-12 linea-titulo" size="5px" color="green"/>
     <div class="col-lg-12">
         <a href="/mantenimiento/tipomovimiento" class="btn btn-primary btn-md col-lg-1" >Recargar <i class="fa fa-refresh fa-1x"></i></a>
