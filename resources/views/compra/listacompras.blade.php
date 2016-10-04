@@ -5,10 +5,10 @@
     <div>
         <ul class="nav nav-tabs">
             <li class="nav-item">
-                <a class="nav-link" href="/venta/nuevaventa">Nueva Venta</a>
+                <a class="nav-link" href="/venta/nuevaventa">Nueva Compra</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">Lista Ventas</a>
+                <a class="nav-link" href="#">Lista Compra</a>
             </li>
         </ul>
     </div>
