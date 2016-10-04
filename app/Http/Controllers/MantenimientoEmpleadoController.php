@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Core\EstadoCivil\EstadoCivilRepository;
 use App\Core\GradoInstruccion\GradoInstruccionRepository;
 use App\Core\Ocupacion\OcupacionRepository;
+use App\Core\TipoCliente\TipoClienteRepository;
 use App\Core\TipoEmpleado\TipoEmpleadoRepository;
 use Illuminate\Http\Request;
 
@@ -19,12 +20,14 @@ class MantenimientoEmpleadoController extends Controller
     protected $repoEstadoCivil;
     protected $repoGradoInstruccion;
     protected $repoOcupacion;
+    protected $repoTipoCliente;
 
     public function __construct(){
         $this->repoTipoEmpleado = new TipoEmpleadoRepository();
         $this->repoEstadoCivil = new EstadoCivilRepository();
         $this->repoGradoInstruccion = new GradoInstruccionRepository();
         $this->repoOcupacion = new OcupacionRepository();
+        $this->repoTipoCliente = new TipoClienteRepository();
 
     }
 
@@ -212,6 +215,55 @@ class MantenimientoEmpleadoController extends Controller
         $marcas = $this->repoOcupacion->buscarOcupacion($estado);
         return view('mantenimiento.empleado.ocupacion.listaocupacion', compact('marcas'));
     }
+
+
+
+//    ==========================================================================================================================
+//      TIPO CLIENTES
+//    mantenimiento grado instruccion : listar categoria
+
+    public function listaTipoCliente(){
+        $marcas = $this->repoTipoCliente->all();
+        return view('mantenimiento.empleado.tipocliente.listatipocliente', compact('marcas'));
+    }
+
+//  crear modelo
+    public function crearTipoCliente(){
+        $inputs = Input::all();
+        $registronuevo = $this->repoTipoCliente->crearTipoCliente($inputs);
+        return Redirect::back();
+    }
+
+    //editar registro
+    public function editarTipoCliente(){
+        $id_recuperado = Input::get('id');
+        $registro = $this->repoTipoCliente->editarTipoCliente($id_recuperado);
+        return response()->json($registro);
+    }
+    //    actualizar registro
+    public function actualizarTipoCliente(){
+        $inputs = Input::all();
+        $registro = $this->repoTipoCliente->actualizarTipoCliente($inputs);
+        return Redirect::back();
+    }
+
+    //    eliminar :cambiar de estado
+    public function eliminarTipoCliente()
+    {
+        $id_recuperado = Input::get('id');
+        $id = json_decode(json_encode($id_recuperado));
+        $eliminardato = $this->repoTipoCliente->eliminarTipoCliente($id);
+        return response()->json();
+    }
+
+    //    buscar buscar
+    public function buscarTipoCliente(){
+        $estado = Input::get('estado');
+        $marcas = $this->repoTipoCliente->buscarTipoCliente($estado);
+        return view('mantenimiento.empleado.tipocliente.listatipocliente', compact('marcas'));
+    }
+
+
 
 
 

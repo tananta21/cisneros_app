@@ -2,16 +2,16 @@
 /**
  * Created by PhpStorm.
  * User: LENOVO
- * Date: 09/09/2016
- * Time: 15:28
+ * Date: 03/10/2016
+ * Time: 2:12
  */
 
-namespace App\Core\SerieProducto;
+namespace App\Core\TipoMovimiento;
 
 
 use App\Core\Contracts\BaseRepositoryInterface;
 
-class SerieProductoRepository implements BaseRepositoryInterface {
+class TipoMovimientoRepository implements BaseRepositoryInterface {
 
     public function all()
     {

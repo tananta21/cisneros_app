@@ -22,12 +22,12 @@
         </div>
 
         <section class="col-lg-12" style=" padding-top:1rem;padding-bottom: 25rem; text-align: center">
-            <div class="dropdown col-lg-3" >
-                <button style="color:white;background-color:#1ab394;border: none" class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-                    <span style="font-weight: bold">Mant. Productos</span>
+            <div class="dropdown col-lg-4" >
+                <button style="color:white;background-color:#1ab394;border: none" class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu0" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                    <span style="font-weight: bold">Mant. para Productos</span>
                     <span class="caret"></span>
                 </button>
-                <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                <ul class="dropdown-menu" aria-labelledby="dropdownMenu0">
                     <li><a href="/mantenimiento/tipoproducto">tipo producto</a></li>
                     <li role="separator" class="divider"></li>
                     <li><a href="/mantenimiento/categoria">Categorias</a></li>
@@ -35,13 +35,12 @@
                     <li><a href="/mantenimiento/marca">Marcas</a></li>
                     <li role="separator" class="divider"></li>
                     <li><a href="/mantenimiento/modelo">Modelos</a></li>
-                    <li role="separator" class="divider"></li>
                     {{--<li><a href="#">unidad de medida</a></li>--}}
                 </ul>
             </div>
-            <div class="dropdown col-lg-3" >
+            <div class="dropdown col-lg-4" >
                 <button style="color:white;background-color:#1ab394;border: none" class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-                    <span style="font-weight: bold">Mant. Empleados y Clientes</span>
+                    <span style="font-weight: bold">Mant. para Empleados y Clientes</span>
                     <span class="caret"></span>
                 </button>
                 <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
@@ -52,41 +51,43 @@
                     <li><a href="/mantenimiento/gradoinstruccion">Grado Instruccion</a></li>
                     <li role="separator" class="divider"></li>
                     <li><a href="/mantenimiento/ocupacion">Ocupacion</a></li>
-
+                    <li role="separator" class="divider"></li>
+                    <li><a href="/mantenimiento/tipocliente">Tipo Cliente</a></li>
 
                 </ul>
             </div>
-            <div class="dropdown col-lg-3" >
-                <button style="color:white;background-color:#1ab394;border: none" class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-                    <span style="font-weight: bold">Mant. Productos</span>
+            <div class="dropdown col-lg-4" >
+                <button style="color:white;background-color:#1ab394;border: none" class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                    <span style="font-weight: bold">Mant. para Compras y Ventas</span>
                     <span class="caret"></span>
                 </button>
-                <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-                    <li><a href="#">tipo producto</a></li>
+                <ul class="dropdown-menu" aria-labelledby="dropdownMenu2">
+                    <li><a href="/mantenimiento/tipotransaccion">Tipo Transaccion</a></li>
                     <li role="separator" class="divider"></li>
-                    <li><a href="#">categoria</a></li>
+                    <li><a href="/mantenimiento/tipocomprobante">Tipo Comprobante</a></li>
                     <li role="separator" class="divider"></li>
-                    <li><a href="#">marca</a></li>
+                    <li><a href="/mantenimiento/tipopago">Tipo Pagos</a></li>
                     <li role="separator" class="divider"></li>
-                    <li><a href="#">unidad de medida</a></li>
-                </ul>
-            </div>
-            <div class="dropdown col-lg-3" >
-                <button style="color:white;background-color:#1ab394;border: none" class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-                    <span style="font-weight: bold">Mant. Productos</span>
-                    <span class="caret"></span>
-                </button>
-                <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-                    <li><a href="#">tipo producto</a></li>
-                    <li role="separator" class="divider"></li>
-                    <li><a href="#">categoria</a></li>
-                    <li role="separator" class="divider"></li>
-                    <li><a href="#">marca</a></li>
-                    <li role="separator" class="divider"></li>
-                    <li><a href="#">unidad de medida</a></li>
+                    <li><a href="/mantenimiento/tipotransaccion">Tipo Movimiento</a></li>
                 </ul>
             </div>
         </section>
+            {{--<div class="dropdown col-lg-3" >--}}
+                {{--<button style="color:white;background-color:#1ab394;border: none" class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">--}}
+                    {{--<span style="font-weight: bold">Mant. Productos</span>--}}
+                    {{--<span class="caret"></span>--}}
+                {{--</button>--}}
+                {{--<ul class="dropdown-menu" aria-labelledby="dropdownMenu1">--}}
+                    {{--<li><a href="#">tipo producto</a></li>--}}
+                    {{--<li role="separator" class="divider"></li>--}}
+                    {{--<li><a href="#">categoria</a></li>--}}
+                    {{--<li role="separator" class="divider"></li>--}}
+                    {{--<li><a href="#">marca</a></li>--}}
+                    {{--<li role="separator" class="divider"></li>--}}
+                    {{--<li><a href="#">unidad de medida</a></li>--}}
+                {{--</ul>--}}
+            {{--</div>--}}
+
 
 
         {{--<div class="col-lg-12" style="padding: 9px; text-align: center">--}}

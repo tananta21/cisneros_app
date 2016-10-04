@@ -128,7 +128,7 @@ Route::group(['prefix'=>'/', 'middleware' => 'auth' ], function() {
     Route::get('/mantenimiento/tipoproducto/buscar',['as'=> 'buscar.tipoproducto','uses'=>'MantenimientoController@buscarTipoProducto']);
 
 //    ========================================================================================
-//                           MANTENIMIENTO DE USUARIOS
+//                           MANTENIMIENTO DE EMPLEADO_CLIENTE
 //    ===================================================================================
 
     //   TIPO EMPLEADO---------------------------------------------------
@@ -185,6 +185,68 @@ Route::group(['prefix'=>'/', 'middleware' => 'auth' ], function() {
     Route::get('/mantenimiento/ocupacion/eliminar',['as'=> 'eliminar.ocupacion','uses'=>'MantenimientoEmpleadoController@eliminarOcupacion']);
     //      buscar tipoproducto
     Route::get('/mantenimiento/ocupacion/buscar',['as'=> 'buscar.ocupacion','uses'=>'MantenimientoEmpleadoController@buscarOcupacion']);
+
+    //  TIPO CLIENTE---------------------------------------------------
+    Route::get('/mantenimiento/tipocliente','MantenimientoEmpleadoController@listaTipoCliente');
+    //registrar tipoproducto
+    Route::post('/inventario/tipocliente/registro','MantenimientoEmpleadoController@crearTipoCliente' );
+    //    editar tipoproducto
+    Route::get('/mantenimiento/tipocliente/editar',['as'=> 'editar.tipocliente','uses'=>'MantenimientoEmpleadoController@editarTipoCliente']);
+    //  actualizar tipoproducto
+    Route::post('/mantenimiento/tipocliente/actualizar',['as'=> 'actualizar.tipocliente','uses'=>'MantenimientoEmpleadoController@actualizarTipoCliente']);
+    //    eliminar tipoproducto: cambiar de estado
+    Route::get('/mantenimiento/tipocliente/eliminar',['as'=> 'eliminar.tipocliente','uses'=>'MantenimientoEmpleadoController@eliminarTipoCliente']);
+    //      buscar tipoproducto
+    Route::get('/mantenimiento/tipocliente/buscar',['as'=> 'buscar.tipocliente','uses'=>'MantenimientoEmpleadoController@buscarTipoCliente']);
+
+
+    //    ========================================================================================
+//                           MANTENIMIENTO DE COMPRA_VENTA
+//    ===================================================================================
+
+    //  TIPO COMPROBANTE---------------------------------------------------
+    Route::get('/mantenimiento/tipocomprobante','MantenimientoCompraVentaController@listaTipoComprobante');
+    //registrar tipoproducto
+    Route::post('/inventario/tipocomprobante/registro','MantenimientoCompraVentaController@crearTipoComprobante' );
+    //    editar tipoproducto
+    Route::get('/mantenimiento/tipocomprobante/editar',['as'=> 'editar.tipocomprobante','uses'=>'MantenimientoCompraVentaController@editarTipoComprobante']);
+    //  actualizar tipoproducto
+    Route::post('/mantenimiento/tipocomprobante/actualizar',['as'=> 'actualizar.tipocomprobante','uses'=>'MantenimientoCompraVentaController@actualizarTipoComprobante']);
+    //    eliminar tipoproducto: cambiar de estado
+    Route::get('/mantenimiento/tipocomprobante/eliminar',['as'=> 'eliminar.tipocomprobante','uses'=>'MantenimientoCompraVentaController@eliminarTipoComprobante']);
+    //      buscar tipoproducto
+    Route::get('/mantenimiento/tipocomprobante/buscar',['as'=> 'buscar.tipocomprobante','uses'=>'MantenimientoCompraVentaController@buscarTipoComprobante']);
+
+
+
+    //  TIPO PAGO------------------------------------------------------------------------------------
+    Route::get('/mantenimiento/tipopago','MantenimientoCompraVentaController@listaTipoPago');
+    //registrar tipoproducto
+    Route::post('/inventario/tipopago/registro','MantenimientoCompraVentaController@crearTipoPago' );
+    //    editar tipoproducto
+    Route::get('/mantenimiento/tipopago/editar',['as'=> 'editar.tipopago','uses'=>'MantenimientoCompraVentaController@editarTipoPago']);
+    //  actualizar tipoproducto
+    Route::post('/mantenimiento/tipopago/actualizar',['as'=> 'actualizar.tipopago','uses'=>'MantenimientoCompraVentaController@actualizarTipoPago']);
+    //    eliminar tipoproducto: cambiar de estado
+    Route::get('/mantenimiento/tipopago/eliminar',['as'=> 'eliminar.tipopago','uses'=>'MantenimientoCompraVentaController@eliminarTipoPago']);
+    //      buscar tipoproducto
+    Route::get('/mantenimiento/tipopago/buscar',['as'=> 'buscar.tipopago','uses'=>'MantenimientoCompraVentaController@buscarTipoPago']);
+
+    //  TIPO TRANSACCION------------------------------------------------------------------------------------
+    Route::get('/mantenimiento/tipotransaccion','MantenimientoCompraVentaController@listaTipoTransaccion');
+    //registrar tipoproducto
+    Route::post('/inventario/tipotransaccion/registro','MantenimientoCompraVentaController@crearTipoTransaccion' );
+    //    editar tipoproducto
+    Route::get('/mantenimiento/tipotransaccion/editar',['as'=> 'editar.tipotransaccion','uses'=>'MantenimientoCompraVentaController@editarTipoTransaccion']);
+    //  actualizar tipoproducto
+    Route::post('/mantenimiento/tipotransaccion/actualizar',['as'=> 'actualizar.tipotransaccion','uses'=>'MantenimientoCompraVentaController@actualizarTipoTransaccion']);
+    //    eliminar tipoproducto: cambiar de estado
+    Route::get('/mantenimiento/tipotransaccion/eliminar',['as'=> 'eliminar.tipotransaccion','uses'=>'MantenimientoCompraVentaController@eliminarTipoTransaccion']);
+    //      buscar tipoproducto
+    Route::get('/mantenimiento/tipotransaccion/buscar',['as'=> 'buscar.tipotransaccion','uses'=>'MantenimientoCompraVentaController@buscarTipoTransaccion']);
+
+
+
 
 
 
