@@ -29,7 +29,7 @@ class TipoMovimientoRepository implements BaseRepositoryInterface {
             ->paginate(5);
     }
 
-    public function allEnProducto()
+    public function allEnConcepto()
     {
         return $this->tipomovimiento
             ->where('estado', '1')

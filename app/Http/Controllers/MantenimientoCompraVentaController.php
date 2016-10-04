@@ -18,7 +18,7 @@ class MantenimientoCompraVentaController extends Controller
     protected $repoTipoPago;
     protected $repoTipoTransaccion;
     protected $repoTipoMovimiento;
-    protected $repoconceptoMovimiento;
+    protected $repoConceptoMovimiento;
 
     public function __construct()
     {
@@ -26,7 +26,7 @@ class MantenimientoCompraVentaController extends Controller
         $this->repoTipoPago = new TipoPagoRepository();
         $this->repoTipoTransaccion = new TipoTransaccionRepository();
         $this->repoTipoMovimiento = new TipoMovimientoRepository();
-        $this->repoconceptoMovimiento = new ConceptoMovimientoRepository();
+        $this->repoConceptoMovimiento = new ConceptoMovimientoRepository();
 
     }
 
@@ -221,28 +221,33 @@ class MantenimientoCompraVentaController extends Controller
 //      CONCEPTO MOVIMIENTO
 //    mantenimiento tipo pago: listar
     public function listaConceptoMovimiento(){
-        $marcas = $this->repoTipoMovimiento->all();
-        return view('mantenimiento.compraventa.conceptomovimiento.conceptomovimiento', compact('marcas'));
+        $marcas = $this->repoConceptoMovimiento->all();
+        $tipomovimientos = $this->repoTipoMovimiento->allEnConcepto();
+        return view('mantenimiento.compraventa.conceptomovimiento.conceptomovimiento', compact('marcas','tipomovimientos'));
     }
 
 //  crear tipo
     public function crearConceptoMovimiento(){
         $inputs = Input::all();
-        $registronuevo = $this->repoTipoMovimiento->crearConceptoMovimiento($inputs);
+        $registronuevo = $this->repoConceptoMovimiento->crearConceptoMovimiento($inputs);
         return Redirect::back();
     }
 
     //editar registro
-    public function editarConceptoMovimiento(){
-        $id_recuperado = Input::get('id');
-        $registro = $this->repoTipoMovimiento->editarConceptoMovimiento($id_recuperado);
-        return response()->json($registro);
+    public function editarConceptoMovimiento($id){
+        $registro = $this->repoConceptoMovimiento->editarConceptoMovimiento($id);
+        $id_tipomov = $registro["tipo_movimiento_id"];
+        $tipomovimientos = $this->repoTipoMovimiento->allEnConcepto();
+        return view('mantenimiento.compraventa.conceptomovimiento.editarconcepto',compact('tipomovimientos','registro','id_tipomov'));
     }
+
     //    actualizar registro
     public function actualizarConceptoMovimiento(){
         $inputs = Input::all();
-        $registro = $this->repoTipoMovimiento->actualizarConceptoMovimiento($inputs);
-        return Redirect::back();
+        $registro = $this->repoConceptoMovimiento->actualizarConceptoMovimiento($inputs);
+        $marcas = $this->repoConceptoMovimiento->all();
+        $tipomovimientos = $this->repoTipoMovimiento->allEnConcepto();
+        return view('mantenimiento.compraventa.conceptomovimiento.conceptomovimiento', compact('marcas','tipomovimientos'));
     }
 
     //    eliminar :cambiar de estado
@@ -250,15 +255,18 @@ class MantenimientoCompraVentaController extends Controller
     {
         $id_recuperado = Input::get('id');
         $id = json_decode(json_encode($id_recuperado));
-        $eliminardato = $this->repoTipoMovimiento->eliminarConceptoMovimiento($id);
+        $eliminardato = $this->repoConceptoMovimiento->eliminarConceptoMovimiento($id);
         return response()->json();
     }
 
     //    buscar
     public function buscarConceptoMovimiento(){
+        $descripcion = Input::get('descripcionmarca');
         $estado = Input::get('estado');
-        $marcas = $this->repoTipoMovimiento->buscarConceptoMovimiento($estado);
-        return view('mantenimiento.compraventa.conceptomovimiento.conceptomovimiento', compact('marcas'));
+        $tipo_movimiento = Input::get('tipo_movimiento');
+        $tipomovimientos = $this->repoTipoMovimiento->allEnConcepto();
+        $marcas = $this->repoConceptoMovimiento->buscarConceptoMovimiento($estado,$descripcion,$tipo_movimiento);
+        return view('mantenimiento.compraventa.conceptomovimiento.conceptomovimiento', compact('marcas','tipomovimientos'));
     }
 
 

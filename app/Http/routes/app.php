@@ -263,7 +263,7 @@ Route::group(['prefix'=>'/', 'middleware' => 'auth' ], function() {
     //registrar tipoproducto
     Route::post('/mantenimiento/conceptomovimiento/registro','MantenimientoCompraVentaController@crearConceptoMovimiento' );
     //    editar tipoproducto
-    Route::get('/mantenimiento/conceptomovimiento/editar',['as'=> 'editar.conceptomovimiento','uses'=>'MantenimientoCompraVentaController@editarConceptoMovimiento']);
+    Route::get('/mantenimiento/conceptomovimiento/editar/{id}',['as'=> 'editar.conceptomovimiento','uses'=>'MantenimientoCompraVentaController@editarConceptoMovimiento']);
     //  actualizar tipoproducto
     Route::post('/mantenimiento/conceptomovimiento/actualizar',['as'=> 'actualizar.conceptomovimiento','uses'=>'MantenimientoCompraVentaController@actualizarConceptoMovimiento']);
     //    eliminar tipoproducto: cambiar de estado

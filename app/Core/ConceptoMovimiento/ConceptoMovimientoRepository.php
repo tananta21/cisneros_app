@@ -37,25 +37,27 @@ class ConceptoMovimientoRepository implements BaseRepositoryInterface {
     }
 
     // añadir nuevo registro
-    public function crearTipoMovimiento($inputs)
+    public function crearConceptoMovimiento($inputs)
     {
-        $registro = new TipoMovimiento();
+        $registro = new ConceptoMovimiento();
+        $registro->tipo_movimiento_id = $inputs['tipo_movimiento'];
         $registro->descripcion = $inputs['descripcion_tipo'];
         $registro->estado = $inputs['estado'];
         $registro->save();
     }
 
 //    busqueda para editar marca
-    public function editarTipoMovimiento($id)
+    public function editarConceptoMovimiento($id)
     {
-        $registro = TipoMovimiento::findOrFail($id);
+        $registro = ConceptoMovimiento::findOrFail($id);
         return $registro;
     }
 
 //    actualizar categoria
-    public function actualizarTipoMovimiento($datos)
+    public function actualizarConceptoMovimiento($datos)
     {
-        $registro = TipoMovimiento::find($datos['marca_id']);
+        $registro = ConceptoMovimiento::find($datos['marca_id']);
+        $registro->tipo_movimiento_id = $datos['tipo_movimiento'];
         $registro->descripcion = $datos['descripcion_marca'];
         $registro->estado = $datos['estado'];
         $registro->save();
@@ -63,18 +65,24 @@ class ConceptoMovimientoRepository implements BaseRepositoryInterface {
     }
 
     //    eliminar cambiar de estado
-    public function eliminarTipoMovimiento($id)
+    public function eliminarConceptoMovimiento($id)
     {
-        $registro = TipoMovimiento::find($id);
+        $registro = ConceptoMovimiento::find($id);
         $registro->estado = 0;
         $registro->save();
     }
 
     //    busqueda
-    public function buscarTipoMovimiento($estado)
+    public function buscarConceptoMovimiento($estado,$descripcion,$tipo_movimiento)
     {
-        return $this->tipomovimiento->select()
-            ->where('estado', $estado)
+        return $this->conceptomovimiento->select()
+            ->whereRaw("estado = '" .$estado. "'
+                        OR descripcion = '" .$descripcion . "'
+                        OR tipo_movimiento_id = '" .$tipo_movimiento . "'
+                        ")
+            ->orderBy('id', 'desc')
+//            ->where('estado',$estado )
+//            ->orwhere('descripcion',$descripcion )
             ->paginate(4);
     }
 

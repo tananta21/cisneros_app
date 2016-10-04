@@ -10,14 +10,22 @@
         </ul>
     </div>
 
-    <h3 class="col-lg-12" style="margin-bottom: 0.5rem">Lista Concepto </h3>
+    <h3 class="col-lg-12" style="margin-bottom: 0.5rem">Lista Concepto Movimiento</h3>
     <hr class="col-lg-12 linea-titulo" size="5px" color="green"/>
     <div class="col-lg-12">
-        <a href="/mantenimiento/tipomovimiento" class="btn btn-primary btn-md col-lg-1" >Recargar <i class="fa fa-refresh fa-1x"></i></a>
+        <a href="/mantenimiento/conceptomovimiento" class="btn btn-primary btn-md col-lg-1" >Recargar <i class="fa fa-refresh fa-1x"></i></a>
 
-        {!! Form::model(Request::all(),['route'=>'buscar.tipomovimiento','method' => 'get', 'class' => 'form-horizontal', 'role'=>'form']) !!}
+        {!! Form::model(Request::all(),['route'=>'buscar.conceptomovimiento','method' => 'get', 'class' => 'form-horizontal', 'role'=>'form']) !!}
         <div class="col-lg-3">
         {!!form::text('descripcionmarca',null,['class'=>'form-control', 'placeholder'=>'Introdusca concepto','maxlength'=>30])!!}
+        </div>
+        <div class="col-lg-2">
+            <select class="form-control" name="" id="">
+                <option value="">Selec. Movimiento</option>
+                @foreach($tipomovimientos as $tipomovimiento)
+                    <option value="{{$tipomovimiento->id}}">{{$tipomovimiento->descripcion}}</option>
+                @endforeach
+            </select>
         </div>
 
         <div class="col-lg-2">
@@ -38,6 +46,7 @@
                 <tbody>
                 <tr>
                     <th>N° ID</th>
+                    <th>T. MOVIMIENTO</th>
                     <th>NOMBRE</th>
                     <th>ESTADO</th>
                     <th>ACCIONES</th>
@@ -45,6 +54,7 @@
                 @foreach($marcas as $marca)
                     <tr data-id="{{$marca->id}}" id="filaproducto{{$marca->id}}">
                         <td>{{$marca->id}}</td>
+                        <td>{{$marca->tipoMovimiento->descripcion}}</td>
                         <td>{{$marca->descripcion}}</td>
                         @if($marca->estado == 1)
                             <td>Activo <i class="fa fa-check-circle-o " style="color: green"></i></td>
@@ -57,12 +67,12 @@
                                     <input type="hidden" name="eliminarmarca{{$marca->id}}" value="{{$marca->id}}"/>
                                     <i class="fa fa-remove"></i>
                                 </a>
-                                <a id="editar_marca{{$marca->id}}" onclick="editarCategoria('{{$marca->id}}')" style="cursor:pointer; color: green;  font-size: 2.5rem; padding: 0.5rem">
+                                <a id="editar_marca{{$marca->id}}" href="/mantenimiento/conceptomovimiento/editar/{{$marca->id}}" style="cursor:pointer; color: green;  font-size: 2.5rem; padding: 0.5rem">
                                     <input type="hidden" name="editarmarca{{$marca->id}}" value="{{$marca->id}}"/>
                                     <i class="fa fa-pencil"></i>
                                 </a>
                             @else
-                                <a id="editar_marca{{$marca->id}}" onclick="editarCategoria('{{$marca->id}}')" style="cursor:pointer; color: green;  font-size: 2.5rem; padding: 0.5rem">
+                                <a id="editar_marca{{$marca->id}}" href="/mantenimiento/conceptomovimiento/editar/{{$marca->id}}" style="cursor:pointer; color: green;  font-size: 2.5rem; padding: 0.5rem">
                                     <input type="hidden" name="editarmarca{{$marca->id}}" value="{{$marca->id}}"/>
                                     <i class="fa fa-pencil"></i>
                                 </a>
@@ -89,7 +99,7 @@
             if (confirm('¿Estas seguro que desea desactivar Marca ?')) {
                 $(document).ready(function(){
                     var id_marca = $(this).find( 'input[name="eliminarmarca'+id+'"]' ).val();
-                    var url = '{{route("eliminar.tipomovimiento")}}';
+                    var url = '{{route("eliminar.conceptomovimiento")}}';
                     $.ajax({
                         type: 'GET',
                         url: url,
@@ -118,7 +128,7 @@
         function editarCategoria(id){
             $(document).ready(function(){
                 var id_marca = $(this).find( 'input[name="editarmarca'+id+'"]' ).val();
-                var url = '{{route("editar.tipomovimiento")}}';
+                var url = '{{route("editar.conceptomovimiento")}}';
                 $("#editar_marca"+id).attr('data-toggle','modal');
 
                 $.ajax({
@@ -166,65 +176,31 @@
                 <div class="modal-body">
                     {{--formulario crear --}}
                     <div class="box box-primary">
-                        {!! Form::open(['action' => 'MantenimientoCompraVentaController@crearTipoMovimiento','method' => 'post', 'class' => 'form-horizontal', 'role'=>'form']) !!}
+                        {!! Form::open(['action' => 'MantenimientoCompraVentaController@crearConceptoMovimiento','method' => 'post', 'class' => 'form-horizontal', 'role'=>'form']) !!}
                         <div class="box-body">
                             <div class="form-group">
-                                <label for="inputName" class="col-md-2 control-label">Tipo</label>
+                                <label for="inputName" class="col-md-2 control-label">Concepto</label>
                                 <div class="col-md-6">
                                     <input  required="true" maxlength="30" type="text" class="form-control"  placeholder="Nombre Tipo" name="descripcion_tipo" >
                                     <span style="font-size: 1rem; color: #0000ff">Maximo 30 caracteres</span>
                                 </div>
                                 <div class="col-md-4">
-                                    <input  type="radio"  name="estado" value="1" checked> <label style="cursor: pointer" for="activo"> Activo</label>
-                                    <input  type="radio" name="estado" value="0" style="margin-left: 2rem"> <label style="cursor: pointer" for="inactivo"> Inactivo </label>
-                                </div>
-
-                            </div>
-                        </div>
-                        <div class="box-footer" style="text-align: center">
-                            {{--<input type="reset" class="btn btn-default" id="cancel" value="Cancelar">--}}
-                            <button href="" class="btn btn-default" data-dismiss="modal" >Cancelar</button>
-                            <button type="submit" class="btn btn-info">Guardar</button>
-                        </div>
-
-                        <!-- /.box-body -->
-
-                        {!! Form::close() !!}
-                    </div>
-
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-
-{{--modal editar --}}
-<div class="container">        <!-- Modal crear -->
-    <div class="modal fade " id="editar_tipoproducto_modal" tabindex="-1" data-backdrop="static" role="dialog" aria-labelledby="gridModalLabel" aria-hidden="true">>
-        <div class="modal-dialog modal-md">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal">&times;</button>
-                    <h4 class="modal-title">Editar Tipo Movimiento</h4>
-                </div>
-                <div class="modal-body">
-                    {{--formulario editar --}}
-                    <div class="box box-primary">
-                        {!! Form::open(['action' => 'MantenimientoCompraVentaController@actualizarTipoMovimiento','method' => 'post', 'class' => 'form-horizontal', 'role'=>'form']) !!}
-                        <div class="box-body">
-                            <div class="form-group">
-                                <label for="inputName" class="col-md-2 control-label">Marca</label>
-                                <div class="col-md-6">
-                                    <input type="hidden" id="marcaid" name="marca_id" value=""/>
-                                    <input id="descripmarca" required="true" maxlength="30" type="text" class="form-control"  placeholder="Nombre Tipo Pago" name="descripcion_marca" >
-                                    <span style="font-size: 1rem; color: #0000ff">Maximo 30 caracteres</span>
-                                </div>
-                                <div class="col-md-4">
                                     <input id="activo"  type="radio"  name="estado" value="1" checked> <label style="cursor: pointer" for="activo"> Activo</label>
-                                    <input id="inactivo" type="radio" name="estado" value="0" style="margin-left: 2rem"> <label style="cursor: pointer" for="inactivo"> Inactivo </label>
+                                    <input id="inactivo"  type="radio" name="estado" value="0" style="margin-left: 2rem"> <label style="cursor: pointer" for="inactivo"> Inactivo </label>
                                 </div>
-
                             </div>
+                            <div class="form-group">
+                                <label for="inputName" class="col-md-2 control-label">Tipo Movimiento</label>
+                                <div class="col-md-6">
+                                    <select class="form-control" name="tipo_movimiento" id="">
+                                        <option value="">Selec. Tipo</option>
+                                        @foreach($tipomovimientos as $tipomovimiento)
+                                            <option value="{{$tipomovimiento->id}}">{{$tipomovimiento->descripcion}}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                            </div>
+
                         </div>
                         <div class="box-footer" style="text-align: center">
                             {{--<input type="reset" class="btn btn-default" id="cancel" value="Cancelar">--}}
@@ -242,6 +218,7 @@
         </div>
     </div>
 </div>
+
 
 
 
