@@ -2,8 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Core\ConceptoMovimiento\ConceptoMovimientoRepository;
 use App\Core\TipoComprobante\TipoComprobanteRepository;
-use App\Core\TipoPago\TipoPago;
+use App\Core\TipoMovimiento\TipoMovimientoRepository;
 use App\Core\TipoPago\TipoPagoRepository;
 use App\Core\TipoTransaccion\TipoTransaccionRepository;
 use App\Http\Requests;
@@ -16,12 +17,16 @@ class MantenimientoCompraVentaController extends Controller
     protected $repoTipoComprobante;
     protected $repoTipoPago;
     protected $repoTipoTransaccion;
+    protected $repoTipoMovimiento;
+    protected $repoconceptoMovimiento;
 
     public function __construct()
     {
         $this->repoTipoComprobante = new TipoComprobanteRepository();
         $this->repoTipoPago = new TipoPagoRepository();
         $this->repoTipoTransaccion = new TipoTransaccionRepository();
+        $this->repoTipoMovimiento = new TipoMovimientoRepository();
+        $this->repoconceptoMovimiento = new ConceptoMovimientoRepository();
 
     }
 
@@ -124,7 +129,7 @@ class MantenimientoCompraVentaController extends Controller
 //    mantenimiento tipo pago: listar
     public function listaTipoTransaccion(){
         $marcas = $this->repoTipoTransaccion->all();
-        return view('mantenimiento.compraventa.tipotransaccion.listatipotransaccion', compact('marcas'));
+        return view('mantenimiento.compraventa.tipotransaccion.tipotransaccion', compact('marcas'));
     }
 
 //  crear tipo
@@ -160,8 +165,106 @@ class MantenimientoCompraVentaController extends Controller
     public function buscarTipoTransaccion(){
         $estado = Input::get('estado');
         $marcas = $this->repoTipoTransaccion->buscarTipoTransaccion($estado);
-        return view('mantenimiento.compraventa.tipotransaccion.listatipotransaccion', compact('marcas'));
+        return view('mantenimiento.compraventa.tipotransaccion.tipotransaccion', compact('marcas'));
     }
+
+
+
+//    ==========================================================================================================================
+//      TIPO MOVIMIENTO
+//    mantenimiento tipo pago: listar
+    public function listaTipoMovimiento(){
+        $marcas = $this->repoTipoMovimiento->all();
+        return view('mantenimiento.compraventa.tipomovimiento.tipomovimiento', compact('marcas'));
+    }
+
+//  crear tipo
+    public function crearTipoMovimiento(){
+        $inputs = Input::all();
+        $registronuevo = $this->repoTipoMovimiento->crearTipoMovimiento($inputs);
+        return Redirect::back();
+    }
+
+    //editar registro
+    public function editarTipoMovimiento(){
+        $id_recuperado = Input::get('id');
+        $registro = $this->repoTipoMovimiento->editarTipoMovimiento($id_recuperado);
+        return response()->json($registro);
+    }
+    //    actualizar registro
+    public function actualizarTipoMovimiento(){
+        $inputs = Input::all();
+        $registro = $this->repoTipoMovimiento->actualizarTipoMovimiento($inputs);
+        return Redirect::back();
+    }
+
+    //    eliminar :cambiar de estado
+    public function eliminarTipoMovimiento()
+    {
+        $id_recuperado = Input::get('id');
+        $id = json_decode(json_encode($id_recuperado));
+        $eliminardato = $this->repoTipoMovimiento->eliminarTipoMovimiento($id);
+        return response()->json();
+    }
+
+    //    buscar
+    public function buscarTipoMovimiento(){
+        $estado = Input::get('estado');
+        $marcas = $this->repoTipoMovimiento->buscarTipoMovimiento($estado);
+        return view('mantenimiento.compraventa.tipomovimiento.tipomovimiento', compact('marcas'));
+    }
+
+
+
+
+//    ==========================================================================================================================
+//      CONCEPTO MOVIMIENTO
+//    mantenimiento tipo pago: listar
+    public function listaConceptoMovimiento(){
+        $marcas = $this->repoTipoMovimiento->all();
+        return view('mantenimiento.compraventa.conceptomovimiento.conceptomovimiento', compact('marcas'));
+    }
+
+//  crear tipo
+    public function crearConceptoMovimiento(){
+        $inputs = Input::all();
+        $registronuevo = $this->repoTipoMovimiento->crearConceptoMovimiento($inputs);
+        return Redirect::back();
+    }
+
+    //editar registro
+    public function editarConceptoMovimiento(){
+        $id_recuperado = Input::get('id');
+        $registro = $this->repoTipoMovimiento->editarConceptoMovimiento($id_recuperado);
+        return response()->json($registro);
+    }
+    //    actualizar registro
+    public function actualizarConceptoMovimiento(){
+        $inputs = Input::all();
+        $registro = $this->repoTipoMovimiento->actualizarConceptoMovimiento($inputs);
+        return Redirect::back();
+    }
+
+    //    eliminar :cambiar de estado
+    public function eliminarConceptoMovimiento()
+    {
+        $id_recuperado = Input::get('id');
+        $id = json_decode(json_encode($id_recuperado));
+        $eliminardato = $this->repoTipoMovimiento->eliminarConceptoMovimiento($id);
+        return response()->json();
+    }
+
+    //    buscar
+    public function buscarConceptoMovimiento(){
+        $estado = Input::get('estado');
+        $marcas = $this->repoTipoMovimiento->buscarConceptoMovimiento($estado);
+        return view('mantenimiento.compraventa.conceptomovimiento.conceptomovimiento', compact('marcas'));
+    }
+
+
+
+
+
 
 
 

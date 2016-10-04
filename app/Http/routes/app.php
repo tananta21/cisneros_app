@@ -68,7 +68,7 @@ Route::group(['prefix'=>'/', 'middleware' => 'auth' ], function() {
 
 //  MODULO MANTENIMIENTO
     Route::get('/mantenimiento/principal', function(){
-        return view('mantenimiento.principal');
+        return view('mantenimiento.inicio');
     });
 
 
@@ -235,7 +235,7 @@ Route::group(['prefix'=>'/', 'middleware' => 'auth' ], function() {
     //  TIPO TRANSACCION------------------------------------------------------------------------------------
     Route::get('/mantenimiento/tipotransaccion','MantenimientoCompraVentaController@listaTipoTransaccion');
     //registrar tipoproducto
-    Route::post('/inventario/tipotransaccion/registro','MantenimientoCompraVentaController@crearTipoTransaccion' );
+    Route::post('/mantenimiento/tipotransaccion/registro','MantenimientoCompraVentaController@crearTipoTransaccion' );
     //    editar tipoproducto
     Route::get('/mantenimiento/tipotransaccion/editar',['as'=> 'editar.tipotransaccion','uses'=>'MantenimientoCompraVentaController@editarTipoTransaccion']);
     //  actualizar tipoproducto
@@ -244,6 +244,34 @@ Route::group(['prefix'=>'/', 'middleware' => 'auth' ], function() {
     Route::get('/mantenimiento/tipotransaccion/eliminar',['as'=> 'eliminar.tipotransaccion','uses'=>'MantenimientoCompraVentaController@eliminarTipoTransaccion']);
     //      buscar tipoproducto
     Route::get('/mantenimiento/tipotransaccion/buscar',['as'=> 'buscar.tipotransaccion','uses'=>'MantenimientoCompraVentaController@buscarTipoTransaccion']);
+
+    //  TIPO MOVIMIENTO------------------------------------------------------------------------------------
+    Route::get('/mantenimiento/tipomovimiento','MantenimientoCompraVentaController@listaTipoMovimiento');
+    //registrar tipoproducto
+    Route::post('/mantenimiento/tipomovimiento/registro','MantenimientoCompraVentaController@crearTipoMovimiento' );
+    //    editar tipoproducto
+    Route::get('/mantenimiento/tipomovimiento/editar',['as'=> 'editar.tipomovimiento','uses'=>'MantenimientoCompraVentaController@editarTipoMovimiento']);
+    //  actualizar tipoproducto
+    Route::post('/mantenimiento/tipomovimiento/actualizar',['as'=> 'actualizar.tipomovimiento','uses'=>'MantenimientoCompraVentaController@actualizarTipoMovimiento']);
+    //    eliminar tipoproducto: cambiar de estado
+    Route::get('/mantenimiento/tipomovimiento/eliminar',['as'=> 'eliminar.tipomovimiento','uses'=>'MantenimientoCompraVentaController@eliminarTipoMovimiento']);
+    //      buscar tipoproducto
+    Route::get('/mantenimiento/tipomovimiento/buscar',['as'=> 'buscar.tipomovimiento','uses'=>'MantenimientoCompraVentaController@buscarTipoMovimiento']);
+
+    //  TIPO CONCEPTO MOVIMIENTO------------------------------------------------------------------------------------
+    Route::get('/mantenimiento/conceptomovimiento','MantenimientoCompraVentaController@listaConceptoMovimiento');
+    //registrar tipoproducto
+    Route::post('/mantenimiento/conceptomovimiento/registro','MantenimientoCompraVentaController@crearConceptoMovimiento' );
+    //    editar tipoproducto
+    Route::get('/mantenimiento/conceptomovimiento/editar',['as'=> 'editar.conceptomovimiento','uses'=>'MantenimientoCompraVentaController@editarConceptoMovimiento']);
+    //  actualizar tipoproducto
+    Route::post('/mantenimiento/conceptomovimiento/actualizar',['as'=> 'actualizar.conceptomovimiento','uses'=>'MantenimientoCompraVentaController@actualizarConceptoMovimiento']);
+    //    eliminar tipoproducto: cambiar de estado
+    Route::get('/mantenimiento/conceptomovimiento/eliminar',['as'=> 'eliminar.conceptomovimiento','uses'=>'MantenimientoCompraVentaController@eliminarConceptoMovimiento']);
+    //      buscar tipoproducto
+    Route::get('/mantenimiento/conceptomovimiento/buscar',['as'=> 'buscar.conceptomovimiento','uses'=>'MantenimientoCompraVentaController@buscarConceptoMovimiento']);
+
+
 
 
 

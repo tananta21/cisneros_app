@@ -1,6 +1,6 @@
 <?php
 
-namespace App;
+namespace App\Core\TipoMovimiento;
 
 use Illuminate\Database\Eloquent\Model;
 

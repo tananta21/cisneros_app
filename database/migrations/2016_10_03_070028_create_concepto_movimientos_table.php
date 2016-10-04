@@ -16,6 +16,7 @@ class CreateConceptoMovimientosTable extends Migration
             $table->increments('id');
             $table->integer('tipo_movimiento_id')->unsigned();
             $table->string('descripcion');
+            $table->foreign('tipo_movimiento_id')->references('id')->on('tipo_movimientos')->onDelete('cascade');
             $table->boolean('estado');
             $table->timestamps();
             $table->softDeletes();
@@ -29,6 +30,10 @@ class CreateConceptoMovimientosTable extends Migration
      */
     public function down()
     {
+        Schema::table('concepto_movimientos', function (Blueprint $table) {
+            $table->dropForeign('concepto_movimientos_tipo_movimiento_id_foreign');
+        });
+
         Schema::drop('concepto_movimientos');
     }
 }

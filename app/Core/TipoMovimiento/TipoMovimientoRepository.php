@@ -11,17 +11,75 @@ namespace App\Core\TipoMovimiento;
 
 use App\Core\Contracts\BaseRepositoryInterface;
 
+
 class TipoMovimientoRepository implements BaseRepositoryInterface {
+
+    protected $tipomovimiento;
+
+    public function __construct()
+    {
+        $this->tipomovimiento = new TipoMovimiento();
+    }
 
     public function all()
     {
-        // TODO: Implement all() method.
+        return $this->tipomovimiento
+            ->where('estado', '1')
+            ->orderBy('id', 'desc')
+            ->paginate(5);
     }
 
-    /**
-     * @param array $attributes
-     * @return mixed
-     */
+    public function allEnProducto()
+    {
+        return $this->tipomovimiento
+            ->where('estado', '1')
+            ->orderBy('id', 'desc')
+            ->get();
+    }
+
+    // añadir nuevo registro
+    public function crearTipoMovimiento($inputs)
+    {
+        $registro = new TipoMovimiento();
+        $registro->descripcion = $inputs['descripcion_tipo'];
+        $registro->estado = $inputs['estado'];
+        $registro->save();
+    }
+
+//    busqueda para editar marca
+    public function editarTipoMovimiento($id)
+    {
+        $registro = TipoMovimiento::findOrFail($id);
+        return $registro;
+    }
+
+//    actualizar categoria
+    public function actualizarTipoMovimiento($datos)
+    {
+        $registro = TipoMovimiento::find($datos['marca_id']);
+        $registro->descripcion = $datos['descripcion_marca'];
+        $registro->estado = $datos['estado'];
+        $registro->save();
+
+    }
+
+    //    eliminar cambiar de estado
+    public function eliminarTipoMovimiento($id)
+    {
+        $registro = TipoMovimiento::find($id);
+        $registro->estado = 0;
+        $registro->save();
+    }
+
+    //    busqueda
+    public function buscarTipoMovimiento($estado)
+    {
+        return $this->tipomovimiento->select()
+            ->where('estado', $estado)
+            ->paginate(4);
+    }
+
+
     public function create(array $attributes)
     {
         // TODO: Implement create() method.

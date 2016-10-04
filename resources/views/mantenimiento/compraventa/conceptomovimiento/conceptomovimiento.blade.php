@@ -10,15 +10,15 @@
         </ul>
     </div>
 
-    <h3 class="col-lg-12" style="margin-bottom: 0.5rem">Lista Tipo Productos</h3>
+    <h3 class="col-lg-12" style="margin-bottom: 0.5rem">Lista Concepto Movimiento</h3>
     <hr class="col-lg-12 linea-titulo" size="5px" color="green"/>
     <div class="col-lg-12">
-        <a href="/mantenimiento/tipoproducto" class="btn btn-primary btn-md col-lg-1" >Recargar <i class="fa fa-refresh fa-1x"></i></a>
+        <a href="/mantenimiento/tipomovimiento" class="btn btn-primary btn-md col-lg-1" >Recargar <i class="fa fa-refresh fa-1x"></i></a>
 
-        {!! Form::model(Request::all(),['route'=>'buscar.tipoproducto','method' => 'get', 'class' => 'form-horizontal', 'role'=>'form']) !!}
-        {{--<div class="col-lg-3">--}}
-            {{--{!!form::text('descripcionmarca',null,['class'=>'form-control', 'placeholder'=>'Introdusca nombre marca','maxlength'=>30])!!}--}}
-        {{--</div>--}}
+        {!! Form::model(Request::all(),['route'=>'buscar.tipomovimiento','method' => 'get', 'class' => 'form-horizontal', 'role'=>'form']) !!}
+        <div class="col-lg-3">
+        {!!form::text('descripcionmarca',null,['class'=>'form-control', 'placeholder'=>'Introdusca concepto','maxlength'=>30])!!}
+        </div>
 
         <div class="col-lg-2">
             {!!form::select('estado',[
@@ -77,7 +77,7 @@
         </div>
     </div>
     <div class="col-lg-4" style="text-align: center; margin-top: 10rem">
-        <button data-toggle="modal" data-target="#crear_tipoproducto_modal" class="btn btn-primary">Agregar Nuevo Tipo</button>
+        <button data-toggle="modal" data-target="#crear_tipoproducto_modal" class="btn btn-primary">Agregar Nuevo Concepto</button>
     </div>
     <div class="col-lg-7" style="display: flex; flex-direction: row; justify-content: center;">
         {!! $marcas->appends(Request::all())->render() !!}
@@ -89,7 +89,7 @@
             if (confirm('¿Estas seguro que desea desactivar Marca ?')) {
                 $(document).ready(function(){
                     var id_marca = $(this).find( 'input[name="eliminarmarca'+id+'"]' ).val();
-                    var url = '{{route("eliminar.tipoproducto")}}';
+                    var url = '{{route("eliminar.tipomovimiento")}}';
                     $.ajax({
                         type: 'GET',
                         url: url,
@@ -118,7 +118,7 @@
         function editarCategoria(id){
             $(document).ready(function(){
                 var id_marca = $(this).find( 'input[name="editarmarca'+id+'"]' ).val();
-                var url = '{{route("editar.tipoproducto")}}';
+                var url = '{{route("editar.tipomovimiento")}}';
                 $("#editar_marca"+id).attr('data-toggle','modal');
 
                 $.ajax({
@@ -161,17 +161,17 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal">&times;</button>
-                    <h4 class="modal-title">Registrar Tipo Producto</h4>
+                    <h4 class="modal-title">Registrar Tipo Movimiento</h4>
                 </div>
                 <div class="modal-body">
                     {{--formulario crear --}}
                     <div class="box box-primary">
-                        {!! Form::open(['action' => 'MantenimientoController@crearTipoProducto','method' => 'post', 'class' => 'form-horizontal', 'role'=>'form']) !!}
+                        {!! Form::open(['action' => 'MantenimientoCompraVentaController@crearTipoMovimiento','method' => 'post', 'class' => 'form-horizontal', 'role'=>'form']) !!}
                         <div class="box-body">
                             <div class="form-group">
                                 <label for="inputName" class="col-md-2 control-label">Tipo</label>
                                 <div class="col-md-6">
-                                    <input  required="true" maxlength="30" type="text" class="form-control"  placeholder="Nombre Tipo Producto" name="descripcion_tipo" >
+                                    <input  required="true" maxlength="30" type="text" class="form-control"  placeholder="Nombre Tipo" name="descripcion_tipo" >
                                     <span style="font-size: 1rem; color: #0000ff">Maximo 30 caracteres</span>
                                 </div>
                                 <div class="col-md-4">
@@ -205,18 +205,18 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal">&times;</button>
-                    <h4 class="modal-title">Editar Tipo Producto</h4>
+                    <h4 class="modal-title">Editar Tipo Movimiento</h4>
                 </div>
                 <div class="modal-body">
                     {{--formulario editar --}}
                     <div class="box box-primary">
-                        {!! Form::open(['action' => 'MantenimientoController@actualizarTipoProducto','method' => 'post', 'class' => 'form-horizontal', 'role'=>'form']) !!}
+                        {!! Form::open(['action' => 'MantenimientoCompraVentaController@actualizarTipoMovimiento','method' => 'post', 'class' => 'form-horizontal', 'role'=>'form']) !!}
                         <div class="box-body">
                             <div class="form-group">
                                 <label for="inputName" class="col-md-2 control-label">Marca</label>
                                 <div class="col-md-6">
                                     <input type="hidden" id="marcaid" name="marca_id" value=""/>
-                                    <input id="descripmarca" required="true" maxlength="30" type="text" class="form-control"  placeholder="Nombre Marca" name="descripcion_marca" >
+                                    <input id="descripmarca" required="true" maxlength="30" type="text" class="form-control"  placeholder="Nombre Tipo Pago" name="descripcion_marca" >
                                     <span style="font-size: 1rem; color: #0000ff">Maximo 30 caracteres</span>
                                 </div>
                                 <div class="col-md-4">
@@ -242,8 +242,6 @@
         </div>
     </div>
 </div>
-
-
 
 
 
