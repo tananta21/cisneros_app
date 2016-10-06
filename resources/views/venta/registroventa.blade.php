@@ -57,9 +57,25 @@
             </div>
 
         </div>
-        <div class="col-lg-6">
 
-        </div>
+            <div  class="col-lg-6">
+                <div style=" text-align:center;border: black 1px solid">
+                    <h3>multiservicios cisneros</h3>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisic</p>
+                    <p><span>descripsion:</span>
+                        <span>Lorem ipsum dolor sit.</span></p>
+                    <p><span>Cajero:</span>
+                        <span>Lorem ipsum dolor sit.</span></p>
+                    <p><span>Nº venta:</span>
+                        <span>Lorem ipsum dolor sit.</span></p>
+                    <p style="margin: 0"><span style="padding-right: 4rem">cantidad</span><span style="padding-right: 4rem">cantidad</span><span style="padding-right: 4rem">cantidad</span>
+
+                    </p>
+                    <p>========================================</p>
+
+                </div>
+
+            </div>
     </div>
 
 @endsection
