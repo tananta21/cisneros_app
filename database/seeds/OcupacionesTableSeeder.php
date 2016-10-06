@@ -12,7 +12,7 @@ class OcupacionesTableSeeder extends Seeder
     public function run()
     {
         \DB::table('ocupaciones')->insert([
-            'descripcion' => 'soltero',
+            'descripcion' => 'mecanico',
             'estado' => 1,
         ]);
     }

@@ -15,7 +15,7 @@
     <div class="col-lg-12">
         <a href="/mantenimiento/tipocomprobante" class="btn btn-primary btn-md col-lg-1" >Recargar <i class="fa fa-refresh fa-1x"></i></a>
 
-        {!! Form::model(Request::all(),['route'=>'buscar.tipoproducto','method' => 'get', 'class' => 'form-horizontal', 'role'=>'form']) !!}
+        {!! Form::model(Request::all(),['route'=>'buscar.tipocomprobante','method' => 'get', 'class' => 'form-horizontal', 'role'=>'form']) !!}
         {{--<div class="col-lg-3">--}}
         {{--{!!form::text('descripcionmarca',null,['class'=>'form-control', 'placeholder'=>'Introdusca nombre marca','maxlength'=>30])!!}--}}
         {{--</div>--}}

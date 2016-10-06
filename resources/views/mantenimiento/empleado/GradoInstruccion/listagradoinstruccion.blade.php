@@ -77,7 +77,7 @@
         </div>
     </div>
     <div class="col-lg-4" style="text-align: center; margin-top: 10rem">
-        <button data-toggle="modal" data-target="#crear_tipoproducto_modal" class="btn btn-primary">Agregar Nuevo Tipo</button>
+        <button data-toggle="modal" data-target="#crear_tipoproducto_modal" class="btn btn-primary">Agregar Nuevo Grado Instruccion</button>
     </div>
     <div class="col-lg-7" style="display: flex; flex-direction: row; justify-content: center;">
         {!! $marcas->appends(Request::all())->render() !!}
@@ -161,7 +161,7 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal">&times;</button>
-                    <h4 class="modal-title">Registrar Estado Civil</h4>
+                    <h4 class="modal-title">Registrar Grado Instruccion</h4>
                 </div>
                 <div class="modal-body">
                     {{--formulario crear --}}
@@ -171,7 +171,7 @@
                             <div class="form-group">
                                 <label for="inputName" class="col-md-2 control-label">Tipo</label>
                                 <div class="col-md-6">
-                                    <input  required="true" maxlength="30" type="text" class="form-control"  placeholder="Nombre Tipo Producto" name="descripcion_tipo" >
+                                    <input  required="true" maxlength="30" type="text" class="form-control"  placeholder="Nombre Grado Instruccion" name="descripcion_tipo" >
                                     <span style="font-size: 1rem; color: #0000ff">Maximo 30 caracteres</span>
                                 </div>
                                 <div class="col-md-4">
@@ -205,7 +205,7 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal">&times;</button>
-                    <h4 class="modal-title">Editar Estado Civil</h4>
+                    <h4 class="modal-title">Editar Grado Instruccion</h4>
                 </div>
                 <div class="modal-body">
                     {{--formulario editar --}}
@@ -213,10 +213,10 @@
                         {!! Form::open(['action' => 'MantenimientoEmpleadoController@actualizarGradoInstruccion','method' => 'post', 'class' => 'form-horizontal', 'role'=>'form']) !!}
                         <div class="box-body">
                             <div class="form-group">
-                                <label for="inputName" class="col-md-2 control-label">Marca</label>
+                                <label for="inputName" class="col-md-2 control-label">Tipo</label>
                                 <div class="col-md-6">
                                     <input type="hidden" id="marcaid" name="marca_id" value=""/>
-                                    <input id="descripmarca" required="true" maxlength="30" type="text" class="form-control"  placeholder="Nombre Marca" name="descripcion_marca" >
+                                    <input id="descripmarca" required="true" maxlength="30" type="text" class="form-control"  placeholder="Grado Instruccion" name="descripcion_marca" >
                                     <span style="font-size: 1rem; color: #0000ff">Maximo 30 caracteres</span>
                                 </div>
                                 <div class="col-md-4">

@@ -181,7 +181,7 @@ desired effect
                 <li class="treeview">
                     <a href="/compra/compranueva"><i class="fa fa-shopping-cart"></i> <span>Compras</span> </a>
                 </li>
-                <li class="treeview">
+                <li id="modulo-venta" class="treeview">
                     <a href="/venta/nuevaventa"><i class="fa fa-money"></i> <span>Ventas</span> </a>
                 </li>
                 <li class="treeview">

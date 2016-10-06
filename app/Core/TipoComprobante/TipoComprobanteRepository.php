@@ -76,6 +76,7 @@ class TipoComprobanteRepository implements BaseRepositoryInterface
     {
         return $this->tipocomprobante->select()
             ->where('estado', $estado)
+            ->orderBy('id', 'desc')
             ->paginate(4);
     }
 

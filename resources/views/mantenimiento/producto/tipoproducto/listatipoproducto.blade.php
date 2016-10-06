@@ -45,7 +45,7 @@
                 @foreach($marcas as $marca)
                     <tr data-id="{{$marca->id}}" id="filaproducto{{$marca->id}}">
                         <td>{{$marca->id}}</td>
-                        <td>{{$marca->descripcion}}</td>
+                        <td><span id="texto">{{$marca->descripcion}}</span></td>
                         @if($marca->estado == 1)
                             <td>Activo <i class="fa fa-check-circle-o " style="color: green"></i></td>
                         @else
@@ -86,7 +86,7 @@
     {{--javascript eliminar: cambiar de estado--}}
     <script type="text/javascript">
         function eliminarCategoria(id){
-            if (confirm('¿Estas seguro que desea desactivar Marca ?')) {
+            if (confirm('¿Estas seguro que desea eliminar '+$('#texto').text()+'?')) {
                 $(document).ready(function(){
                     var id_marca = $(this).find( 'input[name="eliminarmarca'+id+'"]' ).val();
                     var url = '{{route("eliminar.tipoproducto")}}';
@@ -184,7 +184,7 @@
                         <div class="box-footer" style="text-align: center">
                             {{--<input type="reset" class="btn btn-default" id="cancel" value="Cancelar">--}}
                             <button href="" class="btn btn-default" data-dismiss="modal" >Cancelar</button>
-                            <button type="submit" class="btn btn-info">Guardar</button>
+                            <input type="submit" class="btn btn-info"  value="Guardar"/>
                         </div>
 
                         <!-- /.box-body -->

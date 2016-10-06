@@ -23,13 +23,13 @@
                     <span style="font-size: 1rem; color: #0000ff">Maximo 30 caracteres</span>
                 </div>
                 <div class="col-md-4">
-                    @if($registro->tipo_movimiento_id == 1)
-                    <input id="activo"  type="radio"  name="estado" value="1" checked> <label style="cursor: pointer" for="activo"> Activo</label>
-                    <input id="inactivo" type="radio" name="estado" value="0" style="margin-left: 2rem"> <label style="cursor: pointer" for="inactivo"> Inactivo </label>
-                    @else
-                        <input id="inactivo" type="radio" name="estado" value="0" checked style="margin-left: 2rem"> <label style="cursor: pointer" for="inactivo"> Inactivo </label>
-                        <input id="activo"  type="radio"  name="estado" value="1" > <label style="cursor: pointer" for="activo"> Activo</label>
-                    @endif
+                        @if($registro->estado==1)
+                            <input type="radio"  name="estado" value="{{$registro->estado==1}}" checked> Activo
+                            <input type="radio" name="estado" value="0" style="margin-left: 2rem"> Inactivo
+                        @else
+                            <input  type="radio"  name="estado" value="1"> Activo
+                            <input type="radio" name="estado" value="{{$registro->estado==1}}" style="margin-left: 2rem" checked > Inactivo
+                        @endif
 
                 </div>
             </div>

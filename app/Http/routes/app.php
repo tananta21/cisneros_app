@@ -50,23 +50,57 @@ Route::group(['prefix'=>'/', 'middleware' => 'auth' ], function() {
 //        'uses'=>'ProductoController@buscarProducto'
 //    ]);
 
-//VENTAS
 
+
+//==================================================================================
+////==================================================================================
+                                        //  MODULO DE VENTAS
+//==================================================================================
+
+
+//      VENTAS
+//    ============================================================
+
+//    realizar una venta nueva
     Route::get('/venta/nuevaventa', function(){
-        return view('venta.nuevaventa');
+        return view('venta.venta.nuevaventa');
     });
 //    buscar producto en la vista de venta
     Route::get('/venta/buscarproducto','VentaController@buscarProducto');
+
 //    listar las ventas realizadas
     Route::get('/venta/lista', function(){
         return view('venta.listaventa');
     });
-//    registro de una nueva venta
+//   vista registro de una nueva venta
     Route::get('/venta/registro', function(){
-        return view('venta.registroventa');
+        return view('venta.venta.registroventa');
     });
 
-//  MODULO MANTENIMIENTO
+
+
+//    CLIENTES
+//    ==================================================================
+    //    listar clientes
+    Route::get('/venta/cliente', function(){
+        return view('venta.cliente.listacliente');
+    });
+
+    //   Registrar cliente
+    Route::get('/venta/cliente/registro', function(){
+        return view('venta.cliente.registrarcliente');
+    });
+
+
+
+
+
+
+//==================================================================================
+////==================================================================================
+                            //  MODULO MANTENIMIENTO
+//==================================================================================
+
     Route::get('/mantenimiento/principal', function(){
         return view('mantenimiento.inicio');
     });

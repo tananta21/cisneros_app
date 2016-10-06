@@ -8,10 +8,18 @@
                 <a class="nav-link" href="/venta/nuevaventa">Nueva Venta</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">Lista Ventas</a>
+                <a class="nav-link" href="/venta/lista">Lista Ventas</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/venta/cliente">Clientes</a>
             </li>
         </ul>
     </div>
+    <script>
+        $(document).ready(function () {
+            $("#modulo-venta").addClass('active');
+        });
+    </script>
 @section('contenido_modulos')
 
     {{--<div class="col-lg-12" style="padding-top:2rem">--}}

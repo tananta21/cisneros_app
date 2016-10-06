@@ -20,7 +20,7 @@
         {!!form::text('descripcionmarca',null,['class'=>'form-control', 'placeholder'=>'Introdusca concepto','maxlength'=>30])!!}
         </div>
         <div class="col-lg-2">
-            <select class="form-control" name="tipo_movimiento" id="">
+            <select class="form-control" name="tipo_movimiento" null>
                 <option value="">Selec. Movimiento</option>
                 @foreach($tipomovimientos as $tipomovimiento)
                     <option value="{{$tipomovimiento->id}}">{{$tipomovimiento->descripcion}}</option>

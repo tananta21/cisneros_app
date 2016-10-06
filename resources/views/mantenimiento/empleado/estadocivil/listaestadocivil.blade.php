@@ -171,7 +171,7 @@
                             <div class="form-group">
                                 <label for="inputName" class="col-md-2 control-label">Tipo</label>
                                 <div class="col-md-6">
-                                    <input  required="true" maxlength="30" type="text" class="form-control"  placeholder="Nombre Tipo Producto" name="descripcion_tipo" >
+                                    <input  required="true" maxlength="30" type="text" class="form-control"  placeholder="Nombre Tipo Estado Civil" name="descripcion_tipo" >
                                     <span style="font-size: 1rem; color: #0000ff">Maximo 30 caracteres</span>
                                 </div>
                                 <div class="col-md-4">
@@ -213,10 +213,10 @@
                         {!! Form::open(['action' => 'MantenimientoEmpleadoController@actualizarEstadoCivil','method' => 'post', 'class' => 'form-horizontal', 'role'=>'form']) !!}
                         <div class="box-body">
                             <div class="form-group">
-                                <label for="inputName" class="col-md-2 control-label">Marca</label>
+                                <label for="inputName" class="col-md-2 control-label">Tipo</label>
                                 <div class="col-md-6">
                                     <input type="hidden" id="marcaid" name="marca_id" value=""/>
-                                    <input id="descripmarca" required="true" maxlength="30" type="text" class="form-control"  placeholder="Nombre Marca" name="descripcion_marca" >
+                                    <input id="descripmarca" required="true" maxlength="30" type="text" class="form-control"  placeholder="Nombre Tipo Estado Civil" name="descripcion_marca" >
                                     <span style="font-size: 1rem; color: #0000ff">Maximo 30 caracteres</span>
                                 </div>
                                 <div class="col-md-4">
