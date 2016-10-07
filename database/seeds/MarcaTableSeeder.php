@@ -1,29 +1,38 @@
-<?php
+(0, 1)<?php
 
 use Illuminate\Database\Seeder;
 use App\Core\Marca\Marca;
+use Faker\Factory as Faker;
 
 class MarcaTableSeeder extends Seeder
 {
     public function run()
     {
+        $faker = Faker::create();
+
         Marca::create(array(
-            'descripcion'=>'--------'
+            'descripcion'=>'--------',
+            'estado' => $faker->numberBetween(0, 1)
         ));
         Marca::create(array(
-            'descripcion'=>'Yamaha'
+            'descripcion'=>'Yamaha',
+            'estado' => $faker->numberBetween(0, 1)
         ));
         Marca::create(array(
-            'descripcion'=>'zuzuki'
+            'descripcion'=>'zuzuki',
+            'estado' => $faker->numberBetween(0, 1)
         ));
         Marca::create(array(
-            'descripcion'=>'taiwan'
+            'descripcion'=>'taiwan',
+            'estado' => $faker->numberBetween(0, 1)
         ));
         Marca::create(array(
-            'descripcion'=>'sfx'
+            'descripcion'=>'sfx',
+            'estado' => $faker->numberBetween(0, 1)
         ));
         Marca::create(array(
-            'descripcion'=>'honda'
+            'descripcion'=>'honda',
+            'estado' => $faker->numberBetween(0, 1)
         ));
     }
 }

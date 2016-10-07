@@ -13,6 +13,7 @@ class EstadoCivilesTableSeeder extends Seeder
     {
         \DB::table('estado_civiles')->insert([
             'descripcion' => 'soltero',
+            'estado' => 1,
         ]);
     }
 }

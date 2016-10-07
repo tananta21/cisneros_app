@@ -1,10 +1,10 @@
 <?php
 
-namespace App;
+namespace App\Core\TipoPago;
 
 use Illuminate\Database\Eloquent\Model;
 
-class SerieProducto extends Model
+class TipoPago extends Model
 {
     //
 }

@@ -13,6 +13,7 @@ class TipoEmpleadosTableSeeder extends Seeder
     {
         \DB::table('tipo_empleados')->insert([
             'descripcion' => 'administrador',
+            'estado' => 1,
         ]);
     }
 }

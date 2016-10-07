@@ -1,29 +1,32 @@
 <?php
 
-use Illuminate\Database\Seeder;
 use App\Core\Categoria\Categoria;
+use Illuminate\Database\Seeder;
+use Faker\Factory as Faker;
 
 class CategoriaTableSeeder extends Seeder
 {
-    /**
-     * Run the database seeds.
-     *
-     * @return void
-     */
+
     public function run()
     {
+        $faker = Faker::create();
+
         Categoria::create(array(
-            'descripcion'=>'--------'
+            'descripcion' => '--------',
+            'estado' => $faker->numberBetween(0, 1)
         ));
         Categoria::create(array(
-            'descripcion'=>'llantas'
+            'descripcion' => 'llantas',
+            'estado' => $faker->numberBetween(0, 1)
         ));
         Categoria::create(array(
-            'descripcion'=>'sistema electrico'
+            'descripcion' => 'sistema electrico',
+            'estado' => $faker->numberBetween(0, 1)
         ));
 
         Categoria::create(array(
-            'descripcion'=>'motores'
+            'descripcion' => 'motores',
+            'estado' => $faker->numberBetween(0, 1)
         ));
 
     }

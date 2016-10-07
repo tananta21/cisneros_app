@@ -181,7 +181,7 @@ desired effect
                 <li class="treeview">
                     <a href="/compra/compranueva"><i class="fa fa-shopping-cart"></i> <span>Compras</span> </a>
                 </li>
-                <li class="treeview">
+                <li id="modulo-venta" class="treeview">
                     <a href="/venta/nuevaventa"><i class="fa fa-money"></i> <span>Ventas</span> </a>
                 </li>
                 <li class="treeview">
@@ -298,10 +298,28 @@ desired effect
         <!-- /.content -->
 
     </div>
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $('#categoria_modal').on('shown.bs.modal',
+                    function () {
+                        $('#idcat').focus();
+                    });
+            $('#marca_modal').on('shown.bs.modal',
+                    function () {
+                        $('#idmar').focus();
+                    });
+            $('#modelo_modal').on('shown.bs.modal',
+                    function () {
+                        $('#idmod').focus();
+                    });
+
+        });
+
+    </script>
 
     {{--modal crear categoria--}}
     <div class="container">        <!-- Modal crear -->
-        <div class="modal fade " id="categoria_modal" tabindex="-1" role="dialog" aria-labelledby="gridModalLabel" aria-hidden="true">>
+        <div class="modal fade " id="categoria_modal" tabindex="-1" role="dialog" data-backdrop="static" aria-labelledby="gridModalLabel" aria-hidden="true">>
             <div class="modal-dialog modal-md">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -311,14 +329,19 @@ desired effect
                     <div class="modal-body">
                         {{--formulario crear--}}
                         <div class="box box-primary">
-
-                            {!! Form::open(['action' => 'ProductoController@createCategoria','method' => 'post', 'class' => 'form-horizontal', 'role'=>'form']) !!}
+                            {!! Form::open(['action' => 'MantenimientoController@crearCategoria','method' => 'post', 'class' => 'form-horizontal', 'role'=>'form']) !!}
                             <div class="box-body">
                                 <div class="form-group">
-                                    <label for="inputName" class="col-md-2 control-label">Nombre</label>
-                                    <div class="col-md-10">
-                                        <input required="true" type="text" class="form-control"  placeholder="Nombre Categoria" name="descripcion_categoria" >
+                                    <label for="inputName" class="col-md-2 control-label">Categoria</label>
+                                    <div class="col-md-6">
+                                        <input id="idcat" required="true" maxlength="30" type="text" class="form-control"  placeholder="Nombre Categoria" name="descripcion_categoria">
+                                        <span style="font-size: 1.2rem; color: #0000ff; padding-left: 0.3rem">Maximo 30 caracteres</span>
                                     </div>
+                                    <div class="col-md-4">
+                                        <input id="activo"  type="radio"  name="estado" value="1" checked> <label style="cursor: pointer" for="activo"> Activo</label>
+                                        <input id="inactivo" type="radio" name="estado" value="0" style="margin-left: 2rem"> <label style="cursor: pointer" for="inactivo"> Inactivo </label>
+                                    </div>
+
                                 </div>
                             </div>
                             <div class="box-footer" style="text-align: center">
@@ -337,26 +360,32 @@ desired effect
             </div>
         </div>
     </div>
+
     {{--modal crear marca--}}
     <div class="container">        <!-- Modal crear -->
-        <div class="modal fade " id="marca_modal" tabindex="-1" role="dialog" aria-labelledby="gridModalLabel" aria-hidden="true">>
+        <div class="modal fade " id="marca_modal" tabindex="-1" role="dialog" data-backdrop="static" aria-labelledby="gridModalLabel" aria-hidden="true">>
             <div class="modal-dialog modal-md">
                 <div class="modal-content">
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal">&times;</button>
-                        <h4 class="modal-title">Registrar Nueva Marca</h4>
+                        <h4 class="modal-title">Registrar Nueva Categoria</h4>
                     </div>
                     <div class="modal-body">
                         {{--formulario crear--}}
                         <div class="box box-primary">
-
-                            {!! Form::open(['action' => 'ProductoController@createMarca','method' => 'post', 'class' => 'form-horizontal', 'role'=>'form']) !!}
+                            {!! Form::open(['action' => 'MantenimientoController@crearMarca','method' => 'post', 'class' => 'form-horizontal', 'role'=>'form']) !!}
                             <div class="box-body">
                                 <div class="form-group">
-                                    <label for="inputName" class="col-md-2 control-label">Nombre</label>
-                                    <div class="col-md-10">
-                                        <input required="true" type="text" class="form-control"  placeholder="Nombre Marca" name="descripcion_marca" >
+                                    <label for="inputName" class="col-md-2 control-label">Categoria</label>
+                                    <div class="col-md-6">
+                                        <input id="idmar" required="true" maxlength="30" type="text" class="form-control"  placeholder="Nombre Marca" name="descripcion_marca">
+                                        <span style="font-size: 1.2rem; color: #0000ff; padding-left: 0.3rem">Maximo 30 caracteres</span>
                                     </div>
+                                    <div class="col-md-4">
+                                        <input id="activo"  type="radio"  name="estado" value="1" checked> <label style="cursor: pointer" for="activo"> Activo</label>
+                                        <input id="inactivo" type="radio" name="estado" value="0" style="margin-left: 2rem"> <label style="cursor: pointer" for="inactivo"> Inactivo </label>
+                                    </div>
+
                                 </div>
                             </div>
                             <div class="box-footer" style="text-align: center">
@@ -375,7 +404,59 @@ desired effect
             </div>
         </div>
     </div>
+
     {{--modal crear modelo--}}
+    <div class="container">        <!-- Modal crear -->
+        <div class="modal fade " id="modelo_modal" tabindex="-1" role="dialog" data-backdrop="static" aria-labelledby="gridModalLabel" aria-hidden="true">>
+            <div class="modal-dialog modal-md">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <h4 class="modal-title">Registrar Nuevo Modelo</h4>
+                    </div>
+                    <div class="modal-body">
+                        {{--formulario crear--}}
+                        <div class="box box-primary">
+                            {!! Form::open(['action' => 'MantenimientoController@crearModelo','method' => 'post', 'class' => 'form-horizontal', 'role'=>'form']) !!}
+                            <div class="box-body">
+                                <div class="form-group">
+                                    <label for="inputName" class="col-md-2 control-label">Modelo</label>
+                                    <div class="col-md-6">
+                                        <input id="idmod" required="true" maxlength="50" type="text" class="form-control"  placeholder="Nombre Modelo" name="descripcion_modelo">
+                                        <span style="font-size: 1.2rem; color: #0000ff; padding-left: 0.3rem">Maximo 50 caracteres</span>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <input id="activo"  type="radio"  name="estado" value="1" checked> <label style="cursor: pointer" for="activo"> Activo</label>
+                                        <input id="inactivo" type="radio" name="estado" value="0" style="margin-left: 2rem"> <label style="cursor: pointer" for="inactivo"> Inactivo </label>
+                                    </div>
+
+                                </div>
+                            </div>
+                            <div class="box-footer" style="text-align: center">
+                                {{--<input type="reset" class="btn btn-default" id="cancel" value="Cancelar">--}}
+                                <button href="" class="btn btn-default" data-dismiss="modal"  >Cancelar</button>
+                                <button type="submit" class="btn btn-info">Guardar</button>
+                            </div>
+
+                            <!-- /.box-body -->
+
+                            {!! Form::close() !!}
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+
+
+
+
     <div class="container">        <!-- Modal crear -->
         <div class="modal fade " id="modelo_modal" tabindex="-1" role="dialog" aria-labelledby="gridModalLabel" aria-hidden="true">>
             <div class="modal-dialog modal-md">

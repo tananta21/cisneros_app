@@ -70,7 +70,7 @@ class ProductoController extends Controller
     public function edit($id)
     {
 
-        $categorias = $this->repoCategoria->all();
+        $categorias = $this->repoCategoria->allEnProducto();
         $marcas = $this->repoMarca->all();
         $modelos = $this->repoModelo->all();
         $editarProducto = $this->repoProducto->find($id);
@@ -132,11 +132,11 @@ class ProductoController extends Controller
 
     }
 
-    public function createCategoria(){
-        $inputs = Input::all();
-        $modeloNuevo = $this->repoCategoria->addCategoria($inputs);
-        return Redirect::back();
-    }
+//    public function createCategoria(){
+//        $inputs = Input::all();
+//        $modeloNuevo = $this->repoCategoria->addCategoria($inputs);
+//        return Redirect::back();
+//    }
     public function createMarca(){
         $inputs = Input::all();
         $modeloNuevo = $this->repoMarca->addMarca($inputs);
