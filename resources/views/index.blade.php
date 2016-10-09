@@ -175,7 +175,7 @@ desired effect
                 <li class="treeview">
                     <a href="/inventario/productos"><i class="fa fa-pencil-square-o"></i> <span>Inventario</span></a>
                 </li>
-                <li class="treeview">
+                <li id="modulo-compra" class="treeview">
                     <a href="/compra/compranueva"><i class="fa fa-shopping-cart"></i> <span>Compras</span> </a>
                 </li>
                 <li id="modulo-venta" class="treeview">
@@ -184,10 +184,10 @@ desired effect
                 <li class="treeview">
                     <a href="#"><i class="fa fa-bar-chart"></i> <span>Reportes</span> </a>
                 </li>
-                <li class="treeview">
-                    <a href="#"><i class="fa fa-lock"></i> <span>Seguridad</span> </a>
+                <li id="modulo-seguridad" class="treeview">
+                    <a href="/seguridad/usuario"><i class="fa fa-lock"></i> <span>Seguridad</span> </a>
                 </li>
-                <li class="treeview">
+                <li id="modulo-mantenimiento" class="treeview">
                     <a href="/mantenimiento/principal"><i class="fa fa-cogs"></i> <span>Mantenimientos</span> </a>
                 </li>
 

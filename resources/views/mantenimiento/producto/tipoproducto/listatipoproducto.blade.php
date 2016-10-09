@@ -45,7 +45,7 @@
                 @foreach($marcas as $marca)
                     <tr data-id="{{$marca->id}}" id="filaproducto{{$marca->id}}">
                         <td>{{$marca->id}}</td>
-                        <td><span id="texto">{{$marca->descripcion}}</span></td>
+                        <td><span id="texto{{$marca->id}}">{{$marca->descripcion}}</span></td>
                         @if($marca->estado == 1)
                             <td>Activo <i class="fa fa-check-circle-o " style="color: green"></i></td>
                         @else
@@ -86,7 +86,7 @@
     {{--javascript eliminar: cambiar de estado--}}
     <script type="text/javascript">
         function eliminarCategoria(id){
-            if (confirm('¿Estas seguro que desea eliminar '+$('#texto').text()+'?')) {
+            if (confirm('¿Estas seguro que desea desactivar......... '+$('#texto'+id).text()+'?')) {
                 $(document).ready(function(){
                     var id_marca = $(this).find( 'input[name="eliminarmarca'+id+'"]' ).val();
                     var url = '{{route("eliminar.tipoproducto")}}';
@@ -148,9 +148,46 @@
             });
         };
     </script>
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $('#crear_tipoproducto_modal').on('shown.bs.modal',
+                    function () {
+                        $('#texto_descripcion').focus();
+                    });
+        });
 
+        function soloLetras(e) {
+            key = e.keyCode || e.which;
+            if(key == 46 || key == 39){
+                return false;
+            }
+            tecla = String.fromCharCode(key).toLowerCase();
+            letras = " áéíóúabcdefghijklmnñopqrstuvwxyzÁÉÍÓÚABCDEFGHIJKLMNÑOPQRSTUVWXYZ";
+            especiales = [8, 37, 39, 46];
 
+            tecla_especial = false
+            for(var i in especiales) {
+                if(key == especiales[i]) {
+                    tecla_especial = true;
+                    break;
+                }
+            }
 
+            if(letras.indexOf(tecla) == -1 && !tecla_especial)
+                return false;
+        }
+
+        $(document).keydown(function(tecla){
+            if (tecla.keyCode ==78) {
+                $("#crear_tipoproducto_modal").modal('show');
+            }
+        });
+
+        $(document).ready(function () {
+            $("#modulo-mantenimiento").addClass('active');
+        });
+
+    </script>
 
 @endsection
 
@@ -171,7 +208,7 @@
                             <div class="form-group">
                                 <label for="inputName" class="col-md-2 control-label">Tipo</label>
                                 <div class="col-md-6">
-                                    <input  required="true" maxlength="30" type="text" class="form-control"  placeholder="Nombre Tipo Producto" name="descripcion_tipo" >
+                                    <input id="texto_descripcion" onkeypress="return soloLetras(event)"  required="true" maxlength="30" type="text" class="form-control"  placeholder="Nombre Tipo Producto" name="descripcion_tipo" >
                                     <span style="font-size: 1rem; color: #0000ff">Maximo 30 caracteres</span>
                                 </div>
                                 <div class="col-md-4">
@@ -183,8 +220,8 @@
                         </div>
                         <div class="box-footer" style="text-align: center">
                             {{--<input type="reset" class="btn btn-default" id="cancel" value="Cancelar">--}}
-                            <button href="" class="btn btn-default" data-dismiss="modal" >Cancelar</button>
                             <input type="submit" class="btn btn-info"  value="Guardar"/>
+                            <button href="" class="btn btn-default" data-dismiss="modal" >Cancelar</button>
                         </div>
 
                         <!-- /.box-body -->
@@ -242,6 +279,8 @@
         </div>
     </div>
 </div>
+
+
 
 
 
