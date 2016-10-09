@@ -46,14 +46,14 @@ class TipoComprobanteRepository implements BaseRepositoryInterface
         $registro->save();
     }
 
-//    busqueda para editar marca
+//    busqueda para editar comprobante
     public function editarTipoComprobante($id)
     {
         $registro = TipoComprobante::findOrFail($id);
         return $registro;
     }
 
-//    actualizar categoria
+//    actualizar comprobante
     public function actualizarTipoComprobante($datos)
     {
         $registro = TipoComprobante::find($datos['marca_id']);
