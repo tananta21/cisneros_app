@@ -15,11 +15,11 @@
             </li>
         </ul>
     </div>
-    <script>
-        $(document).ready(function () {
-            $("#modulo-venta").addClass('active');
-        });
-    </script>
+    {{--<script>--}}
+        {{--$(document).ready(function () {--}}
+            {{--$("#modulo-venta").addClass('active');--}}
+        {{--});--}}
+    {{--</script>--}}
 @section('contenido_modulos')
 
     <div id="lista_cliente">
