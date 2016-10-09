@@ -15,12 +15,13 @@ class EstadoCivilesTableSeeder extends Seeder
             'descripcion' => 'soltero',
             'estado' => 1,
         ]);
-        \DB::table('tipo_clientes')->insert([
+        \DB::table('estado_civil')->insert([
             'descripcion' => 'casado',
             'estado' => 1,
-        ]);\DB::table('tipo_clientes')->insert([
-        'descripcion' => 'viudo',
-        'estado' => 1,
-    ]);
+        ]);
+        \DB::table('estado_civil')->insert([
+            'descripcion' => 'viudo',
+          'estado' => 1,
+        ]);
     }
 }
