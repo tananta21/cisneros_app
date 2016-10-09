@@ -153,7 +153,7 @@ desired effect
         <!-- sidebar: style can be found in sidebar.less -->
         <section class="sidebar">
 
-            <!-- Sidebar user panel (optional) -->
+
             <div class="user-panel">
                 <div class="pull-left image">
                     <img src="{{url('/')}}/dist/img/perfil2.jpg" class="img-circle" alt="User Image">
