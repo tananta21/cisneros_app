@@ -15,6 +15,7 @@ class CreateSeries extends Migration
         Schema::create('series', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('tipo_comprobante_id')->unsigned();
+            $table->foreign('tipo_comprobante_id')->references('id')->on('tipo_comprobantes')->onDelete('cascade');
             $table->dateTime('fecha');
             $table->integer('correlativo');
             $table->integer('max_correlativo');
@@ -30,6 +31,9 @@ class CreateSeries extends Migration
      */
     public function down()
     {
+        Schema::table('series', function (Blueprint $table) {
+            $table->dropForeign('series_tipo_comprobante_id_foreign');
+        });
         Schema::drop('series');
     }
 }

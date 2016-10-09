@@ -12,7 +12,7 @@ class CreateAmortizacionDeCobro extends Migration
      */
     public function up()
     {
-        Schema::create('amortizacion_de_cobro', function (Blueprint $table) {
+        Schema::create('amortizacion_cobros', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('cronograma_cobro_id')->unsigned();
             $table->decimal('monto');
@@ -28,6 +28,6 @@ class CreateAmortizacionDeCobro extends Migration
      */
     public function down()
     {
-        Schema::drop('amortizacion_de_cobro');
+        Schema::drop('amortizacion_cobros');
     }
 }

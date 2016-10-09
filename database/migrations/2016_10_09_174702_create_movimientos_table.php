@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateCronogramaPago extends Migration
+class CreateMovimientosTable extends Migration
 {
     /**
      * Run the migrations.
@@ -12,14 +12,13 @@ class CreateCronogramaPago extends Migration
      */
     public function up()
     {
-        Schema::create('cronograma_pagos', function (Blueprint $table) {
+        Schema::create('movimientos', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('compra_id')->unsigned();
+            $table->integer('empleado_id')->unsigned();
+            $table->integer('tipo_pago_id')->unsigned();
+            $table->integer('concepto_movimiento_id')->unsigned();
+            $table->integer('serie_id')->unsigned();
             $table->dateTime('fecha');
-            $table->decimal('cuota');
-            $table->decimal('monto');
-            $table->decimal('pagado');
-            $table->boolean('estado');
             $table->timestamps();
             $table->softDeletes();
         });
@@ -32,6 +31,6 @@ class CreateCronogramaPago extends Migration
      */
     public function down()
     {
-        Schema::drop('cronograma_pagos');
+        Schema::drop('movimientos');
     }
 }

@@ -36,11 +36,7 @@ class CreateRelationshipEmpleadosTable extends Migration
         });
     }
 
-    /**
-     * Reverse the migrations.
-     *
-     * @return void
-     */
+
     public function down()
     {
         Schema::table('empleados', function (Blueprint $table) {

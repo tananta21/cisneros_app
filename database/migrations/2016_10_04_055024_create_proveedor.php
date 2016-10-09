@@ -12,9 +12,9 @@ class CreateProveedor extends Migration
      */
     public function up()
     {
-        Schema::create('proveedor', function (Blueprint $table) {
+        Schema::create('proveedores', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('ubigeo_id')->unsigned();
+//            $table->integer('ubigeo_id')->unsigned();
             $table->string('nro_documento',14);
             $table->string('nombre',50);
             $table->string('telefono',20);
@@ -34,6 +34,6 @@ class CreateProveedor extends Migration
      */
     public function down()
     {
-        Schema::drop('proveedor');
+        Schema::drop('proveedores');
     }
 }

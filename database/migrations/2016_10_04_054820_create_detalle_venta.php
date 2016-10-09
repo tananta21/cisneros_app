@@ -12,13 +12,15 @@ class CreateDetalleVenta extends Migration
      */
     public function up()
     {
-        Schema::create('detalle_venta', function (Blueprint $table) {
+        Schema::create('detalle_ventas', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('venta_id')->unsigned();
             $table->integer('producto_id')->unsigned();
             $table->decimal('cantidad');
             $table->decimal('descuento');
             $table->decimal('igv');
+            $table->foreign('venta_id')->references('id')->on('ventas')->onDelete('cascade');
+            $table->foreign('producto_id')->references('id')->on('productos')->onDelete('cascade');
             $table->timestamps();
             $table->softDeletes();
         });
@@ -31,6 +33,10 @@ class CreateDetalleVenta extends Migration
      */
     public function down()
     {
-        Schema::drop('detalle_venta');
+        Schema::table('detalle_ventas', function (Blueprint $table) {
+            $table->dropForeign('detalle_ventas_venta_id_foreign');
+            $table->dropForeign('detalle_ventas_producto_id_foreign');
+        });
+        Schema::drop('detalle_ventas');
     }
 }

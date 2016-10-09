@@ -12,10 +12,10 @@ class CreateCronogramaCobro extends Migration
      */
     public function up()
     {
-        Schema::create('cronograma_cobro', function (Blueprint $table) {
+        Schema::create('cronograma_cobros', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('venta_id')->unsigned();
-            $table->dateTime('fecha');
+            $table->date('fecha');
             $table->decimal('cuota');
             $table->decimal('monto');
             $table->decimal('pagado');
@@ -25,13 +25,8 @@ class CreateCronogramaCobro extends Migration
         });
     }
 
-    /**
-     * Reverse the migrations.
-     *
-     * @return void
-     */
     public function down()
     {
-        Schema::drop('cronograma_cobro');
+        Schema::drop('cronograma_cobros');
     }
 }
