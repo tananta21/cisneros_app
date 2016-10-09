@@ -77,8 +77,6 @@ Route::group(['prefix'=>'/', 'middleware' => 'auth' ], function() {
         return view('venta.venta.registroventa');
     });
 
-
-
 //    CLIENTES
 //    ==================================================================
     //    listar clientes
@@ -91,7 +89,29 @@ Route::group(['prefix'=>'/', 'middleware' => 'auth' ], function() {
         return view('venta.cliente.registrarcliente');
     });
 
+//==================================================================================
+////==================================================================================
+                    //  MODULO DE COMPRAS
+//==================================================================================
+//      COMPRAS
+//    ============================================================
 
+//    realizar una compra nueva
+    Route::get('/compra/compranueva', function(){
+        return view('compra.compranueva');
+    });
+
+//    PROVEEDORES
+// =========================================================
+    //    listar proveedores
+    Route::get('/compra/provedor', function(){
+        return view('compra.proveedor.listaproveedor');
+    });
+
+    //   Registrar proveedor
+    Route::get('/compra/provedor/registro', function(){
+        return view('compra.proveedor.registrarproveedor');
+    });
 
 
 
@@ -337,9 +357,7 @@ Route::group(['prefix'=>'/', 'middleware' => 'auth' ], function() {
 
 
 
-    Route::get('/compra/compranueva', function(){
-        return view('compra.compranueva');
-    });
+
 
     Route::get('/ventas/registrar',[
         'as'=> 'registrar.venta',

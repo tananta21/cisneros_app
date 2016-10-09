@@ -11,7 +11,7 @@
 
 @section('contenido_modulos')
 
-    <h4 class="col-lg-12" style="margin-bottom: 0.5rem">Registrar Cliente</h4>
+    <h4 class="col-lg-12" style="margin-bottom: 0.5rem">Registrar Proveedor</h4>
     <hr class="col-lg-12 linea-titulo" size="2px" color="green"/>
 
     <div >
@@ -32,7 +32,7 @@
                     <h5 class="col-lg-12 titulos">Numero de documento</h5>
                     <div class="col-lg-12 col-sm-12 col-xs-12">
                         <input required="true" maxlength="8" onKeypress="if (event.keyCode < 45 || event.keyCode > 57) event.returnValue = false;"
-                        type="text" class="form-control" placeholder="DNI O RUC" name="serie" value="">
+                               type="text" class="form-control" placeholder="DNI O RUC" name="serie" value="">
                     </div>
                 </div>
             </div>

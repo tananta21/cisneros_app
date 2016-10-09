@@ -38,6 +38,7 @@
             </div>
 
             <div class="col-lg-12 caja_formulario ">
+
                 <div class="col-lg-4 col-sm-12 col-xs-12">
                     <div  class="col-lg-12" style="display: flex;  align-items: center;padding: 0rem ">
                         <h5 onclick="" class="col-lg-4 titulos">Categorias</h5>

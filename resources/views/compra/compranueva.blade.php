@@ -5,11 +5,15 @@
     <div>
         <ul class="nav nav-tabs">
             <li class="nav-item">
-                <a class="nav-link" href="/venta/nuevaventa">Nueva Compra</a>
+                <a class="nav-link" href="/compra/compranueva">Nueva Compra</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="/venta/lista">Lista Compra</a>
+                <a class="nav-link" href="#">Lista Compra</a>
             </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/compra/provedor">Proveedor</a>
+            </li>
+
         </ul>
     </div>
 @section('contenido_modulos')
