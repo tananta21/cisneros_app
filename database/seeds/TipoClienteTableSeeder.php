@@ -15,12 +15,11 @@ class TipoClienteTableSeeder extends Seeder
             'descripcion' => 'natural',
             'estado' => 1,
         ]);
+
         \DB::table('tipo_clientes')->insert([
-            'descripcion' => 'dato2',
-            'estado' => 1,
-        ]);\DB::table('tipo_clientes')->insert([
-            'descripcion' => 'dato3',
+            'descripcion' => 'juridico',
             'estado' => 1,
         ]);
+
     }
 }
