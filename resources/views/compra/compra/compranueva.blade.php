@@ -11,7 +11,7 @@
                 <a class="nav-link" href="#">Lista Compra</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="/compra/provedor">Proveedor</a>
+                <a class="nav-link" href="/compra/proveedor">Proveedor</a>
             </li>
 
         </ul>

@@ -5,25 +5,27 @@
 
     <script>
         $(document).ready(function () {
-            $("#modulo-venta").addClass('active');
+            $("#modulo-seguridad").addClass('active');
         });
     </script>
 
 @section('contenido_modulos')
 
-    <h4 class="col-lg-12" style="margin-bottom: 0.5rem">Registrar Cliente</h4>
+    <h4 class="col-lg-12" style="margin-bottom: 0.5rem">Registrar Empleado</h4>
     <hr class="col-lg-12 linea-titulo" size="2px" color="green"/>
 
     <div >
-        <form method="POST" action="/venta/cliente/registro" accept-charset="UTF-8" class="form-horizontal" role="form">
+        <form method="POST" action="/seguridad/empleado/registro" accept-charset="UTF-8" class="form-horizontal" role="form">
             {!! csrf_field() !!}
             <div class="col-lg-12 col-sm-12 col-xs-12 caja_formulario ">
                 <div class="col-lg-4 col-sm-12 col-xs-12">
-                    <h5 class="col-lg-12 titulos">Tipo Cliente</h5>
+                    <h5 class="col-lg-12 titulos">Tipo Empleado</h5>
                     <div class="col-lg-12 col-sm-12  col-xs-12">
-                        <select class="form-control" name="tipo_cliente">
-                            <option value="1">Natural</option>
-                            <option value="2">Juridica</option>
+                        <select class="form-control" name="tipo_empleado">
+                            <option value="1" selected> Seleccione Tipo Empleado</option>
+                            @foreach($tipoEmpleados as $tipoEmpleado)
+                                <option value="{{$tipoEmpleado->id}}">{{$tipoEmpleado->descripcion}}</option>
+                            @endforeach
                         </select>
                     </div>
                 </div>
@@ -42,15 +44,15 @@
 
             <div class="col-lg-12 caja_formulario ">
                 <div class="col-lg-4 col-sm-12 col-xs-12">
-                    <h5 class="col-lg-12 titulos">Nombre del Cliente</h5>
+                    <h5 class="col-lg-12 titulos">Nombres del Empleado</h5>
                     <div class="col-lg-12 col-sm-12 col-xs-12">
-                        <input type="text" class="form-control" placeholder="Nombre Cliente" name="nombres" value="">
+                        <input type="text" class="form-control" placeholder="Nombre Cliente" name="nombre" value="">
                     </div>
                 </div>
                 <div class="col-lg-8 col-sm-12 col-xs-12">
-                    <h5 class="col-lg-12 titulos">Apellidos del Cliente</h5>
+                    <h5 class="col-lg-12 titulos">Apellidos del Empleado</h5>
                     <div class="col-lg-12 col-sm-12 col-xs-12">
-                        <input type="text" class="form-control" placeholder="Apallido Cliente" name="apellidos" value="">
+                        <input type="text" class="form-control" placeholder="Apallido Cliente" name="apellido" value="">
                     </div>
                 </div>
 
@@ -70,12 +72,12 @@
                         <input type="email" class="form-control" placeholder="ejemplo@ejemplo.com" name="correo" value="">
                     </div>
                 </div>
-                <div class="col-lg-4 col-sm-12 col-xs-12">
-                    <h5 class="col-lg-12 titulos">Direccion</h5>
-                    <div class="col-lg-12 col-sm-12 col-xs-12">
-                        <input type="text" class="form-control" placeholder="Direccion" name="direccion" value="">
-                    </div>
-                </div>
+                {{--<div class="col-lg-4 col-sm-12 col-xs-12">--}}
+                    {{--<h5 class="col-lg-12 titulos">Direccion</h5>--}}
+                    {{--<div class="col-lg-12 col-sm-12 col-xs-12">--}}
+                        {{--<input type="text" class="form-control" placeholder="Direccion" name="direccion" value="">--}}
+                    {{--</div>--}}
+                {{--</div>--}}
             </div>
 
             <div class="col-lg-12 caja_formulario">
@@ -114,11 +116,12 @@
                     <h5 class="col-lg-12 titulos">Ocupacion</h5>
                     <div class="col-lg-12 col-sm-12  col-xs-12">
                         <select class="form-control" name="ocupacion">
+
                             @foreach($ocupaciones as $ocupacion)
                                 @if($ocupacion->id == 1)
                                     <option value="1" selected> Seleccione Ocupacion</option>
                                 @else
-                                <option value="{{$ocupacion->id}}">{{$ocupacion->descripcion}}</option>
+                                    <option value="{{$ocupacion->id}}">{{$ocupacion->descripcion}}</option>
                                 @endif
                             @endforeach
                         </select>
@@ -126,24 +129,22 @@
                 </div>
             </div>
 
-            <div class="col-lg-12 caja_formulario">
-                <div class="col-lg-4 col-sm-12 col-xs-12">
-                    <h5 class="col-lg-12 titulos">Fecha de nacimiento</h5>
-                    <div class="col-lg-12 col-sm-12 col-xs-12">
-                        <input type="date" class="form-control" placeholder="fecha nacimiento" name="fecha_nacimiento" value="">
-                    </div>
-                </div>
-            </div>
+            {{--<div class="col-lg-12 caja_formulario">--}}
+                {{--<div class="col-lg-4 col-sm-12 col-xs-12">--}}
+                    {{--<h5 class="col-lg-12 titulos">Fecha de nacimiento</h5>--}}
+                    {{--<div class="col-lg-12 col-sm-12 col-xs-12">--}}
+                        {{--<input type="date" class="form-control" placeholder="fecha nacimiento" name="fecha_nacimiento" value="">--}}
+                    {{--</div>--}}
+                {{--</div>--}}
+            {{--</div>--}}
 
 
             <div class="col-lg-12 col-sm-12 col-xs-12  caja-botones-formulario ">
                 <button type="submit" class="btn btn-primary" style="margin-right: 1rem">ACEPTAR</button>
-                <a type="button" href="/venta/cliente" class="btn btn-default" >CANCELAR</a>
+                <a type="button" href="/seguridad/empleado" class="btn btn-default" >CANCELAR</a>
             </div>
 
         </form>
     </div>
-
-
 @endsection
 @endsection

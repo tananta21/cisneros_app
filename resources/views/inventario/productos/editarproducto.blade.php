@@ -5,6 +5,13 @@
 
     <h4 class="col-lg-12" style="margin-bottom: 0.5rem">Editar Producto / Servicio</h4>
     <hr class="col-lg-12 linea-titulo" size="5px" color="green"/>
+
+    <script>
+        $(document).ready(function () {
+            $("#modulo-inventario").addClass('active');
+        });
+    </script>
+
     <div>
         <form method="POST" action="/inventario/producto/actualizar/{{$editarProducto->id}}" accept-charset="UTF-8" class="form-horizontal" role="form">
             {!! csrf_field() !!}
@@ -154,8 +161,8 @@
             </div>
 
             <div class="col-lg-12 col-sm-12 col-xs-12  caja-botones-formulario ">
-                <a type="button" href="/inventario/productos" class="btn btn-default" style="margin-right: 1rem">CANCELAR</a>
-                <button type="submit" class="btn btn-primary" >ACEPTAR</button>
+                <button type="submit" class="btn btn-primary" style="margin-right: 1rem" >ACEPTAR</button>
+                <a type="button" href="/inventario/productos" class="btn btn-default">CANCELAR</a>
             </div>
         </form>
     </div>

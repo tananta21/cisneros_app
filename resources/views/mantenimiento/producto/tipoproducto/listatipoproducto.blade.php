@@ -55,7 +55,7 @@
                             @if($marca->estado == 1)
                                 <a onclick="eliminarCategoria('{{$marca->id}}')" style="color: red; font-size: 2.5rem; padding: 0.5rem; cursor: pointer; margin-right: 2rem">
                                     <input type="hidden" name="eliminarmarca{{$marca->id}}" value="{{$marca->id}}"/>
-                                    <i class="fa fa-remove"></i>
+                                    <i class="fa fa-trash"></i>
                                 </a>
                                 <a id="editar_marca{{$marca->id}}" onclick="editarCategoria('{{$marca->id}}')" style="cursor:pointer; color: green;  font-size: 2.5rem; padding: 0.5rem">
                                     <input type="hidden" name="editarmarca{{$marca->id}}" value="{{$marca->id}}"/>
@@ -148,6 +148,7 @@
             });
         };
     </script>
+
     <script type="text/javascript">
         $(document).ready(function() {
             $('#crear_tipoproducto_modal').on('shown.bs.modal',
@@ -155,27 +156,6 @@
                         $('#texto_descripcion').focus();
                     });
         });
-
-        function soloLetras(e) {
-            key = e.keyCode || e.which;
-            if(key == 46 || key == 39){
-                return false;
-            }
-            tecla = String.fromCharCode(key).toLowerCase();
-            letras = " áéíóúabcdefghijklmnñopqrstuvwxyzÁÉÍÓÚABCDEFGHIJKLMNÑOPQRSTUVWXYZ";
-            especiales = [8, 37, 39, 46];
-
-            tecla_especial = false
-            for(var i in especiales) {
-                if(key == especiales[i]) {
-                    tecla_especial = true;
-                    break;
-                }
-            }
-
-            if(letras.indexOf(tecla) == -1 && !tecla_especial)
-                return false;
-        }
 
         $(document).keydown(function(tecla){
             if (tecla.keyCode ==78) {
@@ -185,6 +165,11 @@
 
         $(document).ready(function () {
             $("#modulo-mantenimiento").addClass('active');
+        });
+
+        $('#crear_tipoproducto_modal').on('hidden.bs.modal', function () {
+            $(this).find("#texto_descripcion").val('').end();
+
         });
 
     </script>
@@ -250,10 +235,10 @@
                         {!! Form::open(['action' => 'MantenimientoController@actualizarTipoProducto','method' => 'post', 'class' => 'form-horizontal', 'role'=>'form']) !!}
                         <div class="box-body">
                             <div class="form-group">
-                                <label for="inputName" class="col-md-2 control-label">Marca</label>
+                                <label for="inputName" class="col-md-2 control-label">Tipo</label>
                                 <div class="col-md-6">
                                     <input type="hidden" id="marcaid" name="marca_id" value=""/>
-                                    <input id="descripmarca" required="true" maxlength="30" type="text" class="form-control"  placeholder="Nombre Marca" name="descripcion_marca" >
+                                    <input id="descripmarca" onkeypress="return soloLetras(event)"  required="true" maxlength="30" type="text" class="form-control"  placeholder="Nombre Tipo" name="descripcion_marca" >
                                     <span style="font-size: 1rem; color: #0000ff">Maximo 30 caracteres</span>
                                 </div>
                                 <div class="col-md-4">
@@ -265,8 +250,8 @@
                         </div>
                         <div class="box-footer" style="text-align: center">
                             {{--<input type="reset" class="btn btn-default" id="cancel" value="Cancelar">--}}
-                            <button href="" class="btn btn-default" data-dismiss="modal" >Cancelar</button>
                             <button type="submit" class="btn btn-info">Guardar</button>
+                            <button href="" class="btn btn-default" data-dismiss="modal" >Cancelar</button>
                         </div>
 
                         <!-- /.box-body -->

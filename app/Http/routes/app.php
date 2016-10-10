@@ -70,8 +70,9 @@ Route::group(['prefix'=>'/', 'middleware' => 'auth' ], function() {
 
 //    listar las ventas realizadas
     Route::get('/venta/lista', function(){
-        return view('venta.listaventa');
+        return view('venta.venta.listaventa');
     });
+
 //   vista registro de una nueva venta
     Route::get('/venta/registro', function(){
         return view('venta.venta.registroventa');
@@ -81,17 +82,25 @@ Route::group(['prefix'=>'/', 'middleware' => 'auth' ], function() {
         'as'=> 'registrar.venta',
         'uses'=>'VentaController@create']);
 
+
+
+
+
 //    CLIENTES
 //    ==================================================================
     //    listar clientes
-    Route::get('/venta/cliente', function(){
-        return view('venta.cliente.listacliente');
-    });
+    Route::get('/venta/cliente', 'ClienteController@index');
 
-    //   Registrar cliente
-    Route::get('/venta/cliente/registro', function(){
-        return view('venta.cliente.registrarcliente');
-    });
+
+//   vista Registrar cliente
+    Route::get('/venta/cliente/nuevocliente','ClienteController@nuevoCliente');
+//    registrar cliente
+    Route::post('/venta/cliente/registro','ClienteController@create' );
+
+//    editar cliente
+    Route::get('/venta/cliente/editar/{id}','ClienteController@edit');
+
+
 
 //==================================================================================
 ////==================================================================================
@@ -108,28 +117,37 @@ Route::group(['prefix'=>'/', 'middleware' => 'auth' ], function() {
 //    PROVEEDORES
 // =========================================================
     //    listar proveedores
-    Route::get('/compra/provedor', function(){
-        return view('compra.proveedor.listaproveedor');
-    });
-
-    //   Registrar proveedor
-    Route::get('/compra/provedor/registro', function(){
+    Route::get('/compra/proveedor','ProveedorController@index');
+//    proveedor nuevo
+    Route::get('/compra/nuevoproveedor',function(){
         return view('compra.proveedor.registrarproveedor');
     });
+
+//   Registrar proveedor
+    Route::post('/compra/proveedor/registro','ProveedorController@create');
+
+//    editar proveedor
+    Route::get('/compra/proveedor/editar/{id}','ProveedorController@edit');
+
+//    actualizar proveedor
+    Route::post('/compra/proveedor/actualizar/{id}','ProveedorController@update');
+
+
+
 
 
 //    ============================================================================
 //                              MODULO SEGURIDAD
 //    ===========================================================================
 //   listar usuarios
-    Route::get('/seguridad/usuario', function(){
-        return view('seguridad.usuario.listausuario');
-    });
+    Route::get('/seguridad/empleado','EmpleadoController@index' );
+// nuevo empleado
+    Route::get('/seguridad/nuevoempleado','EmpleadoController@create');
+//    registrar empleado
+    Route::post('/seguridad/empleado/registro','EmpleadoController@nuevoEmpleado');
 
-    Route::get('/seguridad/usuario/registro', function(){
-        return view('seguridad.usuario.registrarusuario');
-    });
-
+// editar empleado
+    Route::get('/seguridad/empleado/editar/{id}','EmpleadoController@edit');
 
 
 

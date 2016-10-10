@@ -15,16 +15,17 @@ class ClienteTableSeeder extends Seeder
 
             Cliente::create(array(
                 'tipo_cliente_id' => $faker->numberBetween(1, 2),
-                'estado_civil_id' => $faker->numberBetween(1, 3),
-                'grado_instruccion_id' => $faker->numberBetween(1, 4),
-                'ocupacion_id' => $faker->numberBetween(1, 3),
+                'estado_civil_id' => $faker->numberBetween(1, 4),
+                'grado_instruccion_id' => $faker->numberBetween(1, 5),
+                'ocupacion_id' => $faker->numberBetween(1, 4),
                 'nro_documento' => $faker->numberBetween(8),
                 'nombres' => $faker->firstName,
                 'apellidos' => $faker->lastName,
                 'telefono' => $faker->phoneNumber,
                 'correo' => $faker->email,
                 'direccion' => $faker->address,
-                'fecha_nacimiento' => $faker->dateTime
+                'fecha_nacimiento' => $faker->dateTime,
+                'estado' =>1
             ));
         }
     }

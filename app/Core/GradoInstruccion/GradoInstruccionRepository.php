@@ -29,7 +29,7 @@ class GradoInstruccionRepository implements BaseRepositoryInterface
             ->paginate(5);
     }
 
-    public function allEnProducto()
+    public function allEnVista()
     {
         return $this->gradoinstruccion
             ->where('estado', '1')

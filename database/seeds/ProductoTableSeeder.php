@@ -26,7 +26,7 @@ class ProductoTableSeeder extends Seeder
                 'stock_minimo' => $faker->numberBetween(20, 100),
                 'stock_maximo' => $faker->numberBetween(20, 100),
                 'descripcion' => $faker->text,
-                'estado' => $faker->numberBetween(1, 2),
+                'estado' => $faker->numberBetween(0, 1),
             ));
         }
 

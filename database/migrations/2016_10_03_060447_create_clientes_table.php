@@ -25,6 +25,7 @@ class CreateClientesTable extends Migration
             $table->string('correo')->unique();
             $table->string('direccion');
             $table->date('fecha_nacimiento');
+            $table->boolean('estado');
             $table->timestamps();
             $table->softDeletes();
         });

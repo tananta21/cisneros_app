@@ -24,7 +24,7 @@ class EstadoCivilRepository implements BaseRepositoryInterface {
             ->orderBy('id', 'desc')
             ->paginate(5);
     }
-    public function allEnProducto(){
+    public function allEnVista(){
         return $this->estadocivil
             ->where('estado','1')
             ->orderBy('id', 'desc')

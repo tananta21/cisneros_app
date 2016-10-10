@@ -24,8 +24,9 @@ class ProductoRepository implements BaseRepositoryInterface
     public function all()
     {
         return $this->producto
+            ->where('estado', '1')
             ->orderBy('id', 'desc')
-            ->paginate(4);
+            ->paginate(6);
     }
 
     /**
@@ -84,13 +85,11 @@ class ProductoRepository implements BaseRepositoryInterface
         return $producto;
     }
 
-    /**
-     * @param $id
-     * @return mixed
-     */
-    public function deleted($id)
-    {
-        $this->producto->destroy($id);
+//    cambiar de estado
+    public function deleted($id)    {
+        $registro = Producto::find($id);
+        $registro->estado = 0;
+        $registro->save();
     }
 
     public function buscarProducto($data)
