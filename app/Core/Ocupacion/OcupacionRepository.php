@@ -74,6 +74,7 @@ class OcupacionRepository implements BaseRepositoryInterface
     {
         return $this->ocupacion->select()
             ->where('estado', $estado)
+            ->orderBy('id', 'desc')
             ->paginate(4);
     }
 

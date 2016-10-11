@@ -40,15 +40,13 @@
 
         <div class="col-lg-12" style="margin-top: 0.5rem">
 
-
-
             {!! Form::model(Request::all(),['route'=>'buscar.producto','method' => 'get', 'class' => 'form-horizontal', 'role'=>'form']) !!}
 
                 <div class="box-body">
                     <div class="form-group">
-                        <button type="submit" class="btn btn-primary btn-sm col-lg-1"> Buscar
-                            <i class="fa fa-search fa-1px" style="margin-left: 1rem"></i>
-                        </button>
+                        <div class="col-lg-1 col-sm-2" >
+                            <a type="button" href="/inventario/productos" class="btn btn-default">Refresh <i class="fa fa-refresh fa-1x"></i></a>
+                        </div>
                         <div class="col-lg-2 col-sm-2">
                             {{--<input type="text" class="form-control" placeholder="Serie Producto" name="serie" value>--}}
                             {!!form::text('serie',null,['class'=>'form-control', 'placeholder'=>'Serie Producto'])!!}
@@ -57,20 +55,27 @@
                             {{--<input type="text" class="form-control" placeholder="Nombre Producto" name="nombre" value="">--}}
                             {!!form::text('nombre',null,['class'=>'form-control', 'placeholder'=>'Nombre Producto'])!!}
                         </div>
-                        <div class="col-lg-2 col-sm-2">
+                        <div class="col-lg-2 col-sm-2" style="display: none">
                             {!!form::select('categoria',['' => 'Select categoria','1' => '--------','2' => 'llantas','3' => 'sistema electrico','4' => 'motores'],null,['class'=>'form-control'])!!}
                         </div>
 
-                        <div class="col-lg-2 col-sm-2">
+                        <div class="col-lg-2 col-sm-2" style="display: none">
                             {!!form::select('marca',['' => 'Select marca','1' => '--------','2' => 'Yamaha','3' => 'zuzuki','4'=>'taiwan'],null,['class'=>'form-control'])!!}
                         </div>
 
-                        <div class="col-lg-2 col-sm-2">
+                        <div class="col-lg-2 col-sm-2" style="display: none">
                             {!!form::select('modelo',['' => 'Select modelo','1' => '--------','2' => 'pistera','3' => 'cgl 110','4'=>'chacarera'],null,['class'=>'form-control'])!!}
                         </div>
-
-
+                        <div class="col-lg-2">
+                            {!!form::select('estado',[
+                            '1'=>'Activo',
+                            '0'=>'Inactivo'],null,['class'=>'form-control'])!!}
+                        </div>
+                        <button type="submit" class="btn btn-primary btn-sm col-lg-1"> Buscar
+                            <i class="fa fa-search fa-1px" style="margin-left: 1rem"></i>
+                        </button>
                     </div>
+
                 </div>
             {!! Form::close() !!}
 
@@ -107,6 +112,7 @@
                         @else
                             <td>Inactivo</td>
                         @endif
+                        @if($producto->estado == 1)
                         <td>
                             <a onclick="eliminarPro('{{$producto->id}}')"  style="color: red; font-size: 2rem; padding: 0.5rem; cursor: pointer; margin-right: 2rem">
                                 <input type="hidden" name="eliminarproducto{{$producto->id}}" value="{{$producto->id}}"/>
@@ -116,6 +122,13 @@
                                 <i class="fa fa-pencil"></i>
                             </a>
                         </td>
+                        @else
+                            <td>
+                                <a href="/inventario/producto/editar/{{$producto->id}}" style="color: green;  font-size: 2rem; padding: 0.5rem">
+                                    <i class="fa fa-pencil"></i>
+                                </a>
+                            </td>
+                        @endif
                     </tr>
                 @endforeach
                 </tbody>

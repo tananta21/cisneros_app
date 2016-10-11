@@ -20,7 +20,7 @@
         <div>
             <div class="col-lg-7" style="padding-top: 1rem; margin-bottom: 1.5rem; margin-top: 1.5rem;">
                 <div class="col-lg-2" style="text-align: center">
-                    <a id="venta" onclick="vender()" href="#" style="color: #000000">
+                    <a id="venta" onclick="vender()"  style="color: #000000; cursor: pointer">
                         <i class="fa fa-file fa-2x" aria-hidden="true"></i><br/>
                         <span style="font-size: 1.2rem">Generar Venta</span>
                     </a>

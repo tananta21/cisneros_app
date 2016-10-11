@@ -139,7 +139,7 @@
 
             <div class="col-lg-12 caja_formulario">
                 <div class="col-lg-4 col-sm-12 col-xs-12">
-                    <h5 class="col-lg-12 titulos">Precio</h5>
+                    <h5 class="col-lg-12 titulos">Estado</h5>
                     <div class="col-lg-12 col-sm-12 col-xs-12">
                         <input  type="radio"  name="estado" value="1" checked> Activo
                         <input type="radio" name="estado" value="0" style="margin-left: 2rem"> Inactivo

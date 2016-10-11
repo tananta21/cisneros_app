@@ -15,7 +15,7 @@
     <hr class="col-lg-12 linea-titulo" size="2px" color="green"/>
 
     <div >
-        <form method="POST" action="/venta/cliente/registro" accept-charset="UTF-8" class="form-horizontal" role="form">
+        <form method="POST" action="/seguridad/empleado/actualizar/{{$empleado->id}}" accept-charset="UTF-8" class="form-horizontal" role="form">
             {!! csrf_field() !!}
             <div class="col-lg-12 col-sm-12 col-xs-12 caja_formulario ">
                 <div class="col-lg-4 col-sm-12 col-xs-12">
@@ -129,6 +129,21 @@
                                 @endif
                             @endforeach
                         </select>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-12 caja_formulario">
+                <div class="col-lg-12">
+                    <h5 class="col-lg-12 titulos">Estado</h5>
+                    <div class="col-lg-12 col-sm-12 col-xs-12" >
+                        @if($empleado->estado==1)
+                            <input type="radio"  name="estado" value="{{$empleado->estado==1}}" checked> Activo
+                            <input type="radio" name="estado" value="0" style="margin-left: 2rem"> Inactivo
+                        @else
+                            <input  type="radio"  name="estado" value="1"> Activo
+                            <input type="radio" name="estado" value="{{$empleado->estado==1}}" style="margin-left: 2rem" checked > Inactivo
+                        @endif
                     </div>
                 </div>
             </div>

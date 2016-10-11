@@ -103,7 +103,7 @@ class ProductoRepository implements BaseRepositoryInterface
             ->paginate(5);
     }
 
-    public function busquedaProducto($nombre, $serie, $categoria, $marca, $modelo)
+    public function busquedaProducto($nombre, $serie, $categoria, $marca, $modelo,$estado)
     {
 
         return $this->producto->select('id', 'tipo_producto_id', 'marca_id', 'categoria_id', 'modelo_id', 'serie', 'nombre', 'estado')
@@ -113,11 +113,12 @@ class ProductoRepository implements BaseRepositoryInterface
 //                ->orWhere('modelo_id','like',"$modelo")
             ->whereRaw(" nombre = '" . $nombre . "'
                                 OR serie = '" . $serie . "'
+                                OR estado ='" . $estado . "'
                                 OR categoria_id ='" . $categoria . "'
                                 OR marca_id ='" . $marca . "'
                                 OR modelo_id = '" . $modelo . "'")
             ->orderBy('id', 'desc')
-            ->paginate(4);
+            ->paginate(6);
 
 //        $result =DB::table('productos')
 //                    ->selectRaw("productos.id,serie,nombre ,categorias.descripcion, marca_id, modelo_id, estado")

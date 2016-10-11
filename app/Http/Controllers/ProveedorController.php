@@ -58,23 +58,20 @@ class ProveedorController extends Controller
     {
         //
     }
+    public function eliminarProveedor()
+    {
+        $id_producto = Input::get('id');
+        $id = json_decode(json_encode($id_producto));
+        $eliminarRegistro = $this->repoProveedor->deleted($id);
+        return response()->json();
+    }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-
+    public function buscarProveedor(){
+        $dato = Input::get('cliente');
+        $estado = Input::get('estado');
+        $proveedores = $this->repoProveedor->buscarProveedor($dato,$estado);
+        return view('compra.proveedor.listaproveedor', compact('proveedores'));
+    }
 
 
     public function destroy($id)

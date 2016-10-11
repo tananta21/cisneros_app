@@ -15,7 +15,7 @@
     <div class="col-lg-12">
         <a href="/mantenimiento/marca" class="btn btn-primary btn-md col-lg-1" >Recargar <i class="fa fa-refresh fa-1x"></i></a>
 
-        {!! Form::model(Request::all(),['route'=>'buscar.modelo','method' => 'get', 'class' => 'form-horizontal', 'role'=>'form']) !!}
+        {!! Form::model(Request::all(),['route'=>'buscar.marca','method' => 'get', 'class' => 'form-horizontal', 'role'=>'form']) !!}
         <div class="col-lg-3">
             {!!form::text('descripcionmarca',null,['class'=>'form-control', 'placeholder'=>'Introdusca nombre marca','maxlength'=>30])!!}
         </div>
@@ -177,44 +177,44 @@
 
 @endsection
 
-        <!-- Modal crear -->
-<div class="container">        <!-- Modal crear -->
-    <div class="modal fade " id="marca_modal" tabindex="-1" role="dialog" aria-labelledby="gridModalLabel" aria-hidden="true">>
-        <div class="modal-dialog modal-md">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal">&times;</button>
-                    <h4 class="modal-title">Registrar Nueva Marca</h4>
-                </div>
-                <div class="modal-body">
+        {{--<!-- Modal crear -->--}}
+{{--<div class="container">        <!-- Modal crear -->--}}
+    {{--<div class="modal fade " id="marca_modal" tabindex="-1" role="dialog" aria-labelledby="gridModalLabel" aria-hidden="true">>--}}
+        {{--<div class="modal-dialog modal-md">--}}
+            {{--<div class="modal-content">--}}
+                {{--<div class="modal-header">--}}
+                    {{--<button type="button" class="close" data-dismiss="modal">&times;</button>--}}
+                    {{--<h4 class="modal-title">Registrar Nueva Marca</h4>--}}
+                {{--</div>--}}
+                {{--<div class="modal-body">--}}
                     {{--formulario crear--}}
-                    <div class="box box-primary">
+                    {{--<div class="box box-primary">--}}
 
-                        {!! Form::open(['action' => 'ProductoController@createMarca','method' => 'post', 'class' => 'form-horizontal', 'role'=>'form']) !!}
-                        <div class="box-body">
-                            <div class="form-group">
-                                <label for="inputName" class="col-md-2 control-label">Nombre</label>
-                                <div class="col-md-10">
-                                    <input  id="texto_descripcion" onkeypress="return soloLetras(event)" required="true" type="text" class="form-control"  placeholder="Nombre Marca" name="descripcion_marca" >
-                                </div>
-                            </div>
-                        </div>
-                        <div class="box-footer" style="text-align: center">
+                        {{--{!! Form::open(['action' => 'ProductoController@createMarca','method' => 'post', 'class' => 'form-horizontal', 'role'=>'form']) !!}--}}
+                        {{--<div class="box-body">--}}
+                            {{--<div class="form-group">--}}
+                                {{--<label for="inputName" class="col-md-2 control-label">Nombre</label>--}}
+                                {{--<div class="col-md-10">--}}
+                                    {{--<input  id="texto_descripcion" onkeypress="return soloLetras(event)" required="true" type="text" class="form-control"  placeholder="Nombre Marca" name="descripcion_marca" >--}}
+                                {{--</div>--}}
+                            {{--</div>--}}
+                        {{--</div>--}}
+                        {{--<div class="box-footer" style="text-align: center">--}}
                             {{--<input type="reset" class="btn btn-default" id="cancel" value="Cancelar">--}}
-                            <button type="submit" class="btn btn-info">Guardar</button>
-                            <button href="" class="btn btn-default" data-dismiss="modal" >Cancelar</button>
-                        </div>
+                            {{--<button type="submit" class="btn btn-info">Guardar</button>--}}
+                            {{--<button href="" class="btn btn-default" data-dismiss="modal" >Cancelar</button>--}}
+                        {{--</div>--}}
 
-                        <!-- /.box-body -->
+                        {{--<!-- /.box-body -->--}}
 
-                        {!! Form::close() !!}
-                    </div>
+                        {{--{!! Form::close() !!}--}}
+                    {{--</div>--}}
 
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
+                {{--</div>--}}
+            {{--</div>--}}
+        {{--</div>--}}
+    {{--</div>--}}
+{{--</div>--}}
 
 {{--modal editar --}}
 <div class="container">        <!-- Modal crear -->

@@ -43,7 +43,20 @@ class ClienteRepository implements BaseRepositoryInterface{
 
     public function updated($id, array $attributes)
     {
-        // TODO: Implement updated() method.
+        $cliente = Cliente::find($id);
+        $cliente->tipo_cliente_id = $attributes['tipo_cliente'];
+        $cliente->nro_documento = $attributes['nro_documento'];
+        $cliente->nombres = $attributes['nombres'];
+        $cliente->apellidos = $attributes['apellidos'];
+        $cliente->telefono = $attributes['telefono'];
+        $cliente->correo = $attributes['correo'];
+        $cliente->direccion = $attributes['direccion'];
+        $cliente->estado_civil_id = $attributes['estado_civil'];
+        $cliente->grado_instruccion_id = $attributes['grado_instruccion'];
+        $cliente->ocupacion_id = $attributes['ocupacion'];
+        $cliente->fecha_nacimiento = $attributes['fecha_nacimiento'];
+        $cliente->estado = 1;
+        $cliente->save();
     }
 
     public function deleted($id)
@@ -73,6 +86,7 @@ class ClienteRepository implements BaseRepositoryInterface{
         return $this->cliente->select()
             ->where('nro_documento',$dato)
             ->orWhere('nombres','LIKE',"%$dato%")
+            ->orderBy('id', 'desc')
             ->paginate(4);
     }
 }

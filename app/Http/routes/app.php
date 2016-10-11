@@ -99,6 +99,8 @@ Route::group(['prefix'=>'/', 'middleware' => 'auth' ], function() {
 //    editar cliente
     Route::get('/venta/cliente/editar/{id}','ClienteController@edit');
 
+//    actualizar proveedor
+    Route::post('/venta/cliente/actualizar/{id}','ClienteController@update');
 //    buscar cliente
     Route::get('/venta/cliente/buscar',['as'=> 'buscar.cliente','uses'=>'ClienteController@buscarCliente']);
 
@@ -141,7 +143,11 @@ Route::group(['prefix'=>'/', 'middleware' => 'auth' ], function() {
 //    actualizar proveedor
     Route::post('/compra/proveedor/actualizar/{id}','ProveedorController@update');
 
+//    buscar proveedor
+    Route::get('/compra/proveedor/buscar',['as'=> 'buscar.proveedor','uses'=>'ProveedorController@buscarProveedor']);
 
+//    eliminar proveedor
+    Route::get('/compra/proveedor/eliminar',['as'=> 'eliminar.proveedor','uses'=>'ProveedorController@eliminarProveedor']);
 
 
 
@@ -157,6 +163,15 @@ Route::group(['prefix'=>'/', 'middleware' => 'auth' ], function() {
 
 // editar empleado
     Route::get('/seguridad/empleado/editar/{id}','EmpleadoController@edit');
+// actualizar empleado
+    Route::post('/seguridad/empleado/actualizar/{id}','EmpleadoController@update');
+
+//    buscar empleado
+    Route::get('/seguridad/empleado/buscar',['as'=> 'buscar.empleado','uses'=>'EmpleadoController@buscarEmpleado']);
+
+//    eliminar empleado
+    Route::get('/seguridad/empleado/eliminar',['as'=> 'eliminar.empleado','uses'=>'EmpleadoController@eliminarEmpleado']);
+
 
 
 
@@ -303,6 +318,14 @@ Route::group(['prefix'=>'/', 'middleware' => 'auth' ], function() {
     Route::get('/mantenimiento/tipocliente/eliminar',['as'=> 'eliminar.tipocliente','uses'=>'MantenimientoEmpleadoController@eliminarTipoCliente']);
     //      buscar tipoproducto
     Route::get('/mantenimiento/tipocliente/buscar',['as'=> 'buscar.tipocliente','uses'=>'MantenimientoEmpleadoController@buscarTipoCliente']);
+
+
+    //  UBIGEO---------------------------------------------------
+    Route::get('/mantenimiento/ubigeo','MantenimientoEmpleadoController@listaUbigeo');
+    //      buscar ubigeo
+    Route::get('/mantenimiento/tipocliente/buscar',['as'=> 'buscar.ubigeo','uses'=>'MantenimientoEmpleadoController@buscarUbigeo']);
+
+
 
 
     //    ========================================================================================

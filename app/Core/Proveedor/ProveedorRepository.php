@@ -55,7 +55,9 @@ class ProveedorRepository implements BaseRepositoryInterface
 
     public function deleted($id)
     {
-        // TODO: Implement deleted() method.
+        $registro = Proveedor::find($id);
+        $registro->estado = 0;
+        $registro->save();
     }
 
     public function nuevoProveedor($datos){
@@ -68,5 +70,12 @@ class ProveedorRepository implements BaseRepositoryInterface
         $registro->direccion = $datos['direccion'];
         $registro->estado = $datos['estado'];
         $registro->save();
+    }
+
+    public function buscarProveedor($dato,$estado){
+        return $this->proveedor->select()
+            ->whereRaw("estado = '" .$estado. "' OR  nro_documento = '" .$dato . "' OR nombre LIKE '" .$dato . "' ")
+            ->orderBy('id', 'desc')
+            ->paginate(4);
     }
 }

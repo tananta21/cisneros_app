@@ -45,13 +45,15 @@
                 <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
                     <li><a href="/mantenimiento/tipoempleado">Tipo Empleados</a></li>
                     <li role="separator" class="divider"></li>
+                    <li><a href="/mantenimiento/tipocliente">Tipo Cliente</a></li>
+                    <li role="separator" class="divider"></li>
                     <li><a href="/mantenimiento/estadocivil">Estado Civil</a></li>
                     <li role="separator" class="divider"></li>
                     <li><a href="/mantenimiento/gradoinstruccion">Grado Instruccion</a></li>
                     <li role="separator" class="divider"></li>
                     <li><a href="/mantenimiento/ocupacion">Ocupacion</a></li>
                     <li role="separator" class="divider"></li>
-                    <li><a href="/mantenimiento/tipocliente">Tipo Cliente</a></li>
+                    <li><a href="/mantenimiento/ubigeo">ubigeo</a></li>
 
                 </ul>
             </div>

@@ -29,7 +29,18 @@ class EmpleadoRepository implements BaseRepositoryInterface {
 
     public function updated($id, array $attributes)
     {
-        // TODO: Implement updated() method.
+        $registro = Empleado::find($id);
+        $registro->tipo_empleado_id = $attributes['tipo_empleado'];
+        $registro->estado_civil_id = $attributes['estado_civil'];
+        $registro->grado_instruccion_id = $attributes['grado_instruccion'];
+        $registro->ocupacion_id = $attributes['ocupacion'];
+        $registro->nro_documento = $attributes['nro_documento'];
+        $registro->name = $attributes['nombres'];
+        $registro->apellidos = $attributes['apellidos'];
+        $registro->email = $attributes['correo'];
+        $registro->telefono = $attributes['telefono'];
+        $registro->estado =$attributes['estado'];
+        $registro->save();
     }
 
     public function find($id)
@@ -40,7 +51,9 @@ class EmpleadoRepository implements BaseRepositoryInterface {
 
     public function deleted($id)
     {
-        // TODO: Implement deleted() method.
+        $registro = Empleado::find($id);
+        $registro->estado = 0;
+        $registro->save();
     }
     public function nuevoEmpleado($datos){
         $registro = new Empleado();
@@ -53,7 +66,14 @@ class EmpleadoRepository implements BaseRepositoryInterface {
         $registro->apellidos = $datos['apellido'];
         $registro->email = $datos['correo'];
         $registro->telefono = $datos['telefono'];
-        $registro->estado =1;
+        $registro->estado =$datos['estado'];
         $registro->save();
+    }
+
+    public function buscarEmpleado($dato,$estado){
+        return $this->empleado->select()
+            ->whereRaw("estado = '" .$estado. "' OR nro_documento = '" .$dato . "' OR name LIKE '" .$dato . "' ")
+            ->orderBy('id', 'desc')
+            ->paginate(4);
     }
 }

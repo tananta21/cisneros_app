@@ -66,6 +66,7 @@ class TipoClienteRepository implements BaseRepositoryInterface
     public function buscarTipoCliente($estado){
         return $this->tipoCliente->select()
             ->where('estado',$estado )
+            ->orderBy('id', 'desc')
             ->paginate(4);
     }
 

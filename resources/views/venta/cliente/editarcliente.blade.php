@@ -15,7 +15,7 @@
     <hr class="col-lg-12 linea-titulo" size="2px" color="green"/>
 
     <div >
-        <form method="POST" action="/venta/cliente/registro" accept-charset="UTF-8" class="form-horizontal" role="form">
+        <form method="POST" action="/venta/cliente/actualizar/{{$cliente->id}}" accept-charset="UTF-8" class="form-horizontal" role="form">
             {!! csrf_field() !!}
             <div class="col-lg-12 col-sm-12 col-xs-12 caja_formulario ">
                 <div class="col-lg-4 col-sm-12 col-xs-12">

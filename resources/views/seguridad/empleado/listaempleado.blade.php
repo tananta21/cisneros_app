@@ -18,25 +18,31 @@
 @section('contenido_modulos')
 
     <div id="lista_cliente">
-        <h3 class="col-lg-3" style="margin-bottom: 0.5rem">Lista Empleados</h3>
+        <h3 class="col-lg-3" style="margin-bottom: 0.5rem">Lista Empleado</h3>
 
         <hr class="col-lg-12 linea-titulo" size="5px" color="green"/>
+
         <div class="col-lg-12" style="margin-top: 0.5rem">
-            {!! Form::model(Request::all(),['route'=>'buscar.producto','method' => 'get', 'class' => 'form-horizontal', 'role'=>'form']) !!}
+            {!! Form::model(Request::all(),['route'=>'buscar.empleado','method' => 'get', 'class' => 'form-horizontal', 'role'=>'form']) !!}
             <div class="box-body">
                 <div class=" form-group">
                     <div class="col-lg-12">
                         <div  style="padding-left: 0" class="col-lg-10">
-                            <button type="submit" class="btn btn-primary btn-sm col-lg-1"> Buscar
-                                <i class="fa fa-search fa-1px" style="margin-left: 1rem"></i>
-                            </button>
-                            <div class="col-lg-6 col-sm-2">
-                                {{--<input type="text" class="form-control" placeholder="Serie Producto" name="serie" value>--}}
-                                {!!form::text(' cliente',null,['class'=>'form-control', 'placeholder'=>'buscar'])!!}
-                            </div>
-                            <div class="col-lg-1 col-sm-2">
+                            <div class="col-lg-1 col-sm-2" >
                                 <a type="button" href="/seguridad/empleado" class="btn btn-default" > <i class="fa fa-refresh fa-1x"></i></a>
                             </div>
+                            <div class="col-lg-6 col-sm-2">
+                                {{--<input type="text" class="form-control" placeholder="Serie Producto" name="serie" value>--}}
+                                {!!form::text('cliente',null,['class'=>'form-control', 'placeholder'=>'Ingrese DNI o Nombre'])!!}
+                            </div>
+                            <div class="col-lg-2">
+                                {!!form::select('estado',[
+                                '1'=>'Activo',
+                                '0'=>'Inactivo'],null,['class'=>'form-control'])!!}
+                            </div>
+                            <button type="submit" class="btn btn-primary btn-sm col-lg-1"> Buscar
+                                <i class="fa fa-search fa-1px" ></i>
+                            </button>
                         </div>
                         <div class="col-lg-2">
                             <a href="/seguridad/nuevoempleado"  type="button" class="btn btn-primary btn-sm"> NUEVO EMPLEADO
@@ -108,6 +114,36 @@
     <div class="col-lg-12" style="display: flex; flex-direction: row; justify-content: center;">
         {!! $empleados->appends(Request::all())->render() !!}
     </div>
+
+    {{--javascript eliminar: cambiar de estado--}}
+    <script type="text/javascript">
+        function eliminarCategoria(id){
+            if (confirm('¿Estas seguro que desea desactivar......... '+$('#texto'+id).text()+'?')) {
+                $(document).ready(function(){
+                    var id_marca = $(this).find( 'input[name="eliminarmarca'+id+'"]' ).val();
+                    var url = '{{route("eliminar.empleado")}}';
+                    $.ajax({
+                        type: 'GET',
+                        url: url,
+                        data: {
+                            id: id_marca
+                        },
+                        dataType: 'JSON',
+
+                        error: function() {
+                            $("#respuesta").html('<div> Ha surgido un error. </div>');
+                        },
+
+                        success: function(){
+                            $("#filaproducto"+id).remove();;
+                        }
+                    });
+                });
+            }
+            else{
+            }
+        };
+    </script>
 
 @endsection
 @endsection
