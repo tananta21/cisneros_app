@@ -61,8 +61,8 @@ class ProveedorController extends Controller
 
     public function buscarProveedor(){
         $dato = Input::get('cliente');
-        $clientes = $this->repoProveedor->buscarProveedor($dato);
-        return view('venta.cliente.listacliente', compact('clientes'));
+        $proveedores = $this->repoProveedor->buscarProveedor($dato);
+        return view('compra.proveedor.listaproveedor', compact('proveedores'));
     }
 
 

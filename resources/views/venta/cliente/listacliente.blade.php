@@ -100,7 +100,7 @@
                 </tbody>
             </table>
         </div>
-    </div>
+
     <div class="col-lg-12" style="display: flex; flex-direction: row; justify-content: center;">
         {!! $clientes->appends(Request::all())->render() !!}
     </div>

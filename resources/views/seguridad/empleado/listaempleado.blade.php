@@ -27,16 +27,21 @@
                 <div class=" form-group">
                     <div class="col-lg-12">
                         <div  style="padding-left: 0" class="col-lg-10">
-                            <button type="submit" class="btn btn-primary btn-sm col-lg-1"> Buscar
-                                <i class="fa fa-search fa-1px" style="margin-left: 1rem"></i>
-                            </button>
+                            <div class="col-lg-1 col-sm-2" >
+                                <a type="button" href="/seguridad/empleado" class="btn btn-default" > <i class="fa fa-refresh fa-1x"></i></a>
+                            </div>
                             <div class="col-lg-6 col-sm-2">
                                 {{--<input type="text" class="form-control" placeholder="Serie Producto" name="serie" value>--}}
                                 {!!form::text('cliente',null,['class'=>'form-control', 'placeholder'=>'buscar'])!!}
                             </div>
-                            <div class="col-lg-1 col-sm-2">
-                                <a type="button" href="/seguridad/empleado" class="btn btn-default" > <i class="fa fa-refresh fa-1x"></i></a>
+                            <div class="col-lg-2">
+                                {!!form::select('estado',[
+                                '1'=>'Activo',
+                                '0'=>'Inactivo'],null,['class'=>'form-control'])!!}
                             </div>
+                            <button type="submit" class="btn btn-primary btn-sm col-lg-1"> Buscar
+                                <i class="fa fa-search fa-1px" ></i>
+                            </button>
                         </div>
                         <div class="col-lg-2">
                             <a href="/seguridad/nuevoempleado"  type="button" class="btn btn-primary btn-sm"> NUEVO EMPLEADO

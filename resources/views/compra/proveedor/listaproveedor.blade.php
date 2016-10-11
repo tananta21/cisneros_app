@@ -60,8 +60,9 @@
             </div>
             {!! Form::close() !!}
         </div>
+    </div>
 
-        <div class="box-body table-responsive no-padding col-lg-12">
+    <div class="box-body table-responsive no-padding col-lg-12">
             <table class="table table-hover">
                 <thead>
                     <tr>
@@ -114,7 +115,7 @@
                 </tbody>
             </table>
         </div>
-    </div>
+
     <div class="col-lg-12" style="display: flex; flex-direction: row; justify-content: center;">
         {!! $proveedores->appends(Request::all())->render() !!}
     </div>
