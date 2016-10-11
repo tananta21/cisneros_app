@@ -171,7 +171,7 @@
                             <div class="form-group">
                                 <label for="inputName" class="col-md-2 control-label">Tipo</label>
                                 <div class="col-md-6">
-                                    <input  required="true" maxlength="30" type="text" class="form-control"  placeholder="Nombre Tipo" name="descripcion_tipo" >
+                                    <input id="texto_descripcion" onkeypress="return soloLetras(event)"  required="true" maxlength="30" type="text" class="form-control"  placeholder="Nombre Tipo" name="descripcion_tipo" >
                                     <span style="font-size: 1rem; color: #0000ff">Maximo 30 caracteres</span>
                                 </div>
                                 <div class="col-md-4">
@@ -183,8 +183,8 @@
                         </div>
                         <div class="box-footer" style="text-align: center">
                             {{--<input type="reset" class="btn btn-default" id="cancel" value="Cancelar">--}}
+                            <input type="submit" class="btn btn-info"  value="Guardar"/>
                             <button href="" class="btn btn-default" data-dismiss="modal" >Cancelar</button>
-                            <button type="submit" class="btn btn-info">Guardar</button>
                         </div>
 
                         <!-- /.box-body -->
@@ -216,7 +216,7 @@
                                 <label for="inputName" class="col-md-2 control-label">Marca</label>
                                 <div class="col-md-6">
                                     <input type="hidden" id="marcaid" name="marca_id" value=""/>
-                                    <input id="descripmarca" required="true" maxlength="30" type="text" class="form-control"  placeholder="Nombre Tipo Pago" name="descripcion_marca" >
+                                    <input id="descripmarca" onkeypress="return soloLetras(event)" required="true" maxlength="30" type="text" class="form-control"  placeholder="Nombre Tipo Pago" name="descripcion_marca" >
                                     <span style="font-size: 1rem; color: #0000ff">Maximo 30 caracteres</span>
                                 </div>
                                 <div class="col-md-4">
@@ -228,8 +228,8 @@
                         </div>
                         <div class="box-footer" style="text-align: center">
                             {{--<input type="reset" class="btn btn-default" id="cancel" value="Cancelar">--}}
-                            <button href="" class="btn btn-default" data-dismiss="modal" >Cancelar</button>
                             <button type="submit" class="btn btn-info">Guardar</button>
+                            <button href="" class="btn btn-default" data-dismiss="modal" >Cancelar</button>
                         </div>
 
                         <!-- /.box-body -->

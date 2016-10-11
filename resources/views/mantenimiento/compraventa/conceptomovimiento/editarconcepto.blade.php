@@ -19,7 +19,7 @@
                 <label for="inputName" class="col-md-2 control-label">Concepto</label>
                 <div class="col-md-6">
                     <input type="hidden" id="marcaid" name="marca_id" value="{{$registro->id}}"/>
-                    <input id="descripmarca" required="true" maxlength="30" type="text" class="form-control"  placeholder="Nombre Tipo Pago" name="descripcion_marca" value="{{$registro->descripcion}}" >
+                    <input id="descripmarca" onkeypress="return soloLetras(event)" required="true" maxlength="30" type="text" class="form-control"  placeholder="Nombre Tipo Pago" name="descripcion_marca" value="{{$registro->descripcion}}" >
                     <span style="font-size: 1rem; color: #0000ff">Maximo 30 caracteres</span>
                 </div>
                 <div class="col-md-4">
@@ -51,8 +51,8 @@
         </div>
         <div class="box-footer" style="text-align: center">
             {{--<input type="reset" class="btn btn-default" id="cancel" value="Cancelar">--}}
-            <a href="/mantenimiento/conceptomovimiento" class="btn btn-default">Cancelar</a>
-            <button type="submit" class="btn btn-info">Guardar</button>
+            <input type="submit" class="btn btn-info"  value="Guardar"/>
+            <button href="" class="btn btn-default" data-dismiss="modal" >Cancelar</button>
         </div>
 
         <!-- /.box-body -->

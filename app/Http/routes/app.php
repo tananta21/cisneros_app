@@ -81,6 +81,14 @@ Route::group(['prefix'=>'/', 'middleware' => 'auth' ], function() {
 
 
 
+    Route::get('/ventas/registrar',[
+        'as'=> 'registrar.venta',
+        'uses'=>'VentaController@create']);
+
+
+
+
+
 //    CLIENTES
 //    ==================================================================
     //    listar clientes

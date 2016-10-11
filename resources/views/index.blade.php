@@ -185,50 +185,49 @@ desired effect
                 <li id="modulo-seguridad" class="treeview">
                     <a href="/seguridad/empleado"><i class="fa fa-lock"></i> <span>Seguridad</span> </a>
                 </li>
-                {{--<li id="modulo-mantenimiento" class="treeview">--}}
-                    {{--<a href="/mantenimiento/principal"><i class="fa fa-cogs"></i> <span>Mantenimientos</span> </a>--}}
-                {{--</li>--}}
 
-
-                <li  class="treeview">
-                    <a href="#">
-                        <i class="fa fa-cogs"></i> <span>Mantenimientos</span>
-                        <i class="fa fa-angle-left pull-right"></i>
-                    </a>
-                    <ul class="treeview-menu" style="display: none;">
-                        <li  class="">
-                            <a href="#"><i class="fa fa-circle-o"></i>Mant. Productos <i class="fa fa-angle-left pull-right"></i></a>
-                            <ul class="treeview-menu" style="display: none;">
-                                <li><a href="/mantenimiento/tipoproducto"><i class="fa fa-circle-o"></i>Tipo Productos</a></li>
-                                <li><a href="#"><i class="fa fa-circle-o"></i>Categorias</a></li>
-                                <li><a href="#"><i class="fa fa-circle-o"></i>Marcas</a></li>
-                                <li><a href="#"><i class="fa fa-circle-o"></i>Modelos</a></li>
-                            </ul>
-                        </li>
-                        <li class="">
-                            <a href="#"><i class="fa fa-user"></i>Mant. Clientes <i class="fa fa-angle-left pull-right"></i></a>
-                            <ul class="treeview-menu" style="display: none;">
-                                <li><a href="#"><i class="fa fa-circle-o"></i>Tipo Empleados</a></li>
-                                <li><a href="#"><i class="fa fa-circle-o"></i>Tipo Cliente</a></li>
-                                <li><a href="#"><i class="fa fa-circle-o"></i>Estado Civil</a></li>
-                                <li><a href="#"><i class="fa fa-circle-o"></i>Grado Instrucion</a></li>
-                                <li><a href="#"><i class="fa fa-circle-o"></i>Ocupacion</a></li>
-                            </ul>
-                        </li>
-                        <li class="">
-                            <a href="#"><i class="fa fa-shopping-cart"></i>Mant. Compras - Ventas <i class="fa fa-angle-left pull-right"></i></a>
-                            <ul class="treeview-menu" style="display: none;">
-                                <li><a href="#"><i class="fa fa-circle-o"></i>Tipo Transaccion</a></li>
-                                <li><a href="#"><i class="fa fa-circle-o"></i>Tipo Comprobante</a></li>
-                                <li><a href="#"><i class="fa fa-circle-o"></i>Tipo Pago</a></li>
-                                <li><a href="#"><i class="fa fa-circle-o"></i>Tipo Movimiento</a></li>
-                                <li><a href="#"><i class="fa fa-circle-o"></i>Concepto Movimiento</a></li>
-                            </ul>
-                        </li>
-
-                    </ul>
+                <li id="modulo-mantenimiento" class="treeview">
+                    <a href="/mantenimiento/principal"><i class="fa fa-cogs"></i> <span>Mantenimientos</span> </a>
                 </li>
-
+                {{--<li  class="treeview">--}}
+                    {{--<a href="#">--}}
+                        {{--<i class="fa fa-cogs"></i> <span>Mantenimientos</span>--}}
+                        {{--<i class="fa fa-angle-left pull-right"></i>--}}
+                    {{--</a>--}}
+                    {{--<ul class="treeview-menu" style="display: none;">--}}
+                        {{--<li  class="">--}}
+                            {{--<a href="#"><i class="fa fa-circle-o"></i>Mant. Productos <i class="fa fa-angle-left pull-right"></i></a>--}}
+                            {{--<ul class="treeview-menu" style="display: none;">--}}
+                                {{--<li><a href="/mantenimiento/tipoproducto"><i class="fa fa-circle-o"></i>Tipo Productos</a></li>--}}
+                                {{--<li><a href="#"><i class="fa fa-circle-o"></i>Categorias</a></li>--}}
+                                {{--<li><a href="#"><i class="fa fa-circle-o"></i>Marcas</a></li>--}}
+                                {{--<li><a href="#"><i class="fa fa-circle-o"></i>Modelos</a></li>--}}
+                            {{--</ul>--}}
+                        {{--</li>--}}
+                        {{--<li class="">--}}
+                            {{--<a href="#"><i class="fa fa-user"></i>Mant. Clientes <i class="fa fa-angle-left pull-right"></i></a>--}}
+                            {{--<ul class="treeview-menu" style="display: none;">--}}
+                                {{--<li><a href="#"><i class="fa fa-circle-o"></i>Tipo Empleados</a></li>--}}
+                                {{--<li><a href="#"><i class="fa fa-circle-o"></i>Tipo Cliente</a></li>--}}
+                                {{--<li><a href="#"><i class="fa fa-circle-o"></i>Estado Civil</a></li>--}}
+                                {{--<li><a href="#"><i class="fa fa-circle-o"></i>Grado Instrucion</a></li>--}}
+                                {{--<li><a href="#"><i class="fa fa-circle-o"></i>Ocupacion</a></li>--}}
+                            {{--</ul>--}}
+                        {{--</li>--}}
+                        {{--<li class="">--}}
+                            {{--<a href="#"><i class="fa fa-shopping-cart"></i>Mant. Compras - Ventas <i class="fa fa-angle-left pull-right"></i></a>--}}
+                            {{--<ul class="treeview-menu" style="display: none;">--}}
+                                {{--<li><a href="#"><i class="fa fa-circle-o"></i>Tipo Transaccion</a></li>--}}
+                                {{--<li><a href="#"><i class="fa fa-circle-o"></i>Tipo Comprobante</a></li>--}}
+                                {{--<li><a href="#"><i class="fa fa-circle-o"></i>Tipo Pago</a></li>--}}
+                                {{--<li><a href="#"><i class="fa fa-circle-o"></i>Tipo Movimiento</a></li>--}}
+                                {{--<li><a href="#"><i class="fa fa-circle-o"></i>Concepto Movimiento</a></li>--}}
+                            {{--</ul>--}}
+                        {{--</li>--}}
+{{----}}
+                    {{--</ul>--}}
+                {{--</li>--}}
+{{----}}
             </ul>
 
             <script>
