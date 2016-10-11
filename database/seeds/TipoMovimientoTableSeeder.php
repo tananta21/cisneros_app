@@ -12,11 +12,12 @@ class TipoMovimientoTableSeeder extends Seeder
     public function run()
     {
         \DB::table('tipo_movimientos')->insert([
-            'descripcion' => 'ingreso',
+            'descripcion' => 'Ingreso',
             'estado' => 1,
         ]);
+
         \DB::table('tipo_movimientos')->insert([
-            'descripcion' => 'egreso',
+            'descripcion' => 'Egreso',
             'estado' => 1,
         ]);
     }

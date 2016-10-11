@@ -13,8 +13,9 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
         Model::unguard();
-         $this->call('TipoMovimientoTableSeeder');
+
          $this->call('TipoEmpleadosTableSeeder');
+         $this->call('TipoMovimientoTableSeeder');
          $this->call('TipoComprobanteTableSeeder');
          $this->call('TipoTransaccionTableSeeder');
          $this->call('TipoProductoTableSeeder');
@@ -30,6 +31,7 @@ class DatabaseSeeder extends Seeder
          $this->call('ProveedorTableSeeder');
          $this->call('ClienteTableSeeder');
          $this->call('VentaTableSeeder');
+         $this->call('CompraTableSeeder');
 
         Model::reguard();
     }

@@ -12,7 +12,7 @@ class CreateDetalleCompra extends Migration
      */
     public function up()
     {
-        Schema::create('detalle_compra', function (Blueprint $table) {
+        Schema::create('detalle_compras', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('producto_id')->unsigned();
             $table->integer('compra_id')->unsigned();
@@ -31,6 +31,6 @@ class CreateDetalleCompra extends Migration
      */
     public function down()
     {
-        Schema::drop('detalle_compra');
+        Schema::drop('detalle_compras');
     }
 }

@@ -90,7 +90,7 @@
                         </div>
                         <div class="col-lg-8" style="text-align: center">
                             <span>N° de compra</span>
-                            <input readonly type="text" class="col-lg-12" value="C00000017" style="text-align: center"/>
+                            <input readonly type="text" class="col-lg-12" name="nro_compra" value="{{$nro_compra['id']}}"  style="text-align: center"/>
                         </div>
                     </div>
                 </div>
@@ -319,6 +319,44 @@
         });
     </script>
 
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $("#compra_realizada").click(function() {
+                var codigo_producto = $('input[name="idproducto[]"]').serializeArray();
+                var cantidad_producto = $('input[name="cantidad[]"]').serializeArray();
+                var precio_producto = $('input[name="precio[]"]').serializeArray();
+                var nro_venta = $('input[name="nro_compra"]').val();
+                var url = '{{route("registrar.compra")}}';
+                $.ajax({
+                    type: 'GET',
+                    url: url,
+                    data: {
+                        idproducto: codigo_producto,
+                        cantidad : cantidad_producto,
+                        precio : precio_producto,
+                        nrocompra : nro_venta
+                    },
+//                    "_token": $(this).find( 'input[name="_token"]' ).val()},
+                    dataType: 'JSON',
+//                beforeSend: function() {
+//                    $("#respuesta").html('<div>buscando producto</div>');
+//                },
+                    error: function() {
+                        $("#respuesta").html('<div> Ha surgido un error. </div>');
+                    },
+//                success: function(respuesta) {
+//                    console.log(respuesta)
+////                    location.reload();
+//                }
+                    success: function(){
+                        alert('todo bien');
+                        location.reload();
+                    }
+                });
+            });
+        });
+    </script>
+
 
 @endsection
 @endsection
@@ -366,7 +404,7 @@
     </div>
 </div>
 
-{{--modal GENERAR VENTA--}}
+{{--modal GENERAR COMPRA--}}
 <div class="container">        <!-- Modal crear -->
     <div class="modal fade " id="generar_venta" tabindex="-1" role="dialog" aria-labelledby="gridModalLabel" aria-hidden="true">>
         <div class="modal-dialog modal-md">
@@ -396,7 +434,7 @@
                             <span>S/. </span><input style="width: 25rem" type="number" step="any" name="monto_recibido" min="0"/>
                         </div>
                         <div style="text-align: center; margin-top: 2rem">
-                            <a href="/venta/registro" style="text-align: center" class="btn btn-primary btn-md">Registrar Compra</a>
+                            <a id="compra_realizada" style="text-align: center" class="btn btn-primary btn-md">Registrar Compra</a>
                         </div>
                     </div>
                 </div>
