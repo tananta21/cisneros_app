@@ -23,13 +23,42 @@
 @section('contenido_modulos')
 
     <div id="lista_cliente">
-        <h3 class="col-lg-3" style="margin-bottom: 0.5rem">Lista Proveedores</h3>
-        <hr class="col-lg-12 linea-titulo" size="5px" color="green"/>
-        <div class="col-lg-3" style="margin-bottom: 3rem">
-            <a href="/compra/nuevoproveedor" {{--onclick="registrarCliente()"--}} type="button" class="btn btn-primary btn-sm"> NUEVO PROVEEDOR
-                <i class="fa fa-plus-square fa-1px" style="margin-left: 1rem"></i>
-            </a>
+        <div class="col-lg-12">
+            <div class="col-lg-10">
+                <h3 class="col-lg-4" style="margin-bottom: 0.5rem;padding-left: 0">Lista Proveedores</h3>
+            </div>
+            <div class="col-lg-2">
+
+            </div>
         </div>
+
+        <hr class="col-lg-12 linea-titulo" size="5px" color="green"/>
+
+        <div class="col-lg-12" style="margin-top: 0.5rem">
+            {!! Form::model(Request::all(),['route'=>'buscar.producto','method' => 'get', 'class' => 'form-horizontal', 'role'=>'form']) !!}
+            <div class="box-body">
+                <div class=" form-group">
+                    <div class="col-lg-12">
+                        <div  style="padding-left: 0" class="col-lg-10">
+                            <button type="submit" class="btn btn-primary btn-sm col-lg-1"> Buscar
+                                <i class="fa fa-search fa-1px" style="margin-left: 1rem"></i>
+                            </button>
+                            <div class="col-lg-6 col-sm-2">
+                                {{--<input type="text" class="form-control" placeholder="Serie Producto" name="serie" value>--}}
+                                {!!form::text(' cliente',null,['class'=>'form-control', 'placeholder'=>'buscar'])!!}
+                            </div>
+                        </div>
+                        <div class="col-lg-2">
+                          <a href="/compra/nuevoproveedor" onclick="registrarCliente()" type="button" class="btn btn-primary btn-sm"> NUEVO PROVEEDOR
+                            <i class="fa fa-plus-square fa-1px" style="margin-left: 1rem"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {!! Form::close() !!}
+        </div>
+
         <div class="box-body table-responsive no-padding col-lg-12">
             <table class="table table-hover">
                 <thead>
