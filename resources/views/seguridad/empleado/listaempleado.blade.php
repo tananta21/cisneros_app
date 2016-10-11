@@ -18,7 +18,7 @@
 @section('contenido_modulos')
 
     <div id="lista_cliente">
-        <h3 class="col-lg-3" style="margin-bottom: 0.5rem">Lista Empleados</h3>
+        <h3 class="col-lg-3" style="margin-bottom: 0.5rem">Lista Empleado</h3>
 
         <hr class="col-lg-12 linea-titulo" size="5px" color="green"/>
         <div class="col-lg-12" style="margin-top: 0.5rem">
