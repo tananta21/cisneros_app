@@ -152,7 +152,7 @@
 
     <script type="text/javascript">
         $(document).ready(function() {
-            $('#crear_tipoproducto_modal').on('shown.bs.modal',
+            $('#modelo_modal').on('shown.bs.modal',
                     function () {
                         $('#texto_descripcion').focus();
                     });
@@ -160,7 +160,7 @@
 
         $(document).keydown(function(tecla){
             if (tecla.keyCode ==78) {
-                $("#crear_tipoproducto_modal").modal('show');
+                $("#modelo_modal").modal('show');
             }
         });
 
@@ -168,14 +168,62 @@
             $("#modulo-mantenimiento").addClass('active');
         });
 
-        $('#crear_tipoproducto_modal').on('hidden.bs.modal', function () {
+        $('#modelo_modal').on('hidden.bs.modal', function () {
             $(this).find("#texto_descripcion").val('').end();
 
         });
 
     </script>
 
+
 @endsection
+{{--modal crear modelo--}}
+<div class="container">        <!-- Modal crear -->
+    <div class="modal fade " id="modelo_modal" tabindex="-1" role="dialog" data-backdrop="static" aria-labelledby="gridModalLabel" aria-hidden="true">>
+        <div class="modal-dialog modal-md">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Registrar Nuevo Modelo</h4>
+                </div>
+                <div class="modal-body">
+                    {{--formulario crear--}}
+                    <div class="box box-primary">
+                        {!! Form::open(['action' => 'MantenimientoController@crearModelo','method' => 'post', 'class' => 'form-horizontal', 'role'=>'form']) !!}
+                        <div class="box-body">
+                            <div class="form-group">
+                                <label for="inputName" class="col-md-2 control-label">Modelo</label>
+                                <div class="col-md-6">
+                                    <input id="texto_descripcion" onkeypress="return soloLetras(event)"  required="true" maxlength="50" type="text" class="form-control"  placeholder="Nombre Modelo" name="descripcion_modelo">
+                                    <span style="font-size: 1.2rem; color: #0000ff; padding-left: 0.3rem">Maximo 50 caracteres</span>
+                                </div>
+                                <div class="col-md-4">
+                                    <input id="activo"  type="radio"  name="estado" value="1" checked> <label style="cursor: pointer" for="activo"> Activo</label>
+                                    <input id="inactivo" type="radio" name="estado" value="0" style="margin-left: 2rem"> <label style="cursor: pointer" for="inactivo"> Inactivo </label>
+                                </div>
+
+                            </div>
+                        </div>
+                        <div class="box-footer" style="text-align: center">
+                            {{--<input type="reset" class="btn btn-default" id="cancel" value="Cancelar">--}}
+                            <button type="submit" class="btn btn-info">Guardar</button>
+                            <button href="" class="btn btn-default" data-dismiss="modal" >Cancelar</button>
+                        </div>
+
+                        <!-- /.box-body -->
+
+                        {!! Form::close() !!}
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
 {{--modal editar --}}
 <div class="container">        <!-- Modal crear -->
     <div class="modal fade " id="editar_marca_modal" tabindex="-1" data-backdrop="static" role="dialog" aria-labelledby="gridModalLabel" aria-hidden="true">>
@@ -183,7 +231,7 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal">&times;</button>
-                    <h4 class="modal-title">Editar Marca</h4>
+                    <h4 class="modal-title">Editar Modelo</h4>
                 </div>
                 <div class="modal-body">
                     {{--formulario editar --}}
@@ -191,11 +239,11 @@
                         {!! Form::open(['action' => 'MantenimientoController@actualizarModelo','method' => 'post', 'class' => 'form-horizontal', 'role'=>'form']) !!}
                         <div class="box-body">
                             <div class="form-group">
-                                <label for="inputName" class="col-md-2 control-label">Marca</label>
+                                <label for="inputName" class="col-md-2 control-label">Modelo</label>
                                 <div class="col-md-6">
                                     <input type="hidden" id="marcaid" name="marca_id" value=""/>
-                                    <input id="texto_descripcion" onkeypress="return soloLetras(event)" required="true" maxlength="30" type="text" class="form-control"  placeholder="Nombre Marca" name="descripcion_marca" >
-                                    <span style="font-size: 1rem; color: #0000ff">Maximo 30 caracteres</span>
+                                    <input id="descripmarca" onkeypress="return soloLetras(event)" required="true" maxlength="50" type="text" class="form-control"  placeholder="Nombre Modelo" name="descripcion_marca" >
+                                    <span style="font-size: 1rem; color: #0000ff">Maximo 50 caracteres</span>
                                 </div>
                                 <div class="col-md-4">
                                     <input id="activo"  type="radio"  name="estado" value="1" checked> <label style="cursor: pointer" for="activo"> Activo</label>
