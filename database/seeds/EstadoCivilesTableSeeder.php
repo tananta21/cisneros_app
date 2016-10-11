@@ -12,9 +12,15 @@ class EstadoCivilesTableSeeder extends Seeder
     public function run()
     {
         \DB::table('estado_civiles')->insert([
+            'descripcion' => 'vacio',
+            'estado' => 1,
+        ]);
+
+        \DB::table('estado_civiles')->insert([
             'descripcion' => 'soltero',
             'estado' => 1,
         ]);
+
         \DB::table('estado_civiles')->insert([
             'descripcion' => 'casado',
             'estado' => 1,

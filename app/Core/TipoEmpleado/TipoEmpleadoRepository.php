@@ -28,8 +28,8 @@ class TipoEmpleadoRepository implements BaseRepositoryInterface {
             ->orderBy('id', 'desc')
             ->paginate(5);
     }
-    public function allEnProducto(){
-        return $this->tipoProducto
+    public function allEnVista(){
+        return $this->tipoEmpleado
             ->where('estado','1')
             ->orderBy('id', 'desc')
             ->get();

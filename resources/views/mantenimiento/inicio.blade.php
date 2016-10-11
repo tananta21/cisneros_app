@@ -11,7 +11,7 @@
             </ul>
         </div>
         <div class="text-center" style="padding-top:.1rem; margin-top: 0">
-            <h3 style="font-weight: bold">BIENVENIDOS A MANTENIMIENTOS.</h3>
+            <h3 style="font-weight: bold">BIENVENIDOS A MANTENIMIENTOS</h3>
         </div>
         <br>
         <div style="text-align:center" class=" col-md-12">

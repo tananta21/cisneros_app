@@ -15,13 +15,5 @@ class TipoEmpleadosTableSeeder extends Seeder
             'descripcion' => 'administrador',
             'estado' => 1,
         ]);
-        \DB::table('tipo_empleados')->insert([
-            'descripcion' => 'vendedor',
-            'estado' => 1,
-        ]);
-        \DB::table('tipo_empleados')->insert([
-            'descripcion' => 'limpiador',
-            'estado' => 1,
-        ]);
     }
 }

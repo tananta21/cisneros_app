@@ -12,16 +12,27 @@ class GradoInstruccionesTableSeeder extends Seeder
     public function run()
     {
         \DB::table('grado_instrucciones')->insert([
-            'descripcion' => 'mecanico',
+            'descripcion' => 'vacio',
+            'estado' => 1,
+        ])
+        ;\DB::table('grado_instrucciones')->insert([
+            'descripcion' => 'inicial',
             'estado' => 1,
         ]);
         \DB::table('grado_instrucciones')->insert([
-            'descripcion' => 'ingeniero',
+            'descripcion' => 'primaria',
             'estado' => 1,
         ]);
         \DB::table('grado_instrucciones')->insert([
-            'descripcion' => 'tecnico',
+            'descripcion' => 'secundaria',
             'estado' => 1,
         ]);
+        \DB::table('grado_instrucciones')->insert([
+            'descripcion' => 'pregrado',
+            'estado' => 1,
+        ]);
+
+
+
     }
 }

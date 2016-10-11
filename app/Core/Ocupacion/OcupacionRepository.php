@@ -27,7 +27,7 @@ class OcupacionRepository implements BaseRepositoryInterface
             ->paginate(5);
     }
 
-    public function allEnProducto()
+    public function allEnVista()
     {
         return $this->ocupacion
             ->where('estado', '1')

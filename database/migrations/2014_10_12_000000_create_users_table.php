@@ -17,9 +17,13 @@ class CreateUsersTable extends Migration
             $table->integer('estado_civil_id')->unsigned();
             $table->integer('grado_instruccion_id')->unsigned();
             $table->integer('ocupacion_id')->unsigned();
+            $table->string('nro_documento');
             $table->string('name');
+            $table->string('apellidos');
             $table->string('email')->unique();
+            $table->string('telefono');
             $table->string('password', 60);
+            $table->boolean('estado');
             $table->rememberToken();
             $table->timestamps();
             $table->softDeletes();

@@ -55,7 +55,7 @@
                             @if($marca->estado == 1)
                                 <a onclick="eliminarCategoria('{{$marca->id}}')" style="color: red; font-size: 2.5rem; padding: 0.5rem; cursor: pointer; margin-right: 2rem">
                                     <input type="hidden" name="eliminarmarca{{$marca->id}}" value="{{$marca->id}}"/>
-                                    <i class="fa fa-remove"></i>
+                                    <i class="fa fa-trash"></i>
                                 </a>
                                 <a id="editar_marca{{$marca->id}}" onclick="editarCategoria('{{$marca->id}}')" style="cursor:pointer; color: green;  font-size: 2.5rem; padding: 0.5rem">
                                     <input type="hidden" name="editarmarca{{$marca->id}}" value="{{$marca->id}}"/>
@@ -171,7 +171,7 @@
                                 <label for="inputName" class="col-md-2 control-label">Marca</label>
                                 <div class="col-md-6">
                                     <input type="hidden" id="marcaid" name="marca_id" value=""/>
-                                    <input id="descripmarca" required="true" maxlength="30" type="text" class="form-control"  placeholder="Nombre Marca" name="descripcion_marca" >
+                                    <input id="texto_descripcion" onkeypress="return soloLetras(event)" required="true" maxlength="30" type="text" class="form-control"  placeholder="Nombre Marca" name="descripcion_marca" >
                                     <span style="font-size: 1rem; color: #0000ff">Maximo 30 caracteres</span>
                                 </div>
                                 <div class="col-md-4">

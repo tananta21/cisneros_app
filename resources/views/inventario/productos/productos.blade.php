@@ -8,10 +8,7 @@
                 <a class="nav-link" href="/inventario/productos">Productos</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">Almacen Principal</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#">Almacen Tienda</a>
+                <a class="nav-link" href="#">Almacen</a>
             </li>
         </ul>
         </div>
@@ -82,7 +79,7 @@
 
         <div class="box-body table-responsive no-padding col-lg-12">
             <table class="table table-hover">
-                <tbody>
+                <thead>
                 <tr>
                     <th>N° ID</th>
                     <th>SERIE</th>
@@ -94,6 +91,8 @@
                     <th>ESTADO</th>
                     <th>ACCIONES</th>
                 </tr>
+                </thead>
+                <tbody>
                 @foreach($productos as $producto)
                     <tr data-id="{{$producto->id}}" id="filaproducto{{$producto->id}}">
                         <td>{{$producto->id}}</td>
@@ -109,11 +108,11 @@
                             <td>Inactivo</td>
                         @endif
                         <td>
-                            <a onclick="eliminarPro('{{$producto->id}}')"  style="color: red; font-size: 2.5rem; padding: 0.5rem">
+                            <a onclick="eliminarPro('{{$producto->id}}')"  style="color: red; font-size: 2rem; padding: 0.5rem; cursor: pointer; margin-right: 2rem">
                                 <input type="hidden" name="eliminarproducto{{$producto->id}}" value="{{$producto->id}}"/>
-                                <i class="fa fa-remove"></i>
+                                <i class="fa fa-trash"></i>
                             </a>
-                            <a href="/inventario/producto/editar/{{$producto->id}}" style="color: green;  font-size: 2.5rem; padding: 0.5rem">
+                            <a href="/inventario/producto/editar/{{$producto->id}}" style="color: green;  font-size: 2rem; padding: 0.5rem">
                                 <i class="fa fa-pencil"></i>
                             </a>
                         </td>

@@ -55,7 +55,7 @@
                 @if($categoria->estado == 1)
                     <a onclick="eliminarCategoria('{{$categoria->id}}')" style="color: red; font-size: 2.5rem; padding: 0.5rem; cursor: pointer; margin-right: 2rem">
                         <input type="hidden" name="eliminarcategoria{{$categoria->id}}" value="{{$categoria->id}}"/>
-                        <i class="fa fa-remove"></i>
+                        <i class="fa fa-trash"></i>
                     </a>
                     <a id="editar_categoria{{$categoria->id}}" onclick="editarCategoria('{{$categoria->id}}')" style="cursor:pointer; color: green;  font-size: 2.5rem; padding: 0.5rem">
                         <input type="hidden" name="editarcategoria{{$categoria->id}}" value="{{$categoria->id}}"/>

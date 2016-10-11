@@ -25,7 +25,7 @@ class TipoClienteRepository implements BaseRepositoryInterface
             ->orderBy('id', 'desc')
             ->paginate(5);
     }
-    public function allEnProducto(){
+    public function allEnVista(){
         return $this->tipoCliente
             ->where('estado','1')
             ->orderBy('id', 'desc')

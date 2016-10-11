@@ -15,5 +15,11 @@ class TipoComprobanteTableSeeder extends Seeder
             'descripcion' => 'boleta',
             'estado' => 1,
         ]);
+
+        \DB::table('tipo_comprobantes')->insert([
+            'descripcion' => 'factura',
+            'estado' => 0,
+        ]);
+
     }
 }

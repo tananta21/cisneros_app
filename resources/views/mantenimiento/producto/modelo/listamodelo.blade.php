@@ -45,7 +45,7 @@
                 @foreach($marcas as $marca)
                     <tr data-id="{{$marca->id}}" id="filaproducto{{$marca->id}}">
                         <td>{{$marca->id}}</td>
-                        <td>{{$marca->descripcion}}</td>
+                        <td><span id="texto{{$marca->id}}">{{$marca->descripcion}}</span></td>
                         @if($marca->estado == 1)
                             <td>Activo <i class="fa fa-check-circle-o " style="color: green"></i></td>
                         @else
@@ -55,7 +55,7 @@
                             @if($marca->estado == 1)
                                 <a onclick="eliminarCategoria('{{$marca->id}}')" style="color: red; font-size: 2.5rem; padding: 0.5rem; cursor: pointer; margin-right: 2rem">
                                     <input type="hidden" name="eliminarmarca{{$marca->id}}" value="{{$marca->id}}"/>
-                                    <i class="fa fa-remove"></i>
+                                    <i class="fa fa-trash"></i>
                                 </a>
                                 <a id="editar_marca{{$marca->id}}" onclick="editarCategoria('{{$marca->id}}')" style="cursor:pointer; color: green;  font-size: 2.5rem; padding: 0.5rem">
                                     <input type="hidden" name="editarmarca{{$marca->id}}" value="{{$marca->id}}"/>
@@ -86,7 +86,7 @@
     {{--javascript eliminar: cambiar de estado--}}
     <script type="text/javascript">
         function eliminarCategoria(id){
-            if (confirm('¿Estas seguro que desea desactivar Marca ?')) {
+            if (confirm('¿Estas seguro que desea desactivar......... '+$('#texto'+id).text()+'?')) {
                 $(document).ready(function(){
                     var id_marca = $(this).find( 'input[name="eliminarmarca'+id+'"]' ).val();
                     var url = '{{route("eliminar.modelo")}}';
@@ -171,7 +171,7 @@
                                 <label for="inputName" class="col-md-2 control-label">Marca</label>
                                 <div class="col-md-6">
                                     <input type="hidden" id="marcaid" name="marca_id" value=""/>
-                                    <input id="descripmarca" required="true" maxlength="30" type="text" class="form-control"  placeholder="Nombre Marca" name="descripcion_marca" >
+                                    <input id="texto_descripcion" onkeypress="return soloLetras(event)" required="true" maxlength="30" type="text" class="form-control"  placeholder="Nombre Marca" name="descripcion_marca" >
                                     <span style="font-size: 1rem; color: #0000ff">Maximo 30 caracteres</span>
                                 </div>
                                 <div class="col-md-4">
@@ -183,8 +183,8 @@
                         </div>
                         <div class="box-footer" style="text-align: center">
                             {{--<input type="reset" class="btn btn-default" id="cancel" value="Cancelar">--}}
-                            <button href="" class="btn btn-default" data-dismiss="modal" >Cancelar</button>
                             <button type="submit" class="btn btn-info">Guardar</button>
+                            <button href="" class="btn btn-default" data-dismiss="modal" >Cancelar</button>
                         </div>
 
                         <!-- /.box-body -->
