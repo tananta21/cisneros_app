@@ -114,5 +114,35 @@
         {!! $empleados->appends(Request::all())->render() !!}
     </div>
 
+    {{--javascript eliminar: cambiar de estado--}}
+    <script type="text/javascript">
+        function eliminarCategoria(id){
+            if (confirm('¿Estas seguro que desea desactivar......... '+$('#texto'+id).text()+'?')) {
+                $(document).ready(function(){
+                    var id_marca = $(this).find( 'input[name="eliminarmarca'+id+'"]' ).val();
+                    var url = '{{route("eliminar.empleado")}}';
+                    $.ajax({
+                        type: 'GET',
+                        url: url,
+                        data: {
+                            id: id_marca
+                        },
+                        dataType: 'JSON',
+
+                        error: function() {
+                            $("#respuesta").html('<div> Ha surgido un error. </div>');
+                        },
+
+                        success: function(){
+                            $("#filaproducto"+id).remove();;
+                        }
+                    });
+                });
+            }
+            else{
+            }
+        };
+    </script>
+
 @endsection
 @endsection

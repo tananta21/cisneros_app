@@ -58,10 +58,18 @@ class ProveedorController extends Controller
     {
         //
     }
+    public function eliminarProveedor()
+    {
+        $id_producto = Input::get('id');
+        $id = json_decode(json_encode($id_producto));
+        $eliminarRegistro = $this->repoProveedor->deleted($id);
+        return response()->json();
+    }
 
     public function buscarProveedor(){
         $dato = Input::get('cliente');
-        $proveedores = $this->repoProveedor->buscarProveedor($dato);
+        $estado = Input::get('estado');
+        $proveedores = $this->repoProveedor->buscarProveedor($dato,$estado);
         return view('compra.proveedor.listaproveedor', compact('proveedores'));
     }
 

@@ -99,6 +99,8 @@ Route::group(['prefix'=>'/', 'middleware' => 'auth' ], function() {
 //    editar cliente
     Route::get('/venta/cliente/editar/{id}','ClienteController@edit');
 
+//    actualizar proveedor
+    Route::post('/venta/cliente/actualizar/{id}','ClienteController@update');
 //    buscar cliente
     Route::get('/venta/cliente/buscar',['as'=> 'buscar.cliente','uses'=>'ClienteController@buscarCliente']);
 
@@ -144,6 +146,8 @@ Route::group(['prefix'=>'/', 'middleware' => 'auth' ], function() {
 //    buscar proveedor
     Route::get('/compra/proveedor/buscar',['as'=> 'buscar.proveedor','uses'=>'ProveedorController@buscarProveedor']);
 
+//    eliminar proveedor
+    Route::get('/compra/proveedor/eliminar',['as'=> 'eliminar.proveedor','uses'=>'ProveedorController@eliminarProveedor']);
 
 
 
@@ -159,9 +163,14 @@ Route::group(['prefix'=>'/', 'middleware' => 'auth' ], function() {
 
 // editar empleado
     Route::get('/seguridad/empleado/editar/{id}','EmpleadoController@edit');
+// actualizar empleado
+    Route::post('/seguridad/empleado/actualizar/{id}','EmpleadoController@update');
 
 //    buscar empleado
     Route::get('/seguridad/empleado/buscar',['as'=> 'buscar.empleado','uses'=>'EmpleadoController@buscarEmpleado']);
+
+//    eliminar empleado
+    Route::get('/seguridad/empleado/eliminar',['as'=> 'eliminar.empleado','uses'=>'EmpleadoController@eliminarEmpleado']);
 
 
 

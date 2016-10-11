@@ -91,23 +91,29 @@ class EmpleadoController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $datos = $request->all();
+        $actualizarRegistro = $this->repoEmpleado->updated($id, $datos);
+        return redirect()->action('EmpleadoController@index');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int $id
-     * @return \Illuminate\Http\Response
-     */
+
     public function destroy($id)
     {
         //
     }
 
+    public function eliminarEmpleado()
+    {
+        $id_producto = Input::get('id');
+        $id = json_decode(json_encode($id_producto));
+        $eliminarRegistro = $this->repoEmpleado->deleted($id);
+        return response()->json();
+    }
+
     public function buscarEmpleado(){
         $dato = Input::get('cliente');
-        $empleados = $this->repoEmpleado->buscarEmpleado($dato);
+        $estado = Input::get('estado');
+        $empleados = $this->repoEmpleado->buscarEmpleado($dato,$estado);
         return view('seguridad.empleado.listaempleado', compact('empleados'));
     }
 

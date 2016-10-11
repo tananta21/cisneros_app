@@ -90,7 +90,9 @@ class ClienteController extends Controller
 
     public function update(Request $request, $id)
     {
-        //
+        $datos = $request->all();
+        $actualizarRegistro = $this->repoCliente->updated($id, $datos);
+        return redirect()->action('ClienteController@index');
     }
 
     /**
