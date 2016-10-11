@@ -25,7 +25,7 @@ class VentaController extends Controller
 
     public function index()
     {
-        $nro_venta = ($this->repoVenta->all())+1;
+        $nro_venta = $this->repoVenta->all()->toArray();
         return view('venta.venta.nuevaventa',compact('nro_venta'));
     }
 

@@ -89,7 +89,7 @@
                             </div>
                             <div class="col-lg-8" style="text-align: center">
                                 <span>N° de venta</span>
-                                <input readonly type="text" name="nro_venta" class="col-lg-12" value="{{$nro_venta}}" style="text-align: center"/>
+                                <input readonly type="text" name="nro_venta" class="col-lg-12" value="{{$nro_venta['id']}}" style="text-align: center"/>
                             </div>
                         </div>
                     </div>

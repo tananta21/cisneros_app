@@ -38,7 +38,7 @@ class DetalleVentaRepository implements BaseRepositoryInterface {
 
     public function addDetalleVenta($nro_venta,$id, $price, $qy)
     {
-        $venta = new DetalleVentaProducto();
+        $venta = new DetalleVenta();
         $venta->venta_id = $nro_venta;
         $venta->producto_id = $id;
         $venta->precio = $price;

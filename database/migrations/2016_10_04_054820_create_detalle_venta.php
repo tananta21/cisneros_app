@@ -17,6 +17,7 @@ class CreateDetalleVenta extends Migration
             $table->integer('venta_id')->unsigned();
             $table->integer('producto_id')->unsigned();
             $table->decimal('cantidad');
+            $table->decimal('precio');
             $table->decimal('descuento');
             $table->decimal('igv');
             $table->foreign('venta_id')->references('id')->on('ventas')->onDelete('cascade');
