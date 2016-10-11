@@ -45,7 +45,7 @@
             @foreach($categorias as $categoria)
             <tr data-id="{{$categoria->id}}" id="filaproducto{{$categoria->id}}">
                 <td>{{$categoria->id}}</td>
-                <td>{{$categoria->descripcion}}</td>
+                <td><span id="texto{{$marca->id}}">{{$marca->descripcion}}</span></td>
                 @if($categoria->estado == 1)
                     <td>Activo <i class="fa fa-check-circle-o " style="color: green"></i></td>
                 @else
@@ -85,7 +85,7 @@
 
     <script type="text/javascript">
         function eliminarCategoria(id){
-            if (confirm('¿Estas seguro que desea desactivar Categoria ?')) {
+            if (confirm('¿Estas seguro que desea desactivar......... '+$('#texto'+id).text()+'?')) {
                 $(document).ready(function(){
                     var id_categoria = $(this).find( 'input[name="eliminarcategoria'+id+'"]' ).val();
                     var url = '{{route("eliminar.categoria")}}';
@@ -148,7 +148,30 @@
 
 
 
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $('#crear_tipoproducto_modal').on('shown.bs.modal',
+                    function () {
+                        $('#texto_descripcion').focus();
+                    });
+        });
 
+        $(document).keydown(function(tecla){
+            if (tecla.keyCode ==78) {
+                $("#crear_tipoproducto_modal").modal('show');
+            }
+        });
+
+        $(document).ready(function () {
+            $("#modulo-mantenimiento").addClass('active');
+        });
+
+        $('#crear_tipoproducto_modal').on('hidden.bs.modal', function () {
+            $(this).find("#texto_descripcion").val('').end();
+
+        });
+
+    </script>
 @endsection
 {{--modal editar categoria--}}
 <div class="container">        <!-- Modal crear -->
