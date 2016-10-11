@@ -8,7 +8,7 @@
                 <a class="nav-link" href="/venta/nuevaventa">Nueva Venta</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="/venta/lista">Lista Ventas</a>
+                <a class="nav-link" href="/venta/lista">Lista Venta</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="/venta/cliente">Clientes</a>
@@ -89,7 +89,7 @@
                             </div>
                             <div class="col-lg-8" style="text-align: center">
                                 <span>N° de venta</span>
-                                <input readonly type="text" class="col-lg-12" value="C00000017" style="text-align: center"/>
+                                <input readonly type="text" name="nro_venta" class="col-lg-12" value="{{$nro_venta['id']}}" style="text-align: center"/>
                             </div>
                         </div>
                     </div>
@@ -112,7 +112,7 @@
                             </div>
                             <div class="col-lg-8" style="text-align: center">
                                 <span>N° de venta</span>
-                                <input readonly type="text" class="col-lg-12" value="C00000017" style="text-align: center"/>
+                                <input readonly type="text" nro_venta class="col-lg-12" value="C00000017" style="text-align: center"/>
                             </div>
                         </div>
                     </div>
@@ -318,6 +318,44 @@
             });
         </script>
 
+        <script type="text/javascript">
+            $(document).ready(function() {
+                $("#venta_realizada").click(function() {
+                    var codigo_producto = $('input[name="idproducto[]"]').serializeArray();
+                    var cantidad_producto = $('input[name="cantidad[]"]').serializeArray();
+                    var precio_producto = $('input[name="precio[]"]').serializeArray();
+                    var nro_venta = $('input[name="nro_venta"]').val();
+                    var url = '{{route("registrar.venta")}}';
+                    $.ajax({
+                        type: 'GET',
+                        url: url,
+                        data: {
+                            idproducto: codigo_producto,
+                            cantidad : cantidad_producto,
+                            precio : precio_producto,
+                            nro_venta : nro_venta
+                        },
+//                    "_token": $(this).find( 'input[name="_token"]' ).val()},
+                        dataType: 'JSON',
+//                beforeSend: function() {
+//                    $("#respuesta").html('<div>buscando producto</div>');
+//                },
+                        error: function() {
+                            $("#respuesta").html('<div> Ha surgido un error. </div>');
+                        },
+//                success: function(respuesta) {
+//                    console.log(respuesta)
+////                    location.reload();
+//                }
+                        success: function(){
+                            alert('todo bien');
+                            location.reload();
+                        }
+                    });
+                });
+            });
+        </script>
+
 
     @endsection
 @endsection
@@ -395,7 +433,7 @@
                             <span>S/. </span><input style="width: 25rem" type="number" step="any" name="monto_recibido" min="0"/>
                         </div>
                         <div style="text-align: center; margin-top: 2rem">
-                            <a href="/venta/registro" style="text-align: center" class="btn btn-primary btn-md">Registrar Venta</a>
+                            <button  id="venta_realizada" style="text-align: center" class="btn btn-primary btn-md">Registrar Venta</button>
                         </div>
                     </div>
                 </div>

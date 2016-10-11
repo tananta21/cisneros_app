@@ -86,7 +86,7 @@
     {{--javascript eliminar: cambiar de estado--}}
     <script type="text/javascript">
         function eliminarCategoria(id){
-            if (confirm('¿Estas seguro que desea desactivar . '+$('#texto'+id).text()+'?')) {
+            if (confirm('¿Estas seguro que desea desactivar......... '+$('#texto'+id).text()+'?')) {
                 $(document).ready(function(){
                     var id_marca = $(this).find( 'input[name="eliminarmarca'+id+'"]' ).val();
                     var url = '{{route("eliminar.marca")}}';
@@ -149,11 +149,9 @@
         };
     </script>
 
-
-
     <script type="text/javascript">
         $(document).ready(function() {
-            $('#crear_tipoproducto_modal').on('shown.bs.modal',
+            $('#marca_modal').on('shown.bs.modal',
                     function () {
                         $('#texto_descripcion').focus();
                     });
@@ -161,7 +159,7 @@
 
         $(document).keydown(function(tecla){
             if (tecla.keyCode ==78) {
-                $("#crear_tipoproducto_modal").modal('show');
+                $("#marca_modal").modal('show');
             }
         });
 
@@ -169,13 +167,55 @@
             $("#modulo-mantenimiento").addClass('active');
         });
 
-        $('#crear_tipoproducto_modal').on('hidden.bs.modal', function () {
+        $('#marca_modal').on('hidden.bs.modal', function () {
             $(this).find("#texto_descripcion").val('').end();
 
         });
 
     </script>
+
+
 @endsection
+
+        <!-- Modal crear -->
+<div class="container">        <!-- Modal crear -->
+    <div class="modal fade " id="marca_modal" tabindex="-1" role="dialog" aria-labelledby="gridModalLabel" aria-hidden="true">>
+        <div class="modal-dialog modal-md">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Registrar Nueva Marca</h4>
+                </div>
+                <div class="modal-body">
+                    {{--formulario crear--}}
+                    <div class="box box-primary">
+
+                        {!! Form::open(['action' => 'ProductoController@createMarca','method' => 'post', 'class' => 'form-horizontal', 'role'=>'form']) !!}
+                        <div class="box-body">
+                            <div class="form-group">
+                                <label for="inputName" class="col-md-2 control-label">Nombre</label>
+                                <div class="col-md-10">
+                                    <input  id="texto_descripcion" onkeypress="return soloLetras(event)" required="true" type="text" class="form-control"  placeholder="Nombre Marca" name="descripcion_marca" >
+                                </div>
+                            </div>
+                        </div>
+                        <div class="box-footer" style="text-align: center">
+                            {{--<input type="reset" class="btn btn-default" id="cancel" value="Cancelar">--}}
+                            <button type="submit" class="btn btn-info">Guardar</button>
+                            <button href="" class="btn btn-default" data-dismiss="modal" >Cancelar</button>
+                        </div>
+
+                        <!-- /.box-body -->
+
+                        {!! Form::close() !!}
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
 {{--modal editar --}}
 <div class="container">        <!-- Modal crear -->
     <div class="modal fade " id="editar_marca_modal" tabindex="-1" data-backdrop="static" role="dialog" aria-labelledby="gridModalLabel" aria-hidden="true">>
@@ -194,7 +234,7 @@
                                 <label for="inputName" class="col-md-2 control-label">Marca</label>
                                 <div class="col-md-6">
                                     <input type="hidden" id="marcaid" name="marca_id" value=""/>
-                                    <input id="texto_descripcion" onkeypress="return soloLetras(event)" required="true" maxlength="30" type="text" class="form-control"  placeholder="Nombre Marca" name="descripcion_marca" >
+                                    <input id="descripmarca"  onkeypress="return soloLetras(event)" required="true" maxlength="30" type="text" class="form-control"  placeholder="Nombre Marca" name="descripcion_marca" >
                                     <span style="font-size: 1rem; color: #0000ff">Maximo 30 caracteres</span>
                                 </div>
                                 <div class="col-md-4">
@@ -206,8 +246,8 @@
                         </div>
                         <div class="box-footer" style="text-align: center">
                             {{--<input type="reset" class="btn btn-default" id="cancel" value="Cancelar">--}}
-                            <button href="" class="btn btn-default" data-dismiss="modal" >Cancelar</button>
                             <button type="submit" class="btn btn-info">Guardar</button>
+                            <button href="" class="btn btn-default" data-dismiss="modal" >Cancelar</button>
                         </div>
 
                         <!-- /.box-body -->
