@@ -141,6 +141,8 @@ Route::group(['prefix'=>'/', 'middleware' => 'auth' ], function() {
 //    actualizar proveedor
     Route::post('/compra/proveedor/actualizar/{id}','ProveedorController@update');
 
+//    buscar proveedor
+    Route::get('/compra/proveedor/buscar',['as'=> 'buscar.proveedor','uses'=>'ProveedorController@buscarProveedor']);
 
 
 

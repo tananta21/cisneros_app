@@ -35,7 +35,7 @@
         <hr class="col-lg-12 linea-titulo" size="5px" color="green"/>
 
         <div class="col-lg-12" style="margin-top: 0.5rem">
-            {!! Form::model(Request::all(),['route'=>'buscar.producto','method' => 'get', 'class' => 'form-horizontal', 'role'=>'form']) !!}
+            {!! Form::model(Request::all(),['route'=>'buscar.proveedor','method' => 'get', 'class' => 'form-horizontal', 'role'=>'form']) !!}
             <div class="box-body">
                 <div class=" form-group">
                     <div class="col-lg-12">
@@ -44,8 +44,10 @@
                                 <i class="fa fa-search fa-1px" style="margin-left: 1rem"></i>
                             </button>
                             <div class="col-lg-6 col-sm-2">
-                                {{--<input type="text" class="form-control" placeholder="Serie Producto" name="serie" value>--}}
-                                {!!form::text(' cliente',null,['class'=>'form-control', 'placeholder'=>'buscar'])!!}
+                                {!!form::text('cliente',null,['class'=>'form-control', 'placeholder'=>'buscar'])!!}
+                            </div>
+                            <div class="col-lg-1 col-sm-2">
+                                <a type="button" href="/compra/proveedor" class="btn btn-default" > <i class="fa fa-refresh fa-1x"></i></a>
                             </div>
                         </div>
                         <div class="col-lg-2">
