@@ -69,6 +69,7 @@ class TipoProductoRepository implements BaseRepositoryInterface {
 //            ->whereRaw("estado = '" .$estado. "'OR descripcion = '" .$descripcion . "'")
 //            ->orderBy('id', 'desc')
             ->where('estado',$estado )
+            ->orderBy('id', 'desc')
             ->paginate(4);
     }
 

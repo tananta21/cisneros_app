@@ -59,22 +59,11 @@ class ProveedorController extends Controller
         //
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-
+    public function buscarProveedor(){
+        $dato = Input::get('cliente');
+        $clientes = $this->repoProveedor->buscarProveedor($dato);
+        return view('venta.cliente.listacliente', compact('clientes'));
+    }
 
 
     public function destroy($id)

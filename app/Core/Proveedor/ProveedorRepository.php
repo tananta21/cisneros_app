@@ -69,4 +69,11 @@ class ProveedorRepository implements BaseRepositoryInterface
         $registro->estado = $datos['estado'];
         $registro->save();
     }
+
+    public function buscarProveedor($dato){
+        return $this->proveedor->select()
+            ->where('nro_documento',$dato)
+            ->orWhere('nombre','LIKE',"%$dato%")
+            ->paginate(4);
+    }
 }
