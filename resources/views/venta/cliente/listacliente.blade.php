@@ -65,17 +65,17 @@
         <div class="box-body table-responsive no-padding col-lg-12">
             <table class="table table-hover">
                 <thead>
-                <tr >
-                    <th>N° ID</th>
-                    <th>DOCUMENTO</th>
-                    <th>NOMBRES</th>
-                    <th>APELIDOS</th>
-                    <th>TELEFONO</th>
-                    <th>CORREO</th>
-                    {{--<th>DIRECCION</th>--}}
-                    <th>ESTADO</th>
-                    <th>ACCION</th>
-                </tr>
+                    <tr >
+                        <th>N° ID</th>
+                        <th>DOCUMENTO</th>
+                        <th>NOMBRES</th>
+                        <th>APELIDOS</th>
+                        <th>TELEFONO</th>
+                        <th>CORREO</th>
+                        {{--<th>DIRECCION</th>--}}
+                        <th>ESTADO</th>
+                        <th>ACCION</th>
+                    </tr>
                 </thead>
                 <tbody>
                 @foreach($clientes as $cliente)

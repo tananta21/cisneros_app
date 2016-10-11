@@ -56,4 +56,11 @@ class EmpleadoRepository implements BaseRepositoryInterface {
         $registro->estado =1;
         $registro->save();
     }
+
+    public function buscarEmpleado($dato){
+        return $this->empleado->select()
+            ->where('nro_documento',$dato)
+            ->orWhere('name','LIKE',"%$dato%")
+            ->paginate(4);
+    }
 }

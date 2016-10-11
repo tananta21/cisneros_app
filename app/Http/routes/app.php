@@ -158,6 +158,10 @@ Route::group(['prefix'=>'/', 'middleware' => 'auth' ], function() {
 // editar empleado
     Route::get('/seguridad/empleado/editar/{id}','EmpleadoController@edit');
 
+//    buscar empleado
+    Route::get('/seguridad/empleado/buscar',['as'=> 'buscar.empleado','uses'=>'EmpleadoController@buscarEmpleado']);
+
+
 
 
 

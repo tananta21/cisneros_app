@@ -105,5 +105,10 @@ class EmpleadoController extends Controller
         //
     }
 
+    public function buscarEmpleado(){
+        $dato = Input::get('cliente');
+        $empleados = $this->repoEmpleado->buscarEmpleado($dato);
+        return view('seguridad.empleado.listaempleado', compact('empleados'));
+    }
 
 }
