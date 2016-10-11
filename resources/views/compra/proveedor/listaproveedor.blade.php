@@ -79,7 +79,7 @@
                     <tr data-id="{{$proveedor->id}}" id="filaproducto{{$proveedor->id}}">
                         <td>{{$proveedor->id}}</td>
                         <td>{{$proveedor->nro_documento}}</td>
-                        <td>{{$proveedor->nombre}}</td>
+                        <td><span id="texto{{$proveedor->id}}">{{$proveedor->nombre}}</span></td>
                         <td>{{$proveedor->telefono}}</td>
                         <td>{{$proveedor->encargado}}</td>
                         <td>{{$proveedor->direccion}}</td>
@@ -92,7 +92,7 @@
                         @endif
                         @if($proveedor->estado == 1)
                             <td>
-                                <a onclick="eliminarCategoria('{{$proveedor->id}}')" style="font-size: 2rem; padding: 0.5rem; color: red; cursor: pointer; margin-right: 2rem">
+                                <a onclick="eliminar('{{$proveedor->id}}')" {{--onclick="eliminarCategoria('{{$proveedor->id}}')"--}} style="font-size: 2rem; padding: 0.5rem; color: red; cursor: pointer; margin-right: 2rem">
                                     <input type="hidden" name="eliminarmarca{{$proveedor->id}}" value="{{$proveedor->id}}"/>
                                     <i class="fa fa-trash"></i>
                                 </a>
@@ -117,5 +117,48 @@
         {!! $proveedores->appends(Request::all())->render() !!}
     </div>
 
+    <script>
+        function eliminar(id) {
+
+        $(document).ready(function(){
+            var texto = $("#texto"+id).text();
+            $("#texto_eliminar").text(texto);
+            $("#drop_porveedor").modal('show');
+        });
+        }
+    </script>
+
+
 @endsection
 @endsection
+
+<div class="container">        <!-- Modal crear -->
+    <div class="modal fade " id="drop_porveedor" tabindex="-1" data-backdrop="static" role="dialog" aria-labelledby="gridModalLabel" aria-hidden="true">>
+        <div class="modal-dialog modal-md">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+
+                </div>
+                <div  style="text-align: center">
+                    <h2 style="color: red" class="modal-title">Advertencia</h2>
+                </div>
+                <div class="modal-body">
+                    {{--formulario crear --}}
+                    <div class="box box-primary">
+                            <P style="text-align: center;padding-top: 1rem;font-size:2rem">
+                                Esta seguro de eliminar a <span  style="font-weight: bold" id="texto_eliminar"></span>
+                            </P>
+                    </div>
+
+                    <div class="box-footer" style="text-align: center">
+                        {{--<input type="reset" class="btn btn-default" id="cancel" value="Cancelar">--}}
+                        <input style="background-color: red;border: none" type="submit" class="btn btn-info"  value="Eliminar"/>
+                        <button style="background-color:#a9a9a9;border:none " href="" class="btn btn-info" data-dismiss="modal" >Cancelar</button>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
