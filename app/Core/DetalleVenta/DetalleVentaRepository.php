@@ -2,57 +2,48 @@
 /**
  * Created by PhpStorm.
  * User: LENOVO
- * Date: 09/09/2016
- * Time: 15:24
+ * Date: 10/10/2016
+ * Time: 19:18
  */
 
-namespace App\Core\DetalleStockProducto;
-
-
+namespace App\Core\DetalleVenta;
 use App\Core\Contracts\BaseRepositoryInterface;
 
-class DetalleStockProductoRepository implements BaseRepositoryInterface {
+class DetalleVentaRepository implements BaseRepositoryInterface {
+
     public function all()
     {
         // TODO: Implement all() method.
     }
 
-    /**
-     * @param array $attributes
-     * @return mixed
-     */
     public function create(array $attributes)
     {
         // TODO: Implement create() method.
     }
 
-    /**
-     * @param $id
-     * @param array $attributes
-     * @return mixed
-     */
     public function updated($id, array $attributes)
     {
         // TODO: Implement updated() method.
     }
 
-    /**
-     * @param $id
-     * @return mixed
-     */
     public function find($id)
     {
         // TODO: Implement find() method.
     }
 
-    /**
-     * @param $id
-     * @return mixed
-     */
     public function deleted($id)
     {
         // TODO: Implement deleted() method.
     }
 
+    public function addDetalleVenta($nro_venta,$id, $price, $qy)
+    {
+        $venta = new DetalleVentaProducto();
+        $venta->venta_id = $nro_venta;
+        $venta->producto_id = $id;
+        $venta->precio = $price;
+        $venta->cantidad = $qy;
+        $venta->save();
 
+    }
 }
