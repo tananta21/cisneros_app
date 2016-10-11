@@ -55,7 +55,7 @@
                     <tr data-id="{{$marca->id}}" id="filaproducto{{$marca->id}}">
                         <td>{{$marca->id}}</td>
                         <td>{{$marca->tipoMovimiento->descripcion}}</td>
-                        <td>{{$marca->descripcion}}</td>
+                        <td><span id="texto{{$marca->id}}">{{$marca->descripcion}}</span></td>
                         @if($marca->estado == 1)
                             <td>Activo <i class="fa fa-check-circle-o " style="color: green"></i></td>
                         @else
@@ -96,7 +96,7 @@
     {{--javascript eliminar: cambiar de estado--}}
     <script type="text/javascript">
         function eliminarCategoria(id){
-            if (confirm('¿Estas seguro que desea desactivar Marca ?')) {
+            if (confirm('¿Estas seguro que desea desactivar......... '+$('#texto'+id).text()+'?')) {
                 $(document).ready(function(){
                     var id_marca = $(this).find( 'input[name="eliminarmarca'+id+'"]' ).val();
                     var url = '{{route("eliminar.conceptomovimiento")}}';

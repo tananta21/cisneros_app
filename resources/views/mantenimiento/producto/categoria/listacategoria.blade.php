@@ -45,7 +45,7 @@
             @foreach($categorias as $categoria)
             <tr data-id="{{$categoria->id}}" id="filaproducto{{$categoria->id}}">
                 <td>{{$categoria->id}}</td>
-                <td>{{$categoria->descripcion}}</td>
+                <td><span id="texto{{$marca->id}}">{{$marca->descripcion}}</span></td>
                 @if($categoria->estado == 1)
                     <td>Activo <i class="fa fa-check-circle-o " style="color: green"></i></td>
                 @else
@@ -85,7 +85,7 @@
 
     <script type="text/javascript">
         function eliminarCategoria(id){
-            if (confirm('¿Estas seguro que desea desactivar Categoria ?')) {
+            if (confirm('¿Estas seguro que desea desactivar......... '+$('#texto'+id).text()+'?')) {
                 $(document).ready(function(){
                     var id_categoria = $(this).find( 'input[name="eliminarcategoria'+id+'"]' ).val();
                     var url = '{{route("eliminar.categoria")}}';
