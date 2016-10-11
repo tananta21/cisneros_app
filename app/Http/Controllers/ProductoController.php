@@ -106,7 +106,6 @@ class ProductoController extends Controller
 
     public function buscarProducto(Request $request)
     {
-
         $variables = $request->all();
 
         $productos = $this->repoProducto->buscarProducto($variables);
@@ -121,13 +120,9 @@ class ProductoController extends Controller
         $categoria = Input::get('categoria');
         $marca = Input::get('marca');
         $modelo = Input::get('modelo');
+        $estado = Input::get('estado');
 
-//        if(empty($dato)==true){
-//            return redirect()->action('ProductoController@index');
-//        }
-
-        $productos = $this->repoProducto->busquedaProducto($nombre,$serie,$categoria,$marca,$modelo);
-//        dd($productos);
+        $productos = $this->repoProducto->busquedaProducto($nombre,$serie,$categoria,$marca,$modelo,$estado);
         return View('inventario.productos.productos', compact('productos'));
 
     }

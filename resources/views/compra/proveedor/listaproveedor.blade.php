@@ -40,8 +40,8 @@
                 <div class=" form-group">
                     <div class="col-lg-12">
                         <div  style="padding-left: 0" class="col-lg-10">
-                            <div class="col-lg-1 col-sm-2" >
-                                <a type="button" href="/compra/proveedor" class="btn btn-default" > <i class="fa fa-refresh fa-1x"></i></a>
+                            <div class="col-lg-2 col-sm-2" >
+                                <a type="button" href="/compra/proveedor" class="btn btn-default" >Refresh <i class="fa fa-refresh fa-1x"></i></a>
                             </div>
                             <div class="col-lg-6 col-sm-2">
                                 {{--<input type="text" class="form-control" placeholder="Serie Producto" name="serie" value>--}}

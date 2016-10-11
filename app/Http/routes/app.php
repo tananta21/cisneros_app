@@ -320,6 +320,14 @@ Route::group(['prefix'=>'/', 'middleware' => 'auth' ], function() {
     Route::get('/mantenimiento/tipocliente/buscar',['as'=> 'buscar.tipocliente','uses'=>'MantenimientoEmpleadoController@buscarTipoCliente']);
 
 
+    //  UBIGEO---------------------------------------------------
+    Route::get('/mantenimiento/ubigeo','MantenimientoEmpleadoController@listaUbigeo');
+    //      buscar ubigeo
+    Route::get('/mantenimiento/tipocliente/buscar',['as'=> 'buscar.ubigeo','uses'=>'MantenimientoEmpleadoController@buscarUbigeo']);
+
+
+
+
     //    ========================================================================================
 //                           MANTENIMIENTO DE COMPRA_VENTA
 //    ===================================================================================

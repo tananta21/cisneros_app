@@ -7,6 +7,7 @@ use App\Core\GradoInstruccion\GradoInstruccionRepository;
 use App\Core\Ocupacion\OcupacionRepository;
 use App\Core\TipoCliente\TipoClienteRepository;
 use App\Core\TipoEmpleado\TipoEmpleadoRepository;
+use App\Core\Ubigeo\UbigeoRepository;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
@@ -21,6 +22,7 @@ class MantenimientoEmpleadoController extends Controller
     protected $repoGradoInstruccion;
     protected $repoOcupacion;
     protected $repoTipoCliente;
+    protected $repoUbigeo;
 
     public function __construct(){
         $this->repoTipoEmpleado = new TipoEmpleadoRepository();
@@ -28,6 +30,7 @@ class MantenimientoEmpleadoController extends Controller
         $this->repoGradoInstruccion = new GradoInstruccionRepository();
         $this->repoOcupacion = new OcupacionRepository();
         $this->repoTipoCliente = new TipoClienteRepository();
+        $this->repoUbigeo = new UbigeoRepository();
 
     }
 
@@ -264,6 +267,18 @@ class MantenimientoEmpleadoController extends Controller
     }
 
 
+//    ==========================================================================================================================
+//      UBIGEO
+//
+    public function listaUbigeo(){
+       $ubigeos =  $this->repoUbigeo->all();
+        return view('mantenimiento.empleado.ubigeo.listaubigeo', compact('ubigeos'));
+    }
+    public function buscarUbigeo(){
+        $registro = Input::get('cliente');
+        $ubigeos = $this->repoUbigeo->buscarUbigeo($registro);
+        return view('mantenimiento.empleado.ubigeo.listaubigeo', compact('ubigeos'));
+    }
 
 
 

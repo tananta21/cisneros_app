@@ -14,6 +14,10 @@ class CreateUbigeosTable extends Migration
     {
         Schema::create('ubigeos', function (Blueprint $table) {
             $table->increments('id');
+            $table->string('departamento',100);
+            $table->string('provincia',100);
+            $table->string('distrito',100);
+            $table->string('numubigeo',6);
             $table->boolean('estado');
             $table->timestamps();
             $table->softDeletes();

@@ -21,6 +21,7 @@
         <h3 class="col-lg-3" style="margin-bottom: 0.5rem">Lista Empleado</h3>
 
         <hr class="col-lg-12 linea-titulo" size="5px" color="green"/>
+
         <div class="col-lg-12" style="margin-top: 0.5rem">
             {!! Form::model(Request::all(),['route'=>'buscar.empleado','method' => 'get', 'class' => 'form-horizontal', 'role'=>'form']) !!}
             <div class="box-body">
@@ -32,7 +33,7 @@
                             </div>
                             <div class="col-lg-6 col-sm-2">
                                 {{--<input type="text" class="form-control" placeholder="Serie Producto" name="serie" value>--}}
-                                {!!form::text('cliente',null,['class'=>'form-control', 'placeholder'=>'buscar'])!!}
+                                {!!form::text('cliente',null,['class'=>'form-control', 'placeholder'=>'Ingrese DNI o Nombre'])!!}
                             </div>
                             <div class="col-lg-2">
                                 {!!form::select('estado',[
