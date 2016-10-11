@@ -34,6 +34,9 @@
                                 {{--<input type="text" class="form-control" placeholder="Serie Producto" name="serie" value>--}}
                                 {!!form::text(' cliente',null,['class'=>'form-control', 'placeholder'=>'buscar'])!!}
                             </div>
+                            <div class="col-lg-1 col-sm-2">
+                                <a type="button" href="/seguridad/empleado" class="btn btn-default" > <i class="fa fa-refresh fa-1x"></i></a>
+                            </div>
                         </div>
                         <div class="col-lg-2">
                             <a href="/seguridad/nuevoempleado"  type="button" class="btn btn-primary btn-sm"> NUEVO EMPLEADO
