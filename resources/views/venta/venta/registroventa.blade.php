@@ -8,7 +8,7 @@
                 <a class="nav-link" href="/venta/nuevaventa">Nueva Venta</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">Lista Ventas</a>
+                <a class="nav-link" href="#">Lista Venta</a>
             </li>
         </ul>
     </div>
