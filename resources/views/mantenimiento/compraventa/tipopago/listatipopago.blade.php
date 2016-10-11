@@ -150,7 +150,30 @@
     </script>
 
 
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $('#crear_tipoproducto_modal').on('shown.bs.modal',
+                    function () {
+                        $('#texto_descripcion').focus();
+                    });
+        });
 
+        $(document).keydown(function(tecla){
+            if (tecla.keyCode ==78) {
+                $("#crear_tipoproducto_modal").modal('show');
+            }
+        });
+
+        $(document).ready(function () {
+            $("#modulo-mantenimiento").addClass('active');
+        });
+
+        $('#crear_tipoproducto_modal').on('hidden.bs.modal', function () {
+            $(this).find("#texto_descripcion").val('').end();
+
+        });
+
+    </script>
 
 @endsection
 
