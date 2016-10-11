@@ -73,6 +73,7 @@ class ClienteRepository implements BaseRepositoryInterface{
         return $this->cliente->select()
             ->where('nro_documento',$dato)
             ->orWhere('nombres','LIKE',"%$dato%")
+            ->orderBy('id', 'desc')
             ->paginate(4);
     }
 }

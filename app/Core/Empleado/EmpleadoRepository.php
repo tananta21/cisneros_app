@@ -61,6 +61,7 @@ class EmpleadoRepository implements BaseRepositoryInterface {
         return $this->empleado->select()
             ->where('nro_documento',$dato)
             ->orWhere('name','LIKE',"%$dato%")
+            ->orderBy('id', 'desc')
             ->paginate(4);
     }
 }

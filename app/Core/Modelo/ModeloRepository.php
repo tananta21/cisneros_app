@@ -71,6 +71,7 @@ class ModeloRepository implements BaseRepositoryInterface {
 //            ->orderBy('id', 'desc')
             ->where('estado',$estado )
             ->orwhere('descripcion',$descripcion )
+            ->orderBy('id', 'desc')
             ->paginate(4);
     }
 

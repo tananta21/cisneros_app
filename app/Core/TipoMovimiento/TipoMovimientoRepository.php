@@ -76,6 +76,7 @@ class TipoMovimientoRepository implements BaseRepositoryInterface {
     {
         return $this->tipomovimiento->select()
             ->where('estado', $estado)
+            ->orderBy('id', 'desc')
             ->paginate(4);
     }
 

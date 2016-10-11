@@ -65,6 +65,7 @@ class EstadoCivilRepository implements BaseRepositoryInterface {
     public function buscarEstadoCivil($estado){
         return $this->estadocivil->select()
             ->where('estado',$estado )
+            ->orderBy('id', 'desc')
             ->paginate(4);
     }
 

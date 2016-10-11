@@ -70,6 +70,7 @@ class TipoProductoRepository implements BaseRepositoryInterface {
 //            ->orderBy('id', 'desc')
             ->where('estado',$estado )
             ->orderBy('id', 'desc')
+            ->orderBy('id', 'desc')
             ->paginate(4);
     }
 

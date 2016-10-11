@@ -75,6 +75,7 @@ class TipoTransaccionRepository implements BaseRepositoryInterface {
     {
         return $this->tipotransaccion->select()
             ->where('estado', $estado)
+            ->orderBy('id', 'desc')
             ->paginate(4);
     }
 
