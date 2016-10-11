@@ -8,7 +8,7 @@
                 <a class="nav-link" href="/compra/compranueva">Nueva Compra</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">Lista Compra</a>
+                <a class="nav-link" href="#">Lista Compras</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="/compra/proveedor">Proveedor</a>
