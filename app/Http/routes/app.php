@@ -62,9 +62,7 @@ Route::group(['prefix'=>'/', 'middleware' => 'auth' ], function() {
 //    ============================================================
 
 //    realizar una venta nueva
-    Route::get('/venta/nuevaventa', function(){
-        return view('venta.venta.nuevaventa');
-    });
+    Route::get('/venta/nuevaventa','VentaController@index');
 //    buscar producto en la vista de venta
     Route::get('/venta/buscarproducto','VentaController@buscarProducto');
 
@@ -74,13 +72,14 @@ Route::group(['prefix'=>'/', 'middleware' => 'auth' ], function() {
     });
 
 //   vista registro de una nueva venta
-    Route::get('/venta/registro', function(){
-        return view('venta.venta.registroventa');
-    });
-
-    Route::get('/ventas/registrar',[
+    Route::get('/venta/registro',[
         'as'=> 'registrar.venta',
-        'uses'=>'VentaController@create']);
+        'uses'=>'VentaController@registroVenta']
+    );
+
+//    Route::get('/ventas/registrar',[
+//        'as'=> 'registrar.venta',
+//        'uses'=>'VentaController@create']);
 
 
 
@@ -110,9 +109,15 @@ Route::group(['prefix'=>'/', 'middleware' => 'auth' ], function() {
 //    ============================================================
 
 //    realizar una compra nueva
-    Route::get('/compra/compranueva', function(){
-        return view('compra.compra.compranueva');
-    });
+    Route::get('/compra/compranueva','CompraController@index' );
+
+//    registrar compra
+    Route::get('/compra/registro',[
+            'as'=> 'registrar.compra',
+            'uses'=>'CompraController@registroCompra']
+    );
+
+
 
 //    PROVEEDORES
 // =========================================================
