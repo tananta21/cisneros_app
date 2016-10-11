@@ -76,6 +76,7 @@ class GradoInstruccionRepository implements BaseRepositoryInterface
     {
         return $this->gradoinstruccion->select()
             ->where('estado', $estado)
+            ->orderBy('id', 'desc')
             ->paginate(4);
     }
 

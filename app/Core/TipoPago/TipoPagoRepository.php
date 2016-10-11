@@ -75,6 +75,7 @@ class TipoPagoRepository implements BaseRepositoryInterface {
     {
         return $this->tipopago->select()
             ->where('estado', $estado)
+            ->orderBy('id', 'desc')
             ->paginate(4);
     }
 

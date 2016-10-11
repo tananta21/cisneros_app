@@ -79,7 +79,7 @@
                 </thead>
                 <tbody>
                 @foreach($proveedores as $proveedor)
-                    <tr data-id="{{$proveedor->id}}" id="filaproducto{{$proveedor->id}}">
+                    <tr style="font-size: 1.4rem" data-id="{{$proveedor->id}}" id="filaproducto{{$proveedor->id}}">
                         <td>{{$proveedor->id}}</td>
                         <td>{{$proveedor->nro_documento}}</td>
                         <td><span id="texto{{$proveedor->id}}">{{$proveedor->nombre}}</span></td>

@@ -74,6 +74,7 @@ class ProveedorRepository implements BaseRepositoryInterface
         return $this->proveedor->select()
             ->where('nro_documento',$dato)
             ->orWhere('nombre','LIKE',"%$dato%")
+            ->orderBy('id', 'desc')
             ->paginate(4);
     }
 }
