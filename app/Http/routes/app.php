@@ -99,6 +99,10 @@ Route::group(['prefix'=>'/', 'middleware' => 'auth' ], function() {
 //    editar cliente
     Route::get('/venta/cliente/editar/{id}','ClienteController@edit');
 
+//    buscar cliente
+    Route::get('/venta/cliente/buscar',['as'=> 'buscar.cliente','uses'=>'ClienteController@buscarCliente']);
+
+
 
 
 //==================================================================================

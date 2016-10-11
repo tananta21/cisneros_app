@@ -103,4 +103,9 @@ class ClienteController extends Controller
     {
         //
     }
+    public function buscarCliente(){
+        $dato = Input::get('cliente');
+        $clientes = $this->repoCliente->buscarCliente($dato);
+        return view('venta.cliente.listacliente', compact('clientes'));
+    }
 }

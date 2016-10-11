@@ -67,4 +67,12 @@ class ClienteRepository implements BaseRepositoryInterface{
         $cliente->estado = 1;
         $cliente->save();
     }
+
+    //    busqueda categoria
+    public function buscarCliente($dato){
+        return $this->cliente->select()
+            ->where('nro_documento',$dato)
+            ->orWhere('nombres','LIKE',"%$dato%")
+            ->paginate(4);
+    }
 }
