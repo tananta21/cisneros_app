@@ -15,7 +15,7 @@ class CreateConceptoMovimientosTable extends Migration
         Schema::create('concepto_movimientos', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('tipo_movimiento_id')->unsigned();
-            $table->string('descripcion');
+            $table->string('descripcion',30);
             $table->foreign('tipo_movimiento_id')->references('id')->on('tipo_movimientos')->onDelete('cascade');
             $table->boolean('estado');
             $table->timestamps();

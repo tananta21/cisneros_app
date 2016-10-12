@@ -14,7 +14,7 @@ class CreateTipoTransaccionesTable extends Migration
     {
         Schema::create('tipo_transacciones', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('descripcion');
+            $table->string('descripcion',30);
             $table->boolean('estado');
             $table->timestamps();
             $table->softDeletes();

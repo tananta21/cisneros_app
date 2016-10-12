@@ -14,7 +14,7 @@ class CreateModelosTable extends Migration
     {
         Schema::create('modelos', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('descripcion',50);
+            $table->string('descripcion',30);
             $table->boolean('estado');
             $table->timestamps();
             $table->softDeletes();

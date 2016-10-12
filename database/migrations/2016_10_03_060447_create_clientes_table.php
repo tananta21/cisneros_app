@@ -18,12 +18,12 @@ class CreateClientesTable extends Migration
             $table->integer('estado_civil_id')->unsigned();
             $table->integer('grado_instruccion_id')->unsigned();
             $table->integer('ocupacion_id')->unsigned();
-            $table->string('nro_documento',30);
-            $table->string('nombres');
-            $table->string('apellidos');
-            $table->string('telefono');
-            $table->string('correo')->unique();
-            $table->string('direccion');
+            $table->string('nro_documento',11);
+            $table->string('nombres',30);
+            $table->string('apellidos',50);
+            $table->string('telefono',9);
+            $table->string('correo',50)->unique();
+            $table->string('direccion',50);
             $table->date('fecha_nacimiento');
             $table->boolean('estado');
             $table->timestamps();
