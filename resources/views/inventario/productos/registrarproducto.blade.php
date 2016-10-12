@@ -32,13 +32,13 @@
                 <div class="col-lg-4 col-sm-12 col-xs-12">
                     <h5 class="col-lg-12 titulos">Serie o Codigo Producto</h5>
                     <div class="col-lg-12 col-sm-12 col-xs-12">
-                        <input required="true" type="text" class="form-control" placeholder="Serie o Codigo Producto" name="serie" value="">
+                        <input required="true" onkeypress="return soloNumeros(event)" type="number" class="form-control" placeholder="Serie o Codigo Producto" name="serie" value="">
                     </div>
                 </div>
                 <div class="col-lg-8 col-sm-12 col-xs-12">
                     <h5 class="col-lg-12 titulos">Nombre Producto</h5>
                     <div class="col-lg-12 col-sm-12 col-xs-12">
-                        <input type="text" class="form-control" placeholder="Nombre Producto" name="nombre" value="">
+                        <input onkeypress="return soloLetras(event)" type="text" class="form-control" placeholder="Nombre Producto" name="nombre" value="">
                     </div>
                 </div>
 
@@ -132,7 +132,7 @@
                 <div class="col-lg-8 col-sm-12 col-xs-12">
                     <h5 class="col-lg-12 titulos">Descripcion</h5>
                     <div class="col-lg-12 col-sm-12 col-xs-12" >
-                        <input type="text" class="form-control" placeholder="Descripcion Producto" name="descripcion" value="">
+                        <input type="text" onkeypress="return soloLetras(event)" class="form-control" placeholder="Descripcion Producto" name="descripcion" value="">
                     </div>
                 </div>
             </div>

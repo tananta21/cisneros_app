@@ -390,7 +390,7 @@ desired effect
                                 <div class="form-group">
                                     <label for="inputName" class="col-md-2 control-label">Categoria</label>
                                     <div class="col-md-6">
-                                        <input id="idcat" required="true" maxlength="30" type="text" class="form-control"  placeholder="Nombre Categoria" name="descripcion_categoria">
+                                        <input id="idcat" onkeypress="return soloLetras(event)" required="true" maxlength="30" type="text" class="form-control"  placeholder="Nombre Categoria" name="descripcion_categoria">
                                         <span style="font-size: 1.2rem; color: #0000ff; padding-left: 0.3rem">Maximo 30 caracteres</span>
                                     </div>
                                     <div class="col-md-4">
@@ -424,7 +424,7 @@ desired effect
                 <div class="modal-content">
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal">&times;</button>
-                        <h4 class="modal-title">Registrar Nueva Categoria</h4>
+                        <h4 class="modal-title">Registrar Nueva Marca</h4>
                     </div>
                     <div class="modal-body">
                         {{--formulario crear--}}
@@ -432,9 +432,9 @@ desired effect
                             {!! Form::open(['action' => 'MantenimientoController@crearMarca','method' => 'post', 'class' => 'form-horizontal', 'role'=>'form']) !!}
                             <div class="box-body">
                                 <div class="form-group">
-                                    <label for="inputName" class="col-md-2 control-label">Categoria</label>
+                                    <label for="inputName" class="col-md-2 control-label">Marca</label>
                                     <div class="col-md-6">
-                                        <input id="idmar" required="true" maxlength="30" type="text" class="form-control"  placeholder="Nombre Marca" name="descripcion_marca">
+                                        <input id="idmar" onkeypress="return soloLetras(event)" required="true" maxlength="30" type="text" class="form-control"  placeholder="Nombre Marca" name="descripcion_marca">
                                         <span style="font-size: 1.2rem; color: #0000ff; padding-left: 0.3rem">Maximo 30 caracteres</span>
                                     </div>
                                     <div class="col-md-4">
@@ -478,8 +478,8 @@ desired effect
                                 <div class="form-group">
                                     <label for="inputName" class="col-md-2 control-label">Modelo</label>
                                     <div class="col-md-6">
-                                        <input id="idmod" required="true" maxlength="50" type="text" class="form-control"  placeholder="Nombre Modelo" name="descripcion_modelo">
-                                        <span style="font-size: 1.2rem; color: #0000ff; padding-left: 0.3rem">Maximo 50 caracteres</span>
+                                        <input id="idmod" onkeypress="return soloLetras(event)" required="true" maxlength="50" type="text" class="form-control"  placeholder="Nombre Modelo" name="descripcion_modelo">
+                                        <span style="font-size: 1.2rem; color: #0000ff; padding-left: 0.3rem">Maximo 30 caracteres</span>
                                     </div>
                                     <div class="col-md-4">
                                         <input id="activo"  type="radio"  name="estado" value="1" checked> <label style="cursor: pointer" for="activo"> Activo</label>
