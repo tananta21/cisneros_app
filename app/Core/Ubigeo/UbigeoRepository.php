@@ -23,9 +23,27 @@ class UbigeoRepository implements BaseRepositoryInterface {
 
     public function buscarUbigeo($dato){
         return $this->ubigeo->select()
-            ->where('numubigeo',$dato )
-            ->orderBy('id', 'desc')
-            ->paginate(4);
+            ->where('numubigeo','LIKE',"$dato%" )
+            ->orderBy('numubigeo', 'asc')
+            ->paginate(7);
+    }
+
+    public function allDepartamentos(){
+        return $this->ubigeo->select('numubigeo','departamento')
+            ->whereRaw("provincia = '' AND distrito = ''")
+            ->get();
+    }
+
+    public function allProvincias($ubigeo){
+        return $this->ubigeo->select('numubigeo','provincia')
+            ->whereRaw("numubigeo LIKE '" .$ubigeo. "%'  AND distrito = ''")
+            ->get();
+    }
+
+    public function allDistritos($ubigeo){
+        return $this->ubigeo->select('numubigeo','provincia','distrito')
+            ->whereRaw("numubigeo LIKE '" .$ubigeo. "%'")
+            ->get();
     }
 
 
