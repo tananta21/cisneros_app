@@ -102,7 +102,7 @@
                         @endif
                         @if($proveedor->estado == 1)
                             <td>
-                                <a {{--onclick="eliminar('{{$proveedor->id}}')" --}} onclick="eliminarCategoria('{{$proveedor->id}}')" style="font-size: 2rem; padding: 0.5rem; color: red; cursor: pointer; margin-right: 2rem">
+                                <a onclick="eliminar('{{$proveedor->id}}')"  {{--onclick="eliminarCategoria('{{$proveedor->id}}')"--}} style="font-size: 2rem; padding: 0.5rem; color: red; cursor: pointer; margin-right: 2rem">
                                     <input type="hidden" name="eliminarmarca{{$proveedor->id}}" value="{{$proveedor->id}}"/>
                                     <i class="fa fa-trash"></i>
                                 </a>
@@ -133,6 +133,7 @@
         $(document).ready(function(){
             var texto = $("#texto"+id).text();
             $("#texto_eliminar").text(texto);
+            $("#confirmar").attr('onclick','eliminarCategoria('+id+')');
             $("#drop_porveedor").modal('show');
         });
         }
@@ -141,7 +142,6 @@
     {{--javascript eliminar: cambiar de estado--}}
     <script type="text/javascript">
         function eliminarCategoria(id){
-            if (confirm('¿Estas seguro que desea desactivar......... '+$('#texto'+id).text()+'?')) {
                 $(document).ready(function(){
                     var id_marca = $(this).find( 'input[name="eliminarmarca'+id+'"]' ).val();
                     var url = '{{route("eliminar.proveedor")}}';
@@ -158,13 +158,10 @@
                         },
 
                         success: function(){
-                            $("#filaproducto"+id).remove();;
+                            $("#filaproducto"+id).remove();
                         }
                     });
                 });
-            }
-            else{
-            }
         };
     </script>
 
@@ -173,7 +170,7 @@
 @endsection
 
 <div class="container">        <!-- Modal crear -->
-    <div class="modal fade " id="drop_porveedor" tabindex="-1" data-backdrop="static" role="dialog" aria-labelledby="gridModalLabel" aria-hidden="true">>
+    <div class="modal fade " id="drop_porveedor" tabindex="-1" data-backdrop="static" role="dialog" aria-labelledby="gridModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-md">
             <div class="modal-content">
                 <div class="modal-header">
@@ -185,7 +182,7 @@
                 </div>
                 <div class="modal-body">
                     {{--formulario crear --}}
-                    <div class="box box-primary">
+                    <div class="box box-primary" style="border-top-color: red;">
                             <P style="text-align: center;padding-top: 1rem;font-size:2rem">
                                 Esta seguro de eliminar a <span  style="font-weight: bold" id="texto_eliminar"></span>
                             </P>
@@ -193,7 +190,7 @@
 
                     <div class="box-footer" style="text-align: center">
                         {{--<input type="reset" class="btn btn-default" id="cancel" value="Cancelar">--}}
-                        <input style="background-color: red;border: none" type="submit" class="btn btn-info"  value="Eliminar"/>
+                        <button  id="confirmar"  style="background: red;border: none;" class="btn btn-info" data-dismiss="modal" >Eliminar</button>
                         <button style="background-color:#a9a9a9;border:none " href="" class="btn btn-info" data-dismiss="modal" >Cancelar</button>
                     </div>
 

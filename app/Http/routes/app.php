@@ -130,9 +130,7 @@ Route::group(['prefix'=>'/', 'middleware' => 'auth' ], function() {
     //    listar proveedores
     Route::get('/compra/proveedor','ProveedorController@index');
 //    proveedor nuevo
-    Route::get('/compra/nuevoproveedor',function(){
-        return view('compra.proveedor.registrarproveedor');
-    });
+    Route::get('/compra/nuevoproveedor','ProveedorController@registrarProveedor');
 
 //   Registrar proveedor
     Route::post('/compra/proveedor/registro','ProveedorController@create');
@@ -149,6 +147,11 @@ Route::group(['prefix'=>'/', 'middleware' => 'auth' ], function() {
 //    eliminar proveedor
     Route::get('/compra/proveedor/eliminar',['as'=> 'eliminar.proveedor','uses'=>'ProveedorController@eliminarProveedor']);
 
+//    buscar provincias
+    Route::get('/compra/proveedor/buscarprovincia',['as'=> 'buscar.provincia','uses'=>'ProveedorController@buscarProvincia']);
+
+//buscar distritos
+    Route::get('/compra/proveedor/buscardistrito',['as'=> 'buscar.distrito','uses'=>'ProveedorController@buscarDistrito']);
 
 
 //    ============================================================================

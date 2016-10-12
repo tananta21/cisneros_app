@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Core\Proveedor\ProveedorRepository;
+use App\Core\Ubigeo\UbigeoRepository;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
@@ -12,9 +13,11 @@ use Illuminate\Support\Facades\Input;
 class ProveedorController extends Controller
 {
     protected $repoProveedor;
+    protected $repoUbigeo;
 
     public function __construct(){
         $this->repoProveedor= new ProveedorRepository();
+        $this->repoUbigeo = new UbigeoRepository();
     }
 
     public function index()
@@ -22,6 +25,35 @@ class ProveedorController extends Controller
         $proveedores = $this->repoProveedor->all();
         return view('compra.proveedor.listaproveedor', compact('proveedores'));
     }
+
+    public function registrarProveedor(){
+        $departamentos = $this->repoUbigeo->allDepartamentos();
+        return view('compra.proveedor.registrarproveedor', compact('departamentos'));
+    }
+
+    public function buscarProvincia(){
+
+       $ubigeo = Input::get('ubigeo');
+       $provincias = $this->repoUbigeo->allProvincias($ubigeo);
+        if (empty($provincias)) {
+            return 0;
+        } else {
+            return response()->json($provincias);
+        }
+    }
+
+    public function buscarDistrito(){
+
+        $ubigeo = Input::get('ubigeo');
+        $provincias = $this->repoUbigeo->allDistritos($ubigeo);
+        if (empty($provincias)) {
+            return 0;
+        } else {
+            return response()->json($provincias);
+        }
+    }
+
+
 
     public function create()
     {
