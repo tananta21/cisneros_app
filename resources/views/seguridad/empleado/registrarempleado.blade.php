@@ -131,6 +131,46 @@
 
             <div class="col-lg-12 caja_formulario">
                 <div class="col-lg-4 col-sm-12 col-xs-12">
+                    <h5 class="col-lg-12 titulos">Departamento</h5>
+                    <div class="col-lg-12 col-sm-12  col-xs-12">
+                        <select class="form-control" name="departamento" onchange="buscarProvincia(this.value);">
+                            <option value="0">Seleccione Departamento</option>
+                            @foreach($departamentos as $departamento)
+                                <option value="{{$departamento->numubigeo}}">{{$departamento->departamento}}</option>
+                            @endforeach
+                        </select>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-sm-12 col-xs-12">
+                    <h5 class="col-lg-12 titulos">Provincia</h5>
+                    <div class="col-lg-12 col-sm-12  col-xs-12">
+                        <select id="provincias" disabled class="form-control" name="provincia" onchange="buscarDistrito(this.value);">
+                            <option value="">Seleccione Provincia</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-sm-12 col-xs-12">
+                    <h5 class="col-lg-12 titulos">Distrito</h5>
+                    <div class="col-lg-12 col-sm-12  col-xs-12">
+                        <select id="distritos" disabled class="form-control" name="distrito">
+                            <option value="0">Seleccione Distrito</option>
+                        </select>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="col-lg-12 caja_formulario">
+                <div class="col-lg-4 col-sm-12 col-xs-12">
+                    <h5 class="col-lg-12 titulos">Fecha de nacimiento</h5>
+                    <div class="col-lg-12 col-sm-12 col-xs-12">
+                        <input type="date" class="form-control" placeholder="fecha nacimiento" name="fecha_nacimiento" value="">
+                     </div>
+                </div>
+            </div>
+
+            <div class="col-lg-12 caja_formulario">
+                <div class="col-lg-4 col-sm-12 col-xs-12">
                     <h5 class="col-lg-12 titulos">Estado</h5>
                     <div class="col-lg-12 col-sm-12 col-xs-12">
                         <input  type="radio"  name="estado" value="1" checked> Activo
@@ -138,15 +178,6 @@
                     </div>
                 </div>
             </div>
-
-            {{--<div class="col-lg-12 caja_formulario">--}}
-                {{--<div class="col-lg-4 col-sm-12 col-xs-12">--}}
-                    {{--<h5 class="col-lg-12 titulos">Fecha de nacimiento</h5>--}}
-                    {{--<div class="col-lg-12 col-sm-12 col-xs-12">--}}
-                        {{--<input type="date" class="form-control" placeholder="fecha nacimiento" name="fecha_nacimiento" value="">--}}
-                    {{--</div>--}}
-                {{--</div>--}}
-            {{--</div>--}}
 
 
             <div class="col-lg-12 col-sm-12 col-xs-12  caja-botones-formulario ">

@@ -6,6 +6,7 @@ use App\Core\Cliente\ClienteRepository;
 use App\Core\EstadoCivil\EstadoCivilRepository;
 use App\Core\GradoInstruccion\GradoInstruccionRepository;
 use App\Core\Ocupacion\OcupacionRepository;
+use App\Core\Ubigeo\UbigeoRepository;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
@@ -19,6 +20,8 @@ class ClienteController extends Controller
     protected $repoEstadoCivil;
     protected $repoOcupacion;
     protected $repoGradoInstruccion;
+    protected $repoUbigeo;
+
 
     public function __construct(){
 
@@ -26,6 +29,7 @@ class ClienteController extends Controller
         $this->repoEstadoCivil = new EstadoCivilRepository();
         $this->repoGradoInstruccion = new GradoInstruccionRepository();
         $this->repoOcupacion = new OcupacionRepository();
+        $this->repoUbigeo = new UbigeoRepository();
     }
 
     public function index()
@@ -38,7 +42,8 @@ class ClienteController extends Controller
         $estadoCiviles = $this->repoEstadoCivil->allEnVista();
         $ocupaciones = $this->repoOcupacion->allEnVista();
         $gradoInstrucciones = $this->repoGradoInstruccion->allEnVista();
-        return view('venta.cliente.registrarcliente', compact('estadoCiviles','ocupaciones','gradoInstrucciones'));
+        $departamentos = $this->repoUbigeo->allDepartamentos();
+        return view('venta.cliente.registrarcliente', compact('estadoCiviles','ocupaciones','gradoInstrucciones','departamentos'));
     }
 
     public function create()
@@ -75,15 +80,12 @@ class ClienteController extends Controller
     public function edit($id)
     {
         $cliente = $this->repoCliente->find($id);
-        $estado = $cliente['estado_civil_id'];
-        $grados= $cliente['grado_instruccion_id'];
-        $ocupacion_id= $cliente['ocupacion_id'];
-
         $estadoCiviles = $this->repoEstadoCivil->allEnVista();
         $ocupaciones = $this->repoOcupacion->allEnVista();
         $gradoInstrucciones = $this->repoGradoInstruccion->allEnVista();
+        $departamentos = $this->repoUbigeo->allDepartamentos();
 
-        return view('venta.cliente.editarcliente',compact('cliente','estado','ocupacion_id','grados','estadoCiviles','ocupaciones','gradoInstrucciones'));
+        return view('venta.cliente.editarcliente',compact('cliente','estadoCiviles','ocupaciones','gradoInstrucciones','departamentos'));
 
     }
 

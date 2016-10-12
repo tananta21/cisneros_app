@@ -85,8 +85,8 @@
                     <div class="col-lg-12 col-sm-12  col-xs-12">
                         <select class="form-control" name="estado_civil">
                             @foreach($estadoCiviles as $estadoCivil)
-                                @if($estadoCivil->id == $estado)
-                                    <option value="1" selected>{{$estadoCivil->descripcion}}</option>
+                                @if($estadoCivil->id == $cliente->estado_civil_id)
+                                    <option value="{{$estadoCivil->id}}" selected>{{$estadoCivil->descripcion}}</option>
                                 @else
                                     <option value="{{$estadoCivil->id}}">{{$estadoCivil->descripcion}}</option>
                                 @endif
@@ -100,8 +100,8 @@
                     <div class="col-lg-12 col-sm-12  col-xs-12">
                         <select class="form-control" name="grado_instruccion">
                             @foreach($gradoInstrucciones as $grado)
-                                @if($grado->id == $grados)
-                                    <option value="1" selected>{{$grado->descripcion}}</option>
+                                @if($grado->id == $cliente->grado_instrucion_id)
+                                    <option value="{{$grado->id}}" selected>{{$grado->descripcion}}</option>
                                 @else
                                     <option value="{{$grado->id}}">{{$grado->descripcion}}</option>
                                 @endif
@@ -114,10 +114,9 @@
                     <h5 class="col-lg-12 titulos">Ocupacion</h5>
                     <div class="col-lg-12 col-sm-12  col-xs-12">
                         <select class="form-control" name="ocupacion">
-
                             @foreach($ocupaciones as $ocupacion)
-                                @if($ocupacion->id == $ocupacion_id)
-                                    <option value="1" selected>{{$ocupacion->descripcion}}</option>
+                                @if($ocupacion->id == $cliente->ocupacion_id)
+                                    <option value="{{$ocupacion->id}}" selected>{{$ocupacion->descripcion}}</option>
                                 @else
                                     <option value="{{$ocupacion->id}}">{{$ocupacion->descripcion}}</option>
                                 @endif
@@ -125,6 +124,37 @@
                         </select>
                     </div>
                 </div>
+            </div>
+
+            <div class="col-lg-12 caja_formulario">
+                <div class="col-lg-4 col-sm-12 col-xs-12">
+                    <h5 class="col-lg-12 titulos">Departamento</h5>
+                    <div class="col-lg-12 col-sm-12  col-xs-12">
+                        <select class="form-control" name="departamento" onchange="buscarProvincia(this.value);">
+                            <option value="0">Seleccione Departamento</option>
+                            @foreach($departamentos as $departamento)
+                                <option value="{{$departamento->numubigeo}}">{{$departamento->departamento}}</option>
+                            @endforeach
+                        </select>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-sm-12 col-xs-12">
+                    <h5 class="col-lg-12 titulos">Provincia</h5>
+                    <div class="col-lg-12 col-sm-12  col-xs-12">
+                        <select id="provincias" disabled class="form-control" name="provincia" onchange="buscarDistrito(this.value);">
+                            <option value="">Seleccione Provincia</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-sm-12 col-xs-12">
+                    <h5 class="col-lg-12 titulos">Distrito</h5>
+                    <div class="col-lg-12 col-sm-12  col-xs-12">
+                        <select id="distritos" disabled class="form-control" name="distrito">
+                            <option value="0">Seleccione Distrito</option>
+                        </select>
+                    </div>
+                </div>
+
             </div>
 
             <div class="col-lg-12 caja_formulario">
