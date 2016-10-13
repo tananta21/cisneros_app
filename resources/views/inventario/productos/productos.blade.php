@@ -105,7 +105,7 @@
                         <td>{{$producto->nombre}}</td>
                         <td>{{$producto->tipoProducto->descripcion}}</td>
                         <td>{{$producto->categoria->descripcion}}</td>
-                        <td>{{$producto->marca->descripcion}}</td>
+                        <td>marca</td>
                         <td>{{$producto->modelo->descripcion}}</td>
                         @if($producto->estado == 1)
                             <td>Activo</td>

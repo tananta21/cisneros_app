@@ -10,6 +10,6 @@ class Marca extends Model
 
     public function producto()
     {
-        return $this->hasMany('App\Core\Producto\Producto');
+        return $this->hasMany('App\Core\Modelo\Modelo');
     }
 }

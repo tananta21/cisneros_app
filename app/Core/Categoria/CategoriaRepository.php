@@ -100,4 +100,7 @@ class CategoriaRepository implements BaseRepositoryInterface {
             ->orderBy('id', 'desc')
             ->paginate(4);
     }
+    public function ultimaCategoria(){
+        return Categoria::all('id','descripcion')->last();
+    }
 }

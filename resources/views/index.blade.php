@@ -380,7 +380,7 @@ desired effect
                 $("#provincias").empty();
                 $("#distritos").empty();
                 $("#distritos").append('<option value="0">Seleccione Distrito</option>');
-                var nro_ubigeo = id.substr(0,3)
+                var nro_ubigeo = id.substr(0,3);
                 var url = '{{route("buscar.provincia")}}';
                 $.ajax({
                     type: 'GET',
@@ -394,6 +394,7 @@ desired effect
                         $("#respuesta").html('<div> Ha surgido un error. </div>');
                     },
                     success: function(respuesta){
+                        console.log(respuesta)
                         for(var i in respuesta){
                             if(respuesta[i].provincia == ''){
                                 $("#provincias").append('<option value="0">Seleccione Provincia</option>');
@@ -458,6 +459,128 @@ desired effect
         }
     </script>
 
+    <script>
+//        (function() {
+//            $("#form-categoria").submit(function() {
+//                var form = $('#form-categoria');
+//                var url = form.attr('action');
+//                $.ajax({
+//                    url: url,
+//                    type: 'GET',
+//                    data: {
+//                        codigo: 1,
+//                        tipo: 2
+////                        legajo: $("#legajo").val(),
+////                            "_token": $(this).find( 'input[name="_token"]' ).val()
+//                    },
+//                    dataType: 'JSON',
+//                    beforeSend: function() {
+//                        $("#respuesta").html('Buscando Producto...');
+//                    },
+//                    error: function() {
+//                        $("#respuesta").html('<div> Ha surgido un error. </div>');
+//                    },
+//
+//                    success: function() {
+//
+//                    }
+//            });
+//            });
+//        }).call(this);
+        $(document).ready(function() {
+            $("#form-categoria").submit(function() {
+                var form = $('#form-categoria');
+                var url = form.attr('action');
+                $.ajax({
+                    url: url,
+                    type: 'GET',
+                    data: {
+                        descripcion_categoria: $(this).find( 'input[name="descripcion_categoria"]' ).val(),
+                        estado: $(this).find( 'input:radio[name=estado]:checked' ).val()
+//                        legajo: $("#legajo").val(),
+//                            "_token": $(this).find( 'input[name="_token"]' ).val()
+                    },
+                    dataType: 'JSON',
+                    beforeSend: function() {
+                        $("#respuesta").html('Buscando Producto...');
+                    },
+                    error: function() {
+                        $("#respuesta").html('<div> Ha surgido un error. </div>');
+                    },
+                    success: function(respuesta) {
+                        $("#categorias").append('<option value="'+respuesta.id+'">'+respuesta.descripcion+'</option>');
+                        $('#idcat').val("");
+                        $('#categoria_modal').modal('hide');
+
+                    }
+                });
+                return false;
+            });
+
+            $("#form-marca").submit(function() {
+                var form = $('#form-marca');
+                var url = form.attr('action');
+                $.ajax({
+                    url: url,
+                    type: 'GET',
+                    data: {
+                        descripcion_marca: $(this).find( 'input[name="descripcion_marca"]' ).val(),
+                        estado: $(this).find( 'input:radio[name=estado]:checked' ).val()
+//                        legajo: $("#legajo").val(),
+//                            "_token": $(this).find( 'input[name="_token"]' ).val()
+                    },
+                    dataType: 'JSON',
+                    beforeSend: function() {
+                        $("#respuesta").html('Buscando Producto...');
+                    },
+                    error: function() {
+                        $("#respuesta").html('<div> Ha surgido un error. </div>');
+                    },
+                    success: function(respuesta) {
+                        $("#marcas").append('<option value="'+respuesta.id+'">'+respuesta.descripcion+'</option>');
+                        $('#idmar').val("");
+                        $('#marca_modal').modal('hide');
+
+                    }
+                });
+                return false;
+            });
+
+            $("#form-modelo").submit(function() {
+                var form = $('#form-modelo');
+                var url = form.attr('action');
+                $.ajax({
+                    url: url,
+                    type: 'GET',
+                    data: {
+                        descripcion_modelo: $(this).find( 'input[name="descripcion_modelo"]' ).val(),
+                        marca_id:$(this).find('select[name=marca_id]').val(),
+                        estado: $(this).find( 'input:radio[name=estado]:checked' ).val()
+//                        legajo: $("#legajo").val(),
+//                            "_token": $(this).find( 'input[name="_token"]' ).val()
+                    },
+                    dataType: 'JSON',
+                    beforeSend: function() {
+                        $("#respuesta").html('Buscando Producto...');
+                    },
+                    error: function() {
+                        $("#respuesta").html('<div> Ha surgido un error. </div>');
+                    },
+                    success: function(respuesta) {
+//                        $("#marcas").append('<option value="'+respuesta.id+'">'+respuesta.descripcion+'</option>');
+                        $('#idmod').val("");
+                        $('#modelo_modal').modal('hide');
+
+                        var id = ($('#marcas').val());
+                        window.onload = buscarModelo(id) ;
+
+                    }
+                });
+                return false;
+            });
+
+        });
+    </script>
     {{--modal crear categoria--}}
     <div class="container">        <!-- Modal crear -->
         <div class="modal fade " id="categoria_modal" tabindex="-1" role="dialog" data-backdrop="static" aria-labelledby="gridModalLabel" aria-hidden="true">>
@@ -470,30 +593,28 @@ desired effect
                     <div class="modal-body">
                         {{--formulario crear--}}
                         <div class="box box-primary">
-                            {!! Form::open(['action' => 'MantenimientoController@crearCategoria','method' => 'post', 'class' => 'form-horizontal', 'role'=>'form']) !!}
-                            <div class="box-body">
-                                <div class="form-group">
-                                    <label for="inputName" class="col-md-2 control-label">Categoria</label>
-                                    <div class="col-md-6">
-                                        <input id="idcat" required="true" maxlength="30" type="text" class="form-control"  placeholder="Nombre Categoria" name="descripcion_categoria">
-                                        <span style="font-size: 1.2rem; color: #0000ff; padding-left: 0.3rem">Maximo 30 caracteres</span>
-                                    </div>
-                                    <div class="col-md-4">
-                                        <input id="activo"  type="radio"  name="estado" value="1" checked> <label style="cursor: pointer" for="activo"> Activo</label>
-                                        <input id="inactivo" type="radio" name="estado" value="0" style="margin-left: 2rem"> <label style="cursor: pointer" for="inactivo"> Inactivo </label>
-                                    </div>
+                            <form action="/categoria/registrar"  method="GET"  id="form-categoria"  class="form-horizontal" role="form">
+                                {!! csrf_field() !!}
+                                <div class="box-body">
+                                    <div class="form-group">
+                                        <label for="inputName" class="col-md-2 control-label">Categoria</label>
+                                        <div class="col-md-6">
+                                            <input id="idcat" required="true" maxlength="30" type="text" class="form-control"  placeholder="Nombre Categoria" name="descripcion_categoria">
+                                            <span style="font-size: 1.2rem; color: #0000ff; padding-left: 0.3rem">Maximo 30 caracteres</span>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <input id=""  type="radio"  name="estado" value="1" checked> <label style="cursor: pointer" for="activo"> Activo</label>
+                                            <input id="" type="radio" name="estado" value="0" style="margin-left: 2rem"> <label style="cursor: pointer" for="inactivo"> Inactivo </label>
+                                        </div>
 
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="box-footer" style="text-align: center">
-                                {{--<input type="reset" class="btn btn-default" id="cancel" value="Cancelar">--}}
-                                <button type="submit" class="btn btn-info">Guardar</button>
-                                <button href="" class="btn btn-default" data-dismiss="modal" >Cancelar</button>
-                            </div>
-
-                            <!-- /.box-body -->
-
-                            {!! Form::close() !!}
+                                <div class="box-footer" style="text-align: center">
+                                    {{--<input type="reset" class="btn btn-default" id="cancel" value="Cancelar">--}}
+                                    <button type="submit" class="btn btn-info">Guardar</button>
+                                    <button href="" class="btn btn-default" data-dismiss="modal" >Cancelar</button>
+                                </div>
+                            </form>
                         </div>
 
                     </div>
@@ -509,35 +630,34 @@ desired effect
                 <div class="modal-content">
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal">&times;</button>
-                        <h4 class="modal-title">Registrar Nueva Categoria</h4>
+                        <h4 class="modal-title">Registrar Nueva Marca</h4>
                     </div>
                     <div class="modal-body">
                         {{--formulario crear--}}
                         <div class="box box-primary">
-                            {!! Form::open(['action' => 'MantenimientoController@crearMarca','method' => 'post', 'class' => 'form-horizontal', 'role'=>'form']) !!}
-                            <div class="box-body">
-                                <div class="form-group">
-                                    <label for="inputName" class="col-md-2 control-label">Categoria</label>
-                                    <div class="col-md-6">
-                                        <input id="idmar" required="true" maxlength="30" type="text" class="form-control"  placeholder="Nombre Marca" name="descripcion_marca">
-                                        <span style="font-size: 1.2rem; color: #0000ff; padding-left: 0.3rem">Maximo 30 caracteres</span>
-                                    </div>
-                                    <div class="col-md-4">
-                                        <input id="activo"  type="radio"  name="estado" value="1" checked> <label style="cursor: pointer" for="activo"> Activo</label>
-                                        <input id="inactivo" type="radio" name="estado" value="0" style="margin-left: 2rem"> <label style="cursor: pointer" for="inactivo"> Inactivo </label>
-                                    </div>
+                            <form action="/marca/registrar"  method="GET"  id="form-marca"  class="form-horizontal" role="form">
+                                <div class="box-body">
+                                    <div class="form-group">
+                                        <label for="inputName" class="col-md-2 control-label">Marca</label>
+                                        <div class="col-md-6">
+                                            <input id="idmar" required="true" maxlength="30" type="text" class="form-control"  placeholder="Nombre Marca" name="descripcion_marca">
+                                            <span style="font-size: 1.2rem; color: #0000ff; padding-left: 0.3rem">Maximo 30 caracteres</span>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <input id=""  type="radio"  name="estado" value="1" checked> <label style="cursor: pointer" for="activo"> Activo</label>
+                                            <input id="" type="radio" name="estado" value="0" style="margin-left: 2rem"> <label style="cursor: pointer" for="inactivo"> Inactivo </label>
+                                        </div>
 
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="box-footer" style="text-align: center">
+                                <div class="box-footer" style="text-align: center">
                                 {{--<input type="reset" class="btn btn-default" id="cancel" value="Cancelar">--}}
                                 <button type="submit" class="btn btn-info">Guardar</button>
                                 <button href="" class="btn btn-default" data-dismiss="modal" >Cancelar</button>
                             </div>
 
                             <!-- /.box-body -->
-
-                            {!! Form::close() !!}
+                            </form>
                         </div>
 
                     </div>
@@ -558,7 +678,7 @@ desired effect
                     <div class="modal-body">
                         {{--formulario crear--}}
                         <div class="box box-primary">
-                            {!! Form::open(['action' => 'MantenimientoController@crearModelo','method' => 'post', 'class' => 'form-horizontal', 'role'=>'form']) !!}
+                            <form action="/modelo/registrar"  method="GET"  id="form-modelo"  class="form-horizontal" role="form">
                             <div class="box-body">
                                 <div class="form-group">
                                     <label for="inputName" class="col-md-2 control-label">Modelo</label>
@@ -585,8 +705,20 @@ desired effect
                                         <input id="activo"  type="radio"  name="estado" value="1" checked> <label style="cursor: pointer" for="activo"> Activo</label>
                                         <input id="inactivo" type="radio" name="estado" value="0" style="margin-left: 2rem"> <label style="cursor: pointer" for="inactivo"> Inactivo </label>
                                     </div>
+<<<<<<< HEAD
 
                             </div>
+=======
+                                </div>
+                                <div class="form-group">
+                                    <label for="inputName" class="col-md-2 control-label">Marca</label>
+                                    <div class="col-md-6">
+                                        <select class="form-control" name="marca_id" id="marcas-modelos">
+                                            <option value="">Seleccione Marca</option>
+                                        </select>
+                                    </div>
+                                </div>
+>>>>>>> 2a97db5f776306f8482e20b084e64aca082be820
                             </div>
                             <div class="box-footer" style="text-align: center">
                                 {{--<input type="reset" class="btn btn-default" id="cancel" value="Cancelar">--}}
@@ -595,8 +727,7 @@ desired effect
                             </div>
 
                             <!-- /.box-body -->
-
-                            {!! Form::close() !!}
+                            </form>
                         </div>
 
                     </div>

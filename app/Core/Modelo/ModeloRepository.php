@@ -27,9 +27,9 @@ class ModeloRepository implements BaseRepositoryInterface {
             ->orderBy('id', 'desc')
             ->paginate(5);
     }
-    public function allEnProducto(){
-        return $this->marca
-            ->where('estado','1')
+    public function allEnProducto($marca){
+        return $this->marca->select('id','descripcion')
+            ->whereRaw("marca_id = '".$marca."' ")
             ->orderBy('id', 'desc')
             ->get();
     }
@@ -37,6 +37,7 @@ class ModeloRepository implements BaseRepositoryInterface {
     // añadir nueva marca
     public function nuevoModelo($inputs){
         $registro = new Modelo();
+        $registro->marca_id = $inputs['marca_id'];
         $registro->descripcion = $inputs['descripcion_modelo'];
         $registro->estado = $inputs['estado'];
         $registro->save();
