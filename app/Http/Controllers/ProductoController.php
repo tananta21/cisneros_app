@@ -35,10 +35,9 @@ class ProductoController extends Controller
 
     public function nuevoProducto(){
 
-        $categorias = $this->repoCategoria->all();
-        $marcas = $this->repoMarca->all();
-        $modelos = $this->repoModelo->all();
-        return View('inventario.productos.registrarproducto', compact('categorias','marcas','modelos'));
+        $categorias = $this->repoCategoria->allEnProducto();
+        $marcas = $this->repoMarca->allEnProducto();
+        return View('inventario.productos.registrarproducto', compact('categorias','marcas'));
     }
 
 
@@ -145,4 +144,38 @@ class ProductoController extends Controller
         return Redirect::back();
     }
 
+    public function buscarModelo(){
+        $marca = Input::get('marca');
+        $modelos = $this->repoModelo->allEnProducto($marca);
+        if (empty($modelos)) {
+            return 0;
+        } else {
+            return response()->json($modelos);
+        }
+    }
+
+
+//    registrar categoria desde producto
+    public function registrarCategoria(){
+        $datos = Input::all();
+        $categoria = $this->repoCategoria->nuevaCategoria($datos);
+        $ultimo = $this->repoCategoria->ultimaCategoria()->toArray();
+        return response()->json($ultimo);
+    }
+    public function registrarMarca(){
+        $datos = Input::all();
+        $marca = $this->repoMarca->nuevaMarca($datos);
+        $ultimo = $this->repoMarca->ultimaMarca()->toArray();
+        return response()->json($ultimo);
+    }
+    public function registrarModelo(){
+        $datos = Input::all();
+        $marca = $this->repoModelo->nuevoModelo($datos);
+        return response()->json();
+    }
+
+    public function buscarMarcas(){
+        $marcas = $this->repoMarca->allEnProducto()->toArray();
+        return response()->json($marcas);
+    }
 }

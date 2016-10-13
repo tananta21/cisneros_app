@@ -113,4 +113,8 @@ class MarcaRepository implements BaseRepositoryInterface {
         $modelo->descripcion = $inputs['descripcion_marca'];
         $modelo->save();
     }
+
+    public function ultimaMarca(){
+        return Marca::all('id','descripcion')->last();
+    }
 }

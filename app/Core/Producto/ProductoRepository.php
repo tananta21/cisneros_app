@@ -43,7 +43,6 @@ class ProductoRepository implements BaseRepositoryInterface
         $producto = new Producto();
         $producto->tipo_producto_id = $inputs['tipo_producto'];
         $producto->categoria_id = $inputs['categoria'];
-        $producto->marca_id = $inputs['marca'];
         $producto->modelo_id = $inputs['modelo'];
         $producto->serie = $inputs['serie'];
         $producto->nombre = $inputs['nombre'];

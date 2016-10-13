@@ -21,11 +21,30 @@
                 <div class="col-lg-4 col-sm-12 col-xs-12">
                     <h5 class="col-lg-12 titulos">Numero de documento</h5>
                     <div class="col-lg-12 col-sm-12 col-xs-12">
-                        <input required="true" maxlength="8" onKeypress="if (event.keyCode < 45 || event.keyCode > 57) event.returnValue = false;"
-                               type="text" class="form-control" placeholder="DNI O RUC" name="nro_documento" value="">
+                        <input onkeypress="comprobarDocumento()" id="documento" required="true" maxlength="11" onKeypress="if (event.keyCode < 45 || event.keyCode > 57) event.returnValue = false;"
+                               type="text" class="form-control" placeholder="DNI O RUC" name="nro_documento" value="" style="font-size: 1.5rem">
                     </div>
                 </div>
+                <div class="col-lg-4 col-sm-12 col-xs-12">
+                    <h5 class="col-lg-12 titulos">Tipo Proveedor</h5>
+                    <div class="col-lg-12 col-sm-12 col-xs-12">
+                        <input id="tipo_proveedor" readonly type="text" class="form-control"/>
+                    </div>
+                </div>
+
+
             </div>
+
+            <script>
+                function comprobarDocumento(){
+                    if($("#documento").val().length == 2 && $("#documento").val()==10 ){
+                        $("#tipo_proveedor").val("NATURAL");
+                    }
+                    if($("#documento").val().length == 2 && $("#documento").val()==20 ){
+                        $("#tipo_proveedor").val("JURIDICO");
+                    }
+                }
+            </script>
 
             <div class="col-lg-12 caja_formulario ">
                 <div class="col-lg-4 col-sm-12 col-xs-12">
