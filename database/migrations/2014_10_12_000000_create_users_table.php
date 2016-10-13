@@ -23,7 +23,7 @@ class CreateUsersTable extends Migration
             $table->string('apellidos',50);
             $table->string('email',50)->unique();
             $table->string('telefono',20);
-            $table->string('password', 20);
+            $table->string('password');
             $table->string('nro_hijos',2);
             $table->string('sueldo',5);
             $table->date('fecha_nacimiento');
