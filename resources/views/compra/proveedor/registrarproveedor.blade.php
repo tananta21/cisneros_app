@@ -23,6 +23,8 @@
                     <div class="col-lg-12 col-sm-12 col-xs-12">
                         <input onkeypress="comprobarDocumento()" id="documento" required="true" maxlength="11" onKeypress="if (event.keyCode < 45 || event.keyCode > 57) event.returnValue = false;"
                                type="text" class="form-control" placeholder="DNI O RUC" name="nro_documento" value="" style="font-size: 1.5rem">
+
+                    <span style=" color: red" id="error_documento">Introdusca datos correctos</span>
                     </div>
                 </div>
                 <div class="col-lg-4 col-sm-12 col-xs-12">
