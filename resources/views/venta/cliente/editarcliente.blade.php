@@ -37,6 +37,14 @@
                                type="text" class="form-control" placeholder="DNI O RUC" name="nro_documento" value="{{$cliente->nro_documento}}">
                     </div>
                 </div>
+
+                <div class="col-lg-4 col-sm-12 col-xs-12">
+                    <h5 class="col-lg-12 titulos">Sexo</h5>
+                    <div class="col-lg-12 col-sm-12 col-xs-12">
+                        <input id="hombre"  type="radio"  name="estado" value="1" checked> <label style="cursor: pointer" for="hombre"> Hombre </label>
+                        <input id="mujer" type="radio" name="estado" value="0" style="margin-left: 2rem"> <label style="cursor: pointer" for="mujer"> Mujer </label>
+                    </div>
+                </div>
             </div>
 
 
@@ -44,13 +52,13 @@
                 <div class="col-lg-4 col-sm-12 col-xs-12">
                     <h5 class="col-lg-12 titulos">Nombre del Cliente</h5>
                     <div class="col-lg-12 col-sm-12 col-xs-12">
-                        <input type="text" class="form-control" placeholder="Nombre Cliente" name="nombres" value="{{$cliente->nombres}}">
+                        <input type="text" onkeypress="return soloLetras(event)"  maxlength=50 class="form-control" placeholder="Nombre Cliente" name="nombres" value="{{$cliente->nombres}}">
                     </div>
                 </div>
                 <div class="col-lg-8 col-sm-12 col-xs-12">
                     <h5 class="col-lg-12 titulos">Apellidos del Cliente</h5>
                     <div class="col-lg-12 col-sm-12 col-xs-12">
-                        <input type="text" class="form-control" placeholder="Apallido Cliente" name="apellidos" value="{{$cliente->apellidos}}">
+                        <input type="text" onkeypress="return soloLetras(event)"  maxlength=50 class="form-control" placeholder="Apallido Cliente" name="apellidos" value="{{$cliente->apellidos}}">
                     </div>
                 </div>
 
@@ -61,19 +69,19 @@
                 <div class="col-lg-4 col-sm-12 col-xs-12">
                     <h5 class="col-lg-12 titulos">Telefono</h5>
                     <div class="col-lg-12 col-sm-12 col-xs-12">
-                        <input type="tetx" class="form-control" placeholder="nº de telefono" name="telefono" value="{{$cliente->telefono}}">
+                        <input type="tetx" class="form-control" placeholder="nº de telefono" maxlength="20" onKeypress="if (event.keyCode < 45 || event.keyCode > 57) event.returnValue = false;" name="telefono" value="{{$cliente->telefono}}">
                     </div>
                 </div>
                 <div class="col-lg-4 col-sm-12 col-xs-12">
                     <h5 class="col-lg-12 titulos">Correo Electronico</h5>
                     <div class="col-lg-12 col-sm-12 col-xs-12">
-                        <input type="email" class="form-control" placeholder="ejemplo@ejemplo.com" name="correo" value="{{$cliente->correo}}">
+                        <input type="email" maxlength="50" class="form-control" placeholder="ejemplo@ejemplo.com" name="correo" value="{{$cliente->correo}}">
                     </div>
                 </div>
                 <div class="col-lg-4 col-sm-12 col-xs-12">
                     <h5 class="col-lg-12 titulos">Direccion</h5>
                     <div class="col-lg-12 col-sm-12 col-xs-12">
-                        <input type="text" class="form-control" placeholder="Direccion" name="direccion" value="{{$cliente->direccion}}">
+                        <input type="text" maxlength="60"class="form-control" placeholder="Direccion" name="direccion" value="{{$cliente->direccion}}">
                     </div>
                 </div>
             </div>
@@ -121,6 +129,28 @@
                                     <option value="{{$ocupacion->id}}">{{$ocupacion->descripcion}}</option>
                                 @endif
                             @endforeach
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-12 caja_formulario">
+                <div class="col-lg-4 col-sm-12 col-xs-12">
+                    <h5 class="col-lg-12 titulos">Numero de Hijos</h5>
+                    <div class="col-lg-12 col-sm-12 col-xs-12">
+                        <input type="number" maxlength="2"class="form-control" placeholder="Numero de hijos" name="numero_hijos" value="">
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-sm-12 col-xs-12">
+                    <h5 class="col-lg-12 titulos">Sueldo</h5>
+                    <div class="col-lg-12 col-sm-12  col-xs-12">
+                        <select class="form-control" name="sueldo_cliente">
+                            <option value="1">0-1000</option>
+                            <option value="2">1000-2000</option>
+                            <option value="1">2000-3000</option>
+                            <option value="2">3000-4000</option>
+                            <option value="2">4000-5000</option>
                         </select>
                     </div>
                 </div>

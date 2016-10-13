@@ -32,13 +32,13 @@
                 <div class="col-lg-4 col-sm-12 col-xs-12">
                     <h5 class="col-lg-12 titulos">Nombre del Proveedor</h5>
                     <div class="col-lg-12 col-sm-12 col-xs-12">
-                        <input type="text" class="form-control" placeholder="Nombre Proveedor" name="nombre" value="{{$proveedor->nombre}}">
+                        <input type="text"onkeypress="return soloLetras(event)"  maxlength=50 class="form-control" placeholder="Nombre Proveedor" name="nombre" value="{{$proveedor->nombre}}">
                     </div>
                 </div>
                 <div class="col-lg-8 col-sm-12 col-xs-12">
                     <h5 class="col-lg-12 titulos">Encargado</h5>
                     <div class="col-lg-12 col-sm-12 col-xs-12">
-                        <input type="text" class="form-control" placeholder="Encargado" name="encargado" value="{{$proveedor->encargado}}">
+                        <input type="text" onkeypress="return soloLetras(event)"  maxlength=50 class="form-control" placeholder="Encargado" name="encargado" value="{{$proveedor->encargado}}">
                     </div>
                 </div>
 
@@ -49,19 +49,19 @@
                 <div class="col-lg-4 col-sm-12 col-xs-12">
                     <h5 class="col-lg-12 titulos">Telefono</h5>
                     <div class="col-lg-12 col-sm-12 col-xs-12">
-                        <input type="tetx" class="form-control" placeholder="nº de telefono" name="telefono" value="{{$proveedor->telefono}}">
+                        <input type="tetx"  maxlength="20" onKeypress="if (event.keyCode < 45 || event.keyCode > 57) event.returnValue = false;"class="form-control" placeholder="nº de telefono" name="telefono" value="{{$proveedor->telefono}}">
                     </div>
                 </div>
                 <div class="col-lg-4 col-sm-12 col-xs-12">
                     <h5 class="col-lg-12 titulos">Correo Electronico</h5>
                     <div class="col-lg-12 col-sm-12 col-xs-12">
-                        <input type="email" class="form-control" placeholder="ejemplo@ejemplo.com" name="correo" value="{{$proveedor->correo}}">
+                        <input type="email" maxlength="50"class="form-control" placeholder="ejemplo@ejemplo.com" name="correo" value="{{$proveedor->correo}}">
                     </div>
                 </div>
                 <div class="col-lg-4 col-sm-12 col-xs-12">
                     <h5 class="col-lg-12 titulos">Direccion</h5>
                     <div class="col-lg-12 col-sm-12 col-xs-12">
-                        <input type="text" class="form-control" placeholder="Direccion" name="direccion" value="{{$proveedor->direccion}}">
+                        <input type="text" maxlength="50"class="form-control" placeholder="Direccion" name="direccion" value="{{$proveedor->direccion}}">
                     </div>
                 </div>
             </div>
