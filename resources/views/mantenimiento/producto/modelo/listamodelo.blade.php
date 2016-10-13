@@ -19,6 +19,15 @@
         <div class="col-lg-3">
             {!!form::text('descripcionmarca',null,['class'=>'form-control', 'placeholder'=>'Introdusca nombre modelo','maxlength'=>30])!!}
         </div>
+        <div class="col-md-3">
+                <select required="true" class="form-control" name="sueldo_cliente">
+                    <option value="">seleccione marca</option>
+                    <option value="1">YAMAHA</option>
+                    <option value="2">HONDA</option>
+                    <option value="1">LIFAN</option>
+                    <option value="2">MOTUL</option>
+                </select>
+        </div>
 
         <div class="col-lg-2">
             {!!form::select('estado',[
@@ -38,6 +47,7 @@
                 <tbody>
                 <tr>
                     <th>N° ID</th>
+                    <th>MARCA</th>
                     <th>NOMBRE</th>
                     <th>ESTADO</th>
                     <th>ACCIONES</th>
@@ -45,6 +55,7 @@
                 @foreach($marcas as $marca)
                     <tr data-id="{{$marca->id}}" id="filaproducto{{$marca->id}}">
                         <td>{{$marca->id}}</td>
+                        <td>YAMAHA</td>
                         <td><span id="texto{{$marca->id}}">{{$marca->descripcion}}</span></td>
                         @if($marca->estado == 1)
                             <td>Activo <i class="fa fa-check-circle-o " style="color: green"></i></td>
@@ -245,6 +256,18 @@
                                     <input id="descripmarca" onkeypress="return soloLetras(event)" required="true" maxlength="50" type="text" class="form-control"  placeholder="Nombre Modelo" name="descripcion_marca" >
                                     <span style="font-size: 1rem; color: #0000ff">Maximo 50 caracteres</span>
                                 </div>
+                            </div>
+                            <div class="form-group"><label class="col-sm-2 control-label">Marca</label>
+                                <div class="col-md-6">
+                                    <select required="true" class="form-control" name="sueldo_cliente">
+                                        <option value="">seleccione marca</option>
+                                        <option value="1">YAMAHA</option>
+                                        <option value="2">HONDA</option>
+                                        <option value="1">LIFAN</option>
+                                        <option value="2">MOTUL</option>
+                                    </select>
+                                </div>
+                            </div>
                                 <div class="col-md-4">
                                     <input id="activo"  type="radio"  name="estado" value="1" checked> <label style="cursor: pointer" for="activo"> Activo</label>
                                     <input id="inactivo" type="radio" name="estado" value="0" style="margin-left: 2rem"> <label style="cursor: pointer" for="inactivo"> Inactivo </label>

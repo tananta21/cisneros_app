@@ -566,12 +566,27 @@ desired effect
                                         <input id="idmod" required="true" maxlength="50" type="text" class="form-control"  placeholder="Nombre Modelo" name="descripcion_modelo">
                                         <span style="font-size: 1.2rem; color: #0000ff; padding-left: 0.3rem">Maximo 50 caracteres</span>
                                     </div>
+
+                                </div>
+                                <div class="form-group"><label class="col-sm-2 control-label">Marca</label>
+                                    <div class="col-md-6">
+                                        <select required="true" class="form-control" name="sueldo_cliente">
+                                            <option value="">seleccione marca</option>
+                                            <option value="1">YAMAHA</option>
+                                            <option value="2">HONDA</option>
+                                            <option value="1">LIFAN</option>
+                                            <option value="2">MOTUL</option>
+                                        </select>
+                                    </div>
+                                </div>
+
+                                    </div>
                                     <div class="col-md-4">
                                         <input id="activo"  type="radio"  name="estado" value="1" checked> <label style="cursor: pointer" for="activo"> Activo</label>
                                         <input id="inactivo" type="radio" name="estado" value="0" style="margin-left: 2rem"> <label style="cursor: pointer" for="inactivo"> Inactivo </label>
                                     </div>
 
-                                </div>
+                            </div>
                             </div>
                             <div class="box-footer" style="text-align: center">
                                 {{--<input type="reset" class="btn btn-default" id="cancel" value="Cancelar">--}}
