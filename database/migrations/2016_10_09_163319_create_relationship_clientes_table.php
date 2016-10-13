@@ -30,6 +30,10 @@ class CreateRelationshipClientesTable extends Migration
                 ->references('id')->on('ocupaciones')
                 ->onDelete('cascade');
 
+            $table->foreign('ubigeo_id')
+                ->references('id')->on('ubigeos')
+                ->onDelete('cascade');
+
         });
     }
 
@@ -41,7 +45,7 @@ class CreateRelationshipClientesTable extends Migration
             $table->dropForeign('clientes_estado_civil_id_foreign');
             $table->dropForeign('clientes_grado_instruccion_id_foreign');
             $table->dropForeign('clientes_ocupacion_id_foreign');
-//            $table->dropForeign('users_ubigeo_id_foreign');
+            $table->dropForeign('clientes_ubigeo_id_foreign');
         });
     }
 }
