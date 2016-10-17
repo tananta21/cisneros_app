@@ -171,7 +171,7 @@
                 <div class="col-lg-4 col-sm-12 col-xs-12">
                     <h5 class="col-lg-12 titulos">Provincia</h5>
                     <div class="col-lg-12 col-sm-12  col-xs-12">
-                        <select id="provincias" disabled class="form-control" name="provincia" onchange="buscarDistrito(this.value);">
+                        <select id="provincias" readonly class="form-control"  onchange="buscarDistrito(this.value);">
                             <option value="">Seleccione Provincia</option>
                         </select>
                     </div>
@@ -179,8 +179,8 @@
                 <div class="col-lg-4 col-sm-12 col-xs-12">
                     <h5 class="col-lg-12 titulos">Distrito</h5>
                     <div class="col-lg-12 col-sm-12  col-xs-12">
-                        <select id="distritos" disabled class="form-control" name="distrito">
-                            <option value="0">Seleccione Distrito</option>
+                        <select id="distritos" readonly class="form-control" name="distrito">
+                            <option value="2078">Seleccione Distrito</option>
                         </select>
                     </div>
                 </div>

@@ -35,13 +35,13 @@ class UbigeoRepository implements BaseRepositoryInterface {
     }
 
     public function allProvincias($ubigeo){
-        return $this->ubigeo->select('numubigeo','provincia')
+        return $this->ubigeo->select('numubigeo','provincia','id')
             ->whereRaw("numubigeo LIKE '" .$ubigeo. "%'  AND distrito = ''")
             ->get();
     }
 
     public function allDistritos($ubigeo){
-        return $this->ubigeo->select('numubigeo','provincia','distrito')
+        return $this->ubigeo->select('numubigeo','provincia','distrito','id')
             ->whereRaw("numubigeo LIKE '" .$ubigeo. "%'")
             ->get();
     }

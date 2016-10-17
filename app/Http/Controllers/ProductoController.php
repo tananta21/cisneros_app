@@ -29,8 +29,10 @@ class ProductoController extends Controller
 
     public function index()
     {
-        $productos = $this->repoProducto->all();
-        return View('inventario.productos.productos', compact('productos','categorias','marcas','modelos'));
+        $tipo = 1;
+        $productos = $this->repoProducto->todoProductos($tipo);
+        $tipo_producto = ["id"=>1];
+        return View('inventario.productos.productos', compact('productos','tipo_producto'));
     }
 
     public function nuevoProducto(){
@@ -71,20 +73,27 @@ class ProductoController extends Controller
 
         $categorias = $this->repoCategoria->allEnProducto();
         $marcas = $this->repoMarca->all();
-        $modelos = $this->repoModelo->all();
         $editarProducto = $this->repoProducto->find($id);
-        $id_categoria = $editarProducto["categoria_id"];
-        $id_marca = $editarProducto["marca_id"];
-        $id_modelo = $editarProducto["modelo_id"];
-        return View('inventario.productos.editarproducto', compact('id_categoria','id_marca','id_modelo', 'editarProducto','categorias' ,'marcas','modelos'));
+        if($editarProducto["tipo_producto_id"]==2){
+            return View('inventario.productos.editarservicio', compact( 'editarProducto'));
+        }
+        else{
+            $id_modelo = $editarProducto["modelo_id"];
+            $marca_id = $this->repoModelo->marcaDeModelo($id_modelo)->toArray();
+            $marca_seleccionada = $marca_id[0]['marca_id'];
+            $modelos = $this->repoModelo->modelosDeMarca($marca_seleccionada);
+            return View('inventario.productos.editarproducto', compact('marca_seleccionada','editarProducto','categorias' ,'marcas','modelos'));
+        }
     }
 
 
     public function update(Request $request, $id)
     {
         $actualizarProducto = $request->all();
+        $tipo_producto = ["id"=>$request->get('tipo_producto')];
         $producto = $this->repoProducto->updated($id, $actualizarProducto);
-        return redirect()->action('ProductoController@index');
+        $productos = $this->repoProducto->todoProductos($request->get('tipo_producto'));
+        return View('inventario.productos.productos', compact('productos','tipo_producto'));
     }
 
 
@@ -115,14 +124,12 @@ class ProductoController extends Controller
     public function busquedaProducto()
     {
         $serie  = Input::get('serie');
-        $nombre = Input::get('nombre');
-        $categoria = Input::get('categoria');
-        $marca = Input::get('marca');
-        $modelo = Input::get('modelo');
         $estado = Input::get('estado');
+        $tipo = Input::get("tipo");
+        $tipo_producto = ["id"=>$tipo];
 
-        $productos = $this->repoProducto->busquedaProducto($nombre,$serie,$categoria,$marca,$modelo,$estado);
-        return View('inventario.productos.productos', compact('productos'));
+        $productos = $this->repoProducto->busquedaProducto($tipo,$serie,$estado);
+        return View('inventario.productos.productos', compact('productos',"tipo_producto"));
 
     }
 
