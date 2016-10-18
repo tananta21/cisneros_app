@@ -162,7 +162,7 @@
                         <tr data-id="{{$producto->id}}" id="filaproducto{{$producto->id}}">
                             <td>{{$producto->tipoProducto->descripcion}}</td>
                             <td>{{$producto->serie}}</td>
-                            <td>{{$producto->nombre}}</td>
+                            <td><span id="texto{{$producto->id}}">{{$producto->nombre}}</span></td>
                             <td><span>S/. </span>{{$producto->precio}}</td>
                             @if($producto->estado == 1)
                                 <td>Activo</td>
@@ -210,26 +210,26 @@
         {{--javascript eliminar: cambiar de estado--}}
         <script type="text/javascript">
             function eliminarCategoria(id){
-                    $(document).ready(function(){
-                        var id_producto = $(this).find( 'input[name="eliminarproducto'+id+'"]' ).val();
-                        var url = '{{route("eliminar.producto")}}';
-                        $.ajax({
-                            type: 'GET',
-                            url: url,
-                            data: {
-                                idproducto: id_producto
-                            },
-                            dataType: 'JSON',
+                $(document).ready(function(){
+                    var id_producto = $(this).find( 'input[name="eliminarproducto'+id+'"]' ).val();
+                    var url = '{{route("eliminar.producto")}}';
+                    $.ajax({
+                        type: 'GET',
+                        url: url,
+                        data: {
+                            idproducto: id_producto
+                        },
+                        dataType: 'JSON',
 
-                            error: function() {
-                                $("#respuesta").html('<div> Ha surgido un error. </div>');
-                            },
+                        error: function() {
+                            $("#respuesta").html('<div> Ha surgido un error. </div>');
+                        },
 
-                            success: function(){
-                                $("#filaproducto"+id).remove();;
-                            }
-                        });
+                        success: function(){
+                            $("#filaproducto"+id).remove();;
+                        }
                     });
+                });
             };
         </script>
     @endsection

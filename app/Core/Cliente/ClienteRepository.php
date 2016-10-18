@@ -54,6 +54,7 @@ class ClienteRepository implements BaseRepositoryInterface{
         $cliente->apellidos = $attributes['apellidos'];
         $cliente->telefono = $attributes['telefono'];
         $cliente->correo = $attributes['correo'];
+        $cliente->nro_hijos = $attributes['numero_hijos'];
         $cliente->direccion = $attributes['direccion'];
         $cliente->fecha_nacimiento = $attributes['fecha_nacimiento'];
         $cliente->estado = 1;
@@ -77,6 +78,7 @@ class ClienteRepository implements BaseRepositoryInterface{
         $cliente->apellidos = $datos['apellidos'];
         $cliente->telefono = $datos['telefono'];
         $cliente->correo = $datos['correo'];
+        $cliente->nro_hijos = $datos['numero_hijos'];
         $cliente->direccion = $datos['direccion'];
         $cliente->fecha_nacimiento = $datos['fecha_nacimiento'];
         $cliente->estado = 1;

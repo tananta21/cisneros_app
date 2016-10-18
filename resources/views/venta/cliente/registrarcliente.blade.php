@@ -139,7 +139,7 @@
                 <div class="col-lg-4 col-sm-12 col-xs-12">
                     <h5 class="col-lg-12 titulos">Numero de Hijos</h5>
                     <div class="col-lg-12 col-sm-12 col-xs-12">
-                        <input type="number" class="form-control"  maxlength="2"placeholder="Numero de hijos" name="numero_hijos" value="">
+                        <input type="text" class="form-control"  maxlength="2"placeholder="Numero de hijos" name="numero_hijos" value="" onKeypress="if (event.keyCode < 45 || event.keyCode > 57) event.returnValue = false;">
                     </div>
                 </div>
 
@@ -192,10 +192,33 @@
                 <div class="col-lg-4 col-sm-12 col-xs-12">
                     <h5 class="col-lg-12 titulos">Fecha de nacimiento</h5>
                     <div class="col-lg-12 col-sm-12 col-xs-12">
-                        <input type="date" class="form-control" placeholder="fecha nacimiento" name="fecha_nacimiento" value="">
+                        <input onchange="calcularEdad()" id="fecha_cumple" type="date" class="form-control" placeholder="fecha nacimiento" name="fecha_nacimiento" value="">
+                    </div>
+                </div>
+                <div id="caja_edad" class="col-lg-4 col-sm-12 col-xs-12" style="display: none">
+                    <h5 class="col-lg-12 titulos">Edad Cliente</h5>
+                    <div  id="result" class="col-lg-12 col-sm-12 col-xs-12">
+                        <span style="font-size: 2.5rem" id="edad_cliente" class="fom-control"></span> AÑOS
                     </div>
                 </div>
             </div>
+
+
+
+
+    <script>
+        function calcularEdad() {
+//                    console.log($('#fecha_nacimiento').val())
+            var date= $('#fecha_cumple').val().split('-');
+            var year= date[0];
+            var año_actual= new Date();
+            var año=año_actual.getFullYear();
+            var edad=año - year;
+//                    console.log(edad);
+            $("#caja_edad").css("display","block")
+            $("#edad_cliente").text(edad);
+        }
+    </script>
 
 
             <div class="col-lg-12 col-sm-12 col-xs-12  caja-botones-formulario ">

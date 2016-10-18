@@ -76,13 +76,20 @@ class EmpleadoController extends Controller
     public function edit($id)
     {
         $empleado = $this->repoEmpleado->find($id);
+        $numubigeo = $this->repoUbigeo->buscarNumubigeo($empleado["ubigeo_id"]);
+        $departamento_id = $this->repoUbigeo->buscarUnDepartamento(substr($numubigeo[0]["numubigeo"],0,2))->toArray();
+        $provincia_id = $this->repoUbigeo->allProvincias(substr($numubigeo[0]["numubigeo"],0,4))->toArray();
+        $distrito_id = $this->repoUbigeo->allDistritos(substr($numubigeo[0]["numubigeo"],0,6))->toArray();
 
         $tipoEmpleados = $this->repoTipoEmpleado->allEnVista();
         $estadoCiviles = $this->repoEstadoCivil->allEnVista();
         $ocupaciones = $this->repoOcupacion->allEnVista();
         $gradoInstrucciones = $this->repoGradoInstruccion->allEnVista();
         $departamentos = $this->repoUbigeo->allDepartamentos();
-        return view('seguridad.empleado.editarempleado',compact('empleado','tipoEmpleados','empleados','estadoCiviles','ocupaciones','gradoInstrucciones','departamentos'));
+        $provincias = $this->repoUbigeo->allProvincias(substr($numubigeo[0]["numubigeo"],0,2));
+        $distritos = $this->repoUbigeo->allDistritos(substr($numubigeo[0]["numubigeo"],0,4));
+        return view('seguridad.empleado.editarempleado',compact('empleado','tipoEmpleados','empleados','estadoCiviles','ocupaciones','gradoInstrucciones',
+            'departamentos','provincias','distritos','departamento_id','provincia_id','distrito_id'));
     }
 
     /**

@@ -34,6 +34,7 @@ class EmpleadoRepository implements BaseRepositoryInterface {
         $registro->estado_civil_id = $attributes['estado_civil'];
         $registro->grado_instruccion_id = $attributes['grado_instruccion'];
         $registro->ocupacion_id = $attributes['ocupacion'];
+        $registro->ubigeo_id = $attributes['distrito'];
         $registro->nro_documento = $attributes['nro_documento'];
         $registro->name = $attributes['nombres'];
         $registro->apellidos = $attributes['apellidos'];
@@ -61,6 +62,7 @@ class EmpleadoRepository implements BaseRepositoryInterface {
         $registro->estado_civil_id = $datos['estado_civil'];
         $registro->grado_instruccion_id = $datos['grado_instruccion'];
         $registro->ocupacion_id = $datos['ocupacion'];
+        $registro->ubigeo_id = $datos['distrito'];
         $registro->nro_documento = $datos['nro_documento'];
         $registro->name = $datos['nombre'];
         $registro->apellidos = $datos['apellido'];

@@ -857,6 +857,27 @@ desired effect
         }
     </script>
 
+    {{--SCRIPT COMPROBAR DOCUMENTO DE PROVEEDOR--}}
+    <script>
+        function comprobarDocumento(val){
+            if(val.length == 2){
+                if(val ==10 ){
+                    $("#tipo_proveedor").val("NATURAL");
+                    $("#error_documento").css("display","none");
+                }
+                else if(val ==20 ){
+                    $("#tipo_proveedor").val("JURIDICO");
+                    $("#error_documento").css("display","none");
+                }
+                else{
+                    console.log("error");
+                    $("#error_documento").css("display","block");
+                    $("#documento").val("");
+                }
+            }
+        }
+    </script>
+
     <!-- Control Sidebar -->
     <aside class="control-sidebar control-sidebar-dark" >
 

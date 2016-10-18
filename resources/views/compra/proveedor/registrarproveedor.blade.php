@@ -19,12 +19,12 @@
             {!! csrf_field() !!}
             <div class="col-lg-12 col-sm-12 col-xs-12 caja_formulario ">
                 <div class="col-lg-4 col-sm-12 col-xs-12">
-                    <h5 class="col-lg-12 titulos">Numero de documento</h5>
+                    <h5 class="col-lg-12 titulos">Numero Documento</h5>
                     <div class="col-lg-12 col-sm-12 col-xs-12">
-                        <input onkeyup="comprobarDocumento()" id="documento" required="true" maxlength="11" onKeypress="if (event.keyCode < 45 || event.keyCode > 57) event.returnValue = false;"
+                        <input onkeydown="comprobarDocumento(this.value)" onkeyup="comprobarDocumento(this.value)" id="documento" required="true" maxlength="11" onKeypress="if (event.keyCode < 45 || event.keyCode > 57 ) event.returnValue = false;"
                                type="text" class="form-control" placeholder="DNI O RUC" name="nro_documento" value="" style="font-size: 1.5rem">
 
-                    <span style="display:none; color: red" id="error_documento">Introdusca datos correctos</span>
+                    <span style="display:none; color: red" id="error_documento">N° de RUC Incorrecto</span>
                     </div>
                 </div>
                 <div class="col-lg-4 col-sm-12 col-xs-12">
@@ -34,24 +34,8 @@
                     </div>
                 </div>
 
-
             </div>
 
-            <script>
-                function comprobarDocumento(){
-                    if($("#documento").val().length == 2 && $("#documento").val()==10 ){
-                        $("#tipo_proveedor").val("NATURAL");
-                    }
-                    if($("#documento").val().length == 2 && $("#documento").val()==20 ){
-                        $("#tipo_proveedor").val("JURIDICO");
-                    }
-
-//                    else{
-//                        $("#error_documento").css('display','block');
-//                        $("#documento").val("");
-//                    }
-                }
-            </script>
 
             <div class="col-lg-12 caja_formulario ">
                 <div class="col-lg-4 col-sm-12 col-xs-12">
@@ -84,11 +68,12 @@
                     </div>
                 </div>
                 <div class="col-lg-4 col-sm-12 col-xs-12">
-                    <h5 class="col-lg-12 titulos">Direccion</h5>
+                    <h5 class="col-lg-12 titulos">Sitio WEB</h5>
                     <div class="col-lg-12 col-sm-12 col-xs-12">
-                        <input type="text" maxlength=50 class="form-control" placeholder="Direccion" name="direccion" value="">
+                        <input type="text" maxlength=50 class="form-control" placeholder="www.misitio.com" name="correo" value="">
                     </div>
                 </div>
+
             </div>
 
             <div class="col-lg-12 caja_formulario">
@@ -120,6 +105,15 @@
                     </div>
                 </div>
 
+            </div>
+
+            <div class="col-lg-12 caja_formulario">
+                <div class="col-lg-8 col-sm-12 col-xs-12">
+                    <h5 class="col-lg-12 titulos">Direccion</h5>
+                    <div class="col-lg-12 col-sm-12 col-xs-12">
+                        <input type="text" maxlength=50 class="form-control" placeholder="Direccion" name="direccion" value="">
+                    </div>
+                </div>
             </div>
 
 

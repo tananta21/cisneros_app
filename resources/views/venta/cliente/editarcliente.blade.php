@@ -138,7 +138,7 @@
                 <div class="col-lg-4 col-sm-12 col-xs-12">
                     <h5 class="col-lg-12 titulos">Numero de Hijos</h5>
                     <div class="col-lg-12 col-sm-12 col-xs-12">
-                        <input type="number" maxlength="2"class="form-control" placeholder="Numero de hijos" name="numero_hijos" value="">
+                        <input type="number" maxlength="2"class="form-control" placeholder="Numero de hijos" name="numero_hijos" value="{{$cliente->nro_hijos}}">
                     </div>
                 </div>
 
@@ -206,7 +206,13 @@
                 <div class="col-lg-4 col-sm-12 col-xs-12">
                     <h5 class="col-lg-12 titulos">Fecha de nacimiento</h5>
                     <div class="col-lg-12 col-sm-12 col-xs-12">
-                        <input type="date" class="form-control" placeholder="fecha nacimiento" name="fecha_nacimiento" value="{{$cliente->fecha_nacimiento}}">
+                        <input onchange="calcularEdad()" id="fecha_cumple" type="date" class="form-control" placeholder="fecha nacimiento" name="fecha_nacimiento" value="{{$cliente->fecha_nacimiento}}">
+                    </div>
+                </div>
+                <div id="caja_edad" class="col-lg-4 col-sm-12 col-xs-12" style="display: none">
+                    <h5 class="col-lg-12 titulos">Edad Cliente</h5>
+                    <div  id="result" class="col-lg-12 col-sm-12 col-xs-12">
+                        <span style="font-size: 2.5rem" id="edad_cliente" class="fom-control"></span> AÑOS
                     </div>
                 </div>
             </div>

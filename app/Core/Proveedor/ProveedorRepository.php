@@ -37,6 +37,7 @@ class ProveedorRepository implements BaseRepositoryInterface
     public function updated($id, array $attributes)
     {
         $registro = Proveedor::find($id);
+        $registro->ubigeo_id = $attributes['distrito'];
         $registro->nro_documento = $attributes['nro_documento'];
         $registro->nombre = $attributes['nombre'];
         $registro->encargado = $attributes['encargado'];

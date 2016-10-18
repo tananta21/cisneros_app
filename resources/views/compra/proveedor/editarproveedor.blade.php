@@ -20,17 +20,19 @@
 
             <div class="col-lg-12 col-sm-12 col-xs-12 caja_formulario ">
                 <div class="col-lg-4 col-sm-12 col-xs-12">
-                    <h5 class="col-lg-12 titulos">Numero de documento</h5>
+                    <h5 class="col-lg-12 titulos">Numero Documento</h5>
                     <div class="col-lg-12 col-sm-12 col-xs-12">
-                        <input required="true" maxlength="11" onKeypress="if (event.keyCode < 45 || event.keyCode > 57) event.returnValue = false;"
+                        <input onkeydown="comprobarDocumento(this.value)" onkeyup="comprobarDocumento(this.value)" required="true" maxlength="11" onKeypress="if (event.keyCode < 45 || event.keyCode > 57) event.returnValue = false;"
                                type="text" class="form-control" placeholder="DNI O RUC" name="nro_documento" value="{{$proveedor->nro_documento}}">
+
+                        <span style="display:none; color: red" id="error_documento">N° de RUC Incorrecto</span>
                     </div>
                 </div>
             </div>
 
             <div class="col-lg-12 caja_formulario ">
                 <div class="col-lg-4 col-sm-12 col-xs-12">
-                    <h5 class="col-lg-12 titulos">Nombre del Proveedor</h5>
+                    <h5 class="col-lg-12 titulos">Razon Social</h5>
                     <div class="col-lg-12 col-sm-12 col-xs-12">
                         <input type="text"onkeypress="return soloLetras(event)"  maxlength=50 class="form-control" placeholder="Nombre Proveedor" name="nombre" value="{{$proveedor->nombre}}">
                     </div>
@@ -59,13 +61,13 @@
                     </div>
                 </div>
                 <div class="col-lg-4 col-sm-12 col-xs-12">
-                    <h5 class="col-lg-12 titulos">Direccion</h5>
+                    <h5 class="col-lg-12 titulos">Sitio WEB</h5>
                     <div class="col-lg-12 col-sm-12 col-xs-12">
-                        <input type="text" maxlength="50"class="form-control" placeholder="Direccion" name="direccion" value="{{$proveedor->direccion}}">
+                        <input type="text" maxlength=50 class="form-control" placeholder="www.misitio.com" name="correo" value="">
                     </div>
                 </div>
-            </div>
 
+            </div>
             <div class="col-lg-12 caja_formulario">
                 <div class="col-lg-4 col-sm-12 col-xs-12">
                     <h5 class="col-lg-12 titulos">Departamento</h5>
@@ -110,6 +112,14 @@
                     </div>
                 </div>
 
+            </div>
+            <div class="col-lg-12 caja_formulario">
+                <div class="col-lg-8 col-sm-12 col-xs-12">
+                    <h5 class="col-lg-12 titulos">Direccion</h5>
+                    <div class="col-lg-12 col-sm-12 col-xs-12">
+                        <input type="text" maxlength="50"class="form-control" placeholder="Direccion" name="direccion" value="{{$proveedor->direccion}}">
+                    </div>
+                </div>
             </div>
 
             <div class="col-lg-12 caja_formulario">
