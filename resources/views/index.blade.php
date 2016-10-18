@@ -571,7 +571,7 @@ desired effect
                 $("#provincias").empty();
                 $("#distritos").empty();
                 $("#distritos").append('<option value="0">Seleccione Distrito</option>');
-                var nro_ubigeo = id.substr(0,3);
+                var nro_ubigeo = id.substr(0,2);
                 var url = '{{route("buscar.provincia")}}';
                 $.ajax({
                     type: 'GET',

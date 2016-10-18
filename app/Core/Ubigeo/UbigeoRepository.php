@@ -29,7 +29,7 @@ class UbigeoRepository implements BaseRepositoryInterface {
     }
 
     public function allDepartamentos(){
-        return $this->ubigeo->select('numubigeo','departamento')
+        return $this->ubigeo->select('numubigeo','departamento','id')
             ->whereRaw("provincia = '' AND distrito = ''")
             ->get();
     }
@@ -43,6 +43,18 @@ class UbigeoRepository implements BaseRepositoryInterface {
     public function allDistritos($ubigeo){
         return $this->ubigeo->select('numubigeo','provincia','distrito','id')
             ->whereRaw("numubigeo LIKE '" .$ubigeo. "%'")
+            ->get();
+    }
+
+    public function buscarNumubigeo($numubigeo){
+        return $this->ubigeo->select('numubigeo')
+            ->where('id',$numubigeo)
+            ->get();
+    }
+
+    public function buscarUnDepartamento($ubigeo){
+        return $this->ubigeo->select('numubigeo','departamento','id')
+            ->whereRaw(" numubigeo LIKE '" .$ubigeo. "%' and provincia = '' AND distrito = ''")
             ->get();
     }
 
