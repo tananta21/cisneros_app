@@ -68,22 +68,42 @@
                 <th>PROVINCIA</th>
                 <th>DISTRITO</th>
                 <th>ESTADO</th>
+                <th>VER</th>
             </tr>
             </thead>
             <tbody>
             @foreach($ubigeos as $ubigeo)
                 <tr data-id="{{$ubigeo->id}}" id="filaproducto{{$ubigeo->id}}">
                     <td>{{$ubigeo->id}}</td>
-                    <td>{{$ubigeo->numubigeo}}</td>
-                    <td>{{$ubigeo->departamento}}</td>
-                    <td>{{$ubigeo->provincia}}</td>
-                    <td>{{$ubigeo->distrito}}</td>
+                    <td><span id="numubigeo{{$ubigeo->id}}">{{$ubigeo->numubigeo}}</span></td>
+                    <td><span id="departamento{{$ubigeo->id}}">{{$ubigeo->departamento}}</span></td>
+                    <td><span id="provincia{{$ubigeo->id}}">{{$ubigeo->provincia}}</span></td>
+                    <td><span id="distrito{{$ubigeo->id}}">{{$ubigeo->distrito}}</span></td>
                     <td><i class="fa fa-check-circle-o " style="color: green"></i></td>
+                    <td><a  onclick="verUbigeo('{{$ubigeo->id}}')" href="" data-toggle="modal" data-target="#ver_ubigeo_modal"><i class="fa fa-eye" style="color: red"></i></a></td>
                 </tr>
             @endforeach
             </tbody>
         </table>
     </div>
+    <script>
+        function verUbigeo(id){
+
+            var texto_numubigeo = $("#numubigeo"+id).text();
+            $("#desc_numubigeo").text(texto_numubigeo);
+
+            var texto_departamento = $("#departamento"+id).text();
+            $("#desc_departamento").text(texto_departamento);
+
+            var texto_provincia = $("#provincia"+id).text();
+            $("#desc_provincia").text(texto_provincia);
+
+            var texto_distrito = $("#distrito"+id).text();
+            $("#desc_distrito").text(texto_distrito);
+
+
+        }
+    </script>
 
     <div class="col-lg-12" style="display: flex; flex-direction: row; justify-content: center;">
         {!! $ubigeos->appends(Request::all())->render() !!}
@@ -91,62 +111,45 @@
 
 @endsection
 @endsection
-<div class="container">        <!-- Modal crear -->
-    <div class="modal fade " id="editar_marca_modal" tabindex="-1" data-backdrop="static" role="dialog" aria-labelledby="gridModalLabel" aria-hidden="true">>
+<div class="container">        <!-- Modal ver ubigeo -->
+    <div class="modal fade " id="ver_ubigeo_modal" tabindex="-1"  role="dialog" aria-labelledby="gridModalLabel" aria-hidden="true">>
         <div class="modal-dialog modal-md">
             <div class="modal-content">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal">&times;</button>
-                    <h4 class="modal-title">Editar Modelo</h4>
+                    <h4 class="modal-title">Ubigeo</h4>
                 </div>
                 <div class="modal-body">
-                    {{--formulario editar --}}
+                    {{--Informacion del ubigeo --}}
                     <div class="box box-primary">
                         {!! Form::open(['action' => 'MantenimientoController@actualizarModelo','method' => 'post', 'class' => 'form-horizontal', 'role'=>'form']) !!}
                         <div class="box-body">
-                            <div class="form-group">
-                                <label for="inputName" class="col-md-2 control-label">Modelo</label>
-                                <div class="col-md-6">
-                                    <input type="hidden" id="marcaid" name="marca_id" value=""/>
-                                    <input id="descripmarca" onkeypress="return soloLetras(event)" required="true" maxlength="50" type="text" class="form-control"  placeholder="Nombre Modelo" name="descripcion_marca" >
-                                    <span style="font-size: 1rem; color: #0000ff">Maximo 50 caracteres</span>
-                                </div>
+
+                            <div class="ibox-content">
+
+                                <table class="table">
+                                    <thead>
+                                    <tr>
+                                        <th>Nº Ubigeo</th>
+                                        <th>Departamento</th>
+                                        <th>Provincia</th>
+                                        <th>Distrito</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <tr >
+                                        <td><span id="desc_numubigeo"></span></td>
+                                        <td><span id="desc_departamento"></span></td>
+                                        <td><span id="desc_provincia"></span></td>
+                                        <td><span id="desc_distrito"></span></td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+
                             </div>
-                            <div class="form-group"><label class="col-sm-2 control-label">Marca</label>
-                                <div class="col-md-6">
-                                    <select required="true" class="form-control" name="sueldo_cliente">
-                                        <option value="">seleccione marca</option>
-                                        <option value="1">YAMAHA</option>
-                                        <option value="2">HONDA</option>
-                                        <option value="1">LIFAN</option>
-                                        <option value="2">MOTUL</option>
-                                    </select>
-                                </div>
-                            </div>
-                            <div class="col-md-4">
-                                <input id="activo"  type="radio"  name="estado" value="1" checked> <label style="cursor: pointer" for="activo"> Activo</label>
-                                <input id="inactivo" type="radio" name="estado" value="0" style="margin-left: 2rem"> <label style="cursor: pointer" for="inactivo"> Inactivo </label>
-                            </div>
+
                         </div>
-                        <div class="form-group">
-                            <label for="inputName" class="col-md-2 control-label">Marca</label>
-                            <div class="col-md-6">
-                                <select class="form-control" name="marca">
-                                    @foreach($listaMarca as $lista)
-                                        @if($lista->id == 1)
-                                            <option value="1" selected> Seleccione Marca</option>
-                                        @else
-                                            <option value="{{$lista->id}}">{{$lista->descripcion}}</option>
-                                        @endif
-                                    @endforeach
-                                </select>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="box-footer" style="text-align: center">
-                        {{--<input type="reset" class="btn btn-default" id="cancel" value="Cancelar">--}}
-                        <button type="submit" class="btn btn-info">Guardar</button>
-                        <button href="" class="btn btn-default" data-dismiss="modal" >Cancelar</button>
+
                     </div>
 
                     <!-- /.box-body -->
