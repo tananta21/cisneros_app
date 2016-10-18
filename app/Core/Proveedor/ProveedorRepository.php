@@ -62,6 +62,7 @@ class ProveedorRepository implements BaseRepositoryInterface
 
     public function nuevoProveedor($datos){
         $registro = new Proveedor();
+        $registro->ubigeo_id = $datos['distrito'];
         $registro->nro_documento = $datos['nro_documento'];
         $registro->nombre = $datos['nombre'];
         $registro->encargado = $datos['encargado'];

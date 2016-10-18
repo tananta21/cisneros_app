@@ -41,8 +41,16 @@ class ProveedorController extends Controller
     public function edit($id)
     {
         $proveedor = $this->repoProveedor->find($id);
+        $numubigeo = $this->repoUbigeo->buscarNumubigeo($proveedor["ubigeo_id"]);
+        $departamento_id = $this->repoUbigeo->buscarUnDepartamento(substr($numubigeo[0]["numubigeo"],0,2))->toArray();
+        $provincia_id = $this->repoUbigeo->allProvincias(substr($numubigeo[0]["numubigeo"],0,4))->toArray();
+        $distrito_id = $this->repoUbigeo->allDistritos(substr($numubigeo[0]["numubigeo"],0,6))->toArray();
+
+
         $departamentos = $this->repoUbigeo->allDepartamentos();
-        return view('compra.proveedor.editarproveedor', compact('proveedor','departamentos'));
+        $provincias = $this->repoUbigeo->allProvincias(substr($numubigeo[0]["numubigeo"],0,2));
+        $distritos = $this->repoUbigeo->allDistritos(substr($numubigeo[0]["numubigeo"],0,4));
+        return view('compra.proveedor.editarproveedor', compact('proveedor','departamentos','provincias','distritos','departamento_id','provincia_id','distrito_id'));
     }
 
     public function update(Request $request, $id)

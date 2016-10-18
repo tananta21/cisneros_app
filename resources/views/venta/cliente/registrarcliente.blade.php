@@ -181,7 +181,7 @@
                     <h5 class="col-lg-12 titulos">Distrito</h5>
                     <div class="col-lg-12 col-sm-12  col-xs-12">
                         <select id="distritos" readonly class="form-control" name="distrito">
-                            <option value="2078">Seleccione Distrito</option>
+                            <option value="2080">Seleccione Distrito</option>
                         </select>
                     </div>
                 </div>

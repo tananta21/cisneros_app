@@ -49,7 +49,6 @@ class ClienteController extends Controller
     public function create()
     {
        $datos = Input::all();
-        dd($datos);
        $clienteNuevo = $this->repoCliente->registrarCliente($datos);
         return redirect()->action('ClienteController@index');
 
@@ -83,8 +82,9 @@ class ClienteController extends Controller
         $cliente = $this->repoCliente->find($id);
         $numubigeo = $this->repoUbigeo->buscarNumubigeo($cliente["ubigeo_id"]);
         $departamento_id = $this->repoUbigeo->buscarUnDepartamento(substr($numubigeo[0]["numubigeo"],0,2))->toArray();
-        $provincia_id = $this->repoUbigeo->allProvincias(substr($numubigeo[0]["numubigeo"],0,4));
-        $distrito_id = $this->repoUbigeo->allDistritos(substr($numubigeo[0]["numubigeo"],0,6));
+        $provincia_id = $this->repoUbigeo->allProvincias(substr($numubigeo[0]["numubigeo"],0,4))->toArray();
+        $distrito_id = $this->repoUbigeo->allDistritos(substr($numubigeo[0]["numubigeo"],0,6))->toArray();
+
 
         $estadoCiviles = $this->repoEstadoCivil->allEnVista();
         $ocupaciones = $this->repoOcupacion->allEnVista();

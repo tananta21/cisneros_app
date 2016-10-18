@@ -585,9 +585,11 @@ desired effect
                         $("#respuesta").html('<div> Ha surgido un error. </div>');
                     },
                     success: function(respuesta){
+                        $("#provincias").attr("name","distrito");
+                        $("#distritos").removeAttr('name');
                         for(var i in respuesta){
                             if(respuesta[i].provincia == ''){
-                                $("#provincias").append('<option value="0">Seleccione Provincia</option>');
+                                $("#provincias").append('<option value="'+respuesta[i].id+'">Seleccione Provincia</option>');
                             }
                             else{
                                 $('#provincias').append('<option value="'+respuesta[i].numubigeo+'">'+respuesta[i].provincia+'</option>');
@@ -627,6 +629,8 @@ desired effect
                         $("#respuesta").html('<div> Ha surgido un error. </div>');
                     },
                     success: function(respuesta){
+                        $("#distritos").attr("name","distrito");
+                        $("#provincias").removeAttr('name');
                         for(var i in respuesta){
                             if(respuesta[i].distrito == ''){
                                 $("#distritos").append('<option value="'+respuesta[i].id+'">Seleccione Distrito</option>');
