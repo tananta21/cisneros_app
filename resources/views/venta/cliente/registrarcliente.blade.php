@@ -193,20 +193,31 @@
                 <div class="col-lg-4 col-sm-12 col-xs-12">
                     <h5 class="col-lg-12 titulos">Fecha de nacimiento</h5>
                     <div class="col-lg-12 col-sm-12 col-xs-12">
-                        <input id="user_date" type="date" class="form-control" placeholder="fecha nacimiento" name="user_date" value="">
+                        <input onchange="calcularEdad()" id="fecha_nacimiento" type="date" class="form-control" placeholder="fecha nacimiento" name="user_date" value="">
                     </div>
                 </div>
-                <div class="col-lg-4 col-sm-12 col-xs-12">
+                <div id="caja_edad" class="col-lg-4 col-sm-12 col-xs-12" style="display: none">
                     <h5 class="col-lg-12 titulos">Edad</h5>
                     <div  id="result" class="col-lg-12 col-sm-12 col-xs-12">
-                        <input id="result" type="text" class="form-control" placeholder="edad" name="edad" value="">
+                        <span style="font-size: 2.5rem" id="edad_cliente" class="fom-control"></span> AÑOS
                     </div>
-                </div>
-                <div class="col-lg-1" style="padding-top: 3.5rem">
-                    <button  type="reset" class="btn btn-primary" onclick="javascript:calcularEdad();">Calcular</button>
                 </div>
             </div>
 
+
+            <script>
+                function calcularEdad() {
+//                    console.log($('#fecha_nacimiento').val())
+                    var date= $('#fecha_nacimiento').val().split('-');
+                    var year= date[0];
+                    var año_actual= new Date();
+                    var año=año_actual.getFullYear();
+                    var edad=año - year;
+//                    console.log(edad);
+                    $("#caja_edad").css("display","block")
+                    $("#edad_cliente").text(edad);
+                }
+            </script>
 
 
             <div class="col-lg-12 col-sm-12 col-xs-12  caja-botones-formulario ">
@@ -218,108 +229,7 @@
     </div>
 
     {{------------------------funcion calcular edad---------------------------}}
-    <script>
-        /**
-         * Funcion que devuelve true o false dependiendo de si la fecha es correcta.
-         * Tiene que recibir el dia, mes y año
-         */
-        function isValidDate(day,month,year)
-        {
-            var dteDate;
-            month=month-1;
-            dteDate=new Date(year,month,day);
 
-            //Devuelva true o false...
-            return ((day==dteDate.getDate()) && (month==dteDate.getMonth()) && (year==dteDate.getFullYear()));
-        }
-
-        /**
-         * Funcion para validar una fecha
-         * Tiene que recibir:
-         *  La fecha en formato ingles yyyy-mm-dd
-         * Devuelve:
-         *  true-Fecha correcta
-         *  false-Fecha Incorrecta
-         */
-        function validate_fecha(fecha)
-        {
-            var patron=new RegExp("^(19|20)+([0-9]{2})([-])([0-9]{1,2})([-])([0-9]{1,2})$");
-
-            if(fecha.search(patron)==0)
-            {
-                var values=fecha.split("-");
-                if(isValidDate(values[2],values[1],values[0]))
-                {
-                    return true;
-                }
-            }
-            return false;
-        }
-
-        /**
-         * Esta función calcula la edad de una persona y los meses
-         * La fecha la tiene que tener el formato yyyy-mm-dd que es
-         * metodo que por defecto lo devuelve el <input type="date">
-         */
-        function calcularEdad()
-        {
-            var fecha=document.getElementById("user_date").value;
-            if(validate_fecha(fecha)==true)
-            {
-                // Si la fecha es correcta, calculamos la edad
-                var values=fecha.split("-");
-                var dia = values[2];
-                var mes = values[1];
-                var ano = values[0];
-
-                // cogemos los valores actuales
-                var fecha_hoy = new Date();
-                var ahora_ano = fecha_hoy.getYear();
-                var ahora_mes = fecha_hoy.getMonth()+1;
-                var ahora_dia = fecha_hoy.getDate();
-
-                // realizamos el calculo
-                var edad = (ahora_ano + 1900) - ano;
-                if ( ahora_mes < mes )
-                {
-                    edad--;
-                }
-                if ((mes == ahora_mes) && (ahora_dia < dia))
-                {
-                    edad--;
-                }
-                if (edad > 1900)
-                {
-                    edad -= 1900;
-                }
-
-                // calculamos los meses
-                var meses=0;
-                if(ahora_mes>mes)
-                    meses=ahora_mes-mes;
-                if(ahora_mes<mes)
-                    meses=12-(mes-ahora_mes);
-                if(ahora_mes==mes && dia>ahora_dia)
-                    meses=11;
-
-                // calculamos los dias
-                var dias=0;
-                if(ahora_dia>dia)
-                    dias=ahora_dia-dia;
-                if(ahora_dia<dia)
-                {
-                    ultimoDiaMes=new Date(ahora_ano, ahora_mes, 0);
-                    dias=ultimoDiaMes.getDate()-(dia-ahora_dia);
-                }
-
-                document.getElementById("result").innerHTML=edad;
-            }else{
-                document.getElementById("result").innerHTML="La fecha "+fecha+" es incorrecta";
-            }
-        }
-
-
-    </script>
 
 
 @endsection
