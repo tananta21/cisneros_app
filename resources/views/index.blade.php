@@ -705,10 +705,10 @@ desired effect
                                         <input id="activo"  type="radio"  name="estado" value="1" checked> <label style="cursor: pointer" for="activo"> Activo</label>
                                         <input id="inactivo" type="radio" name="estado" value="0" style="margin-left: 2rem"> <label style="cursor: pointer" for="inactivo"> Inactivo </label>
                                     </div>
-<<<<<<< HEAD
+
 
                             </div>
-=======
+
                                 </div>
                                 <div class="form-group">
                                     <label for="inputName" class="col-md-2 control-label">Marca</label>
@@ -718,7 +718,7 @@ desired effect
                                         </select>
                                     </div>
                                 </div>
->>>>>>> 2a97db5f776306f8482e20b084e64aca082be820
+
                             </div>
                             <div class="box-footer" style="text-align: center">
                                 {{--<input type="reset" class="btn btn-default" id="cancel" value="Cancelar">--}}
