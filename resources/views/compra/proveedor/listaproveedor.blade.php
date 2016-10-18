@@ -129,7 +129,6 @@
 
     <script>
         function eliminar(id) {
-
         $(document).ready(function(){
             var texto = $("#texto"+id).text();
             $("#texto_eliminar").text(texto);
@@ -169,33 +168,3 @@
 @endsection
 @endsection
 
-<div class="container">        <!-- Modal crear -->
-    <div class="modal fade " id="drop_porveedor" tabindex="-1" data-backdrop="static" role="dialog" aria-labelledby="gridModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-md">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal">&times;</button>
-
-                </div>
-                <div  style="text-align: center">
-                    <h2 style="color: red" class="modal-title">Advertencia</h2>
-                </div>
-                <div class="modal-body">
-                    {{--formulario crear --}}
-                    <div class="box box-primary" style="border-top-color: red;">
-                            <P style="text-align: center;padding-top: 1rem;font-size:2rem">
-                                Esta seguro de eliminar a <span  style="font-weight: bold" id="texto_eliminar"></span>
-                            </P>
-                    </div>
-
-                    <div class="box-footer" style="text-align: center">
-                        {{--<input type="reset" class="btn btn-default" id="cancel" value="Cancelar">--}}
-                        <button  id="confirmar"  style="background: red;border: none;" class="btn btn-info" data-dismiss="modal" >Eliminar</button>
-                        <button style="background-color:#a9a9a9;border:none " href="" class="btn btn-info" data-dismiss="modal" >Cancelar</button>
-                    </div>
-
-                </div>
-            </div>
-        </div>
-    </div>
-</div>

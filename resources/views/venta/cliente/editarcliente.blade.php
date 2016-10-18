@@ -143,7 +143,7 @@
                 </div>
 
                 <div class="col-lg-4 col-sm-12 col-xs-12">
-                    <h5 class="col-lg-12 titulos">Sueldo</h5>
+                    <h5 class="col-lg-12 titulos">Nivel Salarial</h5>
                     <div class="col-lg-12 col-sm-12  col-xs-12">
                         <select class="form-control" name="sueldo_cliente">
                             <option value="1">0-1000</option>
@@ -161,9 +161,12 @@
                     <h5 class="col-lg-12 titulos">Departamento</h5>
                     <div class="col-lg-12 col-sm-12  col-xs-12">
                         <select class="form-control" name="departamento" onchange="buscarProvincia(this.value);">
-                            <option value="0">Seleccione Departamento</option>
                             @foreach($departamentos as $departamento)
+                                @if($departamento->id == $departamento_id[0]['id'])
+                                    <option selected value="{{$departamento->numubigeo}}">{{$departamento->departamento}}</option>
+                                @else
                                 <option value="{{$departamento->numubigeo}}">{{$departamento->departamento}}</option>
+                                @endif
                             @endforeach
                         </select>
                     </div>
@@ -171,16 +174,28 @@
                 <div class="col-lg-4 col-sm-12 col-xs-12">
                     <h5 class="col-lg-12 titulos">Provincia</h5>
                     <div class="col-lg-12 col-sm-12  col-xs-12">
-                        <select id="provincias" disabled class="form-control" name="provincia" onchange="buscarDistrito(this.value);">
-                            <option value="">Seleccione Provincia</option>
+                        <select id="provincias" readonly class="form-control"  onchange="buscarDistrito(this.value);">
+                            @foreach($provincias as $provincia)
+                                @if($provincia->id == $provincia_id[0]['id'])
+                                    <option selected value="{{$provincia->numubigeo}}">{{$provincia->provincia}}</option>
+                                @else
+                                    <option value="{{$provincia->numubigeo}}">{{$provincia->provincia}}</option>
+                                @endif
+                            @endforeach
                         </select>
                     </div>
                 </div>
                 <div class="col-lg-4 col-sm-12 col-xs-12">
                     <h5 class="col-lg-12 titulos">Distrito</h5>
                     <div class="col-lg-12 col-sm-12  col-xs-12">
-                        <select id="distritos" disabled class="form-control" name="distrito">
-                            <option value="0">Seleccione Distrito</option>
+                        <select id="distritos" readonly class="form-control" name="distrito">
+                            @foreach($distritos as $distrito)
+                                @if($distrito->id == $distrito_id[0]['id'])
+                                    <option selected value="{{$distrito->id}}">{{$distrito->distrito}}</option>
+                                @else
+                                    <option value="{{$distrito->id}}">{{$distrito->distrito}}</option>
+                                @endif
+                            @endforeach
                         </select>
                     </div>
                 </div>

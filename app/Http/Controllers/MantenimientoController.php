@@ -124,7 +124,8 @@ class MantenimientoController extends Controller
 
     public function listarModelo(){
         $marcas = $this->repoModelo->all();
-        return view('mantenimiento.producto.modelo.listamodelo', compact('marcas'));
+        $listaMarca = $this->repoMarca->allEnProducto();
+        return view('mantenimiento.producto.modelo.listamodelo', compact('marcas','listaMarca'));
     }
 
 //  crear modelo

@@ -49,6 +49,7 @@ class ClienteController extends Controller
     public function create()
     {
        $datos = Input::all();
+        dd($datos);
        $clienteNuevo = $this->repoCliente->registrarCliente($datos);
         return redirect()->action('ClienteController@index');
 
@@ -80,12 +81,20 @@ class ClienteController extends Controller
     public function edit($id)
     {
         $cliente = $this->repoCliente->find($id);
+        $numubigeo = $this->repoUbigeo->buscarNumubigeo($cliente["ubigeo_id"]);
+        $departamento_id = $this->repoUbigeo->buscarUnDepartamento(substr($numubigeo[0]["numubigeo"],0,2))->toArray();
+        $provincia_id = $this->repoUbigeo->allProvincias(substr($numubigeo[0]["numubigeo"],0,4));
+        $distrito_id = $this->repoUbigeo->allDistritos(substr($numubigeo[0]["numubigeo"],0,6));
+
         $estadoCiviles = $this->repoEstadoCivil->allEnVista();
         $ocupaciones = $this->repoOcupacion->allEnVista();
         $gradoInstrucciones = $this->repoGradoInstruccion->allEnVista();
         $departamentos = $this->repoUbigeo->allDepartamentos();
+        $provincias = $this->repoUbigeo->allProvincias(substr($numubigeo[0]["numubigeo"],0,2));
+        $distritos = $this->repoUbigeo->allDistritos(substr($numubigeo[0]["numubigeo"],0,4));
 
-        return view('venta.cliente.editarcliente',compact('cliente','estadoCiviles','ocupaciones','gradoInstrucciones','departamentos'));
+        return view('venta.cliente.editarcliente',compact('cliente',
+            'estadoCiviles','ocupaciones','gradoInstrucciones','departamentos','provincias','distritos','departamento_id','provincia_id','distrito_id'));
 
     }
 
