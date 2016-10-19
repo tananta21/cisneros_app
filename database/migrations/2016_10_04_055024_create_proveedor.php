@@ -14,7 +14,7 @@ class CreateProveedor extends Migration
     {
         Schema::create('proveedores', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('ubigeo_id')->unsigned();
+            $table->integer('ubigeo_id')->unsigned()->nullable();
             $table->string('nro_documento',14);
             $table->string('nombre',50);
             $table->string('telefono',20);

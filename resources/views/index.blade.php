@@ -18,9 +18,11 @@
     <link rel="stylesheet" href="{{url('/')}}/font-awesome/css/font-awesome.min.css"/>
     <!-- Theme style -->
     <link rel="stylesheet" href="{{url('/')}}/dist/css/AdminLTE.css">
+    <link rel="stylesheet" href="{{url('/')}}/datatable/jquery.dataTables.min.css">
     <!-- jQuery 2.2.0 -->
     {{--<script src="{{url('/')}}/plugins/jQuery/jQuery-2.2.0.min.js"></script>--}}
     <script src="{{url('/')}}/js/jquery-2.1.1.js"></script>
+    <script src="{{url('/')}}/datatable/jquery.dataTables.min.js"></script>
     <!-- Bootstrap 3.3.6 -->
 
     <script src="{{url('/')}}/bootstrap/js/bootstrap.min.js"></script>
@@ -74,7 +76,7 @@ desired effect
             <!-- mini logo for sidebar mini 50x50 pixels -->
             <span class="logo-mini"><b>M</b>C</span>
             <!-- logo for regular state and mobile devices -->
-            <span class="logo-lg"><b>Cisneros.</b>SAC</span>
+            <span class="logo-lg"><b>Cisneros </b>SAC</span>
         </a>
 
         <!-- Header Navbar -->
@@ -170,64 +172,31 @@ desired effect
                 <!-- Optionally, you can add icons to the links -->
                 {{--<li class="active"><a href="#"><i class="fa fa-link"></i> <span>Link</span></a></li>--}}
                 {{--<li><a href="#"><i class="fa fa-link"></i> <span>Another Link</span></a></li>--}}
-                <li id="modulo-inventario" class="treeview">
-                    <a href="/inventario/productos"><i class="fa fa-pencil-square-o"></i> <span>Inventario</span></a>
-                </li>
-                <li id="modulo-compra" class="treeview">
-                    <a href="/compra/compranueva"><i class="fa fa-shopping-cart"></i> <span>Compras</span> </a>
-                </li>
-                <li id="modulo-venta" class="treeview">
-                    <a href="/venta/nuevaventa"><i class="fa fa-money"></i> <span>Ventas</span> </a>
-                </li>
-                <li class="treeview">
-                    <a href="#"><i class="fa fa-bar-chart"></i> <span>Reportes</span> </a>
-                </li>
-                <li id="modulo-seguridad" class="treeview">
-                    <a href="/seguridad/empleado"><i class="fa fa-lock"></i> <span>Seguridad</span> </a>
-                </li>
-
-                <li id="modulo-mantenimiento" class="treeview">
-                    <a href="/mantenimiento/principal"><i class="fa fa-cogs"></i> <span>Mantenimientos</span> </a>
-                </li>
-                {{--<li  class="treeview">--}}
-                    {{--<a href="#">--}}
-                        {{--<i class="fa fa-cogs"></i> <span>Mantenimientos</span>--}}
-                        {{--<i class="fa fa-angle-left pull-right"></i>--}}
-                    {{--</a>--}}
-                    {{--<ul class="treeview-menu" style="display: none;">--}}
-                        {{--<li  class="">--}}
-                            {{--<a href="#"><i class="fa fa-circle-o"></i>Mant. Productos <i class="fa fa-angle-left pull-right"></i></a>--}}
-                            {{--<ul class="treeview-menu" style="display: none;">--}}
-                                {{--<li><a href="/mantenimiento/tipoproducto"><i class="fa fa-circle-o"></i>Tipo Productos</a></li>--}}
-                                {{--<li><a href="#"><i class="fa fa-circle-o"></i>Categorias</a></li>--}}
-                                {{--<li><a href="#"><i class="fa fa-circle-o"></i>Marcas</a></li>--}}
-                                {{--<li><a href="#"><i class="fa fa-circle-o"></i>Modelos</a></li>--}}
-                            {{--</ul>--}}
-                        {{--</li>--}}
-                        {{--<li class="">--}}
-                            {{--<a href="#"><i class="fa fa-user"></i>Mant. Clientes <i class="fa fa-angle-left pull-right"></i></a>--}}
-                            {{--<ul class="treeview-menu" style="display: none;">--}}
-                                {{--<li><a href="#"><i class="fa fa-circle-o"></i>Tipo Empleados</a></li>--}}
-                                {{--<li><a href="#"><i class="fa fa-circle-o"></i>Tipo Cliente</a></li>--}}
-                                {{--<li><a href="#"><i class="fa fa-circle-o"></i>Estado Civil</a></li>--}}
-                                {{--<li><a href="#"><i class="fa fa-circle-o"></i>Grado Instrucion</a></li>--}}
-                                {{--<li><a href="#"><i class="fa fa-circle-o"></i>Ocupacion</a></li>--}}
-                            {{--</ul>--}}
-                        {{--</li>--}}
-                        {{--<li class="">--}}
-                            {{--<a href="#"><i class="fa fa-shopping-cart"></i>Mant. Compras - Ventas <i class="fa fa-angle-left pull-right"></i></a>--}}
-                            {{--<ul class="treeview-menu" style="display: none;">--}}
-                                {{--<li><a href="#"><i class="fa fa-circle-o"></i>Tipo Transaccion</a></li>--}}
-                                {{--<li><a href="#"><i class="fa fa-circle-o"></i>Tipo Comprobante</a></li>--}}
-                                {{--<li><a href="#"><i class="fa fa-circle-o"></i>Tipo Pago</a></li>--}}
-                                {{--<li><a href="#"><i class="fa fa-circle-o"></i>Tipo Movimiento</a></li>--}}
-                                {{--<li><a href="#"><i class="fa fa-circle-o"></i>Concepto Movimiento</a></li>--}}
-                            {{--</ul>--}}
-                        {{--</li>--}}
-{{----}}
-                    {{--</ul>--}}
+                {{--<li id="modulo-inventario" class="treeview">--}}
+                    {{--<a href="/inventario/productos"><i class="fa fa-pencil-square-o"></i> <span>Inventario</span></a>--}}
                 {{--</li>--}}
-{{----}}
+                {{--<li id="modulo-compra" class="treeview">--}}
+                    {{--<a href="/compra/compranueva"><i class="fa fa-shopping-cart"></i> <span>Compras</span> </a>--}}
+                {{--</li>--}}
+                {{--<li id="modulo-venta" class="treeview">--}}
+                    {{--<a href="/venta/nuevaventa"><i class="fa fa-money"></i> <span>Ventas</span> </a>--}}
+                {{--</li>--}}
+                {{--<li class="treeview">--}}
+                    {{--<a href="#"><i class="fa fa-bar-chart"></i> <span>Reportes</span> </a>--}}
+                {{--</li>--}}
+                {{--<li id="modulo-seguridad" class="treeview">--}}
+                    {{--<a href="/seguridad/empleado"><i class="fa fa-lock"></i> <span>Seguridad</span> </a>--}}
+                {{--</li>--}}
+                {{--@foreach(\App\Core\Modulo\Modulo::where('id_padre',null)->get() as $modulo)--}}
+                {{--<li id="modulo-mantenimiento" class="treeview">--}}
+                    {{--<a href="/mantenimiento/principal"><i class="fa fa-cogs"></i> <span>{{$modulo->descripcion}}</span> </a>--}}
+                {{--</li>--}}
+                {{--@endforeach--}}
+
+                {{--MENU DE LOS MODULOS DEL SISTEMA--}}
+
+                 @include('partial.modulos')
+
             </ul>
 
             <script>

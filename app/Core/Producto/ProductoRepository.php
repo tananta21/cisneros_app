@@ -29,7 +29,7 @@ class ProductoRepository implements BaseRepositoryInterface
         return $this->producto
             ->whereRaw("tipo_producto_id ='" . $tipo . "' and estado = 1")
             ->orderBy('id', 'desc')
-            ->paginate(5);
+            ->paginate(6);
     }
 
     /**

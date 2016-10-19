@@ -18,7 +18,7 @@ class CreateClientesTable extends Migration
             $table->integer('estado_civil_id')->unsigned();
             $table->integer('grado_instruccion_id')->unsigned();
             $table->integer('ocupacion_id')->unsigned();
-            $table->integer('ubigeo_id')->unsigned();
+            $table->integer('ubigeo_id')->unsigned()->nullable();
             $table->string('nro_documento',11);
             $table->string('nombres',50);
             $table->string('apellidos',50);

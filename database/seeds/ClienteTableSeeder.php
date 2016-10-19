@@ -18,7 +18,7 @@ class ClienteTableSeeder extends Seeder
                 'estado_civil_id' => $faker->numberBetween(1, 4),
                 'grado_instruccion_id' => $faker->numberBetween(1, 5),
                 'ocupacion_id' => $faker->numberBetween(1, 4),
-                'ubigeo_id'=>$faker->numberBetween(1, 2000),
+//                'ubigeo_id'=>$faker->numberBetween(1, 2000),
                 'nro_documento' => $faker->numberBetween(8),
                 'nombres' => $faker->firstName,
                 'apellidos' => $faker->lastName,

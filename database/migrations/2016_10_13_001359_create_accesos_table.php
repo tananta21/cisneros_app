@@ -16,6 +16,7 @@ class CreateAccesosTable extends Migration
             $table->increments('id');
             $table->integer('modulo_id')->unsigned();
             $table->integer('tipo_empleado_id')->unsigned();
+            $table->boolean('estado');
             $table->timestamps();
         });
     }

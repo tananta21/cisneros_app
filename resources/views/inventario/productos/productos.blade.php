@@ -2,17 +2,6 @@
 @section('vistainicial')
 @stop
 @section('menu_modulos')
-    <div>
-        <ul class="nav nav-tabs">
-            <li class="nav-item">
-                <a class="nav-link" href="/inventario/productos">Productos</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#">Almacen</a>
-            </li>
-        </ul>
-        </div>
-
     <script>
         $(document).ready(function () {
             var url = window.location;
@@ -29,7 +18,7 @@
 
 
     @section('contenido_modulos')
-        <h3 class="col-lg-10" style="margin-bottom: 0.5rem">Productos y Servicios</h3>
+        <h3 class="col-lg-10" style="margin-bottom: 0.5rem">Gestor de Productos y Servicios</h3>
         <div class="col-lg-2" style="margin-top: 20px">
             <a href="/inventario/producto/nuevoproducto" type="button" class="btn btn-primary btn-sm"> NUEVO REGISTRO
                 <i class="fa fa-plus-square fa-1px" style="margin-left: 1rem"></i>
