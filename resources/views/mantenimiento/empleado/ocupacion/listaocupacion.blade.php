@@ -12,76 +12,146 @@
 
     <h3 class="col-lg-12" style="margin-bottom: 0.5rem">Lista Ocupaciones</h3>
     <hr class="col-lg-12 linea-titulo" size="5px" color="green"/>
-    <div class="col-lg-12">
-        <a href="/mantenimiento/ocupacion" class="btn btn-primary btn-md col-lg-1" >Recargar <i class="fa fa-refresh fa-1x"></i></a>
+    {{--<div class="col-lg-12">--}}
+        {{--<a href="/mantenimiento/ocupacion" class="btn btn-primary btn-md col-lg-1" >Recargar <i class="fa fa-refresh fa-1x"></i></a>--}}
 
-        {!! Form::model(Request::all(),['route'=>'buscar.ocupacion','method' => 'get', 'class' => 'form-horizontal', 'role'=>'form']) !!}
+        {{--{!! Form::model(Request::all(),['route'=>'buscar.ocupacion','method' => 'get', 'class' => 'form-horizontal', 'role'=>'form']) !!}--}}
         {{--<div class="col-lg-3">--}}
         {{--{!!form::text('descripcionmarca',null,['class'=>'form-control', 'placeholder'=>'Introdusca nombre marca','maxlength'=>30])!!}--}}
         {{--</div>--}}
 
+        {{--<div class="col-lg-2">--}}
+            {{--{!!form::select('estado',[--}}
+            {{--'1'=>'Activo',--}}
+            {{--'0'=>'Inactivo'],null,['class'=>'form-control'])!!}--}}
+        {{--</div>--}}
+
+        {{--<div class="col-lg-1">--}}
+            {{--<button type="submit" class="btn btn-primary"  >Buscar <i class="fa fa-search"></i></button>--}}
+        {{--</div>--}}
+        {{--{!! Form::close() !!}--}}
+    {{--</div>--}}
+    <div class="col-lg-7">
+        {!! Form::model(Request::all(),['route'=>'buscar.ocupacion','method' => 'get', 'class' => 'form-horizontal', 'role'=>'form']) !!}
         <div class="col-lg-2">
+            <span style="font-size: 1.5rem">Estado</span>
+        </div>
+        <div class="col-lg-4">
             {!!form::select('estado',[
             '1'=>'Activo',
             '0'=>'Inactivo'],null,['class'=>'form-control'])!!}
         </div>
 
         <div class="col-lg-1">
-            {{--<input type="submit" class="btn btn-primary" value="Buscar"/><i class="fa fa-search"></i>--}}
             <button type="submit" class="btn btn-primary"  >Buscar <i class="fa fa-search"></i></button>
         </div>
         {!! Form::close() !!}
     </div>
-    <div class="col-lg-7" style="margin-top: 3rem">
-        <div class="box-body table-responsive no-padding col-lg-12">
-            <table class="table table-hover">
-                <tbody>
-                <tr>
-                    <th>N° ID</th>
-                    <th>NOMBRE</th>
-                    <th>ESTADO</th>
-                    <th>ACCIONES</th>
-                </tr>
-                @foreach($marcas as $marca)
-                    <tr data-id="{{$marca->id}}" id="filaproducto{{$marca->id}}">
-                        <td>{{$marca->id}}</td>
-                        <td>{{$marca->descripcion}}</td>
-                        @if($marca->estado == 1)
-                            <td>Activo <i class="fa fa-check-circle-o " style="color: green"></i></td>
-                        @else
-                            <td>Inactivo <i class="fa fa-check-circle-o " style="color: orange"></i></td>
-                        @endif
-                        <td>
-                            @if($marca->estado == 1)
-                                <a onclick="eliminarCategoria('{{$marca->id}}')" style="color: red; font-size: 2.5rem; padding: 0.5rem; cursor: pointer; margin-right: 2rem">
-                                    <input type="hidden" name="eliminarmarca{{$marca->id}}" value="{{$marca->id}}"/>
-                                    <i class="fa fa-trash"></i>
-                                </a>
-                                <a id="editar_marca{{$marca->id}}" onclick="editarCategoria('{{$marca->id}}')" style="cursor:pointer; color: green;  font-size: 2.5rem; padding: 0.5rem">
-                                    <input type="hidden" name="editarmarca{{$marca->id}}" value="{{$marca->id}}"/>
-                                    <i class="fa fa-pencil"></i>
-                                </a>
-                            @else
-                                <a id="editar_marca{{$marca->id}}" onclick="editarCategoria('{{$marca->id}}')" style="cursor:pointer; color: green;  font-size: 2.5rem; padding: 0.5rem">
-                                    <input type="hidden" name="editarmarca{{$marca->id}}" value="{{$marca->id}}"/>
-                                    <i class="fa fa-pencil"></i>
-                                </a>
-                            @endif
+
+    <div class="col-lg-5">
+        <a data-toggle="modal" data-target="#crear_tipoproducto_modal" href="#" style="font-size: 1.6rem">
+            <i class="fa fa-plus-circle fa-2x" aria-hidden="true"></i> <span style="color: #000000">Agregar Categoria</span>
+        </a>
+    </div>
 
 
-                        </td>
-                    </tr>
-                @endforeach
-                </tbody>
-            </table>
-        </div>
+
+    <div class="box-body table-responsive no-padding col-lg-12">
+    <table id="marca" class=" table table-hover display" cellspacing="0" width="100%">
+        <thead>
+        <tr>
+            <th>N° ID</th>
+            <th>NOMBRE</th>
+            <th>ESTADO</th>
+            <th>ACCIONES</th>
+        </tr>
+        </thead>
+        <tbody>
+        @foreach($marcas as $marca)
+        <tr data-id="{{$marca->id}}" id="filaproducto{{$marca->id}}">
+        <td>{{$marca->id}}</td>
+        <td>{{$marca->descripcion}}</td>
+        @if($marca->estado == 1)
+        <td>Activo <i class="fa fa-check-circle-o " style="color: green"></i></td>
+        @else
+        <td>Inactivo <i class="fa fa-check-circle-o " style="color: orange"></i></td>
+        @endif
+        <td>
+        @if($marca->estado == 1)
+        <a onclick="eliminarCategoria('{{$marca->id}}')" style="color: red; font-size: 2.5rem; padding: 0.5rem; cursor: pointer; margin-right: 2rem">
+        <input type="hidden" name="eliminarmarca{{$marca->id}}" value="{{$marca->id}}"/>
+        <i class="fa fa-trash"></i>
+        </a>
+        <a id="editar_marca{{$marca->id}}" onclick="editarCategoria('{{$marca->id}}')" style="cursor:pointer; color: green;  font-size: 2.5rem; padding: 0.5rem">
+        <input type="hidden" name="editarmarca{{$marca->id}}" value="{{$marca->id}}"/>
+        <i class="fa fa-pencil"></i>
+        </a>
+        @else
+        <a id="editar_marca{{$marca->id}}" onclick="editarCategoria('{{$marca->id}}')" style="cursor:pointer; color: green;  font-size: 2.5rem; padding: 0.5rem">
+        <input type="hidden" name="editarmarca{{$marca->id}}" value="{{$marca->id}}"/>
+        <i class="fa fa-pencil"></i>
+        </a>
+        @endif
+
+
+        </td>
+        </tr>
+        @endforeach
+        </tbody>
+    </table>
     </div>
-    <div class="col-lg-4" style="text-align: center; margin-top: 10rem">
-        <button data-toggle="modal" data-target="#crear_tipoproducto_modal" class="btn btn-primary">Agregar Nueva Ocupacion</button>
-    </div>
-    <div class="col-lg-7" style="display: flex; flex-direction: row; justify-content: center;">
-        {!! $marcas->appends(Request::all())->render() !!}
-    </div>
+    {{--<div class="col-lg-7" style="margin-top: 3rem">--}}
+        {{--<div class="box-body table-responsive no-padding col-lg-12">--}}
+            {{--<table class="table table-hover">--}}
+                {{--<tbody>--}}
+                {{--<tr>--}}
+                    {{--<th>N° ID</th>--}}
+                    {{--<th>NOMBRE</th>--}}
+                    {{--<th>ESTADO</th>--}}
+                    {{--<th>ACCIONES</th>--}}
+                {{--</tr>--}}
+                {{--@foreach($marcas as $marca)--}}
+                    {{--<tr data-id="{{$marca->id}}" id="filaproducto{{$marca->id}}">--}}
+                        {{--<td>{{$marca->id}}</td>--}}
+                        {{--<td>{{$marca->descripcion}}</td>--}}
+                        {{--@if($marca->estado == 1)--}}
+                            {{--<td>Activo <i class="fa fa-check-circle-o " style="color: green"></i></td>--}}
+                        {{--@else--}}
+                            {{--<td>Inactivo <i class="fa fa-check-circle-o " style="color: orange"></i></td>--}}
+                        {{--@endif--}}
+                        {{--<td>--}}
+                            {{--@if($marca->estado == 1)--}}
+                                {{--<a onclick="eliminarCategoria('{{$marca->id}}')" style="color: red; font-size: 2.5rem; padding: 0.5rem; cursor: pointer; margin-right: 2rem">--}}
+                                    {{--<input type="hidden" name="eliminarmarca{{$marca->id}}" value="{{$marca->id}}"/>--}}
+                                    {{--<i class="fa fa-trash"></i>--}}
+                                {{--</a>--}}
+                                {{--<a id="editar_marca{{$marca->id}}" onclick="editarCategoria('{{$marca->id}}')" style="cursor:pointer; color: green;  font-size: 2.5rem; padding: 0.5rem">--}}
+                                    {{--<input type="hidden" name="editarmarca{{$marca->id}}" value="{{$marca->id}}"/>--}}
+                                    {{--<i class="fa fa-pencil"></i>--}}
+                                {{--</a>--}}
+                            {{--@else--}}
+                                {{--<a id="editar_marca{{$marca->id}}" onclick="editarCategoria('{{$marca->id}}')" style="cursor:pointer; color: green;  font-size: 2.5rem; padding: 0.5rem">--}}
+                                    {{--<input type="hidden" name="editarmarca{{$marca->id}}" value="{{$marca->id}}"/>--}}
+                                    {{--<i class="fa fa-pencil"></i>--}}
+                                {{--</a>--}}
+                            {{--@endif--}}
+
+
+                        {{--</td>--}}
+                    {{--</tr>--}}
+                {{--@endforeach--}}
+                {{--</tbody>--}}
+            {{--</table>--}}
+        {{--</div>--}}
+    {{--</div>--}}
+    {{--<div class="col-lg-4" style="text-align: center; margin-top: 10rem">--}}
+        {{--<button data-toggle="modal" data-target="#crear_tipoproducto_modal" class="btn btn-primary">Agregar Nueva Ocupacion</button>--}}
+    {{--</div>--}}
+    {{--<div class="col-lg-7" style="display: flex; flex-direction: row; justify-content: center;">--}}
+        {{--{!! $marcas->appends(Request::all())->render() !!}--}}
+    {{--</div>--}}
+
+
 
     {{--javascript eliminar: cambiar de estado--}}
     <script type="text/javascript">

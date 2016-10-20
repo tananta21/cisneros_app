@@ -28,30 +28,6 @@
         </a>
     </div>
 
-    <div class="col-lg-12" style="margin-top: 3rem">
-        <script>
-            $(document).ready(function() {
-                $('#example').DataTable( {
-                    "lengthChange": false,
-                    "lengthMenu": [[5, 10, 15, -1], [5, 10, 15, "All"]],
-                    "order": [[ 0, "desc" ]],
-                    "language": {
-                        "sSearch": "<span style='font-size: 1.5rem'>Buscar Registro</span>",
-                        "lengthMenu": "Mostrar _MENU_ resultados",
-                        "emptyTable":     "No se encontraron resultados",
-                        "info":           "Se Muestran _START_ a _END_ de _TOTAL_ resultados",
-                        "infoEmpty":      "Se muestran 0 resultados",
-                        "paginate": {
-                            "first":      "Primero",
-                            "last":       "Ultimo",
-                            "next":       "Siguiente",
-                            "previous":   "Anterior"
-                        }
-                    }
-                    });
-                    }
-            );
-        </script>
      <div class="box-body table-responsive no-padding col-lg-12">
          <table id="example" class=" table table-hover display" cellspacing="0" width="100%">
              <thead>
