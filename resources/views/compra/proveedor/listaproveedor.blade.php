@@ -2,19 +2,6 @@
 @section('vistainicial')
 @stop
 @section('menu_modulos')
-    <div>
-        <ul class="nav nav-tabs">
-            <li class="nav-item">
-                <a class="nav-link" href="/compra/compranueva">Nueva Compra</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#">Lista Compra</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="/compra/proveedor">Proveedor</a>
-            </li>
-        </ul>
-    </div>
     <script>
         $(document).ready(function () {
             $("#modulo-compra").addClass('active');
@@ -25,7 +12,7 @@
     <div id="lista_cliente">
         <div class="col-lg-12">
             <div class="col-lg-10">
-                <h3 class="col-lg-4" style="margin-bottom: 0.5rem;padding-left: 0">Lista Proveedores</h3>
+                <h3 class="col-lg-4" style="margin-bottom: 0.5rem;padding-left: 0">Gestor de Proveedores</h3>
             </div>
             <div class="col-lg-2">
 
@@ -34,43 +21,54 @@
 
         <hr class="col-lg-12 linea-titulo" size="5px" color="green"/>
 
-        <div class="col-lg-12" style="margin-top: 0.5rem">
+        <div class="col-lg-6">
             {!! Form::model(Request::all(),['route'=>'buscar.proveedor','method' => 'get', 'class' => 'form-horizontal', 'role'=>'form']) !!}
-            <div class="box-body">
-                <div class=" form-group">
-                    <div class="col-lg-12">
-                        <div  style="padding-left: 0" class="col-lg-10">
-                            <div class="col-lg-2 col-sm-2" >
-                                <a type="button" href="/compra/proveedor" class="btn btn-default" >Refresh <i class="fa fa-refresh fa-1x"></i></a>
-                            </div>
-                            <div class="col-lg-6 col-sm-2">
-                                {{--<input type="text" class="form-control" placeholder="Serie Producto" name="serie" value>--}}
-                                {!!form::text('cliente',null,['class'=>'form-control', 'placeholder'=>'buscar'])!!}
-                            </div>
-                            <div class="col-lg-2">
-                                {!!form::select('estado',[
-                                '1'=>'Activo',
-                                '0'=>'Inactivo'],null,['class'=>'form-control'])!!}
-                            </div>
-                            <button type="submit" class="btn btn-primary btn-sm col-lg-1"> Buscar
-                                <i class="fa fa-search fa-1px" ></i>
-                            </button>
-                        </div>
+            <div class="col-lg-2">
+                <span style="font-size: 1.5rem">Estado Proveedor</span>
+            </div>
+            <div class="col-lg-4">
+                {!!form::select('estado',[
+                '1'=>'Activo',
+                '0'=>'Inactivo'],null,['class'=>'form-control'])!!}
+            </div>
 
-                        <div class="col-lg-2">
-                          <a href="/compra/nuevoproveedor"  type="button" class="btn btn-primary btn-sm"> NUEVO PROVEEDOR
-                            <i class="fa fa-plus-square fa-1px" style="margin-left: 1rem"></i>
-                            </a>
-                        </div>
-                    </div>
-                </div>
+            <div class="col-lg-1">
+                <button type="submit" class="btn btn-primary"  >Buscar <i class="fa fa-search"></i></button>
             </div>
             {!! Form::close() !!}
+        </div>
+        <div class="col-lg-6">
+            <a data-toggle="modal" href="/compra/nuevoproveedor" style="font-size: 1.6rem">
+                <i class="fa fa-plus-circle fa-2x" aria-hidden="true"></i> <span style="color: #000000">Agregar Proveedor</span>
+            </a>
         </div>
     </div>
 
     <div class="box-body table-responsive no-padding col-lg-12">
-            <table class="table table-hover">
+        <script>
+            $(document).ready(function() {
+                        $('#example').DataTable( {
+                            "lengthChange": false,
+                            "lengthMenu": [[5, 10, 15, -1], [5, 10, 15, "All"]],
+                            "order": [[ 0, "desc" ]],
+                            "language": {
+                                "sSearch": "<span style='font-size: 1.5rem'>Buscar Proveedor</span>",
+                                "lengthMenu": "Mostrar _MENU_ resultados",
+                                "emptyTable":     "No se encontraron resultados",
+                                "info":           "Se Muestran _START_ a _END_ de _TOTAL_ resultados",
+                                "infoEmpty":      "Se muestran 0 resultados",
+                                "paginate": {
+                                    "first":      "Primero",
+                                    "last":       "Ultimo",
+                                    "next":       "Siguiente",
+                                    "previous":   "Anterior"
+                                }
+                            }
+                        });
+                    }
+            );
+        </script>
+            <table id="example" class=" table table-hover display" cellspacing="0" width="100%">
                 <thead>
                     <tr>
                         <th>N° ID</th>
@@ -123,9 +121,7 @@
             </table>
         </div>
 
-    <div class="col-lg-12" style="display: flex; flex-direction: row; justify-content: center;">
-        {!! $proveedores->appends(Request::all())->render() !!}
-    </div>
+
 
     <script>
         function eliminar(id) {

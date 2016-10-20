@@ -2,19 +2,7 @@
 @section('vistainicial')
 @stop
 @section('menu_modulos')
-    <div>
-        <ul class="nav nav-tabs">
-            <li class="nav-item">
-                <a class="nav-link" href="/venta/nuevaventa">Nueva Venta</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="/venta/lista">Lista Ventas</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="/venta/cliente">Clientes</a>
-            </li>
-        </ul>
-    </div>
+
     <script>
         $(document).ready(function () {
             $("#modulo-venta").addClass('active');
@@ -25,7 +13,7 @@
     <div id="lista_cliente">
         <div class="col-lg-12">
            <div class="col-lg-10">
-               <h3 class="col-lg-4" style="margin-bottom: 0.5rem;padding-left: 0">Lista Clientes</h3>
+               <h3 class="col-lg-4" style="margin-bottom: 0.5rem;padding-left: 0">Gestor de Clientes</h3>
            </div>
 
         </div>

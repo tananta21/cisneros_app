@@ -191,6 +191,13 @@ desired effect
                 {{--<li id="modulo-mantenimiento" class="treeview">--}}
                     {{--<a href="/mantenimiento/principal"><i class="fa fa-cogs"></i> <span>{{$modulo->descripcion}}</span> </a>--}}
                 {{--</li>--}}
+
+                {{--</li>--}}
+                {{--@foreach(\App\Core\Modulo\Modulo::where('id_padre',null)->get() as $modulo)--}}
+                {{--<li id="modulo-mantenimiento" class="treeview">--}}
+                    {{--<a href="/mantenimiento/principal"><i class="fa fa-cogs"></i> <span>{{$modulo->descripcion}}</span> </a>--}}
+                {{--</li>--}}
+
                 {{--@endforeach--}}
 
                 {{--MENU DE LOS MODULOS DEL SISTEMA--}}
@@ -430,7 +437,6 @@ desired effect
                                 <!-- /.box-body -->
                             </form>
                         </div>
-
                     </div>
                 </div>
             </div>

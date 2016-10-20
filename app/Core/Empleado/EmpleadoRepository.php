@@ -19,7 +19,7 @@ class EmpleadoRepository implements BaseRepositoryInterface {
 
     public function all()
     {
-       return $this->empleado->where('estado',1)->orderBy('id','desc')->paginate(5);
+       return $this->empleado->where('estado',1)->orderBy('id','desc')->get();
     }
 
     public function create(array $attributes)

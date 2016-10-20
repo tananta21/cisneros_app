@@ -17,7 +17,7 @@
 
         {!! Form::model(Request::all(),['route'=>'buscar.tipoproducto','method' => 'get', 'class' => 'form-horizontal', 'role'=>'form']) !!}
         {{--<div class="col-lg-3">--}}
-            {{--{!!form::text('descripcionmarca',null,['class'=>'form-control', 'placeholder'=>'Introdusca nombre marca','maxlength'=>30])!!}--}}
+        {{--{!!form::text('descripcionmarca',null,['class'=>'form-control', 'placeholder'=>'Introdusca nombre marca','maxlength'=>30])!!}--}}
         {{--</div>--}}
 
         <div class="col-lg-2">
@@ -97,11 +97,9 @@
                             id: id_marca
                         },
                         dataType: 'JSON',
-
                         error: function() {
                             $("#respuesta").html('<div> Ha surgido un error. </div>');
                         },
-
                         success: function(){
                             $("#filaproducto"+id).remove();;
                         }
@@ -120,7 +118,6 @@
                 var id_marca = $(this).find( 'input[name="editarmarca'+id+'"]' ).val();
                 var url = '{{route("editar.tipoproducto")}}';
                 $("#editar_marca"+id).attr('data-toggle','modal');
-
                 $.ajax({
                     type: 'GET',
                     url: url,
@@ -128,7 +125,6 @@
                         id: id_marca
                     },
                     dataType: 'JSON',
-
                     error: function() {
                         $("#respuesta").html('<div> Ha surgido un error. </div>');
                     },
@@ -144,7 +140,6 @@
                     }
                 });
                 $("#editar_marca"+id).attr('data-target','#editar_tipoproducto_modal');
-
             });
         };
     </script>
@@ -156,22 +151,17 @@
                         $('#texto_descripcion').focus();
                     });
         });
-
         $(document).keydown(function(tecla){
             if (tecla.keyCode ==78) {
                 $("#crear_tipoproducto_modal").modal('show');
             }
         });
-
         $(document).ready(function () {
             $("#modulo-mantenimiento").addClass('active');
         });
-
         $('#crear_tipoproducto_modal').on('hidden.bs.modal', function () {
             $(this).find("#texto_descripcion").val('').end();
-
         });
-
     </script>
 
 @endsection
@@ -264,11 +254,3 @@
         </div>
     </div>
 </div>
-
-
-
-
-
-
-
-

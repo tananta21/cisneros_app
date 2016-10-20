@@ -26,7 +26,7 @@ class ProveedorRepository implements BaseRepositoryInterface
        return $this->proveedor
                    ->orderBy('id', 'desc')
                    ->where('estado',1)
-                   ->paginate(5);
+                   ->get();
     }
 
     public function create(array $attributes)
@@ -78,6 +78,6 @@ class ProveedorRepository implements BaseRepositoryInterface
         return $this->proveedor->select()
             ->whereRaw("estado = '" .$estado. "' OR  nro_documento = '" .$dato . "' OR nombre LIKE '" .$dato . "' ")
             ->orderBy('id', 'desc')
-            ->paginate(4);
+            ->get();
     }
 }

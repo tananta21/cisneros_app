@@ -29,7 +29,7 @@ class ProductoRepository implements BaseRepositoryInterface
         return $this->producto
             ->whereRaw("tipo_producto_id ='" . $tipo . "' and estado = 1")
             ->orderBy('id', 'desc')
-            ->paginate(6);
+            ->get();
     }
 
     /**
@@ -138,14 +138,14 @@ class ProductoRepository implements BaseRepositoryInterface
            return $this->producto->select('id', 'tipo_producto_id', 'categoria_id', 'modelo_id', 'serie', 'nombre','precio', 'estado')
                ->whereRaw("tipo_producto_id ='" . $tipo . "' and estado = '" . $estado . "'")
                ->orderBy('id', 'desc')
-               ->paginate(5);
+               ->get();
        }
         else{
             return $this->producto->select('id', 'tipo_producto_id', 'categoria_id', 'modelo_id', 'serie', 'nombre','precio', 'estado')
                 ->whereRaw("tipo_producto_id ='" . $tipo . "' and serie = '" . $serie . "'or
                             tipo_producto_id ='" . $tipo . "' and nombre LIKE '" . $serie . "%' ")
                 ->orderBy('id', 'desc')
-                ->paginate(5);
+                ->get();
         }
 
 

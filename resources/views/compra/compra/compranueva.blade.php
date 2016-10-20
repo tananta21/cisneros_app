@@ -2,20 +2,20 @@
 @section('vistainicial')
 @stop
 @section('menu_modulos')
-    <div>
-        <ul class="nav nav-tabs">
-            <li class="nav-item">
-                <a class="nav-link" href="/compra/compranueva">Nueva Compra</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#">Lista Compras</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="/compra/proveedor">Proveedor</a>
-            </li>
+    {{--<div>--}}
+        {{--<ul class="nav nav-tabs">--}}
+            {{--<li class="nav-item">--}}
+                {{--<a class="nav-link" href="/compra/compranueva">Nueva Compra</a>--}}
+            {{--</li>--}}
+            {{--<li class="nav-item">--}}
+                {{--<a class="nav-link" href="#">Lista Compras</a>--}}
+            {{--</li>--}}
+            {{--<li class="nav-item">--}}
+                {{--<a class="nav-link" href="/compra/proveedor">Proveedor</a>--}}
+            {{--</li>--}}
 
-        </ul>
-    </div>
+        {{--</ul>--}}
+    {{--</div>--}}
 @section('contenido_modulos')
 
     <div>

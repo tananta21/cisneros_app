@@ -116,6 +116,7 @@ class ModuloTableSeeder extends Seeder
                     'estado' => 1,
                 ]);
 
+<<<<<<< HEAD
 //        VENTAS 3
 
                 \DB::table('modulos')->insert([
@@ -206,6 +207,9 @@ class ModuloTableSeeder extends Seeder
 
 
 
+=======
+//        COMPRAS 2
+>>>>>>> 2bae92185f269508d3cbb6a2d3620dcd290ce084
 
 
     }

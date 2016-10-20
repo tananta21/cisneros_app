@@ -2,19 +2,7 @@
 @section('vistainicial')
 @stop
 @section('menu_modulos')
-    <div>
-        <ul class="nav nav-tabs">
-            <li class="nav-item">
-                <a class="nav-link" href="/venta/nuevaventa">Nueva Venta</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="/venta/lista">Lista Venta</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="/venta/cliente">Clientes</a>
-            </li>
-        </ul>
-    </div>
+
     @section('contenido_modulos')
 
         <div>
