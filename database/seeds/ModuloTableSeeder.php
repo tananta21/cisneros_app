@@ -116,7 +116,96 @@ class ModuloTableSeeder extends Seeder
                     'estado' => 1,
                 ]);
 
-//        COMPRAS 2
+//        VENTAS 3
+
+                \DB::table('modulos')->insert([
+                    'descripcion' => 'Nueva Venta',
+                    'id_padre' => '3',
+                    'url'=>'/venta/nuevaventa',
+                    'nivel'=>"2",
+                    'estado' => 1,
+                ]);
+
+                \DB::table('modulos')->insert([
+                    'descripcion' => 'Lista Ventas',
+                    'id_padre' => '3',
+                    'url'=>'#',
+                    'nivel'=>"2",
+                    'estado' => 1,
+                ]);
+
+                \DB::table('modulos')->insert([
+                    'descripcion' => 'Clientes',
+                    'id_padre' => '3',
+                    'url'=>'/venta/cliente',
+                    'nivel'=>"2",
+                    'estado' => 1,
+                ]);
+
+//        SEGURIDAD 5
+
+                \DB::table('modulos')->insert([
+                    'descripcion' => 'Empleados',
+                    'id_padre' => '5',
+                    'url'=>'/seguridad/empleado',
+                    'nivel'=>"2",
+                    'estado' => 1,
+                ]);
+
+                \DB::table('modulos')->insert([
+                    'descripcion' => 'Modulos',
+                    'id_padre' => '5',
+                    'url'=>'#',
+                    'nivel'=>"2",
+                    'estado' => 1,
+                ]);
+
+                \DB::table('modulos')->insert([
+                    'descripcion' => 'Perfiles',
+                    'id_padre' => '5',
+                    'url'=>'#',
+                    'nivel'=>"2",
+                    'estado' => 1,
+                ]);
+
+                \DB::table('modulos')->insert([
+                    'descripcion' => 'Accesos',
+                    'id_padre' => '5',
+                    'url'=>'#',
+                    'nivel'=>"2",
+                    'estado' => 1,
+                ]);
+
+//  MANTENIMIENTOS 6
+
+                \DB::table('modulos')->insert([
+                    'descripcion' => 'Categorias',
+                    'id_padre' => '6',
+                    'url'=>'/mantenimiento/categoria',
+                    'nivel'=>"2",
+                    'estado' => 1,
+                ]);
+                \DB::table('modulos')->insert([
+                    'descripcion' => 'Marcas',
+                    'id_padre' => '6',
+                    'url'=>'/mantenimiento/marca',
+                    'nivel'=>"2",
+                    'estado' => 1,
+                ]);
+                \DB::table('modulos')->insert([
+                    'descripcion' => 'Marcas',
+                    'id_padre' => '6',
+                    'url'=>'/mantenimiento/modelo',
+                    'nivel'=>"2",
+                    'estado' => 1,
+                ]);
+
+
+
+
+
+
+
 
 
     }
