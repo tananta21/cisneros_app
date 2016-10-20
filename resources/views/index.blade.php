@@ -12,7 +12,7 @@
     <link rel="stylesheet" href="{{url('/')}}/cisnero/css/nuestro.css">
     <link rel="stylesheet" href="{{url('/')}}/bootstrap/css/bootstrap.css">
     <link rel="stylesheet" href="{{url('/')}}/dist/css/skins/_all-skins.css">
-    <!-- Ionicons -->
+
     <!-- Font Awesome -->
     <link rel="stylesheet" href="{{url('/')}}/ionicons/css/ionicons.css"/>
     <link rel="stylesheet" href="{{url('/')}}/font-awesome/css/font-awesome.min.css"/>
