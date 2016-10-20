@@ -23,8 +23,11 @@ class ProductoRepository implements BaseRepositoryInterface
 
     public function all()
     {
+
+    }
+    public function todoProductos($tipo){
         return $this->producto
-            ->where('estado', '1')
+            ->whereRaw("tipo_producto_id ='" . $tipo . "' and estado = 1")
             ->orderBy('id', 'desc')
             ->paginate(6);
     }
@@ -40,38 +43,64 @@ class ProductoRepository implements BaseRepositoryInterface
 
     public function addProducto($inputs)
     {
-        $producto = new Producto();
-        $producto->tipo_producto_id = $inputs['tipo_producto'];
-        $producto->categoria_id = $inputs['categoria'];
-        $producto->marca_id = $inputs['marca'];
-        $producto->modelo_id = $inputs['modelo'];
-        $producto->serie = $inputs['serie'];
-        $producto->nombre = $inputs['nombre'];
-        $producto->precio = $inputs['precio'];
-        $producto->stock_actual = $inputs['stock_actual'];
-        $producto->stock_minimo = $inputs['stock_minimo'];
-        $producto->stock_maximo = $inputs['stock_maximo'];
-        $producto->descripcion = $inputs['descripcion'];
-        $producto->estado = $inputs['estado'];
-        $producto->save();
+        if($inputs['tipo_producto'] == 1){
+            $producto = new Producto();
+            $producto->tipo_producto_id = $inputs['tipo_producto'];
+            $producto->categoria_id = $inputs['categoria'];
+            $producto->modelo_id = $inputs['modelo'];
+            $producto->serie = $inputs['serie'];
+            $producto->nombre = $inputs['nombre'];
+            $producto->precio = $inputs['precio'];
+            $producto->stock_actual = $inputs['stock_actual'];
+            $producto->stock_minimo = $inputs['stock_minimo'];
+            $producto->stock_maximo = $inputs['stock_maximo'];
+            $producto->descripcion = $inputs['descripcion'];
+            $producto->estado = $inputs['estado'];
+            $producto->save();
+        }
+        else{
+            $producto = new Producto();
+            $producto->tipo_producto_id = $inputs['tipo_producto'];
+            $producto->categoria_id = 1;
+            $producto->modelo_id =1;
+            $producto->serie = $inputs['serie-servicio'];
+            $producto->nombre = $inputs['nombre-servicio'];
+            $producto->precio = $inputs['precio-servicio'];
+            $producto->descripcion = $inputs['descripcion-servicio'];
+            $producto->estado = $inputs['estado'];
+            $producto->save();
+        }
+
     }
 
     public function updated($id, array $attributes)
     {
-        $producto = Producto::find($id);
-        $producto->tipo_producto_id = $attributes['tipo_producto'];
-        $producto->categoria_id = $attributes['categoria'];
-        $producto->marca_id = $attributes['marca'];
-        $producto->modelo_id = $attributes['modelo'];
-        $producto->serie = $attributes['serie'];
-        $producto->nombre = $attributes['nombre'];
-        $producto->precio = $attributes['precio'];
-        $producto->stock_actual = $attributes['stock_actual'];
-        $producto->stock_minimo = $attributes['stock_minimo'];
-        $producto->stock_maximo = $attributes['stock_maximo'];
-        $producto->descripcion = $attributes['descripcion'];
-        $producto->estado = $attributes['estado'];
-        $producto->save();
+        if($attributes['tipo_producto'] == 1){
+            $producto = Producto::find($id);
+            $producto->tipo_producto_id = 1;
+            $producto->categoria_id = $attributes['categoria'];
+            $producto->modelo_id = $attributes['modelo'];
+            $producto->serie = $attributes['serie'];
+            $producto->nombre = $attributes['nombre'];
+            $producto->precio = $attributes['precio'];
+            $producto->stock_actual = $attributes['stock_actual'];
+            $producto->stock_minimo = $attributes['stock_minimo'];
+            $producto->stock_maximo = $attributes['stock_maximo'];
+            $producto->descripcion = $attributes['descripcion'];
+            $producto->estado = $attributes['estado'];
+            $producto->save();
+        }
+        else{
+            $producto = Producto::find($id);
+            $producto->tipo_producto_id = 2;
+            $producto->categoria_id = 1;
+            $producto->modelo_id =1;
+            $producto->serie = $attributes['serie'];
+            $producto->nombre = $attributes['nombre'];
+            $producto->precio = $attributes['precio'];
+            $producto->estado = $attributes['estado'];
+            $producto->save();
+        }
 
     }
 
@@ -103,34 +132,22 @@ class ProductoRepository implements BaseRepositoryInterface
             ->paginate(5);
     }
 
-    public function busquedaProducto($nombre, $serie, $categoria, $marca, $modelo,$estado)
+    public function busquedaProducto($tipo,$serie,$estado)
     {
+        if(empty($serie)){
+           return $this->producto->select('id', 'tipo_producto_id', 'categoria_id', 'modelo_id', 'serie', 'nombre','precio', 'estado')
+               ->whereRaw("tipo_producto_id ='" . $tipo . "' and estado = '" . $estado . "'")
+               ->orderBy('id', 'desc')
+               ->paginate(5);
+       }
+        else{
+            return $this->producto->select('id', 'tipo_producto_id', 'categoria_id', 'modelo_id', 'serie', 'nombre','precio', 'estado')
+                ->whereRaw("tipo_producto_id ='" . $tipo . "' and serie = '" . $serie . "'or
+                            tipo_producto_id ='" . $tipo . "' and nombre LIKE '" . $serie . "%' ")
+                ->orderBy('id', 'desc')
+                ->paginate(5);
+        }
 
-        return $this->producto->select('id', 'tipo_producto_id', 'marca_id', 'categoria_id', 'modelo_id', 'serie', 'nombre', 'estado')
-//                ->where('serie',$serie)
-//                ->orwhere('nombre', 'like', "%$nombre%")
-//                ->orWhere('categoria_id','like',"$categoria")
-//                ->orWhere('modelo_id','like',"$modelo")
-            ->whereRaw(" nombre = '" . $nombre . "'
-                                OR serie = '" . $serie . "'
-                                OR estado ='" . $estado . "'
-                                OR categoria_id ='" . $categoria . "'
-                                OR marca_id ='" . $marca . "'
-                                OR modelo_id = '" . $modelo . "'")
-            ->orderBy('id', 'desc')
-            ->paginate(6);
-
-//        $result =DB::table('productos')
-//                    ->selectRaw("productos.id,serie,nombre ,categorias.descripcion, marca_id, modelo_id, estado")
-//                    ->join('categorias', 'productos.categoria_id', '=', 'categorias.id')
-//                     ->whereRaw("nombre = '".$nombre."'
-//                                OR serie = '".$serie."'
-//                                OR categoria_id ='".$categoria."'
-//                                OR modelo_id = '".$modelo."'")
-//                    ->paginate(5);
-
-
-//        return $result;
 
     }
 

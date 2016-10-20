@@ -3,86 +3,101 @@
 @stop
 @section('menu_modulos')
 
-    <div>
-        <ul class="nav nav-tabs">
-            <li class="nav-item">
-                <a class="nav-link" href="/mantenimiento/principal">Menu Mantenimiento</a>
-            </li>
-        </ul>
-    </div>
-
-    <h3 class="col-lg-12" style="margin-bottom: 0.5rem">Lista de Categoria</h3>
+    <h3 class="col-lg-12" style="margin-bottom: 0.5rem"> Gestor de Categorias</h3>
     <hr class="col-lg-12 linea-titulo" size="5px" color="green"/>
-    <div class="col-lg-12">
-        <a href="/mantenimiento/categoria" class="btn btn-primary btn-md col-lg-1" >Recargar <i class="fa fa-refresh fa-1x"></i></a>
+    <div class="col-lg-7">
         {!! Form::model(Request::all(),['route'=>'buscar.categoria','method' => 'get', 'class' => 'form-horizontal', 'role'=>'form']) !!}
-            <div class="col-lg-3">
-                {!!form::text('descripcioncategoria',null,['class'=>'form-control', 'placeholder'=>'Introdusca nombre categoria','maxlength'=>30])!!}
-            </div>
-
-            <div class="col-lg-2">
+           <div class="col-lg-2">
+               <span style="font-size: 1.5rem">Estado Categoria</span>
+           </div>
+            <div class="col-lg-4">
                 {!!form::select('estado',[
                 '1'=>'Activo',
                 '0'=>'Inactivo'],null,['class'=>'form-control'])!!}
             </div>
 
             <div class="col-lg-1">
-                {{--<input type="submit" class="btn btn-primary" value="Buscar"/><i class="fa fa-search"></i>--}}
                 <button type="submit" class="btn btn-primary"  >Buscar <i class="fa fa-search"></i></button>
            </div>
         {!! Form::close() !!}
     </div>
-    <div class="col-lg-7" style="margin-top: 3rem">
+
+    <div class="col-lg-5">
+        <a data-toggle="modal" data-target="#categoria_modal" href="#" style="font-size: 1.6rem">
+            <i class="fa fa-plus-circle fa-2x" aria-hidden="true"></i> <span style="color: #000000">Agregar Categoria</span>
+        </a>
+    </div>
+
+    <div class="col-lg-12" style="margin-top: 3rem">
+        <script>
+            $(document).ready(function() {
+                $('#example').DataTable( {
+                    "lengthChange": false,
+                    "lengthMenu": [[5, 10, 15, -1], [5, 10, 15, "All"]],
+                    "order": [[ 0, "desc" ]],
+                    "language": {
+                        "sSearch": "<span style='font-size: 1.5rem'>Buscar Registro</span>",
+                        "lengthMenu": "Mostrar _MENU_ resultados",
+                        "emptyTable":     "No se encontraron resultados",
+                        "info":           "Se Muestran _START_ a _END_ de _TOTAL_ resultados",
+                        "infoEmpty":      "Se muestran 0 resultados",
+                        "paginate": {
+                            "first":      "Primero",
+                            "last":       "Ultimo",
+                            "next":       "Siguiente",
+                            "previous":   "Anterior"
+                        }
+                    }
+                    });
+                    }
+            );
+        </script>
      <div class="box-body table-responsive no-padding col-lg-12">
-        <table class="table table-hover">
-            <tbody>
-            <tr>
-                <th>N° ID</th>
-                <th>NOMBRE</th>
-                <th>ESTADO</th>
-                <th>ACCIONES</th>
-            </tr>
-            @foreach($categorias as $categoria)
-            <tr data-id="{{$categoria->id}}" id="filaproducto{{$categoria->id}}">
-                <td>{{$categoria->id}}</td>
-                <td><span id="texto{{$categoria->id}}">{{$categoria->descripcion}}</span></td>
-                @if($categoria->estado == 1)
-                    <td>Activo <i class="fa fa-check-circle-o " style="color: green"></i></td>
-                @else
-                    <td>Inactivo <i class="fa fa-check-circle-o " style="color: orange"></i></td>
-                @endif
-                <td>
-                @if($categoria->estado == 1)
-                    <a onclick="eliminarCategoria('{{$categoria->id}}')" style="color: red; font-size: 2.5rem; padding: 0.5rem; cursor: pointer; margin-right: 2rem">
-                        <input type="hidden" name="eliminarcategoria{{$categoria->id}}" value="{{$categoria->id}}"/>
-                        <i class="fa fa-trash"></i>
-                    </a>
-                    <a id="editar_categoria{{$categoria->id}}" onclick="editarCategoria('{{$categoria->id}}')" style="cursor:pointer; color: green;  font-size: 2.5rem; padding: 0.5rem">
-                        <input type="hidden" name="editarcategoria{{$categoria->id}}" value="{{$categoria->id}}"/>
-                        <i class="fa fa-pencil"></i>
-                    </a>
-                @else
-                        <a id="editar_categoria{{$categoria->id}}" onclick="editarCategoria('{{$categoria->id}}')" style="cursor:pointer; color: green;  font-size: 2.5rem; padding: 0.5rem">
-                            <input type="hidden" name="editarcategoria{{$categoria->id}}" value="{{$categoria->id}}"/>
-                            <i class="fa fa-pencil"></i>
-                        </a>
-                @endif
+         <table id="example" class=" table table-hover display" cellspacing="0" width="100%">
+             <thead>
+             <tr>
+                 <th>N° ID</th>
+                 <th>DESCRIPCION CATEGORIA</th>
+                 <th>ESTADO</th>
+                 <th>ACCIONES</th>
+             </tr>
+             </thead>
+             <tbody>
+             @foreach($categorias as $categoria)
+                 <tr data-id="{{$categoria->id}}" id="filaproducto{{$categoria->id}}">
+                     <td>{{$categoria->id}}</td>
+                     <td><span id="texto{{$categoria->id}}">{{$categoria->descripcion}}</span></td>
+                     @if($categoria->estado == 1)
+                         <td>Activo <i class="fa fa-check-circle-o " style="color: green"></i></td>
+                     @else
+                         <td>Inactivo <i class="fa fa-check-circle-o " style="color: orange"></i></td>
+                     @endif
+                     <td>
+                         @if($categoria->estado == 1)
+                             <a onclick="eliminarCategoria('{{$categoria->id}}')" style="color: red; font-size: 2.5rem; padding: 0.5rem; cursor: pointer; margin-right: 2rem">
+                                 <input type="hidden" name="eliminarcategoria{{$categoria->id}}" value="{{$categoria->id}}"/>
+                                 <i class="fa fa-trash"></i>
+                             </a>
+                             <a id="editar_categoria{{$categoria->id}}" onclick="editarCategoria('{{$categoria->id}}')" style="cursor:pointer; color: green;  font-size: 2.5rem; padding: 0.5rem">
+                                 <input type="hidden" name="editarcategoria{{$categoria->id}}" value="{{$categoria->id}}"/>
+                                 <i class="fa fa-pencil"></i>
+                             </a>
+                         @else
+                             <a id="editar_categoria{{$categoria->id}}" onclick="editarCategoria('{{$categoria->id}}')" style="cursor:pointer; color: green;  font-size: 2.5rem; padding: 0.5rem">
+                                 <input type="hidden" name="editarcategoria{{$categoria->id}}" value="{{$categoria->id}}"/>
+                                 <i class="fa fa-pencil"></i>
+                             </a>
+                         @endif
 
 
-                </td>
-            </tr>
-            @endforeach
-            </tbody>
-        </table>
-    </div>
-    </div>
-    <div class="col-lg-4" style="text-align: center; margin-top: 10rem">
-        <button data-toggle="modal" data-target="#categoria_modal" class="btn btn-primary">Agregar Nueva Categoria</button>
-    </div>
-    <div class="col-lg-7" style="display: flex; flex-direction: row; justify-content: center;">
-        {!! $categorias->appends(Request::all())->render() !!}
+                     </td>
+                 </tr>
+             @endforeach
+             </tbody>
+         </table>
     </div>
 
+    </div>
     <script type="text/javascript">
         function eliminarCategoria(id){
             if (confirm('¿Estas seguro que desea desactivar......... '+$('#texto'+id).text()+'?')) {
@@ -154,11 +169,11 @@
                     });
         });
 
-        $(document).keydown(function(tecla){
-            if (tecla.keyCode ==78) {
-                $("#categoria_modal").modal('show');
-            }
-        });
+//        $(document).keydown(function(tecla){
+//            if (tecla.keyCode ==78) {
+//                $("#categoria_modal").modal('show');
+//            }
+//        });
 
         $(document).ready(function () {
             $("#modulo-mantenimiento").addClass('active');

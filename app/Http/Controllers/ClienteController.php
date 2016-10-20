@@ -6,6 +6,7 @@ use App\Core\Cliente\ClienteRepository;
 use App\Core\EstadoCivil\EstadoCivilRepository;
 use App\Core\GradoInstruccion\GradoInstruccionRepository;
 use App\Core\Ocupacion\OcupacionRepository;
+use App\Core\Ubigeo\UbigeoRepository;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
@@ -19,6 +20,8 @@ class ClienteController extends Controller
     protected $repoEstadoCivil;
     protected $repoOcupacion;
     protected $repoGradoInstruccion;
+    protected $repoUbigeo;
+
 
     public function __construct(){
 
@@ -26,6 +29,7 @@ class ClienteController extends Controller
         $this->repoEstadoCivil = new EstadoCivilRepository();
         $this->repoGradoInstruccion = new GradoInstruccionRepository();
         $this->repoOcupacion = new OcupacionRepository();
+        $this->repoUbigeo = new UbigeoRepository();
     }
 
     public function index()
@@ -38,7 +42,8 @@ class ClienteController extends Controller
         $estadoCiviles = $this->repoEstadoCivil->allEnVista();
         $ocupaciones = $this->repoOcupacion->allEnVista();
         $gradoInstrucciones = $this->repoGradoInstruccion->allEnVista();
-        return view('venta.cliente.registrarcliente', compact('estadoCiviles','ocupaciones','gradoInstrucciones'));
+        $departamentos = $this->repoUbigeo->allDepartamentos();
+        return view('venta.cliente.registrarcliente', compact('estadoCiviles','ocupaciones','gradoInstrucciones','departamentos'));
     }
 
     public function create()
@@ -75,15 +80,21 @@ class ClienteController extends Controller
     public function edit($id)
     {
         $cliente = $this->repoCliente->find($id);
-        $estado = $cliente['estado_civil_id'];
-        $grados= $cliente['grado_instruccion_id'];
-        $ocupacion_id= $cliente['ocupacion_id'];
+        $numubigeo = $this->repoUbigeo->buscarNumubigeo($cliente["ubigeo_id"]);
+        $departamento_id = $this->repoUbigeo->buscarUnDepartamento(substr($numubigeo[0]["numubigeo"],0,2))->toArray();
+        $provincia_id = $this->repoUbigeo->allProvincias(substr($numubigeo[0]["numubigeo"],0,4))->toArray();
+        $distrito_id = $this->repoUbigeo->allDistritos(substr($numubigeo[0]["numubigeo"],0,6))->toArray();
+
 
         $estadoCiviles = $this->repoEstadoCivil->allEnVista();
         $ocupaciones = $this->repoOcupacion->allEnVista();
         $gradoInstrucciones = $this->repoGradoInstruccion->allEnVista();
+        $departamentos = $this->repoUbigeo->allDepartamentos();
+        $provincias = $this->repoUbigeo->allProvincias(substr($numubigeo[0]["numubigeo"],0,2));
+        $distritos = $this->repoUbigeo->allDistritos(substr($numubigeo[0]["numubigeo"],0,4));
 
-        return view('venta.cliente.editarcliente',compact('cliente','estado','ocupacion_id','grados','estadoCiviles','ocupaciones','gradoInstrucciones'));
+        return view('venta.cliente.editarcliente',compact('cliente',
+            'estadoCiviles','ocupaciones','gradoInstrucciones','departamentos','provincias','distritos','departamento_id','provincia_id','distrito_id'));
 
     }
 

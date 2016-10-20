@@ -19,25 +19,35 @@
             {!! csrf_field() !!}
             <div class="col-lg-12 col-sm-12 col-xs-12 caja_formulario ">
                 <div class="col-lg-4 col-sm-12 col-xs-12">
-                    <h5 class="col-lg-12 titulos">Numero de documento</h5>
+                    <h5 class="col-lg-12 titulos">Numero Documento</h5>
                     <div class="col-lg-12 col-sm-12 col-xs-12">
-                        <input required="true" maxlength="8" onKeypress="if (event.keyCode < 45 || event.keyCode > 57) event.returnValue = false;"
-                               type="text" class="form-control" placeholder="DNI O RUC" name="nro_documento" value="">
+                        <input onkeydown="comprobarDocumento(this.value)" onkeyup="comprobarDocumento(this.value)" id="documento" required="true" maxlength="11" onKeypress="if (event.keyCode < 45 || event.keyCode > 57 ) event.returnValue = false;"
+                               type="text" class="form-control" placeholder="DNI O RUC" name="nro_documento" value="" style="font-size: 1.5rem">
+
+                    <span style="display:none; color: red" id="error_documento">N° de RUC Incorrecto</span>
                     </div>
                 </div>
+                <div class="col-lg-4 col-sm-12 col-xs-12">
+                    <h5 class="col-lg-12 titulos">Tipo Proveedor</h5>
+                    <div class="col-lg-12 col-sm-12 col-xs-12">
+                        <input id="tipo_proveedor" readonly type="text" class="form-control"/>
+                    </div>
+                </div>
+
             </div>
+
 
             <div class="col-lg-12 caja_formulario ">
                 <div class="col-lg-4 col-sm-12 col-xs-12">
-                    <h5 class="col-lg-12 titulos">Nombre del Proveedor</h5>
+                    <h5 class="col-lg-12 titulos">Razon Social</h5>
                     <div class="col-lg-12 col-sm-12 col-xs-12">
-                        <input type="text" class="form-control" placeholder="Nombre Proveedor" name="nombre" value="">
+                        <input required type="text" onkeypress="return soloLetras(event)"  maxlength=50 class="form-control" placeholder="Nombre Proveedor" name="nombre" value="">
                     </div>
                 </div>
                 <div class="col-lg-8 col-sm-12 col-xs-12">
                     <h5 class="col-lg-12 titulos">Encargado</h5>
                     <div class="col-lg-12 col-sm-12 col-xs-12">
-                        <input type="text" class="form-control" placeholder="Encargado" name="encargado" value="">
+                        <input type="text" onkeypress="return soloLetras(event)"  maxlength=50 class="form-control" placeholder="Encargado" name="encargado" value="">
                     </div>
                 </div>
 
@@ -48,28 +58,24 @@
                 <div class="col-lg-4 col-sm-12 col-xs-12">
                     <h5 class="col-lg-12 titulos">Telefono</h5>
                     <div class="col-lg-12 col-sm-12 col-xs-12">
-                        <input type="tetx" class="form-control" placeholder="nº de telefono" name="telefono" value="">
+                        <input type="tetx" class="form-control" placeholder="nº de telefono" name="telefono" value=""  maxlength="20" onKeypress="if (event.keyCode < 45 || event.keyCode > 57) event.returnValue = false;">
                     </div>
                 </div>
                 <div class="col-lg-4 col-sm-12 col-xs-12">
                     <h5 class="col-lg-12 titulos">Correo Electronico</h5>
                     <div class="col-lg-12 col-sm-12 col-xs-12">
-                        <input type="email" class="form-control" placeholder="ejemplo@ejemplo.com" name="correo" value="">
+                        <input type="email" maxlength=50 class="form-control" placeholder="ejemplo@ejemplo.com" name="correo" value="">
                     </div>
                 </div>
                 <div class="col-lg-4 col-sm-12 col-xs-12">
-                    <h5 class="col-lg-12 titulos">Direccion</h5>
+                    <h5 class="col-lg-12 titulos">Sitio WEB</h5>
                     <div class="col-lg-12 col-sm-12 col-xs-12">
-                        <input type="text" class="form-control" placeholder="Direccion" name="direccion" value="">
+                        <input type="text" maxlength=50 class="form-control" placeholder="www.misitio.com" name="correo" value="">
                     </div>
                 </div>
+
             </div>
-            <div class="col-lg-12 caja_formulario">
-                <div class="col-lg-4 col-sm-12 col-xs-12">
-                    <h5 class="col-lg-12 titulos">DATOS UBICACION</h5>
-                    <hr class="col-lg-4 linea-titulo" size="2px"  style="margin-bottom: 0rem" color="green"/>
-                 </div>
-            </div>
+
             <div class="col-lg-12 caja_formulario">
                 <div class="col-lg-4 col-sm-12 col-xs-12">
                     <h5 class="col-lg-12 titulos">Departamento</h5>
@@ -85,7 +91,7 @@
                 <div class="col-lg-4 col-sm-12 col-xs-12">
                     <h5 class="col-lg-12 titulos">Provincia</h5>
                     <div class="col-lg-12 col-sm-12  col-xs-12">
-                        <select id="provincias" disabled class="form-control" name="provincia" onchange="buscarDistrito(this.value);">
+                        <select id="provincias" readonly class="form-control" onchange="buscarDistrito(this.value);">
                             <option value="">Seleccione Provincia</option>
                         </select>
                     </div>
@@ -93,98 +99,24 @@
                 <div class="col-lg-4 col-sm-12 col-xs-12">
                     <h5 class="col-lg-12 titulos">Distrito</h5>
                     <div class="col-lg-12 col-sm-12  col-xs-12">
-                        <select id="distritos" disabled class="form-control" name="distrito">
-                            <option value="0">Seleccione Distrito</option>
+                        <select id="distritos" readonly class="form-control" name="distrito">
+                            <option value="2078">Seleccione Distrito</option>
                         </select>
                     </div>
                 </div>
 
             </div>
 
-            <script>
-                function buscarProvincia(id){
-                    if(id !=0 ){
-                        $("#provincias").removeAttr('disabled');
-                        $("#provincias").empty();
-                        $("#distritos").empty();
-                        $("#distritos").append('<option value="0">Seleccione Distrito</option>');
-                        var nro_ubigeo = id.substr(0,3)
-                        var url = '{{route("buscar.provincia")}}';
-                        $.ajax({
-                            type: 'GET',
-                            url: url,
-                            data: {
-                                ubigeo : nro_ubigeo
-                            },
-                            dataType: 'JSON',
-//
-                            error: function() {
-                                $("#respuesta").html('<div> Ha surgido un error. </div>');
-                            },
-                            success: function(respuesta){
-                                for(var i in respuesta){
-                                    if(respuesta[i].provincia == ''){
-                                        $("#provincias").append('<option value="0">Seleccione Provincia</option>');
-                                    }
-                                    else{
-                                        $('#provincias').append('<option value="'+respuesta[i].numubigeo+'">'+respuesta[i].provincia+'</option>');
-                                    }
-                                }
-                            }
-                        });
+            <div class="col-lg-12 caja_formulario">
+                <div class="col-lg-8 col-sm-12 col-xs-12">
+                    <h5 class="col-lg-12 titulos">Direccion</h5>
+                    <div class="col-lg-12 col-sm-12 col-xs-12">
+                        <input type="text" maxlength=50 class="form-control" placeholder="Direccion" name="direccion" value="">
+                    </div>
+                </div>
+            </div>
 
 
-                    }
-                    else{
-                        $("#provincias").attr('disabled','true');
-                        $("#provincias").empty();
-                        $("#provincias").append('<option value="0">Seleccione Provincia</option>');
-                        $("#distritos").attr('disabled','true');
-                        $("#distritos").empty();
-                        $("#distritos").append('<option value="0">Seleccione Distrito</option>');
-
-                    }
-                }
-
-                function buscarDistrito(id){
-                    if(id !=0 ){
-                        $("#distritos").removeAttr('disabled');
-                        $("#distritos").empty();
-                        var nro_ubigeo = id.substr(0,4)
-                        var url = '{{route("buscar.distrito")}}';
-                        $.ajax({
-                            type: 'GET',
-                            url: url,
-                            data: {
-                                ubigeo : nro_ubigeo
-                            },
-                            dataType: 'JSON',
-//
-                            error: function() {
-                                $("#respuesta").html('<div> Ha surgido un error. </div>');
-                            },
-                            success: function(respuesta){
-                                for(var i in respuesta){
-                                    if(respuesta[i].distrito == ''){
-                                        $("#distritos").append('<option value="'+respuesta[i].numubigeo+'">Seleccione Distrito</option>');
-                                    }
-                                    else{
-                                        $('#distritos').append('<option value="'+respuesta[i].numubigeo+'">'+respuesta[i].distrito+'</option>');
-                                    }
-                                }
-                            }
-                        });
-
-
-                    }
-                    else{
-                        $("#distritos").attr('disabled','true');
-                        $("#distritos").empty();
-                        $("#distritos").append('<option value="0">Seleccione Distrito</option>');
-
-                    }
-                }
-            </script>
 
             <div class="col-lg-12 caja_formulario">
                 <div class="col-lg-4 col-sm-12 col-xs-12">

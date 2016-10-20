@@ -27,9 +27,9 @@ class ModeloRepository implements BaseRepositoryInterface {
             ->orderBy('id', 'desc')
             ->paginate(5);
     }
-    public function allEnProducto(){
-        return $this->marca
-            ->where('estado','1')
+    public function allEnProducto($marca){
+        return $this->marca->select('id','descripcion')
+            ->whereRaw("marca_id = '".$marca."' ")
             ->orderBy('id', 'desc')
             ->get();
     }
@@ -37,6 +37,7 @@ class ModeloRepository implements BaseRepositoryInterface {
     // añadir nueva marca
     public function nuevoModelo($inputs){
         $registro = new Modelo();
+        $registro->marca_id = $inputs['marca_id'];
         $registro->descripcion = $inputs['descripcion_modelo'];
         $registro->estado = $inputs['estado'];
         $registro->save();
@@ -51,6 +52,7 @@ class ModeloRepository implements BaseRepositoryInterface {
 //    actualizar categoria
     public function actualizarModelo($datos){
         $registro = Modelo::find($datos['marca_id']);
+        $registro->marca_id = $datos['marca'];
         $registro->descripcion = $datos['descripcion_marca'];
         $registro->estado = $datos['estado'];
         $registro->save();
@@ -64,7 +66,7 @@ class ModeloRepository implements BaseRepositoryInterface {
         $registro->save();
     }
 
-    //    busqueda marca
+    //    busqueda modelo
     public function busquedaModelo($descripcion,$estado){
         return $this->marca->select()
 //            ->whereRaw("estado = '" .$estado. "'OR descripcion = '" .$descripcion . "'")
@@ -75,6 +77,19 @@ class ModeloRepository implements BaseRepositoryInterface {
             ->paginate(4);
     }
 
+//    seleccionar la marca de un modelo
+    public function marcaDeModelo($id){
+        return $this->marca->select('marca_id')
+            ->where("id",$id)
+            ->get();
+    }
+//    seleccionar todos los modelos que pertenescan al id
+
+    public function modelosDeMarca($id_marca){
+        return $this->marca->select()
+            ->where("marca_id",$id_marca)
+            ->get();
+    }
 
 
 

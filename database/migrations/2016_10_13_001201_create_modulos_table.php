@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateModelosTable extends Migration
+class CreateModulosTable extends Migration
 {
     /**
      * Run the migrations.
@@ -12,13 +12,15 @@ class CreateModelosTable extends Migration
      */
     public function up()
     {
-        Schema::create('modelos', function (Blueprint $table) {
+        Schema::create('modulos', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('marca_id')->unsigned();
-            $table->string('descripcion',50);
+            $table->string('descripcion');
+            $table->string('id_padre',10)->nullable();
+            $table->string('url')->nullable();
+            $table->string('nivel')->nullable();
+            $table->string('icono')->nullable();
             $table->boolean('estado');
             $table->timestamps();
-            $table->softDeletes();
         });
     }
 
@@ -29,6 +31,6 @@ class CreateModelosTable extends Migration
      */
     public function down()
     {
-        Schema::drop('modelos');
+        Schema::drop('modulos');
     }
 }

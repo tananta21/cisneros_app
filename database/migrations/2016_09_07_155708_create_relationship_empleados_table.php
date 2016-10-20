@@ -30,9 +30,9 @@ class CreateRelationshipEmpleadosTable extends Migration
                 ->references('id')->on('ocupaciones')
                 ->onDelete('cascade');
 
-//            $table->foreign('ubigeo_id')
-//                ->references('id')->on('ubigeos')
-//                ->onDelete('cascade');
+            $table->foreign('ubigeo_id')
+                ->references('id')->on('ubigeos')
+                ->onDelete('cascade');
         });
     }
 
@@ -44,7 +44,7 @@ class CreateRelationshipEmpleadosTable extends Migration
             $table->dropForeign('empleados_estado_civil_id_foreign');
             $table->dropForeign('empleados_grado_instruccion_id_foreign');
             $table->dropForeign('empleados_ocupacion_id_foreign');
-//            $table->dropForeign('users_ubigeo_id_foreign');
+            $table->dropForeign('empleados_ubigeo_id_foreign');
         });
     }
 }

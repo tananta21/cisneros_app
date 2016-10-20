@@ -29,7 +29,7 @@
                     <div class="col-lg-12">
                         <div  style="padding-left: 0" class="col-lg-10">
                             <div class="col-lg-1 col-sm-2" >
-                                <a type="button" href="/seguridad/empleado" class="btn btn-default" > <i class="fa fa-refresh fa-1x"></i></a>
+                                <a type="button" href="/seguridad/empleado" class="btn btn-default" >Refr <i class="fa fa-refresh fa-1x"></i></a>
                             </div>
                             <div class="col-lg-6 col-sm-2">
                                 {{--<input type="text" class="form-control" placeholder="Serie Producto" name="serie" value>--}}
@@ -54,11 +54,7 @@
             </div>
             {!! Form::close() !!}
         </div>
-        {{--<div class="col-lg-3" style="margin-bottom: 3rem">--}}
-            {{--<a href="/seguridad/nuevoempleado"  type="button" class="btn btn-primary btn-sm"> NUEVO EMPLEADO--}}
-                {{--<i class="fa fa-plus-square fa-1px" style="margin-left: 1rem"></i>--}}
-            {{--</a>--}}
-        {{--</div>--}}
+
         <div class="box-body table-responsive no-padding col-lg-12">
             <table class="table table-hover">
                 <thead>
@@ -79,7 +75,7 @@
                         <td>{{$empleado->id}}</td>
                         <td>{{$empleado->tipoEmpleado->descripcion}}</td>
                         <td>{{$empleado->nro_documento}}</td>
-                        <td>{{$empleado->name}}</td>
+                        <td><span id="empleado{{$empleado->id}}">{{$empleado->name}}</span></td>
                         <td>{{$empleado->email}}</td>
                         <td>{{$empleado->telefono}}</td>
                         @if($empleado->estado == 1)
@@ -89,7 +85,7 @@
                         @endif
                         @if($empleado->estado == 1)
                             <td>
-                                <a onclick="eliminarCategoria('{{$empleado->id}}')" style="font-size: 2rem; padding: 0.5rem; color: red; cursor: pointer; margin-right: 2rem">
+                                <a  onclick="eliminar('{{$empleado->id}}')"  {{--onclick="eliminarCategoria('{{$empleado->id}}')"--}} style="font-size: 2rem; padding: 0.5rem; color: red; cursor: pointer; margin-right: 2rem">
                                     <input type="hidden" name="eliminarmarca{{$empleado->id}}" value="{{$empleado->id}}"/>
                                     <i class="fa fa-trash"></i>
                                 </a>
@@ -115,33 +111,40 @@
         {!! $empleados->appends(Request::all())->render() !!}
     </div>
 
+    <script>
+        function eliminar(id) {
+            $(document).ready(function(){
+                var texto = $("#empleado"+id).text();
+                $("#texto_eliminar").text(texto);
+                $("#confirmar").attr('onclick','eliminarCategoria('+id+')');
+                $("#drop_porveedor").modal('show');
+            });
+        }
+    </script>
+
     {{--javascript eliminar: cambiar de estado--}}
-    <script type="text/javascript">
+        <script type="text/javascript">
         function eliminarCategoria(id){
-            if (confirm('¿Estas seguro que desea desactivar......... '+$('#texto'+id).text()+'?')) {
-                $(document).ready(function(){
-                    var id_marca = $(this).find( 'input[name="eliminarmarca'+id+'"]' ).val();
-                    var url = '{{route("eliminar.empleado")}}';
-                    $.ajax({
-                        type: 'GET',
-                        url: url,
-                        data: {
-                            id: id_marca
-                        },
-                        dataType: 'JSON',
+            $(document).ready(function(){
+                var id_marca = $(this).find( 'input[name="eliminarmarca'+id+'"]' ).val();
+                var url = '{{route("eliminar.empleado")}}';
+                $.ajax({
+                    type: 'GET',
+                    url: url,
+                    data: {
+                        id: id_marca
+                    },
+                    dataType: 'JSON',
 
-                        error: function() {
-                            $("#respuesta").html('<div> Ha surgido un error. </div>');
-                        },
+                    error: function() {
+                        $("#respuesta").html('<div> Ha surgido un error. </div>');
+                    },
 
-                        success: function(){
-                            $("#filaproducto"+id).remove();;
-                        }
-                    });
+                    success: function(){
+                        $("#filaproducto"+id).remove();;
+                    }
                 });
-            }
-            else{
-            }
+            });
         };
     </script>
 

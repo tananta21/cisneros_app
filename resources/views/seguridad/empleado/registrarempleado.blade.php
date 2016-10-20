@@ -46,13 +46,13 @@
                 <div class="col-lg-4 col-sm-12 col-xs-12">
                     <h5 class="col-lg-12 titulos">Nombres del Empleado</h5>
                     <div class="col-lg-12 col-sm-12 col-xs-12">
-                        <input type="text" class="form-control" placeholder="Nombre Cliente" name="nombre" value="">
+                        <input type="text" onkeypress="return soloLetras(event)"  maxlength=50 class="form-control" placeholder="Nombre Cliente" name="nombre" value="">
                     </div>
                 </div>
                 <div class="col-lg-8 col-sm-12 col-xs-12">
                     <h5 class="col-lg-12 titulos">Apellidos del Empleado</h5>
                     <div class="col-lg-12 col-sm-12 col-xs-12">
-                        <input type="text" class="form-control" placeholder="Apallido Cliente" name="apellido" value="">
+                        <input type="text" onkeypress="return soloLetras(event)"  maxlength=50 class="form-control" placeholder="Apallido Cliente" name="apellido" value="">
                     </div>
                 </div>
 
@@ -63,21 +63,21 @@
                 <div class="col-lg-4 col-sm-12 col-xs-12">
                     <h5 class="col-lg-12 titulos">Telefono</h5>
                     <div class="col-lg-12 col-sm-12 col-xs-12">
-                        <input type="tetx" class="form-control" placeholder="nº de telefono" name="telefono" value="">
+                        <input type="tetx" class="form-control" placeholder="nº de telefono" name="telefono" value=""  maxlength="20" onKeypress="if (event.keyCode < 45 || event.keyCode > 57) event.returnValue = false;">
                     </div>
                 </div>
                 <div class="col-lg-4 col-sm-12 col-xs-12">
                     <h5 class="col-lg-12 titulos">Correo Electronico</h5>
                     <div class="col-lg-12 col-sm-12 col-xs-12">
-                        <input type="email" class="form-control" placeholder="ejemplo@ejemplo.com" name="correo" value="">
+                        <input type="email"  maxlength=50 class="form-control" placeholder="ejemplo@ejemplo.com" name="correo" value="">
                     </div>
                 </div>
-                {{--<div class="col-lg-4 col-sm-12 col-xs-12">--}}
-                    {{--<h5 class="col-lg-12 titulos">Direccion</h5>--}}
-                    {{--<div class="col-lg-12 col-sm-12 col-xs-12">--}}
-                        {{--<input type="text" class="form-control" placeholder="Direccion" name="direccion" value="">--}}
-                    {{--</div>--}}
-                {{--</div>--}}
+                <div class="col-lg-4 col-sm-12 col-xs-12">
+                    <h5 class="col-lg-12 titulos">Direccion</h5>
+                    <div class="col-lg-12 col-sm-12 col-xs-12">
+                        <input type="text" maxlength="60"class="form-control" placeholder="Direccion" name="direccion" value="">
+                    </div>
+                </div>
             </div>
 
             <div class="col-lg-12 caja_formulario">
@@ -128,6 +128,66 @@
                     </div>
                 </div>
             </div>
+            <div class="col-lg-12 caja_formulario">
+                <div class="col-lg-4 col-sm-12 col-xs-12">
+                    <h5 class="col-lg-12 titulos">Numero de Hijos</h5>
+                    <div class="col-lg-12 col-sm-12 col-xs-12">
+                        <input type="number" class="form-control"  maxlength="2"placeholder="Numero de hijos" name="numero_hijos" value="">
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-sm-12 col-xs-12">
+                    <h5 class="col-lg-12 titulos">Nivel Salarial</h5>
+                    <div class="col-lg-12 col-sm-12  col-xs-12">
+                        <select class="form-control" name="sueldo_cliente">
+                            <option value="1">0-1000</option>
+                            <option value="2">1000-2000</option>
+                            <option value="1">2000-3000</option>
+                            <option value="2">3000-4000</option>
+                            <option value="2">4000-5000</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-12 caja_formulario">
+                <div class="col-lg-4 col-sm-12 col-xs-12">
+                    <h5 class="col-lg-12 titulos">Departamento</h5>
+                    <div class="col-lg-12 col-sm-12  col-xs-12">
+                        <select class="form-control" name="departamento" onchange="buscarProvincia(this.value);">
+                            <option value="0">Seleccione Departamento</option>
+                            @foreach($departamentos as $departamento)
+                                <option value="{{$departamento->numubigeo}}">{{$departamento->departamento}}</option>
+                            @endforeach
+                        </select>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-sm-12 col-xs-12">
+                    <h5 class="col-lg-12 titulos">Provincia</h5>
+                    <div class="col-lg-12 col-sm-12  col-xs-12">
+                        <select id="provincias" readonly class="form-control" onchange="buscarDistrito(this.value);">
+                            <option value="">Seleccione Provincia</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-sm-12 col-xs-12">
+                    <h5 class="col-lg-12 titulos">Distrito</h5>
+                    <div class="col-lg-12 col-sm-12  col-xs-12">
+                        <select id="distritos" readonly class="form-control" name="distrito">
+                            <option value="2080">Seleccione Distrito</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-12 caja_formulario">
+                <div class="col-lg-4 col-sm-12 col-xs-12">
+                    <h5 class="col-lg-12 titulos">Fecha de nacimiento</h5>
+                    <div class="col-lg-12 col-sm-12 col-xs-12">
+                        <input type="date" class="form-control" placeholder="fecha nacimiento" name="fecha_nacimiento" value="">
+                     </div>
+                </div>
+            </div>
 
             <div class="col-lg-12 caja_formulario">
                 <div class="col-lg-4 col-sm-12 col-xs-12">
@@ -138,15 +198,6 @@
                     </div>
                 </div>
             </div>
-
-            {{--<div class="col-lg-12 caja_formulario">--}}
-                {{--<div class="col-lg-4 col-sm-12 col-xs-12">--}}
-                    {{--<h5 class="col-lg-12 titulos">Fecha de nacimiento</h5>--}}
-                    {{--<div class="col-lg-12 col-sm-12 col-xs-12">--}}
-                        {{--<input type="date" class="form-control" placeholder="fecha nacimiento" name="fecha_nacimiento" value="">--}}
-                    {{--</div>--}}
-                {{--</div>--}}
-            {{--</div>--}}
 
 
             <div class="col-lg-12 col-sm-12 col-xs-12  caja-botones-formulario ">

@@ -32,6 +32,7 @@ class DatabaseSeeder extends Seeder
          $this->call('ClienteTableSeeder');
          $this->call('VentaTableSeeder');
          $this->call('CompraTableSeeder');
+         $this->call('ModuloTableSeeder');
 
         Model::reguard();
     }

@@ -26,34 +26,10 @@ class ProveedorController extends Controller
         return view('compra.proveedor.listaproveedor', compact('proveedores'));
     }
 
-    public function registrarProveedor(){
+    public function nuevoProveedor(){
         $departamentos = $this->repoUbigeo->allDepartamentos();
         return view('compra.proveedor.registrarproveedor', compact('departamentos'));
     }
-
-    public function buscarProvincia(){
-
-       $ubigeo = Input::get('ubigeo');
-       $provincias = $this->repoUbigeo->allProvincias($ubigeo);
-        if (empty($provincias)) {
-            return 0;
-        } else {
-            return response()->json($provincias);
-        }
-    }
-
-    public function buscarDistrito(){
-
-        $ubigeo = Input::get('ubigeo');
-        $provincias = $this->repoUbigeo->allDistritos($ubigeo);
-        if (empty($provincias)) {
-            return 0;
-        } else {
-            return response()->json($provincias);
-        }
-    }
-
-
 
     public function create()
     {
@@ -65,7 +41,16 @@ class ProveedorController extends Controller
     public function edit($id)
     {
         $proveedor = $this->repoProveedor->find($id);
-        return view('compra.proveedor.editarproveedor', compact('proveedor'));
+        $numubigeo = $this->repoUbigeo->buscarNumubigeo($proveedor["ubigeo_id"]);
+        $departamento_id = $this->repoUbigeo->buscarUnDepartamento(substr($numubigeo[0]["numubigeo"],0,2))->toArray();
+        $provincia_id = $this->repoUbigeo->allProvincias(substr($numubigeo[0]["numubigeo"],0,4))->toArray();
+        $distrito_id = $this->repoUbigeo->allDistritos(substr($numubigeo[0]["numubigeo"],0,6))->toArray();
+
+
+        $departamentos = $this->repoUbigeo->allDepartamentos();
+        $provincias = $this->repoUbigeo->allProvincias(substr($numubigeo[0]["numubigeo"],0,2));
+        $distritos = $this->repoUbigeo->allDistritos(substr($numubigeo[0]["numubigeo"],0,4));
+        return view('compra.proveedor.editarproveedor', compact('proveedor','departamentos','provincias','distritos','departamento_id','provincia_id','distrito_id'));
     }
 
     public function update(Request $request, $id)

@@ -16,15 +16,14 @@ class CreateProductosTable extends Migration
             $table->increments('id');
             $table->integer('tipo_producto_id')->unsigned();
             $table->integer('categoria_id')->unsigned();
-            $table->integer('marca_id')->unsigned();
             $table->integer('modelo_id')->unsigned();
-            $table->string('serie',30);
-            $table->string('nombre',30);
+            $table->string('serie',50);
+            $table->string('nombre');
             $table->decimal('precio');
             $table->decimal('stock_actual');
             $table->decimal('stock_minimo');
             $table->decimal('stock_maximo');
-            $table->string('descripcion',30);
+            $table->string('descripcion');
             $table->boolean('estado');
             $table->timestamps();
             $table->softDeletes();

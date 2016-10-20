@@ -24,7 +24,7 @@
                         <select class="form-control" name="tipo_empleado">
                             <option value="1" selected> Seleccione Tipo Empleado</option>
                             @foreach($tipoEmpleados as $tipoEmpleado)
-                                @if($tipoEmpleado->id == $tipo)
+                                @if($tipoEmpleado->id == $empleado->tipo_empleado_id)
                                 <option value="{{$tipoEmpleado->id}}" selected>{{$tipoEmpleado->descripcion}}</option>
                                 @else
                                     <option value="{{$tipoEmpleado->id}}" selected>{{$tipoEmpleado->descripcion}}</option>
@@ -50,13 +50,13 @@
                 <div class="col-lg-4 col-sm-12 col-xs-12">
                     <h5 class="col-lg-12 titulos">Nombre del Cliente</h5>
                     <div class="col-lg-12 col-sm-12 col-xs-12">
-                        <input type="text" class="form-control" placeholder="Nombre Cliente" name="nombres" value="{{$empleado->name}}">
+                        <input type="text"  onkeypress="return soloLetras(event)"  maxlength=50 class="form-control" placeholder="Nombre Cliente" name="nombres" value="{{$empleado->name}}">
                     </div>
                 </div>
                 <div class="col-lg-8 col-sm-12 col-xs-12">
                     <h5 class="col-lg-12 titulos">Apellidos del Cliente</h5>
                     <div class="col-lg-12 col-sm-12 col-xs-12">
-                        <input type="text" class="form-control" placeholder="Apallido Cliente" name="apellidos" value="{{$empleado->apellidos}}">
+                        <input type="text"  onkeypress="return soloLetras(event)"  maxlength=50 class="form-control" placeholder="Apallido Cliente" name="apellidos" value="{{$empleado->apellidos}}">
                     </div>
                 </div>
 
@@ -67,21 +67,21 @@
                 <div class="col-lg-4 col-sm-12 col-xs-12">
                     <h5 class="col-lg-12 titulos">Telefono</h5>
                     <div class="col-lg-12 col-sm-12 col-xs-12">
-                        <input type="tetx" class="form-control" placeholder="nº de telefono" name="telefono" value="{{$empleado->telefono}}">
+                        <input type="tetx" maxlength="20" onKeypress="if (event.keyCode < 45 || event.keyCode > 57) event.returnValue = false;" class="form-control" placeholder="nº de telefono" name="telefono" value="{{$empleado->telefono}}">
                     </div>
                 </div>
                 <div class="col-lg-4 col-sm-12 col-xs-12">
                     <h5 class="col-lg-12 titulos">Correo Electronico</h5>
                     <div class="col-lg-12 col-sm-12 col-xs-12">
-                        <input type="email" class="form-control" placeholder="ejemplo@ejemplo.com" name="correo" value="{{$empleado->email}}">
+                        <input type="email" maxlength="50"class="form-control" placeholder="ejemplo@ejemplo.com" name="correo" value="{{$empleado->email}}">
                     </div>
                 </div>
-                {{--<div class="col-lg-4 col-sm-12 col-xs-12">--}}
-                    {{--<h5 class="col-lg-12 titulos">Direccion</h5>--}}
-                    {{--<div class="col-lg-12 col-sm-12 col-xs-12">--}}
-                        {{--<input type="text" class="form-control" placeholder="Direccion" name="direccion" value="{{$empleado->direccion}}">--}}
-                    {{--</div>--}}
-                {{--</div>--}}
+                <div class="col-lg-4 col-sm-12 col-xs-12">
+                    <h5 class="col-lg-12 titulos">Direccion</h5>
+                    <div class="col-lg-12 col-sm-12 col-xs-12">
+                        <input type="text" maxlength="60"class="form-control" placeholder="Direccion" name="direccion" value="{{$empleado->direccion}}">
+                    </div>
+                </div>
             </div>
 
             <div class="col-lg-12 caja_formulario">
@@ -91,8 +91,8 @@
                     <div class="col-lg-12 col-sm-12  col-xs-12">
                         <select class="form-control" name="estado_civil">
                             @foreach($estadoCiviles as $estadoCivil)
-                                @if($estadoCivil->id == $estado)
-                                    <option value="1" selected>{{$estadoCivil->descripcion}}</option>
+                                @if($estadoCivil->id == $empleado->estado_civil_id)
+                                    <option value="{{$estadoCivil->id}}" selected>{{$estadoCivil->descripcion}}</option>
                                 @else
                                     <option value="{{$estadoCivil->id}}">{{$estadoCivil->descripcion}}</option>
                                 @endif
@@ -105,9 +105,9 @@
                     <h5 class="col-lg-12 titulos">Grado de instruccion</h5>
                     <div class="col-lg-12 col-sm-12  col-xs-12">
                         <select class="form-control" name="grado_instruccion">
-                            @foreach($gradoInstrucciones as $grado)
-                                @if($grado->id == $grados)
-                                    <option value="1" selected>{{$grado->descripcion}}</option>
+                            @foreach($gradoInstrucciones as $grado )
+                                @if($grado->id == $empleado->grado_instruccion_id)
+                                    <option value="{{$grado->id}}" selected>{{$grado->descripcion}}</option>
                                 @else
                                     <option value="{{$grado->id}}">{{$grado->descripcion}}</option>
                                 @endif
@@ -122,13 +122,90 @@
                         <select class="form-control" name="ocupacion">
 
                             @foreach($ocupaciones as $ocupacion)
-                                @if($ocupacion->id == $ocupacion_id)
-                                    <option value="1" selected>{{$ocupacion->descripcion}}</option>
+                                @if($ocupacion->id == $empleado->ocupacion_id)
+                                    <option value="{{$ocupacion->id}}" selected>{{$ocupacion->descripcion}}</option>
                                 @else
                                     <option value="{{$ocupacion->id}}">{{$ocupacion->descripcion}}</option>
                                 @endif
                             @endforeach
                         </select>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-12 caja_formulario">
+                <div class="col-lg-4 col-sm-12 col-xs-12">
+                    <h5 class="col-lg-12 titulos">Numero de Hijos</h5>
+                    <div class="col-lg-12 col-sm-12 col-xs-12">
+                        <input type="number" class="form-control"  maxlength="2"placeholder="Numero de hijos" name="numero_hijos" value="">
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-sm-12 col-xs-12">
+                    <h5 class="col-lg-12 titulos">Nivel Salarial</h5>
+                    <div class="col-lg-12 col-sm-12  col-xs-12">
+                        <select class="form-control" name="sueldo_cliente">
+                            <option value="1">0-1000</option>
+                            <option value="2">1000-2000</option>
+                            <option value="3">2000-3000</option>
+                            <option value="4">3000-4000</option>
+                            <option value="5">4000-5000</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-12 caja_formulario">
+                <div class="col-lg-4 col-sm-12 col-xs-12">
+                    <h5 class="col-lg-12 titulos">Departamento</h5>
+                    <div class="col-lg-12 col-sm-12  col-xs-12">
+                        <select class="form-control" name="departamento" onchange="buscarProvincia(this.value);">
+                            @foreach($departamentos as $departamento)
+                                @if($departamento->id == $departamento_id[0]['id'])
+                                    <option selected value="{{$departamento->numubigeo}}">{{$departamento->departamento}}</option>
+                                @else
+                                    <option value="{{$departamento->numubigeo}}">{{$departamento->departamento}}</option>
+                                @endif
+                            @endforeach
+                        </select>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-sm-12 col-xs-12">
+                    <h5 class="col-lg-12 titulos">Provincia</h5>
+                    <div class="col-lg-12 col-sm-12  col-xs-12">
+                        <select id="provincias" readonly class="form-control"  onchange="buscarDistrito(this.value);">
+                            @foreach($provincias as $provincia)
+                                @if($provincia->id == $provincia_id[0]['id'])
+                                    <option selected value="{{$provincia->numubigeo}}">{{$provincia->provincia}}</option>
+                                @else
+                                    <option value="{{$provincia->numubigeo}}">{{$provincia->provincia}}</option>
+                                @endif
+                            @endforeach
+                        </select>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-sm-12 col-xs-12">
+                    <h5 class="col-lg-12 titulos">Distrito</h5>
+                    <div class="col-lg-12 col-sm-12  col-xs-12">
+                        <select id="distritos" readonly class="form-control" name="distrito">
+                            @foreach($distritos as $distrito)
+                                @if($distrito->id == $distrito_id[0]['id'])
+                                    <option selected value="{{$distrito->id}}">{{$distrito->distrito}}</option>
+                                @else
+                                    <option value="{{$distrito->id}}">{{$distrito->distrito}}</option>
+                                @endif
+                            @endforeach
+                        </select>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="col-lg-12 caja_formulario">
+                <div class="col-lg-4 col-sm-12 col-xs-12">
+                    <h5 class="col-lg-12 titulos">Fecha de nacimiento</h5>
+                    <div class="col-lg-12 col-sm-12 col-xs-12">
+                        <input type="date" class="form-control" placeholder="fecha nacimiento" name="fecha_nacimiento" value="{{$empleado->fecha_nacimiento}}">
                     </div>
                 </div>
             </div>
@@ -147,16 +224,6 @@
                     </div>
                 </div>
             </div>
-
-            {{--<div class="col-lg-12 caja_formulario">--}}
-                {{--<div class="col-lg-4 col-sm-12 col-xs-12">--}}
-                    {{--<h5 class="col-lg-12 titulos">Fecha de nacimiento</h5>--}}
-                    {{--<div class="col-lg-12 col-sm-12 col-xs-12">--}}
-                        {{--<input type="date" class="form-control" placeholder="fecha nacimiento" name="fecha_nacimiento" value="{{$empleado->fecha_nacimiento}}">--}}
-                    {{--</div>--}}
-                {{--</div>--}}
-            {{--</div>--}}
-
 
             <div class="col-lg-12 col-sm-12 col-xs-12  caja-botones-formulario ">
                 <button type="submit" class="btn btn-primary" style="margin-right: 1rem">ACEPTAR</button>

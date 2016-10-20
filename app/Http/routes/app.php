@@ -7,9 +7,7 @@ Route::get('/logout', 'Auth\AuthController@getLogout');
 
 Route::group(['prefix'=>'/', 'middleware' => 'auth' ], function() {
 
-    Route::get('/', function () {
-        return view('index');
-    });
+        Route::get('/','IndexController@index');
 
 
 //PRODUCTOS
@@ -29,18 +27,27 @@ Route::group(['prefix'=>'/', 'middleware' => 'auth' ], function() {
             Route::post('/inventario/producto/actualizar/{id}', 'ProductoController@update' );
 
         //    eliminar producto
-            Route::get('/producto/eliminar',[
-                'as'=> 'eliminar.producto',
-                'uses'=>'ProductoController@eliminarProducto'
-            ]);
+            Route::get('/producto/eliminar',['as'=> 'eliminar.producto','uses'=>'ProductoController@eliminarProducto']);
         //    buscarProducto
-            Route::get('/buscar/producto',[
-                'as'=> 'buscar.producto',
-                'uses'=>'ProductoController@busquedaProducto'
-            ]);
+            Route::get('/buscar/producto',['as'=> 'buscar.producto','uses'=>'ProductoController@busquedaProducto' ]);
+
+    //    buscar modelo desde registrar producto y editar producto
+    Route::get('/modelo/buscar',['as'=> 'buscar.modelos','uses'=>'ProductoController@buscarModelo']);
+
+    //    registrar categoria desde producto
+    Route::get('/categoria/registrar',['as'=> 'registrar.categoriaproductos','uses'=>'ProductoController@registrarCategoria']);
+
+    //    registrar marca desde producto
+    Route::get('/marca/registrar',['as'=> 'registrar.marcaproductos','uses'=>'ProductoController@registrarMarca']);
+
+    //    registrar modelo desde producto
+    Route::get('/modelo/registrar',['as'=> 'registrar.modeloproductos','uses'=>'ProductoController@registrarModelo']);
+    // Buscar marcas para poder registrar un modelo
+    Route::get('/buscar/marcas',['as'=> 'buscar.marcas','uses'=>'ProductoController@buscarMarcas']);
 
 
-        //registrar marca
+
+    //registrar marca
                Route::post('/inventario/marca/registro','ProductoController@createMarca' );
         //registrar modelo
                Route::post('/inventario/modelo/registro','ProductoController@createModelo' );
@@ -130,7 +137,7 @@ Route::group(['prefix'=>'/', 'middleware' => 'auth' ], function() {
     //    listar proveedores
     Route::get('/compra/proveedor','ProveedorController@index');
 //    proveedor nuevo
-    Route::get('/compra/nuevoproveedor','ProveedorController@registrarProveedor');
+    Route::get('/compra/nuevoproveedor','ProveedorController@nuevoProveedor');
 
 //   Registrar proveedor
     Route::post('/compra/proveedor/registro','ProveedorController@create');
@@ -146,12 +153,6 @@ Route::group(['prefix'=>'/', 'middleware' => 'auth' ], function() {
 
 //    eliminar proveedor
     Route::get('/compra/proveedor/eliminar',['as'=> 'eliminar.proveedor','uses'=>'ProveedorController@eliminarProveedor']);
-
-//    buscar provincias
-    Route::get('/compra/proveedor/buscarprovincia',['as'=> 'buscar.provincia','uses'=>'ProveedorController@buscarProvincia']);
-
-//buscar distritos
-    Route::get('/compra/proveedor/buscardistrito',['as'=> 'buscar.distrito','uses'=>'ProveedorController@buscarDistrito']);
 
 
 //    ============================================================================
@@ -250,6 +251,8 @@ Route::group(['prefix'=>'/', 'middleware' => 'auth' ], function() {
     //      buscar tipoproducto
     Route::get('/mantenimiento/tipoproducto/buscar',['as'=> 'buscar.tipoproducto','uses'=>'MantenimientoController@buscarTipoProducto']);
 
+
+
 //    ========================================================================================
 //                           MANTENIMIENTO DE EMPLEADO_CLIENTE
 //    ===================================================================================
@@ -322,11 +325,6 @@ Route::group(['prefix'=>'/', 'middleware' => 'auth' ], function() {
     //      buscar tipoproducto
     Route::get('/mantenimiento/tipocliente/buscar',['as'=> 'buscar.tipocliente','uses'=>'MantenimientoEmpleadoController@buscarTipoCliente']);
 
-
-    //  UBIGEO---------------------------------------------------
-    Route::get('/mantenimiento/ubigeo','MantenimientoEmpleadoController@listaUbigeo');
-    //      buscar ubigeo
-    Route::get('/mantenimiento/tipocliente/buscar',['as'=> 'buscar.ubigeo','uses'=>'MantenimientoEmpleadoController@buscarUbigeo']);
 
 
 
@@ -403,6 +401,18 @@ Route::group(['prefix'=>'/', 'middleware' => 'auth' ], function() {
     Route::get('/mantenimiento/conceptomovimiento/buscar',['as'=> 'buscar.conceptomovimiento','uses'=>'MantenimientoCompraVentaController@buscarConceptoMovimiento']);
 
 
+
+
+    //  UBIGEO---------------------------------------------------
+    Route::get('/mantenimiento/ubigeo','MantenimientoEmpleadoController@listaUbigeo');
+    //      buscar ubigeo
+    Route::get('/mantenimiento/tipocliente/buscar',['as'=> 'buscar.ubigeo','uses'=>'MantenimientoEmpleadoController@buscarUbigeo']);
+
+    //    buscar provincias
+    Route::get('/ubigeo/buscarprovincia',['as'=> 'buscar.provincia','uses'=>'UbigeoController@buscarProvincia']);
+
+    //buscar distritos
+    Route::get('/ubigeo/buscardistrito',['as'=> 'buscar.distrito','uses'=>'UbigeoController@buscarDistrito']);
 
 
 

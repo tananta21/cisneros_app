@@ -12,8 +12,10 @@ class Modelo extends Model
     {
         return $this->hasMany('App\Core\Producto\Producto');
     }
-
-
+    public function marca()
+    {
+        return $this->belongsTo('App\Core\Marca\Marca');
+    }
 
 
 }

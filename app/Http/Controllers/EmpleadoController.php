@@ -7,6 +7,7 @@ use App\Core\EstadoCivil\EstadoCivilRepository;
 use App\Core\GradoInstruccion\GradoInstruccionRepository;
 use App\Core\Ocupacion\OcupacionRepository;
 use App\Core\TipoEmpleado\TipoEmpleadoRepository;
+use App\Core\Ubigeo\UbigeoRepository;
 use App\Http\Requests;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Input;
@@ -18,6 +19,7 @@ class EmpleadoController extends Controller
     protected $repoEstadoCivil;
     protected $repoOcupacion;
     protected $repoGradoInstruccion;
+    protected $repoUbigeo;
 
     public function __construct()
     {
@@ -26,6 +28,7 @@ class EmpleadoController extends Controller
         $this->repoEstadoCivil = new EstadoCivilRepository();
         $this->repoGradoInstruccion = new GradoInstruccionRepository();
         $this->repoOcupacion = new OcupacionRepository();
+        $this->repoUbigeo = new UbigeoRepository();
     }
 
     public function index()
@@ -40,8 +43,11 @@ class EmpleadoController extends Controller
         $ocupaciones = $this->repoOcupacion->allEnVista();
         $gradoInstrucciones = $this->repoGradoInstruccion->allEnVista();
         $tipoEmpleados = $this->repoTipoEmpleado->allEnVista();
-        return view('seguridad.empleado.registrarempleado', compact('tipoEmpleados', 'estadoCiviles', 'ocupaciones', 'gradoInstrucciones'));
+        $departamentos = $this->repoUbigeo->allDepartamentos();
+        return view('seguridad.empleado.registrarempleado', compact('tipoEmpleados', 'estadoCiviles', 'ocupaciones', 'gradoInstrucciones','departamentos'));
     }
+
+
 
     public function nuevoEmpleado()
     {
@@ -70,16 +76,20 @@ class EmpleadoController extends Controller
     public function edit($id)
     {
         $empleado = $this->repoEmpleado->find($id);
-        $tipo =  $empleado['tipo_empleado_id'];
-        $estado = $empleado['estado_civil_id'];
-        $grados= $empleado['grado_instruccion_id'];
-        $ocupacion_id= $empleado['ocupacion_id'];
+        $numubigeo = $this->repoUbigeo->buscarNumubigeo($empleado["ubigeo_id"]);
+        $departamento_id = $this->repoUbigeo->buscarUnDepartamento(substr($numubigeo[0]["numubigeo"],0,2))->toArray();
+        $provincia_id = $this->repoUbigeo->allProvincias(substr($numubigeo[0]["numubigeo"],0,4))->toArray();
+        $distrito_id = $this->repoUbigeo->allDistritos(substr($numubigeo[0]["numubigeo"],0,6))->toArray();
 
         $tipoEmpleados = $this->repoTipoEmpleado->allEnVista();
         $estadoCiviles = $this->repoEstadoCivil->allEnVista();
         $ocupaciones = $this->repoOcupacion->allEnVista();
         $gradoInstrucciones = $this->repoGradoInstruccion->allEnVista();
-        return view('seguridad.empleado.editarempleado',compact('empleado','estado','ocupacion_id','grados','tipo','tipoEmpleados','estadoCiviles','ocupaciones','gradoInstrucciones'));
+        $departamentos = $this->repoUbigeo->allDepartamentos();
+        $provincias = $this->repoUbigeo->allProvincias(substr($numubigeo[0]["numubigeo"],0,2));
+        $distritos = $this->repoUbigeo->allDistritos(substr($numubigeo[0]["numubigeo"],0,4));
+        return view('seguridad.empleado.editarempleado',compact('empleado','tipoEmpleados','empleados','estadoCiviles','ocupaciones','gradoInstrucciones',
+            'departamentos','provincias','distritos','departamento_id','provincia_id','distrito_id'));
     }
 
     /**

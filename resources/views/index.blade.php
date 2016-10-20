@@ -6,7 +6,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>CISNEROS SAC</title>
-    <!-- Tell the browser to be responsive to screen width -->
+
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
     <!-- Bootstrap 3.3.6 -->
     <link rel="stylesheet" href="{{url('/')}}/cisnero/css/nuestro.css">
@@ -18,9 +18,11 @@
     <link rel="stylesheet" href="{{url('/')}}/font-awesome/css/font-awesome.min.css"/>
     <!-- Theme style -->
     <link rel="stylesheet" href="{{url('/')}}/dist/css/AdminLTE.css">
+    <link rel="stylesheet" href="{{url('/')}}/datatable/jquery.dataTables.min.css">
     <!-- jQuery 2.2.0 -->
     {{--<script src="{{url('/')}}/plugins/jQuery/jQuery-2.2.0.min.js"></script>--}}
     <script src="{{url('/')}}/js/jquery-2.1.1.js"></script>
+    <script src="{{url('/')}}/datatable/jquery.dataTables.min.js"></script>
     <!-- Bootstrap 3.3.6 -->
 
     <script src="{{url('/')}}/bootstrap/js/bootstrap.min.js"></script>
@@ -44,7 +46,7 @@
     <![endif]-->
 </head>
 <!--
-BODY TAG OPTIONS:
+
 =================
 Apply one or more of the following classes to get the
 desired effect
@@ -74,7 +76,7 @@ desired effect
             <!-- mini logo for sidebar mini 50x50 pixels -->
             <span class="logo-mini"><b>M</b>C</span>
             <!-- logo for regular state and mobile devices -->
-            <span class="logo-lg"><b>Cisneros.</b>SAC</span>
+            <span class="logo-lg"><b>Cisneros </b>SAC</span>
         </a>
 
         <!-- Header Navbar -->
@@ -170,64 +172,31 @@ desired effect
                 <!-- Optionally, you can add icons to the links -->
                 {{--<li class="active"><a href="#"><i class="fa fa-link"></i> <span>Link</span></a></li>--}}
                 {{--<li><a href="#"><i class="fa fa-link"></i> <span>Another Link</span></a></li>--}}
-                <li id="modulo-inventario" class="treeview">
-                    <a href="/inventario/productos"><i class="fa fa-pencil-square-o"></i> <span>Inventario</span></a>
-                </li>
-                <li id="modulo-compra" class="treeview">
-                    <a href="/compra/compranueva"><i class="fa fa-shopping-cart"></i> <span>Compras</span> </a>
-                </li>
-                <li id="modulo-venta" class="treeview">
-                    <a href="/venta/nuevaventa"><i class="fa fa-money"></i> <span>Ventas</span> </a>
-                </li>
-                <li class="treeview">
-                    <a href="#"><i class="fa fa-bar-chart"></i> <span>Reportes</span> </a>
-                </li>
-                <li id="modulo-seguridad" class="treeview">
-                    <a href="/seguridad/empleado"><i class="fa fa-lock"></i> <span>Seguridad</span> </a>
-                </li>
-
-                <li id="modulo-mantenimiento" class="treeview">
-                    <a href="/mantenimiento/principal"><i class="fa fa-cogs"></i> <span>Mantenimientos</span> </a>
-                </li>
-                {{--<li  class="treeview">--}}
-                    {{--<a href="#">--}}
-                        {{--<i class="fa fa-cogs"></i> <span>Mantenimientos</span>--}}
-                        {{--<i class="fa fa-angle-left pull-right"></i>--}}
-                    {{--</a>--}}
-                    {{--<ul class="treeview-menu" style="display: none;">--}}
-                        {{--<li  class="">--}}
-                            {{--<a href="#"><i class="fa fa-circle-o"></i>Mant. Productos <i class="fa fa-angle-left pull-right"></i></a>--}}
-                            {{--<ul class="treeview-menu" style="display: none;">--}}
-                                {{--<li><a href="/mantenimiento/tipoproducto"><i class="fa fa-circle-o"></i>Tipo Productos</a></li>--}}
-                                {{--<li><a href="#"><i class="fa fa-circle-o"></i>Categorias</a></li>--}}
-                                {{--<li><a href="#"><i class="fa fa-circle-o"></i>Marcas</a></li>--}}
-                                {{--<li><a href="#"><i class="fa fa-circle-o"></i>Modelos</a></li>--}}
-                            {{--</ul>--}}
-                        {{--</li>--}}
-                        {{--<li class="">--}}
-                            {{--<a href="#"><i class="fa fa-user"></i>Mant. Clientes <i class="fa fa-angle-left pull-right"></i></a>--}}
-                            {{--<ul class="treeview-menu" style="display: none;">--}}
-                                {{--<li><a href="#"><i class="fa fa-circle-o"></i>Tipo Empleados</a></li>--}}
-                                {{--<li><a href="#"><i class="fa fa-circle-o"></i>Tipo Cliente</a></li>--}}
-                                {{--<li><a href="#"><i class="fa fa-circle-o"></i>Estado Civil</a></li>--}}
-                                {{--<li><a href="#"><i class="fa fa-circle-o"></i>Grado Instrucion</a></li>--}}
-                                {{--<li><a href="#"><i class="fa fa-circle-o"></i>Ocupacion</a></li>--}}
-                            {{--</ul>--}}
-                        {{--</li>--}}
-                        {{--<li class="">--}}
-                            {{--<a href="#"><i class="fa fa-shopping-cart"></i>Mant. Compras - Ventas <i class="fa fa-angle-left pull-right"></i></a>--}}
-                            {{--<ul class="treeview-menu" style="display: none;">--}}
-                                {{--<li><a href="#"><i class="fa fa-circle-o"></i>Tipo Transaccion</a></li>--}}
-                                {{--<li><a href="#"><i class="fa fa-circle-o"></i>Tipo Comprobante</a></li>--}}
-                                {{--<li><a href="#"><i class="fa fa-circle-o"></i>Tipo Pago</a></li>--}}
-                                {{--<li><a href="#"><i class="fa fa-circle-o"></i>Tipo Movimiento</a></li>--}}
-                                {{--<li><a href="#"><i class="fa fa-circle-o"></i>Concepto Movimiento</a></li>--}}
-                            {{--</ul>--}}
-                        {{--</li>--}}
-{{----}}
-                    {{--</ul>--}}
+                {{--<li id="modulo-inventario" class="treeview">--}}
+                    {{--<a href="/inventario/productos"><i class="fa fa-pencil-square-o"></i> <span>Inventario</span></a>--}}
                 {{--</li>--}}
-{{----}}
+                {{--<li id="modulo-compra" class="treeview">--}}
+                    {{--<a href="/compra/compranueva"><i class="fa fa-shopping-cart"></i> <span>Compras</span> </a>--}}
+                {{--</li>--}}
+                {{--<li id="modulo-venta" class="treeview">--}}
+                    {{--<a href="/venta/nuevaventa"><i class="fa fa-money"></i> <span>Ventas</span> </a>--}}
+                {{--</li>--}}
+                {{--<li class="treeview">--}}
+                    {{--<a href="#"><i class="fa fa-bar-chart"></i> <span>Reportes</span> </a>--}}
+                {{--</li>--}}
+                {{--<li id="modulo-seguridad" class="treeview">--}}
+                    {{--<a href="/seguridad/empleado"><i class="fa fa-lock"></i> <span>Seguridad</span> </a>--}}
+                {{--</li>--}}
+                {{--@foreach(\App\Core\Modulo\Modulo::where('id_padre',null)->get() as $modulo)--}}
+                {{--<li id="modulo-mantenimiento" class="treeview">--}}
+                    {{--<a href="/mantenimiento/principal"><i class="fa fa-cogs"></i> <span>{{$modulo->descripcion}}</span> </a>--}}
+                {{--</li>--}}
+                {{--@endforeach--}}
+
+                {{--MENU DE LOS MODULOS DEL SISTEMA--}}
+
+                 @include('partial.modulos')
+
             </ul>
 
             <script>
@@ -332,6 +301,175 @@ desired effect
         <!-- /.content -->
 
     </div>
+
+    {{--modal crear categoria--}}
+    <div class="container">        <!-- Modal crear -->
+        <div class="modal fade " id="categoria_modal" tabindex="-1" role="dialog" data-backdrop="static" aria-labelledby="gridModalLabel" aria-hidden="true">>
+            <div class="modal-dialog modal-md">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <h4 class="modal-title">Registrar Nueva Categoria</h4>
+                    </div>
+                    <div class="modal-body">
+                        {{--formulario crear--}}
+                        <div class="box box-primary">
+                            <form action="/categoria/registrar"  method="GET"  id="form-categoria"  class="form-horizontal" role="form">
+                                {!! csrf_field() !!}
+                                <div class="box-body">
+                                    <div class="form-group">
+                                        <label for="inputName" class="col-md-2 control-label">Categoria</label>
+                                        <div class="col-md-6">
+                                            <input id="idcat" required="true" maxlength="30" type="text" class="form-control"  placeholder="Nombre Categoria" name="descripcion_categoria">
+                                            <span style="font-size: 1.2rem; color: #0000ff; padding-left: 0.3rem">Maximo 30 caracteres</span>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <input id=""  type="radio"  name="estado" value="1" checked> <label style="cursor: pointer" for="activo"> Activo</label>
+                                            <input id="" type="radio" name="estado" value="0" style="margin-left: 2rem"> <label style="cursor: pointer" for="inactivo"> Inactivo </label>
+                                        </div>
+
+                                    </div>
+                                </div>
+                                <div class="box-footer" style="text-align: center">
+                                    {{--<input type="reset" class="btn btn-default" id="cancel" value="Cancelar">--}}
+                                    <button type="submit" class="btn btn-info">Guardar</button>
+                                    <button href="" class="btn btn-default" data-dismiss="modal" >Cancelar</button>
+                                </div>
+                            </form>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    {{--modal crear marca--}}
+    <div class="container">        <!-- Modal crear -->
+        <div class="modal fade " id="marca_modal" tabindex="-1" role="dialog" data-backdrop="static" aria-labelledby="gridModalLabel" aria-hidden="true">>
+            <div class="modal-dialog modal-md">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <h4 class="modal-title">Registrar Nueva Marca</h4>
+                    </div>
+                    <div class="modal-body">
+                        {{--formulario crear--}}
+                        <div class="box box-primary">
+                            <form action="/marca/registrar"  method="GET"  id="form-marca"  class="form-horizontal" role="form">
+                                <div class="box-body">
+                                    <div class="form-group">
+                                        <label for="inputName" class="col-md-2 control-label">Marca</label>
+                                        <div class="col-md-6">
+                                            <input id="idmar" required="true" maxlength="30" type="text" class="form-control"  placeholder="Nombre Marca" name="descripcion_marca">
+                                            <span style="font-size: 1.2rem; color: #0000ff; padding-left: 0.3rem">Maximo 30 caracteres</span>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <input id=""  type="radio"  name="estado" value="1" checked> <label style="cursor: pointer" for="activo"> Activo</label>
+                                            <input id="" type="radio" name="estado" value="0" style="margin-left: 2rem"> <label style="cursor: pointer" for="inactivo"> Inactivo </label>
+                                        </div>
+
+                                    </div>
+                                </div>
+                                <div class="box-footer" style="text-align: center">
+                                    {{--<input type="reset" class="btn btn-default" id="cancel" value="Cancelar">--}}
+                                    <button type="submit" class="btn btn-info">Guardar</button>
+                                    <button href="" class="btn btn-default" data-dismiss="modal" >Cancelar</button>
+                                </div>
+
+                                <!-- /.box-body -->
+                            </form>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    {{--modal crear modelo--}}
+    <div class="container">        <!-- Modal crear -->
+        <div class="modal fade " id="modelo_modal" tabindex="-1" role="dialog" data-backdrop="static" aria-labelledby="gridModalLabel" aria-hidden="true">>
+            <div class="modal-dialog modal-md">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <h4 class="modal-title">Registrar Nuevo Modelo</h4>
+                    </div>
+                    <div class="modal-body">
+                        {{--formulario crear--}}
+                        <div class="box box-primary">
+                            <form action="/modelo/registrar"  method="GET"  id="form-modelo"  class="form-horizontal" role="form">
+                                <div class="box-body">
+                                    <div class="form-group">
+                                        <label for="inputName" class="col-md-2 control-label">Modelo</label>
+                                        <div class="col-md-6">
+                                            <input id="idmod" required="true" maxlength="50" type="text" class="form-control"  placeholder="Nombre Modelo" name="descripcion_modelo">
+                                            <span style="font-size: 1.2rem; color: #0000ff; padding-left: 0.3rem">Maximo 50 caracteres</span>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <input id="activo"  type="radio"  name="estado" value="1" checked> <label style="cursor: pointer" for="activo"> Activo</label>
+                                            <input id="inactivo" type="radio" name="estado" value="0" style="margin-left: 2rem"> <label style="cursor: pointer" for="inactivo"> Inactivo </label>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="inputName" class="col-md-2 control-label">Marca</label>
+                                        <div class="col-md-6">
+                                            <select class="form-control" name="marca_id" id="marcas-modelos">
+                                                <option value="1">Seleccione Marca</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="box-footer" style="text-align: center">
+                                    {{--<input type="reset" class="btn btn-default" id="cancel" value="Cancelar">--}}
+                                    <button type="submit" class="btn btn-info">Guardar</button>
+                                    <button href="" class="btn btn-default" data-dismiss="modal" >Cancelar</button>
+                                </div>
+
+                                <!-- /.box-body -->
+                            </form>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">        <!-- Modal crear -->
+        <div class="modal fade " id="drop_porveedor" tabindex="-1" data-backdrop="static" role="dialog" aria-labelledby="gridModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-md">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+
+                    </div>
+                    <div  style="text-align: center">
+                        <h2 style="color: red" class="modal-title">Advertencia</h2>
+                    </div>
+                    <div class="modal-body">
+                        {{--formulario crear --}}
+                        <div class="box box-primary" style="border-top-color: red;">
+                            <P style="text-align: center;padding-top: 1rem;font-size:2rem">
+                                Esta seguro de eliminar a (<span  style="font-weight: bold" id="texto_eliminar"></span>)
+                            </P>
+                        </div>
+
+                        <div class="box-footer" style="text-align: center">
+                            {{--<input type="reset" class="btn btn-default" id="cancel" value="Cancelar">--}}
+                            <button  id="confirmar"  style="background: red;border: none;" class="btn btn-info" data-dismiss="modal" >Eliminar</button>
+                            <button style="background-color:#a9a9a9;border:none " href="" class="btn btn-info" data-dismiss="modal" >Cancelar</button>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    {{--script para permitir solo letras y numeros--}}
     <script type="text/javascript">
 
         function soloLetras(e) {
@@ -341,6 +479,27 @@ desired effect
             }
             tecla = String.fromCharCode(key).toLowerCase();
             letras = " áéíóúabcdefghijklmnñopqrstuvwxyzÁÉÍÓÚABCDEFGHIJKLMNÑOPQRSTUVWXYZ";
+            especiales = [8, 37, 39, 46];
+
+            tecla_especial = false
+            for(var i in especiales) {
+                if(key == especiales[i]) {
+                    tecla_especial = true;
+                    break;
+                }
+            }
+
+            if(letras.indexOf(tecla) == -1 && !tecla_especial)
+                return false;
+        }
+
+        function solonumeros(e) {
+            key = e.keyCode || e.which;
+            if(key == 46 || key == 39){
+                return false;
+            }
+            tecla = String.fromCharCode(key).toLowerCase();
+            letras = "1234567890";
             especiales = [8, 37, 39, 46];
 
             tecla_especial = false
@@ -373,137 +532,320 @@ desired effect
 
     </script>
 
-    {{--modal crear categoria--}}
-    <div class="container">        <!-- Modal crear -->
-        <div class="modal fade " id="categoria_modal" tabindex="-1" role="dialog" data-backdrop="static" aria-labelledby="gridModalLabel" aria-hidden="true">>
-            <div class="modal-dialog modal-md">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal">&times;</button>
-                        <h4 class="modal-title">Registrar Nueva Categoria</h4>
-                    </div>
-                    <div class="modal-body">
-                        {{--formulario crear--}}
-                        <div class="box box-primary">
-                            {!! Form::open(['action' => 'MantenimientoController@crearCategoria','method' => 'post', 'class' => 'form-horizontal', 'role'=>'form']) !!}
-                            <div class="box-body">
-                                <div class="form-group">
-                                    <label for="inputName" class="col-md-2 control-label">Categoria</label>
-                                    <div class="col-md-6">
-                                        <input id="idcat" onkeypress="return soloLetras(event)" required="true" maxlength="30" type="text" class="form-control"  placeholder="Nombre Categoria" name="descripcion_categoria">
-                                        <span style="font-size: 1.2rem; color: #0000ff; padding-left: 0.3rem">Maximo 30 caracteres</span>
-                                    </div>
-                                    <div class="col-md-4">
-                                        <input id="activo"  type="radio"  name="estado" value="1" checked> <label style="cursor: pointer" for="activo"> Activo</label>
-                                        <input id="inactivo" type="radio" name="estado" value="0" style="margin-left: 2rem"> <label style="cursor: pointer" for="inactivo"> Inactivo </label>
-                                    </div>
+    {{--script de ubigeos--}}
+    <script>
+        function buscarProvincia(id){
+            if(id !=0 ){
+                $("#provincias").removeAttr('readonly');
+                $("#provincias").empty();
+                $("#distritos").empty();
+                $("#distritos").append('<option value="0">Seleccione Distrito</option>');
+                var nro_ubigeo = id.substr(0,2);
+                var url = '{{route("buscar.provincia")}}';
+                $.ajax({
+                    type: 'GET',
+                    url: url,
+                    data: {
+                        ubigeo : nro_ubigeo
+                    },
+                    dataType: 'JSON',
+//
+                    error: function() {
+                        $("#respuesta").html('<div> Ha surgido un error. </div>');
+                    },
+                    success: function(respuesta){
+                        $("#provincias").attr("name","distrito");
+                        $("#distritos").removeAttr('name');
+                        for(var i in respuesta){
+                            if(respuesta[i].provincia == ''){
+                                $("#provincias").append('<option value="'+respuesta[i].id+'">Seleccione Provincia</option>');
+                            }
+                            else{
+                                $('#provincias').append('<option value="'+respuesta[i].numubigeo+'">'+respuesta[i].provincia+'</option>');
+                            }
+                        }
+                    }
+                });
 
-                                </div>
-                            </div>
-                            <div class="box-footer" style="text-align: center">
-                                {{--<input type="reset" class="btn btn-default" id="cancel" value="Cancelar">--}}
-                                <button type="submit" class="btn btn-info">Guardar</button>
-                                <button href="" class="btn btn-default" data-dismiss="modal" >Cancelar</button>
-                            </div>
 
-                            <!-- /.box-body -->
+            }
+            else{
+                $("#provincias").attr('readonly','true');
+                $("#provincias").empty();
+                $("#provincias").append('<option value="0">Seleccione Provincia</option>');
+                $("#distritos").attr('readonly','true');
+                $("#distritos").empty();
+                $("#distritos").append('<option value="0">Seleccione Distrito</option>');
 
-                            {!! Form::close() !!}
-                        </div>
+            }
+        }
 
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+        function buscarDistrito(id){
+            if(id !=0 ){
+                $("#distritos").removeAttr('readonly');
+                $("#distritos").empty();
+                var nro_ubigeo = id.substr(0,4)
+                var url = '{{route("buscar.distrito")}}';
+                $.ajax({
+                    type: 'GET',
+                    url: url,
+                    data: {
+                        ubigeo : nro_ubigeo
+                    },
+                    dataType: 'JSON',
+//
+                    error: function() {
+                        $("#respuesta").html('<div> Ha surgido un error. </div>');
+                    },
+                    success: function(respuesta){
+                        $("#distritos").attr("name","distrito");
+                        $("#provincias").removeAttr('name');
+                        for(var i in respuesta){
+                            if(respuesta[i].distrito == ''){
+                                $("#distritos").append('<option value="'+respuesta[i].id+'">Seleccione Distrito</option>');
+                            }
+                            else{
+                                $('#distritos').append('<option value="'+respuesta[i].id+'">'+respuesta[i].distrito+'</option>');
+                            }
+                        }
+                    }
+                });
 
-    {{--modal crear marca--}}
-    <div class="container">        <!-- Modal crear -->
-        <div class="modal fade " id="marca_modal" tabindex="-1" role="dialog" data-backdrop="static" aria-labelledby="gridModalLabel" aria-hidden="true">>
-            <div class="modal-dialog modal-md">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal">&times;</button>
-                        <h4 class="modal-title">Registrar Nueva Marca</h4>
-                    </div>
-                    <div class="modal-body">
-                        {{--formulario crear--}}
-                        <div class="box box-primary">
-                            {!! Form::open(['action' => 'MantenimientoController@crearMarca','method' => 'post', 'class' => 'form-horizontal', 'role'=>'form']) !!}
-                            <div class="box-body">
-                                <div class="form-group">
-                                    <label for="inputName" class="col-md-2 control-label">Marca</label>
-                                    <div class="col-md-6">
-                                        <input id="idmar" onkeypress="return soloLetras(event)" required="true" maxlength="30" type="text" class="form-control"  placeholder="Nombre Marca" name="descripcion_marca">
-                                        <span style="font-size: 1.2rem; color: #0000ff; padding-left: 0.3rem">Maximo 30 caracteres</span>
-                                    </div>
-                                    <div class="col-md-4">
-                                        <input id="activo"  type="radio"  name="estado" value="1" checked> <label style="cursor: pointer" for="activo"> Activo</label>
-                                        <input id="inactivo" type="radio" name="estado" value="0" style="margin-left: 2rem"> <label style="cursor: pointer" for="inactivo"> Inactivo </label>
-                                    </div>
 
-                                </div>
-                            </div>
-                            <div class="box-footer" style="text-align: center">
-                                {{--<input type="reset" class="btn btn-default" id="cancel" value="Cancelar">--}}
-                                <button type="submit" class="btn btn-info">Guardar</button>
-                                <button href="" class="btn btn-default" data-dismiss="modal" >Cancelar</button>
-                            </div>
+            }
+            else{
+                $("#distritos").attr('readonly','true');
+                $("#distritos").empty();
+                $("#distritos").append('<option value="0">Seleccione Distrito</option>');
 
-                            <!-- /.box-body -->
+            }
+        }
+    </script>
 
-                            {!! Form::close() !!}
-                        </div>
+    {{--script de los extends   en el registro de productos--}}
+    {{--categoria - marca - modelo--}}
+    <script>
+        $(document).ready(function() {
+            $("#form-categoria").submit(function() {
+                var form = $('#form-categoria');
+                var url = form.attr('action');
+                $.ajax({
+                    url: url,
+                    type: 'GET',
+                    data: {
+                        descripcion_categoria: $(this).find( 'input[name="descripcion_categoria"]' ).val(),
+                        estado: $(this).find( 'input:radio[name=estado]:checked' ).val()
+//                        legajo: $("#legajo").val(),
+//                            "_token": $(this).find( 'input[name="_token"]' ).val()
+                    },
+                    dataType: 'JSON',
+                    beforeSend: function() {
+                        $("#respuesta").html('Buscando Producto...');
+                    },
+                    error: function() {
+                        $("#respuesta").html('<div> Ha surgido un error. </div>');
+                    },
+                    success: function(respuesta) {
+                        $("#categorias").append('<option value="'+respuesta.id+'">'+respuesta.descripcion+'</option>');
+                        $('#idcat').val("");
+                        $('#categoria_modal').modal('hide');
 
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+                    }
+                });
+                return false;
+            });
 
-    {{--modal crear modelo--}}
-    <div class="container">        <!-- Modal crear -->
-        <div class="modal fade " id="modelo_modal" tabindex="-1" role="dialog" data-backdrop="static" aria-labelledby="gridModalLabel" aria-hidden="true">>
-            <div class="modal-dialog modal-md">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal">&times;</button>
-                        <h4 class="modal-title">Registrar Nuevo Modelo</h4>
-                    </div>
-                    <div class="modal-body">
-                        {{--formulario crear--}}
-                        <div class="box box-primary">
-                            {!! Form::open(['action' => 'MantenimientoController@crearModelo','method' => 'post', 'class' => 'form-horizontal', 'role'=>'form']) !!}
-                            <div class="box-body">
-                                <div class="form-group">
-                                    <label for="inputName" class="col-md-2 control-label">Modelo</label>
-                                    <div class="col-md-6">
-                                        <input id="idmod" onkeypress="return soloLetras(event)" required="true" maxlength="50" type="text" class="form-control"  placeholder="Nombre Modelo" name="descripcion_modelo">
-                                        <span style="font-size: 1.2rem; color: #0000ff; padding-left: 0.3rem">Maximo 30 caracteres</span>
-                                    </div>
-                                    <div class="col-md-4">
-                                        <input id="activo"  type="radio"  name="estado" value="1" checked> <label style="cursor: pointer" for="activo"> Activo</label>
-                                        <input id="inactivo" type="radio" name="estado" value="0" style="margin-left: 2rem"> <label style="cursor: pointer" for="inactivo"> Inactivo </label>
-                                    </div>
+            $("#form-marca").submit(function() {
+                var form = $('#form-marca');
+                var url = form.attr('action');
+                $.ajax({
+                    url: url,
+                    type: 'GET',
+                    data: {
+                        descripcion_marca: $(this).find( 'input[name="descripcion_marca"]' ).val(),
+                        estado: $(this).find( 'input:radio[name=estado]:checked' ).val()
+//                        legajo: $("#legajo").val(),
+//                            "_token": $(this).find( 'input[name="_token"]' ).val()
+                    },
+                    dataType: 'JSON',
+                    beforeSend: function() {
+                        $("#respuesta").html('Buscando Producto...');
+                    },
+                    error: function() {
+                        $("#respuesta").html('<div> Ha surgido un error. </div>');
+                    },
+                    success: function(respuesta) {
+                        $("#marcas").append('<option value="'+respuesta.id+'">'+respuesta.descripcion+'</option>');
+                        $('#idmar').val("");
+                        $('#marca_modal').modal('hide');
 
-                                </div>
-                            </div>
-                            <div class="box-footer" style="text-align: center">
-                                {{--<input type="reset" class="btn btn-default" id="cancel" value="Cancelar">--}}
-                                <button type="submit" class="btn btn-info">Guardar</button>
-                                <button href="" class="btn btn-default" data-dismiss="modal" >Cancelar</button>
-                            </div>
+                    }
+                });
+                return false;
+            });
 
-                            <!-- /.box-body -->
+            $("#form-modelo").submit(function() {
+                var form = $('#form-modelo');
+                var url = form.attr('action');
+                $.ajax({
+                    url: url,
+                    type: 'GET',
+                    data: {
+                        descripcion_modelo: $(this).find( 'input[name="descripcion_modelo"]' ).val(),
+                        marca_id:$(this).find('select[name=marca_id]').val(),
+                        estado: $(this).find( 'input:radio[name=estado]:checked' ).val()
+//                        legajo: $("#legajo").val(),
+//                            "_token": $(this).find( 'input[name="_token"]' ).val()
+                    },
+                    dataType: 'JSON',
+                    beforeSend: function() {
+                        $("#respuesta").html('Buscando Producto...');
+                    },
+                    error: function() {
+                        $("#respuesta").html('<div> Ha surgido un error. </div>');
+                    },
+                    success: function(respuesta) {
+//                        $("#marcas").append('<option value="'+respuesta.id+'">'+respuesta.descripcion+'</option>');
+                        $('#idmod').val("");
+                        $('#modelo_modal').modal('hide');
 
-                            {!! Form::close() !!}
-                        </div>
+                        var id = ($('#marcas').val());
+                        window.onload = buscarModelo(id) ;
 
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+                    }
+                });
+                return false;
+            });
+
+        });
+    </script>
+
+    {{--script solo numeros con dos decimales--}}
+    <script LANGUAGE="JavaScript">
+        function NumCheck(e, field) {
+            key = e.keyCode ? e.keyCode : e.which
+            // backspace
+            if (key == 8) return true
+            // 0-9
+            if (key > 47 && key < 58) {
+                if (field.value == "") return true
+                regexp = /.[0-9]{4}$/
+                return !(regexp.test(field.value))
+            }
+            // .
+            if (key == 46) {
+                if (field.value == "") return false
+                regexp = /^[0-9]+$/
+                return regexp.test(field.value)
+            }
+            // other key
+            return false
+
+        }
+    </script>
+
+
+    {{--script buscar modelos en registrar producto--}}
+    <script>
+        function buscarModelo(id){
+            if(id !=1 ){
+                $("#modelos").removeAttr('readonly');
+//                $("#agregar_modelo").css('display','block');
+                $("#modelos").empty();
+
+                var nro_ubigeo = id;
+                var url = '{{route("buscar.modelos")}}';
+                $.ajax({
+                    type: 'GET',
+                    url: url,
+                    data: {
+                        marca : nro_ubigeo
+                    },
+                    dataType: 'JSON',
+                    //
+                    error: function() {
+                        $("#respuesta").html('<div> Ha surgido un error. </div>');
+                    },
+                    success: function(respuesta){
+
+                        if(jQuery.isEmptyObject(respuesta)){
+                            $("#modelos").append('<option value="1">No Existen Modelos</option>');
+                        }
+                        else{
+                            $("#modelos").append('<option value="1">Seleccione Modelo</option>');
+                            for(var i in respuesta){
+                                $('#modelos').append('<option value="'+respuesta[i].id+'">'+respuesta[i].descripcion+'</option>');
+
+                            }
+                        }
+                    }
+                });
+            }
+            else{
+                $("#modelos").empty();
+                $("#modelos").attr('readonly','true');
+//                $("#agregar_modelo").css('display','none');
+                $("#modelos").append('<option value="1">Seleccione Modelo</option>');
+            }
+        }
+
+    </script>
+
+    {{--script buscar marcas en registrar modelo en producto--}}
+    <script>
+        function buscarMarcas(){
+            var url = '{{route("buscar.marcas")}}';
+            $("#marcas-modelos").empty();
+            $.ajax({
+                type: 'GET',
+                url: url,
+                data: {
+
+                },
+                dataType: 'JSON',
+                //
+                error: function() {
+                    $("#respuesta").html('<div> Ha surgido un error. </div>');
+                },
+                success: function(respuesta){
+
+                    $("#modelo_modal").modal('show');
+
+                    if(jQuery.isEmptyObject(respuesta)){
+                        $("#marcas-modelos").append('<option value="1">No Existen Marcas</option>');
+                    }
+                    else{
+                        $("#marcas-modelos").append('<option value="1">Seleccione Marcas</option>');
+                        for(var i in respuesta){
+                            $('#marcas-modelos').append('<option value="'+respuesta[i].id+'">'+respuesta[i].descripcion+'</option>');
+
+                        }
+                    }
+                }
+            });
+        }
+    </script>
+
+    {{--SCRIPT COMPROBAR DOCUMENTO DE PROVEEDOR--}}
+    <script>
+        function comprobarDocumento(val){
+            if(val.length == 2){
+                if(val ==10 ){
+                    $("#tipo_proveedor").val("NATURAL");
+                    $("#error_documento").css("display","none");
+                }
+                else if(val ==20 ){
+                    $("#tipo_proveedor").val("JURIDICO");
+                    $("#error_documento").css("display","none");
+                }
+                else{
+                    console.log("error");
+                    $("#error_documento").css("display","block");
+                    $("#documento").val("");
+                }
+            }
+        }
+    </script>
 
     <!-- Control Sidebar -->
     <aside class="control-sidebar control-sidebar-dark" >
@@ -520,10 +862,7 @@ desired effect
 <!-- REQUIRED JS SCRIPTS -->
 
 
-<!-- Optionally, you can add Slimscroll and FastClick plugins.
-     Both of these plugins are recommended to enhance the
-     user experience. Slimscroll is required when using the
-     fixed layout. -->
+
 {{--<script src="{{url('/')}}/js/jquery.min.js"></script>--}}
 </body>
 </html>

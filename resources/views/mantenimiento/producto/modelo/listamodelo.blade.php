@@ -38,6 +38,7 @@
                 <tbody>
                 <tr>
                     <th>N° ID</th>
+                    <th>MARCA</th>
                     <th>NOMBRE</th>
                     <th>ESTADO</th>
                     <th>ACCIONES</th>
@@ -45,6 +46,7 @@
                 @foreach($marcas as $marca)
                     <tr data-id="{{$marca->id}}" id="filaproducto{{$marca->id}}">
                         <td>{{$marca->id}}</td>
+                        <td>{{$marca->marca->descripcion}}</td>
                         <td><span id="texto{{$marca->id}}">{{$marca->descripcion}}</span></td>
                         @if($marca->estado == 1)
                             <td>Activo <i class="fa fa-check-circle-o " style="color: green"></i></td>
@@ -77,7 +79,7 @@
         </div>
     </div>
     <div class="col-lg-4" style="text-align: center; margin-top: 10rem">
-        <button data-toggle="modal" data-target="#modelo_modal" class="btn btn-primary">Agregar Nuevo Modelo</button>
+        <a onclick="buscarMarcas()" class="btn btn-primary">Agregar Nuevo Modelo</a>
     </div>
     <div class="col-lg-7" style="display: flex; flex-direction: row; justify-content: center;">
         {!! $marcas->appends(Request::all())->render() !!}
@@ -177,53 +179,6 @@
 
 
 @endsection
-{{--modal crear modelo--}}
-{{--<div class="container">        <!-- Modal crear -->--}}
-    {{--<div class="modal fade " id="modelo_modal" tabindex="-1" role="dialog" data-backdrop="static" aria-labelledby="gridModalLabel" aria-hidden="true">>--}}
-        {{--<div class="modal-dialog modal-md">--}}
-            {{--<div class="modal-content">--}}
-                {{--<div class="modal-header">--}}
-                    {{--<button type="button" class="close" data-dismiss="modal">&times;</button>--}}
-                    {{--<h4 class="modal-title">Registrar Nuevo Modelo</h4>--}}
-                {{--</div>--}}
-                {{--<div class="modal-body">--}}
-                    {{--formulario crear--}}
-                    {{--<div class="box box-primary">--}}
-                        {{--{!! Form::open(['action' => 'MantenimientoController@crearModelo','method' => 'post', 'class' => 'form-horizontal', 'role'=>'form']) !!}--}}
-                        {{--<div class="box-body">--}}
-                            {{--<div class="form-group">--}}
-                                {{--<label for="inputName" class="col-md-2 control-label">Modelo</label>--}}
-                                {{--<div class="col-md-6">--}}
-                                    {{--<input id="texto_descripcion" onkeypress="return soloLetras(event)"  required="true" maxlength="50" type="text" class="form-control"  placeholder="Nombre Modelo" name="descripcion_modelo">--}}
-                                    {{--<span style="font-size: 1.2rem; color: #0000ff; padding-left: 0.3rem">Maximo 50 caracteres</span>--}}
-                                {{--</div>--}}
-                                {{--<div class="col-md-4">--}}
-                                    {{--<input id="activo"  type="radio"  name="estado" value="1" checked> <label style="cursor: pointer" for="activo"> Activo</label>--}}
-                                    {{--<input id="inactivo" type="radio" name="estado" value="0" style="margin-left: 2rem"> <label style="cursor: pointer" for="inactivo"> Inactivo </label>--}}
-                                {{--</div>--}}
-
-                            {{--</div>--}}
-                        {{--</div>--}}
-                        {{--<div class="box-footer" style="text-align: center">--}}
-                            {{--<input type="reset" class="btn btn-default" id="cancel" value="Cancelar">--}}
-                            {{--<button type="submit" class="btn btn-info">Guardar</button>--}}
-                            {{--<button href="" class="btn btn-default" data-dismiss="modal" >Cancelar</button>--}}
-                        {{--</div>--}}
-
-                        {{--<!-- /.box-body -->--}}
-
-                        {{--{!! Form::close() !!}--}}
-                    {{--</div>--}}
-
-                {{--</div>--}}
-            {{--</div>--}}
-        {{--</div>--}}
-    {{--</div>--}}
-{{--</div>--}}
-
-
-
-
 {{--modal editar --}}
 <div class="container">        <!-- Modal crear -->
     <div class="modal fade " id="editar_marca_modal" tabindex="-1" data-backdrop="static" role="dialog" aria-labelledby="gridModalLabel" aria-hidden="true">>
@@ -249,7 +204,20 @@
                                     <input id="activo"  type="radio"  name="estado" value="1" checked> <label style="cursor: pointer" for="activo"> Activo</label>
                                     <input id="inactivo" type="radio" name="estado" value="0" style="margin-left: 2rem"> <label style="cursor: pointer" for="inactivo"> Inactivo </label>
                                 </div>
-
+                            </div>
+                            <div class="form-group">
+                                <label for="inputName" class="col-md-2 control-label">Marca</label>
+                                <div class="col-md-6">
+                                    <select class="form-control" name="marca">
+                                        @foreach($listaMarca as $lista)
+                                            @if($lista->id == 1)
+                                                <option value="1" selected> Seleccione Marca</option>
+                                            @else
+                                                <option value="{{$lista->id}}">{{$lista->descripcion}}</option>
+                                            @endif
+                                        @endforeach
+                                    </select>
+                                </div>
                             </div>
                         </div>
                         <div class="box-footer" style="text-align: center">
@@ -267,5 +235,6 @@
             </div>
         </div>
     </div>
+</div>
 </div>
 
