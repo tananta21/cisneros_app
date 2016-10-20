@@ -24,7 +24,7 @@ class OcupacionRepository implements BaseRepositoryInterface
         return $this->ocupacion
             ->where('estado', '1')
             ->orderBy('id', 'desc')
-            ->paginate(5);
+            ->get();
     }
 
     public function allEnVista()
@@ -75,7 +75,7 @@ class OcupacionRepository implements BaseRepositoryInterface
         return $this->ocupacion->select()
             ->where('estado', $estado)
             ->orderBy('id', 'desc')
-            ->paginate(4);
+            ->get();
     }
 
 

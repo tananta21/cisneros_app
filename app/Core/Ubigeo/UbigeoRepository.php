@@ -18,14 +18,14 @@ class UbigeoRepository implements BaseRepositoryInterface {
     }
     public function all()
     {
-        return $this->ubigeo->paginate(7);
+        return $this->ubigeo->get();
     }
 
     public function buscarUbigeo($dato){
         return $this->ubigeo->select()
             ->where('numubigeo','LIKE',"$dato%" )
             ->orderBy('numubigeo', 'asc')
-            ->paginate(7);
+            ->get();
     }
 
     public function allDepartamentos(){

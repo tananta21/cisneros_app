@@ -26,7 +26,7 @@ class TipoEmpleadoRepository implements BaseRepositoryInterface {
         return $this->tipoEmpleado
             ->where('estado','1')
             ->orderBy('id', 'desc')
-            ->paginate(5);
+            ->get();
     }
     public function allEnVista(){
         return $this->tipoEmpleado
@@ -72,7 +72,7 @@ class TipoEmpleadoRepository implements BaseRepositoryInterface {
 //            ->orderBy('id', 'desc')
             ->where('estado',$estado )
             ->orderBy('id', 'desc')
-            ->paginate(4);
+            ->get();
     }
 
 

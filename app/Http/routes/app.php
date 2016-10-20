@@ -406,7 +406,7 @@ Route::group(['prefix'=>'/', 'middleware' => 'auth' ], function() {
     //  UBIGEO---------------------------------------------------
     Route::get('/mantenimiento/ubigeo','MantenimientoEmpleadoController@listaUbigeo');
     //      buscar ubigeo
-    Route::get('/mantenimiento/tipocliente/buscar',['as'=> 'buscar.ubigeo','uses'=>'MantenimientoEmpleadoController@buscarUbigeo']);
+    Route::get('/mantenimiento/buscar/ubigeo',['as'=> 'buscar.ubigeo','uses'=>'MantenimientoEmpleadoController@buscarUbigeo']);
 
     //    buscar provincias
     Route::get('/ubigeo/buscarprovincia',['as'=> 'buscar.provincia','uses'=>'UbigeoController@buscarProvincia']);

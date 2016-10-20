@@ -26,7 +26,7 @@ class GradoInstruccionRepository implements BaseRepositoryInterface
         return $this->gradoinstruccion
             ->where('estado', '1')
             ->orderBy('id', 'desc')
-            ->paginate(5);
+            ->get();
     }
 
     public function allEnVista()
@@ -77,7 +77,7 @@ class GradoInstruccionRepository implements BaseRepositoryInterface
         return $this->gradoinstruccion->select()
             ->where('estado', $estado)
             ->orderBy('id', 'desc')
-            ->paginate(4);
+            ->get();
     }
 
 

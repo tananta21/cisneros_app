@@ -80,8 +80,8 @@ class MantenimientoController extends Controller
 //      MARCAS
 //    mantenimiento marca: listar marca
     public function listarMarca(){
-        $marcas = $this->repoMarca->all();
-        return view('mantenimiento.producto.marca.listamarca', compact('marcas'));
+        $categorias = $this->repoMarca->all();
+        return view('mantenimiento.producto.marca.listamarca', compact('categorias'));
     }
     //  crear marca
     public function crearMarca(){
@@ -114,8 +114,8 @@ class MantenimientoController extends Controller
     public function buscarMarca(){
         $descripcion = Input::get('descripcionmarca');
         $estado = Input::get('estado');
-        $marcas = $this->repoMarca->busquedaMarca($descripcion,$estado);
-        return view('mantenimiento.producto.marca.listamarca', compact('marcas'));
+        $categorias = $this->repoMarca->busquedaMarca($descripcion,$estado);
+        return view('mantenimiento.producto.marca.listamarca', compact('categorias'));
     }
 
 //    ==========================================================================================================================
@@ -161,8 +161,9 @@ class MantenimientoController extends Controller
     public function buscarModelo(){
         $descripcion = Input::get('descripcionmarca');
         $estado = Input::get('estado');
+        $listaMarca = $this->repoMarca->allEnProducto();
         $marcas = $this->repoModelo->busquedaModelo($descripcion,$estado);
-        return view('mantenimiento.producto.modelo.listamodelo', compact('marcas'));
+        return view('mantenimiento.producto.modelo.listamodelo', compact('marcas','listaMarca'));
     }
 
 //    ==========================================================================================================================

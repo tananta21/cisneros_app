@@ -25,7 +25,7 @@ class ModeloRepository implements BaseRepositoryInterface {
         return $this->marca
             ->where('estado','1')
             ->orderBy('id', 'desc')
-            ->paginate(5);
+            ->get();
     }
     public function allEnProducto($marca){
         return $this->marca->select('id','descripcion')
@@ -74,7 +74,7 @@ class ModeloRepository implements BaseRepositoryInterface {
             ->where('estado',$estado )
             ->orwhere('descripcion',$descripcion )
             ->orderBy('id', 'desc')
-            ->paginate(4);
+            ->get();
     }
 
 //    seleccionar la marca de un modelo

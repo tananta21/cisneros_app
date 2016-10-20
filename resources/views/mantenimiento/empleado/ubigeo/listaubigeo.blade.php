@@ -2,19 +2,6 @@
 @section('vistainicial')
 @stop
 @section('menu_modulos')
-    <div>
-        <ul class="nav nav-tabs">
-            <li class="nav-item">
-                <a class="nav-link" href="/venta/nuevaventa">Nueva Venta</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="/venta/lista">Lista Ventas</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="/venta/cliente">Clientes</a>
-            </li>
-        </ul>
-    </div>
     <script>
         $(document).ready(function () {
             $("#modulo-mantenimiento").addClass('active');
@@ -25,43 +12,45 @@
     <div id="lista_cliente">
         <div class="col-lg-12">
             <div class="col-lg-10">
-                <h3 class="col-lg-4" style="margin-bottom: 0.5rem;padding-left: 0">Lista Ubigeos</h3>
+                <h3 class="col-lg-4" style="margin-bottom: 0.5rem;padding-left: 0">Gestor de Ubigeos</h3>
             </div>
 
         </div>
         <hr class="col-lg-12 linea-titulo" size="5px" color="green"/>
-        <div class="col-lg-12" style="margin-top: 0.5rem">
+        {{--<div class="col-lg-12" style="margin-top: 0.5rem">--}}
 
-            {!! Form::model(Request::all(),['route'=>'buscar.ubigeo','method' => 'get', 'class' => 'form-horizontal', 'role'=>'form']) !!}
-            <div class="box-body">
-                <div class=" form-group">
-                    <div class="col-lg-12">
-                        <div  {{--style="padding-left: 0rem"--}} class="col-lg-10">
-                            <button type="submit" class="btn btn-primary btn-sm col-lg-1"> Buscar
-                                <i class="fa fa-search fa-1px" style="margin-left: 1rem"></i>
-                            </button>
-                            <div class="col-lg-3 col-sm-2">
-                                {{--<input type="text" class="form-control" placeholder="Serie Producto" name="serie" value>--}}
-                                {!!form::text('cliente',null,['class'=>'form-control', 'placeholder'=>'Ingrese N° de Ubigeo','required'=>'true'])!!}
-                            </div>
-                            <div class="col-lg-1 col-sm-2">
-                                <a type="button" href="/mantenimiento/ubigeo" class="btn btn-default" > <i class="fa fa-refresh fa-1x"></i></a>
-                            </div>
-                        </div>
+        {{--{!! Form::model(Request::all(),['route'=>'buscar.ubigeo','method' => 'get', 'class' => 'form-horizontal', 'role'=>'form']) !!}--}}
+        {{--<div class="box-body">--}}
+        {{--<div class=" form-group">--}}
+        {{--<div class="col-lg-12">--}}
+        {{--<div  --}}{{--style="padding-left: 0rem"--}}{{-- class="col-lg-10">--}}
+        {{--<button type="submit" class="btn btn-primary btn-sm col-lg-1"> Buscar--}}
+        {{--<i class="fa fa-search fa-1px" style="margin-left: 1rem"></i>--}}
+        {{--</button>--}}
+        {{--<div class="col-lg-3 col-sm-2">--}}
+        {{--<input type="text" class="form-control" placeholder="Serie Producto" name="serie" value>--}}
+        {{--{!!form::text('cliente',null,['class'=>'form-control', 'placeholder'=>'Ingrese N° de Ubigeo','required'=>'true'])!!}--}}
+        {{--</div>--}}
+        {{--<div class="col-lg-1 col-sm-2">--}}
+        {{--<a type="button" href="/mantenimiento/ubigeo" class="btn btn-default" > <i class="fa fa-refresh fa-1x"></i></a>--}}
+        {{--</div>--}}
+        {{--</div>--}}
 
-                    </div>
-                </div>
-            </div>
-            {!! Form::close() !!}
+        {{--</div>--}}
+        {{--</div>--}}
+        {{--</div>--}}
+        {{--{!! Form::close() !!}--}}
 
-        </div>
+        {{--</div>--}}
 
     </div>
 
+
+
     <div class="box-body table-responsive no-padding col-lg-12">
-        <table class="table table-hover">
+        <table id="marca" class=" table table-hover display" cellspacing="0" width="100%">
             <thead>
-            <tr >
+            <tr>
                 <th>N° ID</th>
                 <th>N° UBIGEO</th>
                 <th>DEPARTAMENTO</th>
@@ -86,6 +75,35 @@
             </tbody>
         </table>
     </div>
+
+    {{--<div class="box-body table-responsive no-padding col-lg-12">--}}
+    {{--<table class="table table-hover">--}}
+    {{--<thead>--}}
+    {{--<tr >--}}
+    {{--<th>N° ID</th>--}}
+    {{--<th>N° UBIGEO</th>--}}
+    {{--<th>DEPARTAMENTO</th>--}}
+    {{--<th>PROVINCIA</th>--}}
+    {{--<th>DISTRITO</th>--}}
+    {{--<th>ESTADO</th>--}}
+    {{--<th>VER</th>--}}
+    {{--</tr>--}}
+    {{--</thead>--}}
+    {{--<tbody>--}}
+    {{--@foreach($ubigeos as $ubigeo)--}}
+    {{--<tr data-id="{{$ubigeo->id}}" id="filaproducto{{$ubigeo->id}}">--}}
+    {{--<td>{{$ubigeo->id}}</td>--}}
+    {{--<td><span id="numubigeo{{$ubigeo->id}}">{{$ubigeo->numubigeo}}</span></td>--}}
+    {{--<td><span id="departamento{{$ubigeo->id}}">{{$ubigeo->departamento}}</span></td>--}}
+    {{--<td><span id="provincia{{$ubigeo->id}}">{{$ubigeo->provincia}}</span></td>--}}
+    {{--<td><span id="distrito{{$ubigeo->id}}">{{$ubigeo->distrito}}</span></td>--}}
+    {{--<td><i class="fa fa-check-circle-o " style="color: green"></i></td>--}}
+    {{--<td><a  onclick="verUbigeo('{{$ubigeo->id}}')" href="" data-toggle="modal" data-target="#ver_ubigeo_modal"><i class="fa fa-eye " style="color: red; font-size: 2.4rem"></i></a></td>--}}
+    {{--</tr>--}}
+    {{--@endforeach--}}
+    {{--</tbody>--}}
+    {{--</table>--}}
+    {{--</div>--}}
     <script>
         function verUbigeo(id){
             var texto_numubigeo = $("#numubigeo"+id).text();
@@ -99,9 +117,9 @@
         }
     </script>
 
-    <div class="col-lg-12" style="display: flex; flex-direction: row; justify-content: center;">
-        {!! $ubigeos->appends(Request::all())->render() !!}
-    </div>
+    {{--<div class="col-lg-12" style="display: flex; flex-direction: row; justify-content: center;">--}}
+    {{--{!! $ubigeos->appends(Request::all())->render() !!}--}}
+    {{--</div>--}}
 
 @endsection
 @endsection

@@ -22,7 +22,7 @@ class MarcaRepository implements BaseRepositoryInterface {
         return $this->marca
             ->where('estado','1')
             ->orderBy('id', 'desc')
-            ->paginate(5);
+            ->get();
     }
     public function allEnProducto(){
         return $this->marca
@@ -69,7 +69,7 @@ class MarcaRepository implements BaseRepositoryInterface {
             ->where('estado',$estado )
             ->orwhere('descripcion',$descripcion )
             ->orderBy('id', 'desc')
-            ->paginate(4);
+            ->get();
     }
 
 

@@ -23,7 +23,7 @@ class TipoClienteRepository implements BaseRepositoryInterface
         return $this->tipoCliente
             ->where('estado','1')
             ->orderBy('id', 'desc')
-            ->paginate(5);
+            ->get();
     }
     public function allEnVista(){
         return $this->tipoCliente
@@ -67,7 +67,7 @@ class TipoClienteRepository implements BaseRepositoryInterface
         return $this->tipoCliente->select()
             ->where('estado',$estado )
             ->orderBy('id', 'desc')
-            ->paginate(4);
+            ->get();
     }
 
 

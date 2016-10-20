@@ -17,10 +17,20 @@
 
 
 @section('contenido_modulos')
-    <h3 class="col-lg-10" style="margin-bottom: 0.5rem">Gestor de Productos y Servicios.</h3>
+    <div class="col-lg-12">
+        <h3 class="col-lg-8" style="margin-bottom: 0.5rem;">Gestor de Productos y Servicios.</h3>
 
+        <div  style="text-align: center; color: #000000; font-weight: bold">
+            @if($tipo_producto['id']==1)
+                <h4 class="col-lg-2" style="background:#75cda7; padding: 0.5rem"> Productos</h4>
+                <h4 class="col-lg-2" style=" padding: 0.5rem"> Servicios</h4>
+            @else
+                <h4 class="col-lg-2" style=" padding: 0.5rem"> Productos</h4>
+                <h4 class="col-lg-2" style="background:#cdabbb; padding: 0.5rem"> Servicios</h4>
+            @endif
+        </div>
 
-
+    </div>
     <hr class="col-lg-12 linea-titulo" size="5px" color="green"/>
 
 
@@ -61,7 +71,7 @@
                 </div>
                 <div class="col-lg-5">
                     <a data-toggle="modal" href="/inventario/producto/nuevoproducto" style="font-size: 1.6rem">
-                        <i class="fa fa-plus-circle fa-2x" aria-hidden="true"></i> <span style="color: #000000">Agregar Nuevo</span>
+                        <i class="fa fa-plus-circle fa-2x" aria-hidden="true"></i> <span style="color: #000000">Agregar Nuevo Registro</span>
                     </a>
                 </div>
             </div>
@@ -69,34 +79,31 @@
         </div>
         {!! Form::close() !!}
     </div>
-
-
-    <div class="box-body table-responsive no-padding col-lg-12">
-        <script>
-            $(document).ready(function() {
-                        $('#example').DataTable( {
-                            "lengthChange": false,
-                            "lengthMenu": [[5, 10, 15, -1], [5, 10, 15, "All"]],
-                            "order": [[ 0, "desc" ]],
-                            "language": {
-                                "sSearch": "<span style='font-size: 1.5rem'>Buscar </span>",
-                                "lengthMenu": "Mostrar _MENU_ resultados",
-                                "emptyTable":     "No se encontraron resultados",
-                                "info":           "Se Muestran _START_ a _END_ de _TOTAL_ resultados",
-                                "infoEmpty":      "Se muestran 0 resultados",
-                                "paginate": {
-                                    "first":      "Primero",
-                                    "last":       "Ultimo",
-                                    "next":       "Siguiente",
-                                    "previous":   "Anterior"
-                                }
+    <script>
+        $(document).ready(function() {
+                    $('#example').DataTable( {
+                        "lengthChange": false,
+                        "lengthMenu": [[5, 10, 15, -1], [5, 10, 15, "All"]],
+                        "order": [[ 0, "desc" ]],
+                        "language": {
+                            "sSearch": "<span style='font-size: 1.5rem'>Buscar </span>",
+                            "lengthMenu": "Mostrar _MENU_ resultados",
+                            "emptyTable":     "No se encontraron resultados",
+                            "info":           "Se Muestran _START_ a _END_ de _TOTAL_ resultados",
+                            "infoEmpty":      "Se muestran 0 resultados",
+                            "paginate": {
+                                "first":      "Primero",
+                                "last":       "Ultimo",
+                                "next":       "Siguiente",
+                                "previous":   "Anterior"
                             }
-                        });
-                    }
-            );
-        </script>
+                        }
+                    });
+                }
+        );
+    </script>
+    <div class="box-body table-responsive no-padding col-lg-12">
         @if($tipo_producto['id']==1)
-            <div class="box-body table-responsive no-padding col-lg-12">
                 <table id="example" class=" table table-hover display" cellspacing="0" width="100%">
                 <thead>
                 <tr>
@@ -114,7 +121,7 @@
                 <tbody>
                 @foreach($productos as $producto)
                     <tr data-id="{{$producto->id}}" id="filaproducto{{$producto->id}}">
-                        <td>{{$producto->tipoProducto->descripcion}}</td>
+                        <td><span style="background:#75cda7">{{$producto->tipoProducto->descripcion}}</span></td>
                         <td>{{$producto->serie}}</td>
                         <td><span id="texto{{$producto->id}}">{{$producto->nombre}}</span></td>
                         <td><span>S/. </span>{{$producto->precio}}</td>
@@ -147,10 +154,8 @@
                 @endforeach
                 </tbody>
             </table>
-        </div>
 
         @else
-            <div class="box-body table-responsive no-padding col-lg-12">
                 <table id="example" class=" table table-hover display" cellspacing="0" width="100%">
                 <thead>
                 <tr>
@@ -165,7 +170,7 @@
                 <tbody>
                 @foreach($productos as $producto)
                     <tr data-id="{{$producto->id}}" id="filaproducto{{$producto->id}}">
-                        <td>{{$producto->tipoProducto->descripcion}}</td>
+                        <td><span style="background:#cdabbb">{{$producto->tipoProducto->descripcion}}</span></td>
                         <td>{{$producto->serie}}</td>
                         <td><span id="texto{{$producto->id}}">{{$producto->nombre}}</span></td>
                         <td><span>S/. </span>{{$producto->precio}}</td>
@@ -195,9 +200,9 @@
                 @endforeach
                 </tbody>
             </table>
-            </div>
         @endif
     </div>
+
 
 
     <script>

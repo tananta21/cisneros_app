@@ -24,7 +24,7 @@ class TipoProductoRepository implements BaseRepositoryInterface {
         return $this->tipoProducto
             ->where('estado','1')
             ->orderBy('id', 'desc')
-            ->paginate(5);
+            ->get();
     }
     public function allEnProducto(){
         return $this->tipoProducto
@@ -71,7 +71,7 @@ class TipoProductoRepository implements BaseRepositoryInterface {
             ->where('estado',$estado )
             ->orderBy('id', 'desc')
             ->orderBy('id', 'desc')
-            ->paginate(4);
+            ->get();
     }
 
 

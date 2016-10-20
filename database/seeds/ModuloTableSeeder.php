@@ -71,6 +71,15 @@ class ModuloTableSeeder extends Seeder
             'estado' => 1,
         ]);
 
+        //        Mant. Productos : 7
+        \DB::table('modulos')->insert([
+            'descripcion' => 'Mant. Productos',
+            'id_padre' => '6',
+            'url'=>'#',
+            'nivel'=>"2",
+            'estado' => 1,
+        ]);
+
 
 
 
@@ -116,7 +125,6 @@ class ModuloTableSeeder extends Seeder
                     'estado' => 1,
                 ]);
 
-<<<<<<< HEAD
 //        VENTAS 3
 
                 \DB::table('modulos')->insert([
@@ -179,6 +187,8 @@ class ModuloTableSeeder extends Seeder
 
 //  MANTENIMIENTOS 6
 
+
+
                 \DB::table('modulos')->insert([
                     'descripcion' => 'Categorias',
                     'id_padre' => '6',
@@ -194,7 +204,7 @@ class ModuloTableSeeder extends Seeder
                     'estado' => 1,
                 ]);
                 \DB::table('modulos')->insert([
-                    'descripcion' => 'Marcas',
+                    'descripcion' => 'Modelos',
                     'id_padre' => '6',
                     'url'=>'/mantenimiento/modelo',
                     'nivel'=>"2",
@@ -202,14 +212,6 @@ class ModuloTableSeeder extends Seeder
                 ]);
 
 
-
-
-
-
-
-=======
-//        COMPRAS 2
->>>>>>> 2bae92185f269508d3cbb6a2d3620dcd290ce084
 
 
     }

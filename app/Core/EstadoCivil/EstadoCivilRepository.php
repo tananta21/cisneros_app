@@ -22,7 +22,7 @@ class EstadoCivilRepository implements BaseRepositoryInterface {
         return $this->estadocivil
             ->where('estado','1')
             ->orderBy('id', 'desc')
-            ->paginate(5);
+            ->get();
     }
     public function allEnVista(){
         return $this->estadocivil
@@ -66,7 +66,7 @@ class EstadoCivilRepository implements BaseRepositoryInterface {
         return $this->estadocivil->select()
             ->where('estado',$estado )
             ->orderBy('id', 'desc')
-            ->paginate(4);
+            ->get();
     }
 
 

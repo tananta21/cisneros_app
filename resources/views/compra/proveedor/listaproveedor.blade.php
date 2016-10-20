@@ -39,7 +39,7 @@
         </div>
         <div class="col-lg-6">
             <a data-toggle="modal" href="/compra/nuevoproveedor" style="font-size: 1.6rem">
-                <i class="fa fa-plus-circle fa-2x" aria-hidden="true"></i> <span style="color: #000000">Agregar Proveedor</span>
+                <i class="fa fa-plus-circle fa-2x" aria-hidden="true"></i> <span style="color: #000000">Agregar Nuevo Proveedor</span>
             </a>
         </div>
     </div>

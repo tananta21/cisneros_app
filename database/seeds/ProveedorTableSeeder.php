@@ -12,7 +12,7 @@ class ProveedorTableSeeder extends Seeder
         $faker = Faker::create();
         for ($i = 0; $i < 50; $i++) {
             Proveedor::create(array(
-//                'ubigeo_id'=>$faker->numberBetween(1, 2000),
+                'ubigeo_id'=>$faker->numberBetween(1, 2000),
                 'nro_documento' => $faker->numberBetween(8),
                 'nombre' => $faker->firstName,
                 'telefono' => $faker->phoneNumber,
