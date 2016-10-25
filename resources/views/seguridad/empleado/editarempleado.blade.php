@@ -27,7 +27,7 @@
                                 @if($tipoEmpleado->id == $empleado->tipo_empleado_id)
                                 <option value="{{$tipoEmpleado->id}}" selected>{{$tipoEmpleado->descripcion}}</option>
                                 @else
-                                    <option value="{{$tipoEmpleado->id}}" selected>{{$tipoEmpleado->descripcion}}</option>
+                                    <option value="{{$tipoEmpleado->id}}">{{$tipoEmpleado->descripcion}}</option>
                                 @endif
                             @endforeach
                         </select>
@@ -62,6 +62,22 @@
 
             </div>
 
+            <div class="col-lg-12 caja_formulario">
+                <div class="col-lg-4 col-sm-12 col-xs-12">
+                    <h5 class="col-lg-12 titulos">Correo Electronico</h5>
+                    <div class="col-lg-12 col-sm-12 col-xs-12">
+                        <input type="email" maxlength="50"class="form-control" placeholder="ejemplo@ejemplo.com" name="correo" value="{{$empleado->email}}">
+                    </div>
+                </div>
+                <div class="col-lg-4 col-sm-12 col-xs-12">
+                    <h5 class="col-lg-12 titulos">Contraseña de Usuario</h5>
+                    <div class="col-lg-12 col-sm-12 col-xs-12">
+                        <input type="password" required  maxlength=50 class="form-control" placeholder="Nueva Contraseña" name="password" >
+                    </div>
+                </div>
+
+            </div>
+
 
             <div class="col-lg-12 caja_formulario">
                 <div class="col-lg-4 col-sm-12 col-xs-12">
@@ -70,13 +86,7 @@
                         <input type="tetx" maxlength="20" onKeypress="if (event.keyCode < 45 || event.keyCode > 57) event.returnValue = false;" class="form-control" placeholder="nº de telefono" name="telefono" value="{{$empleado->telefono}}">
                     </div>
                 </div>
-                <div class="col-lg-4 col-sm-12 col-xs-12">
-                    <h5 class="col-lg-12 titulos">Correo Electronico</h5>
-                    <div class="col-lg-12 col-sm-12 col-xs-12">
-                        <input type="email" maxlength="50"class="form-control" placeholder="ejemplo@ejemplo.com" name="correo" value="{{$empleado->email}}">
-                    </div>
-                </div>
-                <div class="col-lg-4 col-sm-12 col-xs-12">
+                <div class="col-lg-8 col-sm-12 col-xs-12">
                     <h5 class="col-lg-12 titulos">Direccion</h5>
                     <div class="col-lg-12 col-sm-12 col-xs-12">
                         <input type="text" maxlength="60"class="form-control" placeholder="Direccion" name="direccion" value="{{$empleado->direccion}}">

@@ -68,7 +68,7 @@
                 <div class="col-lg-4 col-sm-12 col-xs-12">
                     <h5 class="col-lg-12 titulos">Contraseña de Usuario</h5>
                     <div class="col-lg-12 col-sm-12 col-xs-12">
-                        <input type="password"  maxlength=50 class="form-control" placeholder="Contraseña" name="password" >
+                        <input type="password" required  maxlength=50 class="form-control" placeholder="Contraseña" name="password" >
                     </div>
                 </div>
 
@@ -91,6 +91,21 @@
             </div>
 
             <div class="col-lg-12 caja_formulario">
+
+                <div class="col-lg-4 col-sm-12 col-xs-12">
+                    <h5 class="col-lg-12 titulos">Estado Civil</h5>
+                    <div class="col-lg-12 col-sm-12  col-xs-12">
+                        <select class="form-control" name="estado_civil">
+                            @foreach($estadoCiviles as $estadoCivil)
+                                @if($estadoCivil->id == 1)
+                                    <option value="1" selected> Seleccione Estado Civil</option>
+                                @else
+                                    <option value="{{$estadoCivil->id}}">{{$estadoCivil->descripcion}}</option>
+                                @endif
+                            @endforeach
+                        </select>
+                    </div>
+                </div>
 
                 <div class="col-lg-4 col-sm-12 col-xs-12">
                     <h5 class="col-lg-12 titulos">Grado de instruccion</h5>
@@ -124,20 +139,6 @@
                 </div>
             </div>
             <div class="col-lg-12 caja_formulario">
-                <div class="col-lg-4 col-sm-12 col-xs-12">
-                    <h5 class="col-lg-12 titulos">Estado Civil</h5>
-                    <div class="col-lg-12 col-sm-12  col-xs-12">
-                        <select class="form-control" name="estado_civil">
-                            @foreach($estadoCiviles as $estadoCivil)
-                                @if($estadoCivil->id == 1)
-                                    <option value="1" selected> Seleccione Estado Civil</option>
-                                @else
-                                    <option value="{{$estadoCivil->id}}">{{$estadoCivil->descripcion}}</option>
-                                @endif
-                            @endforeach
-                        </select>
-                    </div>
-                </div>
 
                 <div class="col-lg-4 col-sm-12 col-xs-12">
                     <h5 class="col-lg-12 titulos">Numero de Hijos</h5>

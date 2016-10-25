@@ -8,6 +8,8 @@
 
 namespace App\Core\Empleado;
 use App\Core\Contracts\BaseRepositoryInterface;
+use Illuminate\Support\Facades\Crypt;
+use Illuminate\Support\Facades\Hash;
 
 class EmpleadoRepository implements BaseRepositoryInterface {
 
@@ -39,6 +41,7 @@ class EmpleadoRepository implements BaseRepositoryInterface {
         $registro->name = $attributes['nombres'];
         $registro->apellidos = $attributes['apellidos'];
         $registro->email = $attributes['correo'];
+        $registro->password = Hash::make($attributes['password']);
         $registro->telefono = $attributes['telefono'];
         $registro->estado =$attributes['estado'];
         $registro->save();
@@ -67,6 +70,7 @@ class EmpleadoRepository implements BaseRepositoryInterface {
         $registro->name = $datos['nombre'];
         $registro->apellidos = $datos['apellido'];
         $registro->email = $datos['correo'];
+        $registro->password = Hash::make($datos['password']);
         $registro->telefono = $datos['telefono'];
         $registro->estado =$datos['estado'];
         $registro->save();

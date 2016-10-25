@@ -10,6 +10,7 @@ use App\Core\TipoEmpleado\TipoEmpleadoRepository;
 use App\Core\Ubigeo\UbigeoRepository;
 use App\Http\Requests;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Crypt;
 use Illuminate\Support\Facades\Input;
 
 class EmpleadoController extends Controller
