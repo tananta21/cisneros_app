@@ -18,7 +18,9 @@ class UbigeoRepository implements BaseRepositoryInterface {
     }
     public function all()
     {
-        return $this->ubigeo->get();
+        return $this->ubigeo
+            ->orderBy('id', 'asc')
+            ->get();
     }
 
     public function buscarUbigeo($dato){

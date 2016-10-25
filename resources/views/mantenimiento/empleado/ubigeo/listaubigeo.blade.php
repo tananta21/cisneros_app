@@ -17,38 +17,34 @@
 
         </div>
         <hr class="col-lg-12 linea-titulo" size="5px" color="green"/>
-        {{--<div class="col-lg-12" style="margin-top: 0.5rem">--}}
-
-        {{--{!! Form::model(Request::all(),['route'=>'buscar.ubigeo','method' => 'get', 'class' => 'form-horizontal', 'role'=>'form']) !!}--}}
-        {{--<div class="box-body">--}}
-        {{--<div class=" form-group">--}}
-        {{--<div class="col-lg-12">--}}
-        {{--<div  --}}{{--style="padding-left: 0rem"--}}{{-- class="col-lg-10">--}}
-        {{--<button type="submit" class="btn btn-primary btn-sm col-lg-1"> Buscar--}}
-        {{--<i class="fa fa-search fa-1px" style="margin-left: 1rem"></i>--}}
-        {{--</button>--}}
-        {{--<div class="col-lg-3 col-sm-2">--}}
-        {{--<input type="text" class="form-control" placeholder="Serie Producto" name="serie" value>--}}
-        {{--{!!form::text('cliente',null,['class'=>'form-control', 'placeholder'=>'Ingrese N° de Ubigeo','required'=>'true'])!!}--}}
-        {{--</div>--}}
-        {{--<div class="col-lg-1 col-sm-2">--}}
-        {{--<a type="button" href="/mantenimiento/ubigeo" class="btn btn-default" > <i class="fa fa-refresh fa-1x"></i></a>--}}
-        {{--</div>--}}
-        {{--</div>--}}
-
-        {{--</div>--}}
-        {{--</div>--}}
-        {{--</div>--}}
-        {{--{!! Form::close() !!}--}}
-
-        {{--</div>--}}
 
     </div>
 
-
+    <script>
+        $(document).ready(function() {
+                    $('#ubigeo').DataTable( {
+                        "lengthMenu": [[5, 10, 15, -1], [5, 10, 15, "All"]],
+                        "lengthChange":false,
+                        "language": {
+                            "sSearch": "<span style='font-size: 1.5rem'>Buscar Registro</span>",
+                            "lengthMenu": "Mostrar _MENU_ resultados",
+                            "emptyTable":     "No se encontraron resultados",
+                            "info":           "Se Muestran _START_ a _END_ de _TOTAL_ resultados",
+                            "infoEmpty":      "Se muestran 0 resultados",
+                            "paginate": {
+                                "first":      "Primero",
+                                "last":       "Ultimo",
+                                "next":       "Siguiente",
+                                "previous":   "Anterior"
+                            }
+                        }
+                    });
+                }
+        );
+    </script>
 
     <div class="box-body table-responsive no-padding col-lg-12">
-        <table id="marca" class=" table table-hover display" cellspacing="0" width="100%">
+        <table id="ubigeo" class=" table table-hover display" cellspacing="0" width="100%">
             <thead>
             <tr>
                 <th>N° ID</th>

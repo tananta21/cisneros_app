@@ -16,7 +16,7 @@ class UserTableSeeder extends Seeder
         $faker = Faker::create(50);
         for ($i = 0; $i < 50; $i++) {
             User::create(array(
-                'tipo_empleado_id' => 1,
+                'tipo_empleado_id' =>$faker->numberBetween(1, 3),
                 'estado_civil_id' => $faker->numberBetween(1, 4),
                 'grado_instruccion_id' => $faker->numberBetween(1, 5),
                 'ocupacion_id' => $faker->numberBetween(1, 4),
@@ -49,6 +49,35 @@ class UserTableSeeder extends Seeder
             'password' => Hash::make('admin'), // Hash::make() nos va generar una cadena con nuestra contraseña encriptada
             'estado'=>1
         ));
+        User::create(array(
+            'tipo_empleado_id'=>2,
+            'estado_civil_id'=>1,
+            'grado_instruccion_id'=>1,
+            'ocupacion_id'=>1,
+            'ubigeo_id'=>1975,
+            'nro_documento'=>'77777777',
+            'name'=>'Carlos Eduardo',
+            'apellidos'=>'Morales Reategui',
+            'email'     => 'vendedor@vendedor.com',
+            'telefono'=>'930652976',
+            'password' => Hash::make('vendedor'), // Hash::make() nos va generar una cadena con nuestra contraseña encriptada
+            'estado'=>1
+        ));
+        User::create(array(
+            'tipo_empleado_id'=>3,
+            'estado_civil_id'=>1,
+            'grado_instruccion_id'=>1,
+            'ocupacion_id'=>1,
+            'ubigeo_id'=>1975,
+            'nro_documento'=>'72222222',
+            'name'=>'Marco Roberto',
+            'apellidos'=>'Paredes Chistama',
+            'email'     => 'cajero@cajero.com',
+            'telefono'=>'930652978',
+            'password' => Hash::make('cajero'), // Hash::make() nos va generar una cadena con nuestra contraseña encriptada
+            'estado'=>1
+        ));
+
     }
 
 

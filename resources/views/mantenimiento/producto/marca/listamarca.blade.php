@@ -155,7 +155,7 @@
                         $('#texto_descripcion').focus();
                     });
         });
-        });
+
         $(document).ready(function () {
             $("#modulo-mantenimiento").addClass('active');
         });

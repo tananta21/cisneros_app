@@ -58,6 +58,22 @@
 
             </div>
 
+            <div class="col-lg-12 caja_formulario">
+                <div class="col-lg-4 col-sm-12 col-xs-12">
+                    <h5 class="col-lg-12 titulos">Correo Electronico</h5>
+                    <div class="col-lg-12 col-sm-12 col-xs-12">
+                        <input type="email"  maxlength=50 class="form-control" placeholder="ejemplo@ejemplo.com" name="correo" value="">
+                    </div>
+                </div>
+                <div class="col-lg-4 col-sm-12 col-xs-12">
+                    <h5 class="col-lg-12 titulos">Contraseña de Usuario</h5>
+                    <div class="col-lg-12 col-sm-12 col-xs-12">
+                        <input type="password"  maxlength=50 class="form-control" placeholder="Contraseña" name="password" >
+                    </div>
+                </div>
+
+            </div>
+
 
             <div class="col-lg-12 caja_formulario">
                 <div class="col-lg-4 col-sm-12 col-xs-12">
@@ -66,13 +82,7 @@
                         <input type="tetx" class="form-control" placeholder="nº de telefono" name="telefono" value=""  maxlength="20" onKeypress="if (event.keyCode < 45 || event.keyCode > 57) event.returnValue = false;">
                     </div>
                 </div>
-                <div class="col-lg-4 col-sm-12 col-xs-12">
-                    <h5 class="col-lg-12 titulos">Correo Electronico</h5>
-                    <div class="col-lg-12 col-sm-12 col-xs-12">
-                        <input type="email"  maxlength=50 class="form-control" placeholder="ejemplo@ejemplo.com" name="correo" value="">
-                    </div>
-                </div>
-                <div class="col-lg-4 col-sm-12 col-xs-12">
+                <div class="col-lg-8 col-sm-12 col-xs-12">
                     <h5 class="col-lg-12 titulos">Direccion</h5>
                     <div class="col-lg-12 col-sm-12 col-xs-12">
                         <input type="text" maxlength="60"class="form-control" placeholder="Direccion" name="direccion" value="">
@@ -81,21 +91,6 @@
             </div>
 
             <div class="col-lg-12 caja_formulario">
-
-                <div class="col-lg-4 col-sm-12 col-xs-12">
-                    <h5 class="col-lg-12 titulos">Estado Civil</h5>
-                    <div class="col-lg-12 col-sm-12  col-xs-12">
-                        <select class="form-control" name="estado_civil">
-                            @foreach($estadoCiviles as $estadoCivil)
-                                @if($estadoCivil->id == 1)
-                                    <option value="1" selected> Seleccione Estado Civil</option>
-                                @else
-                                    <option value="{{$estadoCivil->id}}">{{$estadoCivil->descripcion}}</option>
-                                @endif
-                            @endforeach
-                        </select>
-                    </div>
-                </div>
 
                 <div class="col-lg-4 col-sm-12 col-xs-12">
                     <h5 class="col-lg-12 titulos">Grado de instruccion</h5>
@@ -129,6 +124,21 @@
                 </div>
             </div>
             <div class="col-lg-12 caja_formulario">
+                <div class="col-lg-4 col-sm-12 col-xs-12">
+                    <h5 class="col-lg-12 titulos">Estado Civil</h5>
+                    <div class="col-lg-12 col-sm-12  col-xs-12">
+                        <select class="form-control" name="estado_civil">
+                            @foreach($estadoCiviles as $estadoCivil)
+                                @if($estadoCivil->id == 1)
+                                    <option value="1" selected> Seleccione Estado Civil</option>
+                                @else
+                                    <option value="{{$estadoCivil->id}}">{{$estadoCivil->descripcion}}</option>
+                                @endif
+                            @endforeach
+                        </select>
+                    </div>
+                </div>
+
                 <div class="col-lg-4 col-sm-12 col-xs-12">
                     <h5 class="col-lg-12 titulos">Numero de Hijos</h5>
                     <div class="col-lg-12 col-sm-12 col-xs-12">

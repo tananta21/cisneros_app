@@ -49,6 +49,7 @@ class ClienteController extends Controller
     public function create()
     {
        $datos = Input::all();
+
        $clienteNuevo = $this->repoCliente->registrarCliente($datos);
         return redirect()->action('ClienteController@index');
 

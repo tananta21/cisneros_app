@@ -158,7 +158,10 @@ Route::group(['prefix'=>'/', 'middleware' => 'auth' ], function() {
 //    ============================================================================
 //                              MODULO SEGURIDAD
 //    ===========================================================================
-//   listar usuarios
+
+////    ==================================================
+    //    EMPLEADOS  : USUARIOS DEL SISTEMA
+//   listar empleados
     Route::get('/seguridad/empleado','EmpleadoController@index' );
 // nuevo empleado
     Route::get('/seguridad/nuevoempleado','EmpleadoController@create');
@@ -177,6 +180,23 @@ Route::group(['prefix'=>'/', 'middleware' => 'auth' ], function() {
     Route::get('/seguridad/empleado/eliminar',['as'=> 'eliminar.empleado','uses'=>'EmpleadoController@eliminarEmpleado']);
 
 
+//    ==================================================
+    //   MODULOS DEL SISTEMA
+
+    Route::get('/seguridad/modulo','AccesoModuloController@modulos' );
+
+
+//    ==================================================
+
+//    ACCESOS AL SISTEMA
+
+    Route::get('/seguridad/acceso','AccesoModuloController@accesos' );
+    Route::get('/seguridad/buscar/acceso',[
+        'uses'=>'AccesoModuloController@buscarAccesos',
+        'as'=>'buscar.accesos'
+    ]);
+
+    Route::get('/seguridad/actualizar/acceso','AccesoModuloController@actualizarAccesos');
 
 
 

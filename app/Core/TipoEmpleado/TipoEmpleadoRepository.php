@@ -31,10 +31,19 @@ class TipoEmpleadoRepository implements BaseRepositoryInterface {
     public function allEnVista(){
         return $this->tipoEmpleado
             ->where('estado','1')
-            ->orderBy('id', 'desc')
+            ->orderBy('id', 'asc')
             ->get();
     }
 
+    public function selectDescripcion($id){
+        return $this->tipoEmpleado->select('descripcion')
+            ->where('id',$id)
+            ->get();
+    }
+
+    public function listaSelect(){
+        return \DB::table('tipo_empleados')->lists('descripcion', 'id');
+    }
     // añadir nuevo registro
     public function nuevoTipoEmpleado($inputs){
         $registro = new TipoEmpleado();

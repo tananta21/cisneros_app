@@ -161,7 +161,7 @@
                 <div class="col-lg-4 col-sm-12 col-xs-12">
                     <h5 class="col-lg-12 titulos">Departamento</h5>
                     <div class="col-lg-12 col-sm-12  col-xs-12">
-                        <select class="form-control" name="departamento" onchange="buscarProvincia(this.value);">
+                        <select class="form-control"  onchange="buscarProvincia(this.value);">
                             <option value="0">Seleccione Departamento</option>
                             @foreach($departamentos as $departamento)
                                 <option value="{{$departamento->numubigeo}}">{{$departamento->departamento}}</option>
@@ -169,14 +169,16 @@
                         </select>
                     </div>
                 </div>
+
                 <div class="col-lg-4 col-sm-12 col-xs-12">
                     <h5 class="col-lg-12 titulos">Provincia</h5>
-                    <div class="col-lg-12 col-sm-12  col-xs-12">
-                        <select id="provincias" readonly class="form-control" onchange="buscarDistrito(this.value);">
+                    <div  class="col-lg-12 col-sm-12  col-xs-12">
+                        <select id="provincias"  readonly class="form-control" onchange="buscarDistrito(this.value);">
                             <option value="">Seleccione Provincia</option>
                         </select>
                     </div>
                 </div>
+
                 <div class="col-lg-4 col-sm-12 col-xs-12">
                     <h5 class="col-lg-12 titulos">Distrito</h5>
                     <div class="col-lg-12 col-sm-12  col-xs-12">

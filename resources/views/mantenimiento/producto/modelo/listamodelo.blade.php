@@ -78,10 +78,6 @@
     {{--<div class="col-lg-4" style="text-align: center; margin-top: 10rem">--}}
     {{--<a onclick="buscarMarcas()" class="btn btn-primary">Agregar Nuevo Modelo</a>--}}
     {{--</div>--}}
-    <div class="col-lg-7" style="display: flex; flex-direction: row; justify-content: center;">
-        {!! $marcas->appends(Request::all())->render() !!}
-    </div>
-
     {{--javascript eliminar: cambiar de estado--}}
     <script type="text/javascript">
         function eliminarCategoria(id){

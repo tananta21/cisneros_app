@@ -158,10 +158,11 @@ desired effect
                 <div class="pull-left image">
                     <img src="{{url('/')}}/dist/img/perfil2.jpg" class="img-circle" alt="User Image">
                 </div>
-                <div class="pull-left info">
+                <div class="pull-left info" style="text-align: center">
                     <p>{{Auth::user()->name}}</p>
                     <!-- Status -->
-                    <a href="#">ADMINISTRADOR</a>
+                    <a href="#" style="text-transform: uppercase;
+                    ">{{Auth::user()->tipoEmpleado->descripcion}}</a>
                 </div>
             </div>
 
@@ -202,7 +203,7 @@ desired effect
 
                 {{--MENU DE LOS MODULOS DEL SISTEMA--}}
 
-                 @include('partial.modulos')
+                 @include('acceso.modulos')
 
             </ul>
 
@@ -547,7 +548,9 @@ desired effect
                 $("#distritos").empty();
                 $("#distritos").append('<option value="0">Seleccione Distrito</option>');
                 var nro_ubigeo = id.substr(0,2);
+                console.log(nro_ubigeo)
                 var url = '{{route("buscar.provincia")}}';
+
                 $.ajax({
                     type: 'GET',
                     url: url,
@@ -561,6 +564,7 @@ desired effect
                     },
                     success: function(respuesta){
                         $("#provincias").attr("name","distrito");
+
                         $("#distritos").removeAttr('name');
                         for(var i in respuesta){
                             if(respuesta[i].provincia == ''){

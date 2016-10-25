@@ -71,7 +71,7 @@
                 </div>
                 <div class="col-lg-5">
                     <a data-toggle="modal" href="/inventario/producto/nuevoproducto" style="font-size: 1.6rem">
-                        <i class="fa fa-plus-circle fa-2x" aria-hidden="true"></i> <span style="color: #000000">Agregar Nuevo Registro</span>
+                        <i class="fa fa-plus-circle fa-2x" aria-hidden="true"></i> <span style="color: #000000">Agregar Nuevo Producto</span>
                     </a>
                 </div>
             </div>

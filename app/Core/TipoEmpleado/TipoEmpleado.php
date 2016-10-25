@@ -10,4 +10,11 @@ class TipoEmpleado extends Model
     {
         return $this->hasMany('App\Core\Empleado\Empleado');
     }
+
+    public function user()
+    {
+        return $this->hasMany('App\User');
+    }
+
+
 }

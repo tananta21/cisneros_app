@@ -33,6 +33,7 @@ class DatabaseSeeder extends Seeder
          $this->call('VentaTableSeeder');
          $this->call('CompraTableSeeder');
          $this->call('ModuloTableSeeder');
+         $this->call('AccesosTableSeeder');
 
         Model::reguard();
     }
