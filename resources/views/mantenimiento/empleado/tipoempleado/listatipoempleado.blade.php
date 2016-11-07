@@ -34,7 +34,7 @@
     </div>
     <div class="col-lg-7" style="margin-top: 3rem">
         <div class="box-body table-responsive no-padding col-lg-12">
-            <table class="table table-hover">
+            <table class="table table-hover" id="">
                 <tbody>
                 <tr>
                     <th>N° ID</th>
@@ -79,9 +79,9 @@
     <div class="col-lg-4" style="text-align: center; margin-top: 10rem">
         <button data-toggle="modal" data-target="#crear_tipoproducto_modal" class="btn btn-primary">Agregar Nuevo Tipo</button>
     </div>
-    <div class="col-lg-7" style="display: flex; flex-direction: row; justify-content: center;">
-        {!! $marcas->appends(Request::all())->render() !!}
-    </div>
+    {{--<div class="col-lg-7" style="display: flex; flex-direction: row; justify-content: center;">--}}
+        {{--{!! $marcas->appends(Request::all())->render() !!}--}}
+    {{--</div>--}}
 
     {{--javascript eliminar: cambiar de estado--}}
     <script type="text/javascript">

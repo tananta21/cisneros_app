@@ -11,6 +11,7 @@
             ::join('modulos', 'accesos.modulo_id', '=', 'modulos.id')
             ->select('modulos.descripcion','modulos.icono as icono','modulos.id as id')
             ->whereRaw("tipo_empleado_id = '" . $tipo . "' and accesos.estado = 1 and modulos.nivel = 1")
+            ->orderBy("modulos.id","asc")
             ->get()
  as $modulo)
     <li class="treeview">
@@ -24,6 +25,7 @@
                     ::join('modulos', 'accesos.modulo_id', '=', 'modulos.id')
                     ->select('modulos.descripcion','modulos.id_padre as id_padre', 'modulos.url as url')
                     ->whereRaw("tipo_empleado_id = '" . $tipo . "' and accesos.estado = 1 AND modulos.id_padre != '' ")
+                    ->orderBy("modulos.id","asc")
                     ->get()
                  as $submodulo)
                     @if($modulo->id == $submodulo->id_padre)

@@ -10,6 +10,7 @@ namespace App\Core\Acceso;
 
 
 use App\Core\Contracts\BaseRepositoryInterface;
+use App\Core\Modulo\Modulo;
 
 class AccesoRepository implements BaseRepositoryInterface {
 
@@ -18,26 +19,31 @@ class AccesoRepository implements BaseRepositoryInterface {
 
     }
     public function buscarModulos($tipo){
-       $resultado =  Acceso
-            ::join('modulos', 'accesos.modulo_id', '=', 'modulos.id')
-            ->select('modulos.descripcion','modulos.icono','modulos.id as id','accesos.estado as estado','accesos.id as id_acceso')
-            ->whereRaw("tipo_empleado_id = '" . $tipo . "' and modulos.nivel = 1 ")
-            ->get();
-        return $resultado;
-    }
-    public function buscarSubmodulos($tipo){
-        $resultado = Acceso
-            ::join('modulos', 'accesos.modulo_id', '=', 'modulos.id')
-            ->select('modulos.descripcion','modulos.id_padre as id_padre', 'modulos.url as url','accesos.estado as estado','accesos.id as id_acceso')
-            ->whereRaw("tipo_empleado_id = '" . $tipo . "' AND modulos.id_padre != '' ")
-            ->get();
+            $resultado =  \DB::select("CALL buscarModulo('" . $tipo . "')");
             return $resultado;
     }
 
-    public function actualizarAcceso($id,$estado){
-        $acceso = Acceso::find($id);
-        $acceso->estado = $estado;
-        $acceso->save();
+    public function buscarSubmodulos($tipo){
+        $resultado =  \DB::select("CALL buscarSubModulo('" . $tipo . "')");
+        return $resultado;
+    }
+
+    public function actualizarAcceso($tipo ,$idmodulo ,$estado){
+
+        $consulta = \DB::select("select * from accesos where tipo_empleado_id = '" . $tipo . "' AND modulo_id = '" . $idmodulo . "'");
+//        dd($consulta[0]->id);
+        if(empty($consulta)){
+            $registro = new Acceso();
+            $registro->tipo_empleado_id = $tipo;
+            $registro->modulo_id = $idmodulo;
+            $registro->estado = $estado;
+            $registro->save();
+        }
+        else{
+            $registro = Acceso::findOrFail($consulta[0]->id);
+            $registro->estado = $estado;
+            $registro->save();
+        }
     }
 
     public function create(array $attributes)

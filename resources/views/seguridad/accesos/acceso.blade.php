@@ -36,27 +36,28 @@
         </div>
         <form action="/seguridad/actualizar/acceso" method="get" id="form-accesos">
             {!! csrf_field() !!}
+            <input id="tipo_emple" type="hidden" value="{{$valor}}" name="tipo"/>
         <div class="col-lg-6" style="font-size: 1.5rem">
             <ul class="nav" >
                 @foreach($modulos as $modulo)
                     <li class="treeview" >
-                        <input type="hidden" name="idmodulo[]" value="{{$modulo->id_acceso}}"/>
+                        <input type="hidden" name="idmodulo[]" value="{{$modulo->id}}"/>
                             {{--<i class="{{$modulo->icono}}"></i>--}}
                             @if($modulo->estado == 1)
-                                <input id="estado{{$modulo->id_acceso}}" type="checkbox" name="checkboxlist" value="{{$modulo->estado}}" checked  onclick="cambiarEstado('{{$modulo->id_acceso}}')"/>
+                                <input id="estado{{$modulo->id}}" type="checkbox" name="checkboxlist" value="{{$modulo->estado}}" checked  onclick="cambiarEstado('{{$modulo->id}}')"/>
                             @else
-                                <input id="estado{{$modulo->id_acceso}}" type="checkbox" name="checkboxlist" value="{{$modulo->estado}}"   onclick="cambiarEstado('{{$modulo->id_acceso}}')"/>
+                                <input id="estado{{$modulo->id}}" type="checkbox" name="checkboxlist" value="{{$modulo->estado}}"   onclick="cambiarEstado('{{$modulo->id}}')"/>
                             @endif
                             <span style="color: #000066; font-weight: bold; text-transform: uppercase">{{$modulo->descripcion}}</span>
                             <ul class="treeview" style="list-style:none; padding-top: 0.5rem">
                                 @foreach($submodulos as $submodulo)
                                     @if($modulo->id == $submodulo->id_padre)
                                          <li class="treeview">
-                                             <input type="hidden" name="idsubmodulo[]" value="{{$submodulo->id_acceso}}"/>
+                                             <input type="hidden" name="idsubmodulo[]" value="{{$submodulo->id}}"/>
                                              @if($submodulo->estado == 1)
-                                                 <input id="estado{{$submodulo->id_acceso}}" type="checkbox" name="estadosub" checked value="{{$submodulo->estado}}" checked onclick="cambiarEstado('{{$submodulo->id_acceso}}')"/>
+                                                 <input id="estado{{$submodulo->id}}" type="checkbox" name="estadosub" checked value="{{$submodulo->estado}}" checked onclick="cambiarEstado('{{$submodulo->id}}')"/>
                                              @else
-                                                 <input id="estado{{$submodulo->id_acceso}}" type="checkbox" name="estadosub" value="{{$submodulo->estado}}" onclick="cambiarEstado('{{$submodulo->id_acceso}}')"/>
+                                                 <input id="estado{{$submodulo->id}}" type="checkbox" name="estadosub" value="{{$submodulo->estado}}" onclick="cambiarEstado('{{$submodulo->id}}')"/>
                                              @endif
                                              <a style="margin-left: 1rem" href="{{$submodulo->url}}">{{$submodulo->descripcion}}</a></li>
                                     @endif
@@ -67,8 +68,8 @@
             </ul>
         </div>
         <div class="col-lg-4" style="text-align: center">
-            <button type="submit" class="btn btn-info">Guardar Cambios</button>
-            <button onclick="window.location.reload()" class="btn btn-default" data-dismiss="modal" style="margin-left: 1.5rem" >Revertir Cambios</button>
+            <button  type="submit" class="btn btn-info">Guardar Cambios</button>
+            <button onclick="window.location.reload()" class="btn btn-default"  style="margin-left: 1.5rem" >Revertir Cambios</button>
         </div>
         </form>
     </div>
@@ -88,6 +89,7 @@
             $("#form-accesos").submit(function() {
                 var idmodulo = $('input[name="idmodulo[]"]').serializeArray();
                 var idsubmodulo = $('input[name="idsubmodulo[]"]').serializeArray();
+                var idemple = $("#tipo_emple").val();
                 var form = $('#form-accesos');
                 var url = form.attr('action');
                 var checkValues = $('input[name=checkboxlist]').map(function()
@@ -99,12 +101,11 @@
                 {
                     return $(this).val();
                 }).get();
-
-
                 $.ajax({
                     url: url,
                     type: 'get',
                     data: {
+                        tipo : idemple,
                         idmodulos : idmodulo,
                         idsubmodulos : idsubmodulo,
                         estadomodulo: checkValues,
@@ -114,7 +115,7 @@
                     },
                     dataType: 'JSON',
                     beforeSend: function() {
-                        $("#respuesta").html('Buscando Producto...');
+                        $('#myModal').modal('show');
                     },
                     error: function() {
                         $("#respuesta").html('<div> Ha surgido un error. </div>');
@@ -152,3 +153,22 @@
     </script>
 @endsection
 @endsection
+        <!-- Modal -->
+    <div class="modal fade" id="myModal" role="dialog" data-backdrop="static">
+        <div class="modal-dialog modal-sm">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    {{--<button type="button" class="close" data-dismiss="modal">&times;</button>--}}
+                    <h3 style="text-align: center" class="modal-title">Actualizando Permisos</h3>
+                </div>
+                <div class="modal-body">
+                    <div  style="text-align: center">
+                        <i id="girar" class="fa fa-spinner fa-4x"></i>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>

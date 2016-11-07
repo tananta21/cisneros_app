@@ -35,7 +35,7 @@ class AccesoModuloController extends Controller
         $descripcion = $this->tipoEmpleado->selectDescripcion($valor);
         $modulos = $this->repoAcceso->buscarModulos($valor);
         $submodulos = $this->repoAcceso->buscarSubmodulos($valor);
-        return view("seguridad.accesos.acceso", compact('tipo_empleado','modulos','submodulos','descripcion'));
+        return view("seguridad.accesos.acceso", compact('tipo_empleado','modulos','submodulos','descripcion','valor'));
     }
     public function buscarAccesos(){
         $tipo_empleado = $this->tipoEmpleado->listaSelect();
@@ -43,22 +43,23 @@ class AccesoModuloController extends Controller
         $descripcion = $this->tipoEmpleado->selectDescripcion($valor);
         $modulos = $this->repoAcceso->buscarModulos($valor);
         $submodulos = $this->repoAcceso->buscarSubmodulos($valor);
-        return view("seguridad.accesos.acceso", compact('tipo_empleado','modulos','submodulos','descripcion'));
+        return view("seguridad.accesos.acceso", compact('tipo_empleado','modulos','submodulos','descripcion','valor'));
 
     }
     public function actualizarAccesos(){
         $idmodulos = Input::get('idmodulos');
         $idsubmodulos = Input::get('idsubmodulos');
-        $modulos = Input::get('estadomodulo');
-        $submodulos = Input::get('estadosubmodulo');
-        $cantidad_modulos = count($modulos);
-        $cantidad_submodulos = count($submodulos);
+        $estadomodulos = Input::get('estadomodulo');
+        $estadosubmodulos = Input::get('estadosubmodulo');
+        $tipo_empleado =  Input::get('tipo');
+        $cantidad_modulos = count($estadomodulos);
+        $cantidad_submodulos = count($estadosubmodulos);
         for($i=0;$i< $cantidad_modulos; $i++ ){
-            $actualizar_modulo = $this->repoAcceso->actualizarAcceso($idmodulos[$i]['value'],$modulos[$i]);
-            }
+            $actualizar_modulo = $this->repoAcceso->actualizarAcceso($tipo_empleado,$idmodulos[$i]['value'],$estadomodulos[$i]);
+         }
 
         for($i=0;$i< $cantidad_submodulos; $i++ ){
-            $actualizar_submodulo = $this->repoAcceso->actualizarAcceso($idsubmodulos[$i]['value'],$submodulos[$i]);
+            $actualizar_submodulo = $this->repoAcceso->actualizarAcceso($tipo_empleado,$idsubmodulos[$i]['value'],$estadosubmodulos[$i]);
             }
         return response()->json();
         }
