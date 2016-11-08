@@ -24,11 +24,6 @@ class AccesoModuloController extends Controller
         $this->repoModulo = new ModuloRepository();
     }
 
-    public function modulos(){
-        $categorias = $this->repoModulo->allModulos();
-        return view("seguridad.modulos.modulo",compact('categorias'));
-    }
-
     public function accesos(){
         $tipo_empleado = $this->tipoEmpleado->listaSelect();
         $valor = "1";
@@ -46,6 +41,7 @@ class AccesoModuloController extends Controller
         return view("seguridad.accesos.acceso", compact('tipo_empleado','modulos','submodulos','descripcion','valor'));
 
     }
+
     public function actualizarAccesos(){
         $idmodulos = Input::get('idmodulos');
         $idsubmodulos = Input::get('idsubmodulos');
@@ -54,6 +50,7 @@ class AccesoModuloController extends Controller
         $tipo_empleado =  Input::get('tipo');
         $cantidad_modulos = count($estadomodulos);
         $cantidad_submodulos = count($estadosubmodulos);
+
         for($i=0;$i< $cantidad_modulos; $i++ ){
             $actualizar_modulo = $this->repoAcceso->actualizarAcceso($tipo_empleado,$idmodulos[$i]['value'],$estadomodulos[$i]);
          }
@@ -65,6 +62,24 @@ class AccesoModuloController extends Controller
         }
 
 
+
+//    MODULOS DEL SISTEMA
+    public function modulos(){
+        $modulos = $this->repoModulo->allModulos();
+        $submodulos = $this->repoModulo->allSubModulos();
+        return view("seguridad.modulos.modulo",compact('modulos','submodulos'));
+    }
+
+    public function buscarModulo(){
+        $modulo = $this->repoModulo->find(Input::get('idmodulo'));
+        return response()->json($modulo);
+    }
+
+    public function actualizarModulo(){
+        $atributos = Input::all();
+        $modulo = $this->repoModulo->updated(Input::get('modulo_id'),$atributos);
+        return redirect()->action('AccesoModuloController@modulos');
+    }
 
 
 

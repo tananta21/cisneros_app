@@ -43,6 +43,9 @@
                                 </tr>
                                 </thead>
                                 <tbody id="cuerpo">
+                                <tr style="display: none;" id="filaPedido">
+
+                                </tr>
                                 </tbody>
                             </table>
                             <div id="total_productos"></div>
@@ -230,19 +233,28 @@
         <script type="text/javascript">
             function agregar(id) {
 
-                $('#total_productos').css('display','none');
-                var tbody = $('#myTable').children('tbody');
-                var table = tbody.length ? tbody : $('#myTable');
-                table.append(
-                        '<tr id="filaPedido'+id+'">' +
-                        '</td><input class="productosid" type="hidden" name="idproducto[]" value="'+id+'"/></td>' +
-                        '<td><input step="any" type="number" class="cantidades" min="0" value="0"  style="width: 5rem"   onchange="fncSumar('+id+')"  name="cantidad[]" id="cantidad'+id+'"/>'+
-                        '<td>'+$("#nombreProducto"+id).val()+'</td>' +
-                        '<td><input step="any" type="number" min="0" style="width: 6rem" onchange="fncSumar('+id+')"  id="precios'+id+'"  name="precio[]" value="'+$("#precio"+id).val()+'"/></td>' +
-                            //            '<td>'+$("#precio").val()+'</td>' +
-                        '<td><input readonly style="width: 8rem" class="subtotal" type="number" value="0"  id="total'+id+'" /></td>' +
-                        '<td style="text-align: center"><a style="color: #ff0000" onclick="eliminarPedido('+id+')"><i class="fa fa-remove fa-2x"></i></a></td>' +
-                        '</tr>');
+                $('#myTable tbody tr').each(function () {
+                    var id_fila = $(this).attr('id');
+                    if(id_fila.substr(10) == id){
+                        $('#myModal').modal('show');
+                    }
+                    else{
+                        $('#total_productos').css('display','none');
+                        var tbody = $('#myTable').children('tbody');
+                        var table = tbody.length ? tbody : $('#myTable');
+                        table.append(
+                                '<tr id="filaPedido'+id+'">' +
+                                '</td><input class="productosid" type="hidden" name="idproducto[]" value="'+id+'"/></td>' +
+                                '<td><input step="any" type="number" class="cantidades" min="0" value="0"  style="width: 5rem"   onchange="fncSumar('+id+')"  name="cantidad[]" id="cantidad'+id+'"/>'+
+                                '<td>'+$("#nombreProducto"+id).val()+'</td>' +
+                                '<td><input step="any" type="number" min="0" style="width: 6rem" onchange="fncSumar('+id+')"  id="precios'+id+'"  name="precio[]" value="'+$("#precio"+id).val()+'"/></td>' +
+                                    //            '<td>'+$("#precio").val()+'</td>' +
+                                '<td><input readonly style="width: 8rem" class="subtotal" type="number" value="0"  id="total'+id+'" /></td>' +
+                                '<td style="text-align: center"><a style="color: #ff0000" onclick="eliminarPedido('+id+')"><i class="fa fa-remove fa-2x"></i></a></td>' +
+                                '</tr>');
+                    }
+                });
+
             };
 
             //        eliminar pedido
@@ -467,6 +479,19 @@
     }
 </script>
 
+<div class="modal fade" id="myModal" role="dialog" >
+    <div class="modal-dialog modal-sm">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                {{--<button type="button" class="close" data-dismiss="modal">&times;</button>--}}
+                <h3 style="text-align: center" class="modal-title">El Producto ya esta Registrado</h3>
+            </div>
+        </div>
+
+    </div>
+</div>
 
 
 

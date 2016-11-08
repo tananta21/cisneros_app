@@ -40,7 +40,7 @@
         <div class="col-lg-6" style="font-size: 1.5rem">
             <ul class="nav" >
                 @foreach($modulos as $modulo)
-                    <li class="treeview" >
+                    <li class="treeview" style="padding-top: 1rem; padding-bottom: 1rem">
                         <input type="hidden" name="idmodulo[]" value="{{$modulo->id}}"/>
                             {{--<i class="{{$modulo->icono}}"></i>--}}
                             @if($modulo->estado == 1)

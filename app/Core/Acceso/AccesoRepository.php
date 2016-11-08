@@ -33,16 +33,18 @@ class AccesoRepository implements BaseRepositoryInterface {
         $consulta = \DB::select("select * from accesos where tipo_empleado_id = '" . $tipo . "' AND modulo_id = '" . $idmodulo . "'");
 //        dd($consulta[0]->id);
         if(empty($consulta)){
-            $registro = new Acceso();
-            $registro->tipo_empleado_id = $tipo;
-            $registro->modulo_id = $idmodulo;
-            $registro->estado = $estado;
-            $registro->save();
+           $registro =  \DB::select("CALL registrarAcceso('". $idmodulo ."', '" . $tipo . "','" . $estado . "')");
+//            $registro = new Acceso();
+//            $registro->tipo_empleado_id = $tipo;
+//            $registro->modulo_id = $idmodulo;
+//            $registro->estado = $estado;
+//            $registro->save();
         }
         else{
-            $registro = Acceso::findOrFail($consulta[0]->id);
-            $registro->estado = $estado;
-            $registro->save();
+           $registro =  \DB::select("CALL actualizarAcceso('" .$consulta[0]->id."', '". $idmodulo."', '". $tipo. "', '" . $estado ."')");
+//            $registro = Acceso::findOrFail($consulta[0]->id);
+//            $registro->estado = $estado;
+//            $registro->save();
         }
     }
 

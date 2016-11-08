@@ -184,6 +184,12 @@ Route::group(['prefix'=>'/', 'middleware' => 'auth' ], function() {
     //   MODULOS DEL SISTEMA
 
     Route::get('/seguridad/modulo','AccesoModuloController@modulos' );
+    Route::get('/seguridad/buscar/modulo',[
+        'uses'=>'AccesoModuloController@buscarModulo',
+        'as'=>'buscar.modulo'
+    ]);
+    Route::post('/seguridad/actualizar/modulo','AccesoModuloController@actualizarModulo' );
+
 
 
 //    ==================================================

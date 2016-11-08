@@ -41,12 +41,16 @@ class ModuloRepository implements BaseRepositoryInterface {
 
     public function updated($id, array $attributes)
     {
-        // TODO: Implement updated() method.
+        $registro = Modulo::find($id);
+        $registro->descripcion = $attributes["descripcion_modulo"];
+        $registro->estado = $attributes["estado"];
+        $registro->save();
     }
 
     public function find($id)
     {
-        // TODO: Implement find() method.
+        $registro = Modulo::findOrFail($id);
+        return $registro;
     }
 
     public function deleted($id)
