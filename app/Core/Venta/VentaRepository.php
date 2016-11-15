@@ -51,4 +51,9 @@ class VentaRepository implements BaseRepositoryInterface{
         $venta->tipo_transaccion_id = $transaccion;
         $venta->save();
     }
+
+    public function totalVentaCliente($id){
+        return Venta::select()->where("cliente_id",$id)->count();
+
+    }
 }

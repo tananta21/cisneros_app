@@ -88,7 +88,13 @@ Route::group(['prefix'=>'/', 'middleware' => 'auth' ], function() {
 //        'as'=> 'registrar.venta',
 //        'uses'=>'VentaController@create']);
 
+//buscar cliente en ventas: evalucion crediticia
+    Route::get('/venta/consultar/cliente','VentaController@buscarClienteEnVentas');
 
+    Route::get('/venta/cliente/realizadas',[
+            'as'=> 'detalle.cliente',
+            'uses'=>'VentaController@detalleClienteEnVentas']
+    );
 
 
 
@@ -101,7 +107,7 @@ Route::group(['prefix'=>'/', 'middleware' => 'auth' ], function() {
 //   vista Registrar cliente
     Route::get('/venta/cliente/nuevocliente','ClienteController@nuevoCliente');
 //    registrar cliente
-    Route::post('/venta/cliente/registro','ClienteController@create' );
+    Route::get('/venta/cliente/registro','ClienteController@create' );
 
 //    editar cliente
     Route::get('/venta/cliente/editar/{id}','ClienteController@edit');
@@ -156,12 +162,12 @@ Route::group(['prefix'=>'/', 'middleware' => 'auth' ], function() {
 
 
 //    ============================================================================
-//                              MODULO SEGURIDAD
+//                              MODULO SEGURIDADDEL SISTEMA
+//   listar empleados
 //    ===========================================================================
 
 ////    ==================================================
-    //    EMPLEADOS  : USUARIOS DEL SISTEMA
-//   listar empleados
+    //    EMPLEADOS  : USUARIOS
     Route::get('/seguridad/empleado','EmpleadoController@index' );
 // nuevo empleado
     Route::get('/seguridad/nuevoempleado','EmpleadoController@create');

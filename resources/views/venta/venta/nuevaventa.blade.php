@@ -5,360 +5,188 @@
 
     @section('contenido_modulos')
 
-        <div>
-            <div class="col-lg-7" style="padding-top: 1rem; margin-bottom: 1.5rem; margin-top: 1.5rem;">
-                <div class="col-lg-2" style="text-align: center">
-                    <a id="venta" onclick="vender()"  style="color: #000000; cursor: pointer">
-                        <i class="fa fa-file fa-2x" aria-hidden="true"></i><br/>
-                        <span style="font-size: 1.2rem">Generar Venta</span>
-                    </a>
-                </div>
-                <div class="col-lg-2" style="text-align: center;">
-                    <a href="#" style="color: #000000;">
-                        <i class="fa fa-question-circle fa-2x" aria-hidden="true"></i><br/>
-                        <span style="font-size: 1.2rem">Ayuda</span>
-                    </a>
-                </div>
-
-                {{--buscar producto en venta--}}
-                <div class="col-lg-12">
-                    <div class="col-lg-12" >
-                        <div class="col-lg-12" style="margin-bottom: 1.5rem; margin-top: 3rem" >
-                            <a data-toggle="modal" data-target="#producto_venta" href="#" style="font-size: 1.5rem" >
-                                Añadir Producto
-                                <i class="fa fa-cart-plus fa-3x" aria-hidden="true"></i>
-                            </a>
-                        </div>
-
-                        {{--detalle venta--}}
-                        <div class="col-lg-12">
-                            <table class="table table-hover" id="myTable" onchange="colSum()" style="font-size: 1.3rem;">
-                                <thead>
-                                <tr>
-                                    <th>CANT</th>
-                                    <th>NOMBRE</th>
-                                    <th>P. UNIT.</th>
-                                    <th>TOTAL</th>
-                                    <th>ACCION</th>
-                                </tr>
-                                </thead>
-                                <tbody id="cuerpo">
-                                <tr style="display: none;" id="filaPedido">
-
-                                </tr>
-                                </tbody>
-                            </table>
-                            <div id="total_productos"></div>
-                        </div>
-                        {{--<div class="col-lg-12" style="display: flex; justify-content: center; margin-top: 3rem">--}}
-                            {{--<button id="limpiar" class="btn btn-primary btn-sm">Limpiar Detalle</button>--}}
-                        {{--</div>--}}
+        <div style="padding-top: 2rem">
+            <div class="col-lg-12">
+                <form method="POST" action="" accept-charset="UTF-8"  class="form-horizontal" role="form">
+                    <div class="col-lg-12">
+                        <span style="margin-right: 1.5rem">SELECCIONE TIPO DE VENTA</span>
+                        <select name="tipo_venta" id="tipo_venta" onchange="cambiarVenta(this.value);">
+                            <option value="1">CONTADO</option>
+                            <option value="2">CREDITO</option>
+                        </select>
                     </div>
+                </form>
+            </div>
+        </div>
 
+        <div id="venta_credito" class="col-lg-12" style="margin-top: 2rem; display: none"   >
+            <h4 class="col-lg-4" >Evaluacion Crediticia del Cliente</h4>
+            <button  style="margin-left: 0rem" data-toggle="modal" data-target="#evaluar_cliente"  class="col-lg-2 btn btn-primary"> EVALUAR CLIENTE  <i class="fa fa-user fa-1x"></i> </button>
+        </div>
+        <div id="venta_contado" class="col-lg-12" style="padding-top: 2.5rem">
+            <div class="col-lg-7" >
+                <div class="col-lg-7" style="margin-bottom: 1.5rem">
+                    <a data-toggle="modal" data-target="#producto_venta" href="#" style="font-size: 1.5rem" >
+                        Añadir Producto
+                        <i class="fa fa-cart-plus fa-3x" aria-hidden="true"></i>
+                    </a>
+                </div>
+                <div id="caja_cronograma" class="col-lg-5" style="margin-bottom: 1.5rem; margin-top: 1rem; display: none;">
+                    <button onclick="cronograma()" class="btn btn-circle">Generar Cronograma</button>
+                </div>
+
+                {{--detalle venta--}}
+                <div class="col-lg-12">
+                    <table class="table table-hover" id="myTable" onchange="colSum()" style="font-size: 1.3rem;">
+                        <thead>
+                        <tr>
+                            <th>CANT</th>
+                            <th>NOMBRE</th>
+                            <th>P. UNIT.</th>
+                            <th>SUB-TOTAL</th>
+                            <th>ACCION</th>
+                        </tr>
+                        </thead>
+                        <tbody id="cuerpo">
+                        <tr style="display: none;" id="filaPedido">
+
+                        </tr>
+                        </tbody>
+                    </table>
+                    <div id="total_productos"></div>
                 </div>
             </div>
-
-            {{--TOTAL Y CLIENTE--}}
-            <div class="col-lg-5" style="margin-top: 1.5rem;" >
-                <div class="col-lg-12" style="color: greenyellow;background: #000000; font-size: 4rem; text-align: center">
-                   <span >S/. </span><span type="text" class="totalventa">0</span>
-                </div>
-                <div class="col-lg-12" style="padding-top: 1rem">
-                    <span>Tipo Documento</span>
-                    <select name="tipo_documento" id=""  onChange="cambiarFactura(this.value);">
-                        <option value="boleta">Boleta</option>
-                        <option value="factura">Factura</option>
-                    </select>
-                </div>
-                {{--boleta--}}
-                <div id="boleta" >
-                    <div class="col-lg-12" style=" margin-top: 1rem; border: 1px solid grey;border-radius: 5px; background: #d3d3d3">
-                        <div class="col-lg-12" style="padding: 1rem" >
+            {{--datos del cliente--}}
+            <div class="col-lg-5">
+                <div class="col-lg-12" style=" margin-top: 1rem; border: 1px solid grey;border-radius: 5px; background: #d3d3d3">
+                    <div class="col-lg-12" style="padding: 1rem" >
+                        <div class="col-lg-12">
                             <div class="col-lg-4" style="text-align: center">
-                                <span>Serie</span>
-                                <input readonly type="text" class="col-lg-12" value="001" style="text-align: center"/>
+                                <span style="font-weight: bold;"> N° ORDEN DE VENTA </span>
                             </div>
                             <div class="col-lg-8" style="text-align: center">
-                                <span>N° de venta</span>
                                 <input readonly type="text" name="nro_venta" class="col-lg-12" value="{{$nro_venta['id']}}" style="text-align: center"/>
                             </div>
                         </div>
-                    </div>
 
-                    <div class="col-lg-12" style=" margin-top: 1rem; padding: 2rem; border: 1px solid grey;border-radius: 5px">
-                        <span>Datos del Cliente (Opcional)</span>
-                        <input type="text" class="col-lg-9" value="Publico en General"/>
-                        <a class="col-lg-1" href=""><i class="fa fa-search fa-1x"></i></a>
-                        <a class="col-lg-2" data-toggle="modal" data-target="#cliente_venta" href="#"><i class="fa fa-file-archive-o fa-1x"></i></a>
-                    </div>
-                </div>
-
-                {{--FACTURA--}}
-                <div id="factura"  style="display: none">
-                    <div class="col-lg-12" style=" margin-top: 1rem; border: 1px solid grey;border-radius: 5px; background: #d3d3d3">
-                        <div class="col-lg-12" style="padding: 1rem" >
+                        <div class="col-lg-12" style="padding-top: 1rem">
                             <div class="col-lg-4" style="text-align: center">
-                                <span>Serie</span>
-                                <input readonly type="text" class="col-lg-12" value="001" style="text-align: center"/>
+                                <span style="font-weight: bold;"> FECHA </span>
                             </div>
                             <div class="col-lg-8" style="text-align: center">
-                                <span>N° de venta</span>
-                                <input readonly type="text" nro_venta class="col-lg-12" value="C00000017" style="text-align: center"/>
+                                <input id="fecha_venta" readonly type="text"  class="col-lg-12" style="text-align: center"/>
                             </div>
-                        </div>
-                    </div>
 
-                    <div class="col-lg-12" style=" margin-top: 1rem; padding: 2rem; border: 1px solid grey;border-radius: 5px">
-                        <span>factura</span><br/>
-                        <input type="text" class="col-lg-9" placeholder="R.U.C"/><br/>
-                        <span>Datos del Cliente (Opcional)</span><br/>
-                        <input type="text" class="col-lg-9" value="Publico en General"/>
-                        <a class="col-lg-1" href=""><i class="fa fa-search fa-1x"></i></a>
-                        <a class="col-lg-2" data-toggle="modal" data-target="#cliente_venta" href="#"><i class="fa fa-file-archive-o fa-1x"></i></a>
+                        </div>
+
                     </div>
                 </div>
+                <div class="col-lg-12" style="color: greenyellow;background: #000000; font-size: 4rem; text-align: center">
+                    <span >S/. </span><span type="text" class="totalventa">0</span>
+                </div>
 
-                {{--RESUMEN VENTA--}}
-                <div class="col-lg-12" style=" margin-top: 1rem; border: 1px solid grey; padding: 1rem; border-radius: 5px">
-                    <div class="col-lg-12">
-                        <span class="col-lg-10">Cantidad de Productos</span><span class="cantidadproductos">0</span>
-                        <span class="col-lg-10">Valor Venta</span><span class="col-lg-2">S./850.00</span>
-                        <span class="col-lg-10">Igv</span><span class="col-lg-2">S/.150</span>
+                <div class="col-lg-12" style=" margin-top: 1rem; padding: 2rem; border: 1px solid grey;border-radius: 5px">
+                    <span class="col-lg-7">Datos del Cliente (Opcional)</span>
+                    <a class="col-lg-5" data-toggle="modal" data-target="#registrar_cliente" href="#">Nuevo Cliente <i class="fa fa-file-archive-o fa-1x"></i></a>
+                    <form action="/venta/consultar/cliente" onsubmit="return false" id="buscar_cliente_contado">
+                        <span style="padding-top: 1rem" class="col-lg-9">N° Documento</span>
+                        <div class="col-lg-12">
+                            <input id="documento" maxlength="8" required name="dato_cliente" type="text" class="col-lg-5" placeholder="dni" value="" style="font-weight: bold" />
+                            <button type="submit" class="btn btn-primary"><i class="fa fa-search fa-1x"></i></button>
+                        </div>
+                        <span style="padding-top: 1rem" class="col-lg-9">Nombres y Apellidos</span>
+                        <div class="col-lg-12">
+                            <input id="nombresyapellidos" name="dato_cliente" type="text" class="col-lg-9" placeholder="Nombres y apeliidos" value="" style="font-weight: bold" />
+                        </div>
+                    </form>
+                </div>
+                <div class="col-lg-12">
+                    <div style="text-align: center; padding-top: 2rem">
+                        <button  style="margin-right: 1.3rem" class="btn btn-primary">PROCESAR ORDEN</button>
+                        <button class="btn btn-default">CANCELAR</button>
                     </div>
-                    <div class="col-lg-12" style="background: #1fd3af; padding: 1.5rem; font-weight: bold">
-                        <span class="col-lg-9">Total a pagar:</span>
-                        <span>S/. </span><span class=" totalventa">0</span>
+                </div>
+            </div>
+        </div>
+
+
+        @include('venta.venta.scriptventa')
+    @endsection
+@endsection
+
+
+{{--modal evaluar cliente--}}
+<div class="container">        <!-- Modal crear -->
+    <div class="modal fade " id="evaluar_cliente" tabindex="-1" role="dialog" aria-labelledby="gridModalLabel" aria-hidden="true">>
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">CONSULTAR CLIENTE</h4>
+                </div>
+                <div class="modal-body">
+                        <form method="GET" id="buscar_cliente" action="/venta/consultar/cliente" accept-charset="UTF-8"  class="form-horizontal" role="form" onsubmit="return false;">
+                            <div class="col-lg-1">
+                                <button type="submit" class="btn btn-primary">BUSCAR</button>
+                            </div>
+                            <div class="col-lg-6">
+                                <input id="dato" required="true" type="text"  maxlength="30" class="form-control" placeholder="Nro Documento o Nombres del Cliente" name="dato_cliente" value="" >
+                            </div>
+                            <div class="col-lg-1">
+                                <div class="btn btn-default btn-md" id="limpiar"><i class="fa fa-refresh fa-1x"> Limpiar</i>
+                                </div>
+                            </div>
+                        </form>
+                        <div style="padding-top: 2rem">
+                             <table style="font-size: 1.5rem"  class="table table-hover display" cellspacing="0" width="100%">
+                            <thead>
+                                <tr>
+                                    <th>DOCUMENTO</th>
+                                    <th>NOMBRES</th>
+                                    <th>APELLIDOS</th>
+                                    <th>ACCION</th>
+                                </tr>
+                                </thead>
+                                <tbody id="lista_clientes">
+
+                                </tbody>
+                            </table>
+                         </div>
                     </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+{{--modal detalles del cliente--}}
+<div class="modal fade" id="detalle_cliente" role="dialog" data-backdrop="static">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Detalles del Cliente</h4>
+            </div>
+            <div class="modal-body">
+                <div>
+                    <h4 style="margin-top: 0rem">Datos Personales</h4>
+                    <span>Nombre Completo</span>
+                    <span id="nombre"></span>
+                </div>
+                <div>
+                    <h5>Total de compras realizadas</h5>
+                    <span id="total_compras"></span>
+                    <span id="total"></span>
                 </div>
 
             </div>
-
-
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
         </div>
 
-        {{--<script src="{{url('/')}}/js/jquery-2.1.1.js"></script>--}}
-        <script>
-            (function() {
-                $("#formulario_busqueda").submit(function() {
-                    var form = $('#formulario_busqueda');
-                    var url = form.attr('action');
-                    $.ajax({
-                        url: url,
-                        type: 'GET',
-                        data: {
-                            codigo: $(this).find( 'input[name="codigo"]' ).val(),
-                            tipo: $(this).find( 'select[name="tipoproducto"]' ).val()
-//                        legajo: $("#legajo").val(),
-//                            "_token": $(this).find( 'input[name="_token"]' ).val()
-                        },
-                        dataType: 'JSON',
-                        beforeSend: function() {
-                            $("#respuesta").html('Buscando Producto...');
-                        },
-                        error: function() {
-                            $("#respuesta").html('<div> Ha surgido un error. </div>');
-                        },
-
-                        success: function(respuesta) {
-                            if (respuesta.length > 0) {
-
-                                var html = '';
-                                for(var i in respuesta){
-//                            $.each(respuesta, function(i,item) {
-                                    html += ' <tr>';
-                                    html += ' <td><button id="add" onclick="agregar('+respuesta[i].id +')">AGREGAR</button></td>';
-                                    html += ' <td><input type="text" id="codigo'+respuesta[i].id+'" style="border:none" readonly value="'+respuesta[i].serie +'"/></td>';
-                                    html += ' <td><input type="text" id="nombreProducto'+respuesta[i].id+'" style="border:none" readonly value="'+respuesta[i].nombre +'"/></td>';
-                                    html += ' <td><input type="text" id="precio'+respuesta[i].id+'" style="border:none; color: red; padding: 0.2rem; background: #ffff00" readonly value="'+respuesta[i].precio +'"/></td>';//
-                                    html += ' <td><input type="text" id="stock'+respuesta[i].id+'" style="border:none; color: red; padding: 0.2rem; background: #ffff00" readonly value="'+respuesta[i].stock_actual +'"/></td>';
-                                    html += ' </tr>';
-//
-                                }
-                                html += '';
-                                $("#respuesta").html(html);
-
-                            } else {
-                                $("#respuesta").html('<div style="color: red;"> No hay ningún producto con ese codigo. </div>');
-                            }
-                            
-                        }
-                    });
-                });
-            }).call(this);
-
-        </script>
-
-        {{--sumar pedido para el subtotal--}}
-        <script>
-            function fncSumar(id){
-
-//                $(document).on('keyup mouseup', '#cantidad'+id, function() {
-//                    alert($('#cantidad'+id).val());
-//
-//                });
-//                $(document).on('keyup mouseup', '#precios'+id, function() {
-//                    alert($('#precios'+id).val());
-//
-//                });
-
-                var numero1 = document.getElementById('cantidad'+id).value;
-                document.getElementById('cantidad'+id).setAttribute('value', numero1);
-                var numero2 = document.getElementById('precios'+id).value;
-                $('#precios'+id).val(numero2);
-                document.getElementById('total'+id).setAttribute('value', numero1*numero2);
-
-            }
-
-
-            function colSum(){
-                var sum=0;
-                var cant = 0;
-                //iterate through each input and add to sum
-                $('.subtotal').each(function() {
-                    sum += parseInt($(this).val());
-                });
-
-                $('.cantidades').each(function() {
-                    cant += parseInt($(this).val());
-                });
-
-//                $('#totalventa').val('S/.'+sum);
-                $('.totalventa').html(sum);
-                $('.cantidadproductos').html(cant);
-
-            }
-        </script>
-
-        {{--agregar fila tabla detalle venta--}}
-        <script type="text/javascript">
-            function agregar(id) {
-
-                $('#myTable tbody tr').each(function () {
-                    var id_fila = $(this).attr('id');
-                    if(id_fila.substr(10) == id){
-                        $('#myModal').modal('show');
-                    }
-                    else{
-                        $('#total_productos').css('display','none');
-                        var tbody = $('#myTable').children('tbody');
-                        var table = tbody.length ? tbody : $('#myTable');
-                        table.append(
-                                '<tr id="filaPedido'+id+'">' +
-                                '</td><input class="productosid" type="hidden" name="idproducto[]" value="'+id+'"/></td>' +
-                                '<td><input step="any" type="number" class="cantidades" min="0" value="0"  style="width: 5rem"   onchange="fncSumar('+id+')"  name="cantidad[]" id="cantidad'+id+'"/>'+
-                                '<td>'+$("#nombreProducto"+id).val()+'</td>' +
-                                '<td><input step="any" type="number" min="0" style="width: 6rem" onchange="fncSumar('+id+')"  id="precios'+id+'"  name="precio[]" value="'+$("#precio"+id).val()+'"/></td>' +
-                                    //            '<td>'+$("#precio").val()+'</td>' +
-                                '<td><input readonly style="width: 8rem" class="subtotal" type="number" value="0"  id="total'+id+'" /></td>' +
-                                '<td style="text-align: center"><a style="color: #ff0000" onclick="eliminarPedido('+id+')"><i class="fa fa-remove fa-2x"></i></a></td>' +
-                                '</tr>');
-                    }
-                });
-
-            };
-
-            //        eliminar pedido
-            function eliminarPedido(id){
-
-                $('.subtotal').each(function() {
-
-                    $("#filaPedido"+id).remove();
-                    var num_filas = ($('#cuerpo tr:last').index() + 1);
-                    var sum = 0;
-                    var cant = 0;
-                    if(num_filas == 0){
-                        $('#total_productos').css('display','block');
-                        $('.totalventa').html(sum);
-                        $('.cantidadproductos').html(cant);
-
-                    }
-
-                    else{
-                    $("#filaPedido"+id).remove();
-                        sum += parseInt($(this).val());
-                        $('.totalventa').html(sum);
-                        $('.cantidades').each(function() {
-                            cant += parseInt($(this).val());
-                        });
-                        $('.cantidadproductos').html(cant);
-
-                    }
-
-            });
-            }
-
-            </script>
-
-        <script>
-            var num_filas = ($('#cuerpo tr:last').index() + 1);
-            $('#total_productos').html('<div style="color: red;"> No hay ningún registro</div>');
-        </script>
-        <script>
-            function vender(){
-                var num_filas = ($('#cuerpo tr:last').index() + 1);
-                if(num_filas==0){
-                    alert('Registre al menos un producto');
-                }
-                else{
-                    $("#venta").attr('data-toggle','modal');
-                    $("#venta").attr('data-target','#generar_venta');
-
-                }
-            }
-        </script>
-
-        {{--limpiar contenido de tabla_respuesta--}}
-        <script type="text/javascript">
-
-            $(document).ready(function() {
-                $("#limpiar").click(function(event) {
-                    $("#respuesta").empty();
-                    $("#codi").val("");
-                });
-            });
-        </script>
-
-        <script type="text/javascript">
-            $(document).ready(function() {
-                $("#venta_realizada").click(function() {
-                    var codigo_producto = $('input[name="idproducto[]"]').serializeArray();
-                    var cantidad_producto = $('input[name="cantidad[]"]').serializeArray();
-                    var precio_producto = $('input[name="precio[]"]').serializeArray();
-                    var nro_venta = $('input[name="nro_venta"]').val();
-                    var url = '{{route("registrar.venta")}}';
-                    $.ajax({
-                        type: 'GET',
-                        url: url,
-                        data: {
-                            idproducto: codigo_producto,
-                            cantidad : cantidad_producto,
-                            precio : precio_producto,
-                            nro_venta : nro_venta
-                        },
-//                    "_token": $(this).find( 'input[name="_token"]' ).val()},
-                        dataType: 'JSON',
-//                beforeSend: function() {
-//                    $("#respuesta").html('<div>buscando producto</div>');
-//                },
-                        error: function() {
-                            $("#respuesta").html('<div> Ha surgido un error. </div>');
-                        },
-//                success: function(respuesta) {
-//                    console.log(respuesta)
-////                    location.reload();
-//                }
-                        success: function(){
-                            alert('todo bien');
-                            location.reload();
-                        }
-                    });
-                });
-            });
-        </script>
-
-
-    @endsection
-@endsection
+    </div>
+</div>
 
 {{--modal BUSCAR PRODUCTOS EN VENTAS--}}
 <div class="container">        <!-- Modal crear -->
@@ -376,10 +204,10 @@
                             <div class="col-lg-12">
                                 <button type="submit" >Buscar  <i class="fa fa-search fa-1x"></i></button>
                                 <input required="true" type="text" id="codi" name="codigo" placeholder="Ingrese Serie o Nombre" style="width: 25rem"/>
-                                <div class="btn btn-primary btn-md" id="limpiar"><i class="fa fa-refresh fa-1x"> Limpiar</i></div>
+                                <div class="btn btn-primary btn-md" id="limpiarproducto"><i class="fa fa-refresh fa-1x"> Limpiar</i></div>
                                 {{--<select name="tipoproducto">--}}
-                                    {{--<option value="1">Producto</option>--}}
-                                    {{--<option value="2">Servicio</option>--}}
+                                {{--<option value="1">Producto</option>--}}
+                                {{--<option value="2">Servicio</option>--}}
                                 {{--</select>--}}
                             </div>
                         </form>
@@ -396,45 +224,6 @@
                             <tbody id="respuesta">
                             </tbody>
                         </table>
-                     </div>
-            </div>
-        </div>
-    </div>
-    </div>
-</div>
-
-{{--modal GENERAR VENTA--}}
-<div class="container">        <!-- Modal crear -->
-    <div class="modal fade " id="generar_venta" tabindex="-1" role="dialog" aria-labelledby="gridModalLabel" aria-hidden="true">>
-        <div class="modal-dialog modal-md">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal">&times;</button>
-                    <h4 class="modal-title">GENERAR VENTA</h4>
-                </div>
-                <div class="modal-body">
-                    <div class="box box-primary">
-                        <div style="text-align: center">
-                            <h5 style="color: #0000ff; font-weight: bold">Total a Cobrar</h5>
-                            <div style="color: greenyellow;background: #000000; font-size: 4rem; text-align: center">
-                                <span >S/. </span><span type="text" class="totalventa">0</span>
-                            </div>
-                        </div>
-                        <div style="text-align: center;margin-top: 3rem">
-                            <h5 style="color: #0000ff; font-weight: bold">Tipo de Pago</h5>
-                            <select name="tipo_pago" id="">
-                                <option selected value="1">Efectivo</option>
-                                <option value="2">Tarjeta</option>
-                                <option value="3">Deposito</option>
-                            </select>
-                        </div>
-                        <div style="text-align: center; margin-top: 3rem">
-                            <h5 style="color: #0000ff; font-weight: bold">Monto Recibido</h5>
-                            <span>S/. </span><input style="width: 25rem" type="number" step="any" name="monto_recibido" min="0"/>
-                        </div>
-                        <div style="text-align: center; margin-top: 2rem">
-                            <button  id="venta_realizada" style="text-align: center" class="btn btn-primary btn-md">Registrar Venta</button>
-                        </div>
                     </div>
                 </div>
             </div>
@@ -442,56 +231,107 @@
     </div>
 </div>
 
-{{--modal BUSCAR CLIENTE EN VENTAS--}}
-<div class="container">        <!-- Modal crear -->
-    <div class="modal fade " id="cliente_venta" tabindex="-1" role="dialog" aria-labelledby="gridModalLabel" aria-hidden="true">>
-        <div class="modal-dialog modal-lg">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal">&times;</button>
-                    <h4 class="modal-title">BUSCAR CLIENTE</h4>
-                </div>
-                <div class="modal-body">
-                    {{--formulario Buscar CLIENTE en ventas--}}
-                    <div class="box box-primary">
-                        <h3>buscar CLIENTE</h3>
 
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-
-{{--CAMBIAR DE BOLETA A FACTURA--}}
-<script type="text/javascript">
-    function cambiarFactura(id) {
-        if (id == "boleta") {
-            $(document).ready(function(){
-                $("#boleta").css("display", "block").addClass("animated fadeInRight");
-                $("#factura").css("display", "none");
-            });
-        }
-        if(id=="factura"){
-            $("#boleta").css("display", "none");
-            $("#factura").css("display", "block").addClass("animated fadeInRight");
-        }
-    }
-</script>
-
-<div class="modal fade" id="myModal" role="dialog" >
-    <div class="modal-dialog modal-sm">
-
-        <!-- Modal content-->
+{{--buscar cliente en venta al contado--}}
+<div class="modal fade" id="cliente_contado" role="dialog" data-backdrop="static">
+    <div class="modal-dialog modal-md" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                {{--<button type="button" class="close" data-dismiss="modal">&times;</button>--}}
-                <h3 style="text-align: center" class="modal-title">El Producto ya esta Registrado</h3>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Busqueda de cliente</h4>
+            </div>
+            <div class="modal-body">
+                <div>
+                    <table style="font-size: 1.2rem"  class="table table-hover display" cellspacing="0" width="100%">
+                        <thead>
+                        <tr>
+                            <th></th>
+                            <th>DOCUMENTO</th>
+                            <th>NOMBRES</th>
+                            <th>APELLIDOS</th>
+                            <th>ACCION</th>
+                        </tr>
+                        </thead>
+                        <tbody id="lista_contado">
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
             </div>
         </div>
 
     </div>
 </div>
 
+{{--modal CRONOGRAMA DE PAGO--}}
+<div class="modal fade" id="cronograma_pago" role="dialog" data-backdrop="static">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Cronograma de Pago</h4>
+            </div>
+            <div class="modal-body col-lg-12">
+
+                    <div class="col-lg-12">
+                        <form action="">
+                            <div class="col-lg-3">
+                                <span class="col-lg-6">TOTAL VENTA S/.</span>
+                                <input id="total_cronograma" readonly type="text" class="col-lg-6"/>
+                            </div>
+                            <div class="col-lg-3">
+                                <span class="col-lg-4">PAGO</span>
+                                <select name="fecha_pago" id="fecha_pago">
+                                    <option value="1">Diario</option>
+                                    <option value="2">Semanal</option>
+                                    <option value="3">Quincenal</option>
+                                    <option value="4">Mensual</option>
+                                </select>
+                            </div>
+                            <div class="col-lg-3">
+                                <span class="col-lg-5">N° CUOTAS</span>
+                                <input id="cuotas" type="number" min="0" class="col-lg-5"/>
+                            </div>
+
+                            <div class="col-lg-3">
+                                <span class="col-lg-5">TASA INTERES %</span>
+                                <input id="interes" type="number" min="0" value="5" class="col-lg-5"/>
+                            </div>
+                        </form>
+                    <div class="col-lg-12" style="text-align: center; margin-top: 2rem">
+                        <div class="col-lg-12">
+                            <button class="btn btn-primary" onclick="generarCuotas()">Generar Cuotas</button>
+                        </div>
+                    </div>
+
+                </div>
 
 
+                <div class="col-lg-12" style="padding-top: 2rem">
+                    <table style="font-size: 1.2rem"  class="table table-hover display" cellspacing="0" width="100%">
+                        <thead>
+                        <tr>
+                            <th>N° CUOTA</th>
+                            <th>FECHA PAGO</th>
+                            <th>MONTO</th>
+                            <th>ESTADO</th>
+                        </tr>
+                        </thead>
+                        <tbody id="lista_cuotas">
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+@include('venta.venta.modalcliente.cliente')

@@ -89,8 +89,13 @@ class ClienteRepository implements BaseRepositoryInterface{
     public function buscarCliente($dato){
         return $this->cliente->select()
             ->where('nro_documento',$dato)
-            ->orWhere('nombres','LIKE',"%$dato%")
+            ->orWhere('nombres','LIKE',"$dato%")
             ->orderBy('id', 'desc')
-            ->paginate(4);
+            ->get();
+    }
+    public function buscarClienteById($dato){
+        return $this->cliente->select()
+            ->where('id',$dato)
+            ->get();
     }
 }

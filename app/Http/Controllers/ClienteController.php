@@ -49,10 +49,15 @@ class ClienteController extends Controller
     public function create()
     {
        $datos = Input::all();
-
+       $script = Input::get("script");
        $clienteNuevo = $this->repoCliente->registrarCliente($datos);
-        return redirect()->action('ClienteController@index');
-
+        if(!empty($script))
+        {
+            return response()->json();
+        }
+        else{
+            return redirect()->action('ClienteController@index');
+        }
     }
 
     /**
@@ -81,6 +86,8 @@ class ClienteController extends Controller
     public function edit($id)
     {
         $cliente = $this->repoCliente->find($id);
+        $script = Input::get("script");
+
         $numubigeo = $this->repoUbigeo->buscarNumubigeo($cliente["ubigeo_id"]);
         $departamento_id = $this->repoUbigeo->buscarUnDepartamento(substr($numubigeo[0]["numubigeo"],0,2))->toArray();
         $provincia_id = $this->repoUbigeo->allProvincias(substr($numubigeo[0]["numubigeo"],0,4))->toArray();
@@ -94,8 +101,16 @@ class ClienteController extends Controller
         $provincias = $this->repoUbigeo->allProvincias(substr($numubigeo[0]["numubigeo"],0,2));
         $distritos = $this->repoUbigeo->allDistritos(substr($numubigeo[0]["numubigeo"],0,4));
 
-        return view('venta.cliente.editarcliente',compact('cliente',
-            'estadoCiviles','ocupaciones','gradoInstrucciones','departamentos','provincias','distritos','departamento_id','provincia_id','distrito_id'));
+        if(!empty($script))
+        {
+            return response()->json($cliente);
+        }
+        else{
+            return view('venta.cliente.editarcliente',compact('cliente',
+                'estadoCiviles','ocupaciones','gradoInstrucciones','departamentos','provincias','distritos','departamento_id','provincia_id','distrito_id'));
+        }
+
+
 
     }
 

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Core\Cliente\ClienteRepository;
 use App\Core\DetalleVenta\DetalleVentaRepository;
 use App\Core\Producto\ProductoRepository;
 use App\Core\Venta\VentaRepository;
@@ -15,12 +16,14 @@ class VentaController extends Controller
     protected $repoProducto;
     protected $repoVenta;
     protected $repoDetalleVenta;
+    protected $repoCliente;
 
     public function __construct(ProductoRepository $producto)
     {
         $this->repoProducto = $producto;
         $this->repoVenta = new VentaRepository();
         $this->repoDetalleVenta = new DetalleVentaRepository();
+        $this->repoCliente = new ClienteRepository();
     }
 
     public function index()
@@ -57,57 +60,30 @@ class VentaController extends Controller
         return response()->json();
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request $request
-     * @return \Illuminate\Http\Response
-     */
+
     public function store(Request $request)
     {
         //
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int $id
-     * @return \Illuminate\Http\Response
-     */
+
     public function show($id)
     {
         //
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int $id
-     * @return \Illuminate\Http\Response
-     */
+
     public function edit($id)
     {
         //
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request $request
-     * @param  int $id
-     * @return \Illuminate\Http\Response
-     */
     public function update(Request $request, $id)
     {
         //
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int $id
-     * @return \Illuminate\Http\Response
-     */
+
     public function destroy($id)
     {
 
@@ -126,5 +102,30 @@ class VentaController extends Controller
         } else {
             return response()->json($productos);
         }
+    }
+
+    public function buscarClienteEnVentas(){
+        $cliente = $this->repoCliente->buscarCliente(Input::get("cliente"))->toArray();
+        if (empty($cliente)) {
+            return 0;
+        } else {
+            return response()->json($cliente);
+        }
+
+    }
+
+    public function detalleClienteEnVentas(){
+        $total_venta = $this->repoVenta->totalVentaCliente(Input::get("cliente"));
+        $cliente = $this->repoCliente->buscarClienteById(Input::get("cliente"))->toArray();
+        $nuevos = $this->repoCliente->buscarClienteById(Input::get("cliente"))->toArray();
+        $datos = array($total_venta,$cliente,$nuevos);
+        if (empty($datos)) {
+            return 0;
+        } else {
+            return response()->json($datos);
+        }
+
+
+
     }
 }

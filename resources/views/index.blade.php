@@ -881,6 +881,55 @@ desired effect
         );
     </script>
 
+    {{--datatable clientes  evaluacion crediticia--}}
+
+    <script type="text/javascript">
+        $(document).ready(function() {
+                    $('#cliente').DataTable( {
+                        "lengthMenu": [[5, 10, 15, -1], [5, 10, 15, "All"]],
+                        "order": [[ 0, "desc" ]],
+//                        "bFilter": false,
+//                        "lengthChange":false,
+                        "language": {
+                            "sSearch": "<span style='font-size: 1.5rem'>Buscar Registro</span>",
+                            "lengthMenu": "Mostrar _MENU_ resultados",
+                            "emptyTable":     "No se encontraron resultados",
+                            "info":           "Se Muestran _START_ a _END_ de _TOTAL_ resultados",
+                            "infoEmpty":      "Se muestran 0 resultados",
+                            "paginate": {
+                                "first":      "Primero",
+                                "last":       "Ultimo",
+                                "next":       "Siguiente",
+                                "previous":   "Anterior"
+                            }
+                        }
+                    });
+                }
+        );
+    </script>
+
+    {{--fecha venta--}}
+    <script>
+        $(document).ready(function() {
+            var hoy = new Date();
+            var dd = hoy.getDate();
+            var mm = hoy.getMonth()+1; //hoy es 0!
+            var yyyy = hoy.getFullYear();
+
+            if(dd<10) {
+                dd='0'+dd
+            }
+
+            if(mm<10) {
+                mm='0'+mm
+            }
+
+            hoy = dd+'/'+mm+'/'+yyyy;
+
+            $("#fecha_venta").val(hoy);
+        });
+    </script>
+
     <!-- Control Sidebar -->
     <aside class="control-sidebar control-sidebar-dark" >
 
