@@ -219,7 +219,7 @@
 
 
             <div class="col-lg-12 col-sm-12 col-xs-12  caja-botones-formulario ">
-                <button type="submit" class="btn btn-primary" style="margin-right: 1rem">ACEPTAR</button>
+                <button type="submit" class="btn btn-primary" style="margin-right: 1rem">ACTUALIZAR</button>
                 <a type="button" href="/venta/cliente" class="btn btn-default" >CANCELAR</a>
             </div>
 

@@ -23,6 +23,7 @@
     {{--<script src="{{url('/')}}/plugins/jQuery/jQuery-2.2.0.min.js"></script>--}}
     <script src="{{url('/')}}/js/jquery-2.1.1.js"></script>
     <script src="{{url('/')}}/datatable/jquery.dataTables.min.js"></script>
+    <script src="{{url('/')}}/cisnero/js/jspdf.min.js"></script>
     <!-- Bootstrap 3.3.6 -->
 
     <script src="{{url('/')}}/bootstrap/js/bootstrap.min.js"></script>
@@ -34,6 +35,16 @@
     {{--<link href="{{url('/')}}/css/style.css" rel="stylesheet">--}}
 
     <script src="{{url('/')}}/dist/js/app.min.js"></script>
+
+    {{--scripts para graficos--}}
+    {{--<script src="https://code.highcharts.com/highcharts.js"></script>--}}
+    {{--<script src="https://code.highcharts.com/highcharts-more.js"></script>--}}
+    {{--<script src="https://code.highcharts.com/modules/exporting.js"></script>--}}
+    <script src="{{url('/')}}/cisnero/js/highcharts.js"></script>
+    <script src="{{url('/')}}/cisnero/js/highcharts-more.js"></script>
+    <script src="{{url('/')}}/cisnero/js/exporting.js"></script>
+    <script src="{{url('/')}}/cisnero/js/no-data-to-display.js"></script>
+    <script src="{{url('/')}}/cisnero/js/bootbox.min.js"></script>
 
 
     <link rel="stylesheet" href="{{url('/')}}/dist/css/skins/skin-blue.css">
@@ -881,20 +892,22 @@ desired effect
         );
     </script>
 
+
     {{--datatable clientes  evaluacion crediticia--}}
 
     <script type="text/javascript">
         $(document).ready(function() {
                     $('#cliente').DataTable( {
-                        "lengthMenu": [[5, 10, 15, -1], [5, 10, 15, "All"]],
-                        "order": [[ 0, "desc" ]],
-//                        "bFilter": false,
-//                        "lengthChange":false,
+                        scrollY: 200,
+                        paging: false,
+                        "bFilter": false,
+                        "bPaginate": false,
+                        "bInfo":false,
+                        "lengthChange":false,
                         "language": {
                             "sSearch": "<span style='font-size: 1.5rem'>Buscar Registro</span>",
                             "lengthMenu": "Mostrar _MENU_ resultados",
-                            "emptyTable":     "No se encontraron resultados",
-                            "info":           "Se Muestran _START_ a _END_ de _TOTAL_ resultados",
+                            "emptyTable":     "Sin registro",
                             "infoEmpty":      "Se muestran 0 resultados",
                             "paginate": {
                                 "first":      "Primero",
@@ -907,6 +920,8 @@ desired effect
                 }
         );
     </script>
+
+
 
     {{--fecha venta--}}
     <script>

@@ -83,8 +83,7 @@
                         <div class="col-lg-4 col-sm-12 col-xs-12">
                             <h5 class="col-lg-12 titulos">Estado Civil</h5>
                             <div class="col-lg-12 col-sm-12  col-xs-12">
-                                <select class="form-control" name="estado_civil">
-                                    <option value="1">prueba</option>
+                                <select id="estadocivil" class="form-control" name="estado_civil">
                                 </select>
                             </div>
                         </div>
@@ -92,8 +91,7 @@
                         <div class="col-lg-4 col-sm-12 col-xs-12">
                             <h5 class="col-lg-12 titulos">Grado de instruccion</h5>
                             <div class="col-lg-12 col-sm-12  col-xs-12">
-                                <select class="form-control" name="grado_instruccion">
-                                    <option value="1">prueba</option>
+                                <select id="gradoinstruccion" class="form-control" name="grado_instruccion">
                                 </select>
                             </div>
                         </div>
@@ -101,8 +99,7 @@
                         <div class="col-lg-4 col-sm-12 col-xs-12">
                             <h5 class="col-lg-12 titulos">Ocupacion</h5>
                             <div class="col-lg-12 col-sm-12  col-xs-12">
-                                <select class="form-control" name="ocupacion">
-                                    <option value="1">prueba</option>
+                                <select id="ocupacion" class="form-control" name="ocupacion">
                                 </select>
                             </div>
                         </div>
@@ -136,7 +133,7 @@
                         <div class="col-lg-4 col-sm-12 col-xs-12">
                             <h5 class="col-lg-12 titulos">Departamento</h5>
                             <div class="col-lg-12 col-sm-12  col-xs-12">
-                                <select class="form-control"  onchange="buscarProvincia(this.value);">
+                                <select id="departamentos" class="form-control"  onchange="buscarProvincia(this.value);">
                                     <option value="0">Seleccione Departamento</option>
 
                                 </select>
@@ -146,7 +143,7 @@
                         <div class="col-lg-4 col-sm-12 col-xs-12">
                             <h5 class="col-lg-12 titulos">Provincia</h5>
                             <div  class="col-lg-12 col-sm-12  col-xs-12">
-                                <select id="provincias"  readonly class="form-control" onchange="buscarDistrito(this.value);">
+                                <select id="provincias"  readonly class="form-control re_provincias" onchange="buscarDistrito(this.value);">
                                     <option value="">Seleccione Provincia</option>
                                 </select>
                             </div>
@@ -155,7 +152,7 @@
                         <div class="col-lg-4 col-sm-12 col-xs-12">
                             <h5 class="col-lg-12 titulos">Distrito</h5>
                             <div class="col-lg-12 col-sm-12  col-xs-12">
-                                <select id="distritos" readonly class="form-control" name="distrito">
+                                <select id="distritos" readonly class="form-control re_distritos" name="distrito">
                                     <option value="2080">Seleccione Distrito</option>
                                 </select>
                             </div>
@@ -208,7 +205,7 @@
                 <h4 class="modal-title">actualizar cliente</h4>
             </div>
             <div class="modal-body">
-                <form method="POST" action="/venta/cliente/actualizar" accept-charset="UTF-8" class="form-horizontal" role="form">
+                <form method="POST" id="formactualizarcliente" action="/venta/cliente/actualizar/" onsubmit="return false;" accept-charset="UTF-8" class="form-horizontal" role="form">
                     {!! csrf_field() !!}
                     <div class="col-lg-12 col-sm-12 col-xs-12 caja_formulario ">
                         <div class="col-lg-4 col-sm-12 col-xs-12">
@@ -221,6 +218,7 @@
                             </div>
                         </div>
                     </div>
+                    <input type="hidden" id="id_cliente" name="id_cliente"/>
 
                     <div class="col-lg-12 caja_formulario ">
                         <div class="col-lg-4 col-sm-12 col-xs-12">
@@ -244,13 +242,13 @@
                         <div class="col-lg-4 col-sm-12 col-xs-12">
                             <h5 class="col-lg-12 titulos">Nombre del Cliente</h5>
                             <div class="col-lg-12 col-sm-12 col-xs-12">
-                                <input type="text" onkeypress="return soloLetras(event)"  maxlength=50 class="form-control" placeholder="Nombre Cliente" name="nombres" value="">
+                                <input id="edit_nombres" type="text" onkeypress="return soloLetras(event)"  maxlength=50 class="form-control" placeholder="Nombre Cliente" name="nombres" value="">
                             </div>
                         </div>
                         <div class="col-lg-8 col-sm-12 col-xs-12">
                             <h5 class="col-lg-12 titulos">Apellidos del Cliente</h5>
                             <div class="col-lg-12 col-sm-12 col-xs-12">
-                                <input type="text" onkeypress="return soloLetras(event)"   maxlength=50 class="form-control" placeholder="Apallido Cliente" name="apellidos" value="">
+                                <input id="edit_apellidos" type="text" onkeypress="return soloLetras(event)"   maxlength=50 class="form-control" placeholder="Apallido Cliente" name="apellidos" value="">
                             </div>
                         </div>
 
@@ -261,19 +259,19 @@
                         <div class="col-lg-4 col-sm-12 col-xs-12">
                             <h5 class="col-lg-12 titulos">Telefono</h5>
                             <div class="col-lg-12 col-sm-12 col-xs-12">
-                                <input type="tetx" class="form-control"  placeholder="nº de telefono" name="telefono" value="" maxlength="20" onKeypress="if (event.keyCode < 45 || event.keyCode > 57) event.returnValue = false;">
+                                <input id="edit_telefono" type="tetx" class="form-control"  placeholder="nº de telefono" name="telefono" value="" maxlength="20" onKeypress="if (event.keyCode < 45 || event.keyCode > 57) event.returnValue = false;">
                             </div>
                         </div>
                         <div class="col-lg-4 col-sm-12 col-xs-12">
                             <h5 class="col-lg-12 titulos">Correo Electronico</h5>
                             <div class="col-lg-12 col-sm-12 col-xs-12">
-                                <input type="email" class="form-control" maxlength="50"placeholder="ejemplo@ejemplo.com" name="correo" value="">
+                                <input id="edit_correo" type="email" class="form-control" maxlength="50"placeholder="ejemplo@ejemplo.com" name="correo" value="">
                             </div>
                         </div>
                         <div class="col-lg-4 col-sm-12 col-xs-12">
                             <h5 class="col-lg-12 titulos">Direccion</h5>
                             <div class="col-lg-12 col-sm-12 col-xs-12">
-                                <input type="text" class="form-control"  maxlength="60" placeholder="Direccion" name="direccion" value="">
+                                <input id="edit_direccion" type="text" class="form-control"  maxlength="60" placeholder="Direccion" name="direccion" value="">
                             </div>
                         </div>
                     </div>
@@ -283,7 +281,7 @@
                         <div class="col-lg-4 col-sm-12 col-xs-12">
                             <h5 class="col-lg-12 titulos">Estado Civil</h5>
                             <div class="col-lg-12 col-sm-12  col-xs-12">
-                                <select class="form-control" name="estado_civil">
+                                <select class="form-control estadocivil" name="estado_civil">
 
                                 </select>
                             </div>
@@ -292,7 +290,7 @@
                         <div class="col-lg-4 col-sm-12 col-xs-12">
                             <h5 class="col-lg-12 titulos">Grado de instruccion</h5>
                             <div class="col-lg-12 col-sm-12  col-xs-12">
-                                <select class="form-control" name="grado_instruccion">
+                                <select class="form-control gradoinstruccion" name="grado_instruccion">
 
                                 </select>
                             </div>
@@ -301,7 +299,7 @@
                         <div class="col-lg-4 col-sm-12 col-xs-12">
                             <h5 class="col-lg-12 titulos">Ocupacion</h5>
                             <div class="col-lg-12 col-sm-12  col-xs-12">
-                                <select class="form-control" name="ocupacion">
+                                <select class="form-control ocupacion" name="ocupacion">
 
                                 </select>
                             </div>
@@ -336,9 +334,7 @@
                         <div class="col-lg-4 col-sm-12 col-xs-12">
                             <h5 class="col-lg-12 titulos">Departamento</h5>
                             <div class="col-lg-12 col-sm-12  col-xs-12">
-                                <select class="form-control"  onchange="buscarProvincia(this.value);">
-                                    <option value="0">Seleccione Departamento</option>
-
+                                <select class="form-control departamentos"  onchange="buscarProvincia(this.value);">
                                 </select>
                             </div>
                         </div>
@@ -346,8 +342,7 @@
                         <div class="col-lg-4 col-sm-12 col-xs-12">
                             <h5 class="col-lg-12 titulos">Provincia</h5>
                             <div  class="col-lg-12 col-sm-12  col-xs-12">
-                                <select id="provincias"  readonly class="form-control" onchange="buscarDistrito(this.value);">
-                                    <option value="">Seleccione Provincia</option>
+                                <select readonly class="form-control edit_provincias" onchange="buscarDistrito(this.value);">
                                 </select>
                             </div>
                         </div>
@@ -355,8 +350,7 @@
                         <div class="col-lg-4 col-sm-12 col-xs-12">
                             <h5 class="col-lg-12 titulos">Distrito</h5>
                             <div class="col-lg-12 col-sm-12  col-xs-12">
-                                <select id="distritos" readonly class="form-control" name="distrito">
-                                    <option value="2080">Seleccione Distrito</option>
+                                <select readonly class="form-control edit_distritos" name="distrito">
                                 </select>
                             </div>
                         </div>
@@ -367,7 +361,7 @@
                         <div class="col-lg-4 col-sm-12 col-xs-12">
                             <h5 class="col-lg-12 titulos">Fecha de nacimiento</h5>
                             <div class="col-lg-12 col-sm-12 col-xs-12">
-                                <input onchange="calcularEdad()" id="fecha_cumple" type="date" class="form-control" placeholder="fecha nacimiento" name="fecha_nacimiento" value="">
+                                <input onchange="calcularEdad()" id="fecha_cumple" type="date" class="form-control fecha-nacimiento" placeholder="fecha nacimiento" name="fecha_nacimiento" value="">
                             </div>
                         </div>
                         <div id="caja_edad" class="col-lg-4 col-sm-12 col-xs-12" style="display: none">
@@ -381,23 +375,23 @@
 
 
 
-                    <script>
-                        function calcularEdad() {
-//                    console.log($('#fecha_nacimiento').val())
-                            var date= $('#fecha_cumple').val().split('-');
-                            var year= date[0];
-                            var año_actual= new Date();
-                            var año=año_actual.getFullYear();
-                            var edad=año - year;
-//                    console.log(edad);
-                            $("#caja_edad").css("display","block")
-                            $("#edad_cliente").text(edad);
-                        }
-                    </script>
+                    {{--<script>--}}
+                        {{--function calcularEdad() {--}}
+{{--//                    console.log($('#fecha_nacimiento').val())--}}
+                            {{--var date= $('#fecha_cumple').val().split('-');--}}
+                            {{--var year= date[0];--}}
+                            {{--var año_actual= new Date();--}}
+                            {{--var año=año_actual.getFullYear();--}}
+                            {{--var edad=año - year;--}}
+{{--//                    console.log(edad);--}}
+                            {{--$("#caja_edad").css("display","block")--}}
+                            {{--$("#edad_cliente").text(edad);--}}
+                        {{--}--}}
+                    {{--</script>--}}
 
 
                     <div class="col-lg-12 col-sm-12 col-xs-12  caja-botones-formulario ">
-                        <button type="submit" class="btn btn-primary" style="margin-right: 1rem">GUARDAR</button>
+                        <button type="submit" class="btn btn-primary" style="margin-right: 1rem">ACTUALIZAR</button>
                         <button type="button" class="btn btn-default" data-dismiss="modal">CANCELAR</button>
                     </div>
 

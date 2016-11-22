@@ -272,7 +272,6 @@
                     $('.cantidadproductos').html(cant);
 
                 }
-
                 else{
                     $("#filaPedido"+id).remove();
                     sum += parseInt($(this).val());

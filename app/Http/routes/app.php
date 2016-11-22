@@ -96,6 +96,14 @@ Route::group(['prefix'=>'/', 'middleware' => 'auth' ], function() {
             'uses'=>'VentaController@detalleClienteEnVentas']
     );
 
+    Route::get('/venta/graficaractividad','VentaController@grafCliente');
+
+//    Registrar Cronograma
+    Route::get('/venta/cronograma/registrar','VentaController@registrarCronograma');
+
+
+
+
 
 
 //    CLIENTES
@@ -107,7 +115,7 @@ Route::group(['prefix'=>'/', 'middleware' => 'auth' ], function() {
 //   vista Registrar cliente
     Route::get('/venta/cliente/nuevocliente','ClienteController@nuevoCliente');
 //    registrar cliente
-    Route::get('/venta/cliente/registro','ClienteController@create' );
+    Route::post('/venta/cliente/registro','ClienteController@create' );
 
 //    editar cliente
     Route::get('/venta/cliente/editar/{id}','ClienteController@edit');

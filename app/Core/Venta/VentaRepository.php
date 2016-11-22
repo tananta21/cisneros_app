@@ -21,7 +21,8 @@ class VentaRepository implements BaseRepositoryInterface{
 
     public function all()
     {
-        return Venta::all('id')->last();
+//        return Venta::all('id')->last();
+        return $consulta = \DB::select("SELECT id FROM ventas ORDER BY id DESC LIMIT 1");
     }
 
     public function create(array $attributes)
@@ -43,12 +44,14 @@ class VentaRepository implements BaseRepositoryInterface{
     {
         // TODO: Implement deleted() method.
     }
-    public function addVenta($cliente, $empleado,$comprobante,$transaccion){
+    public function addVenta($cliente, $empleado,$comprobante,$transaccion,$fecha){
         $venta = new Venta();
         $venta->cliente_id = $cliente;
         $venta->empleado_id = $empleado;
         $venta->tipo_comprobante_id = $comprobante;
         $venta->tipo_transaccion_id = $transaccion;
+        $venta->fecha = $fecha;
+        $venta->estado = 0;
         $venta->save();
     }
 

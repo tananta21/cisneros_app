@@ -98,4 +98,10 @@ class ClienteRepository implements BaseRepositoryInterface{
             ->where('id',$dato)
             ->get();
     }
+    public function cantVentas($id_clie,$anio){
+        return  $registro =  \DB::select("CALL ventaxAnio('". $id_clie ."', '" . $anio . "')");
+    }
+    public function promVentas($id_clie,$anio){
+        return  $registro =  \DB::select("CALL promedioXAnio('". $id_clie ."', '" . $anio . "')");
+    }
 }

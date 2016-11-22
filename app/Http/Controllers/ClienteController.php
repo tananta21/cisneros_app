@@ -39,11 +39,19 @@ class ClienteController extends Controller
     }
 
     public function nuevoCliente(){
+        $script = Input::get("script");
         $estadoCiviles = $this->repoEstadoCivil->allEnVista();
         $ocupaciones = $this->repoOcupacion->allEnVista();
         $gradoInstrucciones = $this->repoGradoInstruccion->allEnVista();
         $departamentos = $this->repoUbigeo->allDepartamentos();
-        return view('venta.cliente.registrarcliente', compact('estadoCiviles','ocupaciones','gradoInstrucciones','departamentos'));
+        if(!empty($script)){
+            $datos = array($estadoCiviles,$ocupaciones,$gradoInstrucciones,$departamentos);
+            return response()->json($datos);
+        }
+        else{
+            return view('venta.cliente.registrarcliente', compact('estadoCiviles','ocupaciones','gradoInstrucciones','departamentos'));
+        }
+
     }
 
     public function create()
@@ -103,7 +111,8 @@ class ClienteController extends Controller
 
         if(!empty($script))
         {
-            return response()->json($cliente);
+            $datos = array($cliente,$estadoCiviles,$ocupaciones,$gradoInstrucciones,$departamentos,$provincias,$distritos,$departamento_id,$provincia_id,$distrito_id);
+            return response()->json($datos);
         }
         else{
             return view('venta.cliente.editarcliente',compact('cliente',
@@ -118,8 +127,15 @@ class ClienteController extends Controller
     public function update(Request $request, $id)
     {
         $datos = $request->all();
+        $script= $request->get("script");
         $actualizarRegistro = $this->repoCliente->updated($id, $datos);
-        return redirect()->action('ClienteController@index');
+        if(!empty($script))
+        {
+            return response()->json();
+        }
+        else {
+            return redirect()->action('ClienteController@index');
+        }
     }
 
     /**
