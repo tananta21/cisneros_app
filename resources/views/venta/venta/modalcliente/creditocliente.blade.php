@@ -74,7 +74,7 @@
                     <h4 class="col-lg-10" style="margin-top: 0.5rem;font-weight: bold">Actividad del Cliente</h4>
 
                     <div class="col-lg-12">
-                        <h5 class="col-lg-2">Total de compras realizadas</h5>
+                        <h5 class="col-lg-2">Total de ventas realizadas</h5>
                         <input readonly class="col-lg-1" type="text" id="total_compras"/>
                     </div>
 

@@ -260,7 +260,13 @@
             $("#venta_realizada").click(function() {
                 if($("#tipo_venta").val()==2){
                     var tbody = $("#cliente tbody tr td");
-//                    console.log(tbody.children().length)
+                    var tbody2 = $("#myTable tbody");
+
+                    if(tbody2.children().length == 0) {
+                        bootbox.alert("Registre al menos un producto!");
+                        return false;
+                    }
+//
                     if (tbody.children().length == 0) {
                         bootbox.alert("Debe Generar Cronograma de pagos");
                     }
